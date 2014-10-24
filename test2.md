@@ -1,4 +1,4 @@
-# test for md files readme
+# test for md files
 
 ## hello
 ```ruby
