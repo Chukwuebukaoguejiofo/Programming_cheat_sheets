@@ -4,7 +4,7 @@
 
 -------------------------------------------
 
-### Comon Git commands I should know:
+### Comon Git commands I should know::
 
 `$ git add <file or directory>` add file to the staging area (index)
 
