@@ -1,5 +1,41 @@
 # Objective-c tutorial
 
+
+# compiling and running a file
+
+```objective-c
+// prog1.m
+
+#import <Foundation/Foundation.h>
+
+int main (int argc, const char * argv[])
+{
+   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+   NSLog (@"Programming is fun!");
+   [pool drain];
+   return 0;
+}
+
+
+/* 
+
+Compile the code:
+  $ clang -framework Foundation prog1.m -o prog1
+Run the code:  
+  $ ./prog1
+
+
+
+
+
+gotchas: 
+  - add the Foundation HEADER
+  - make sure you are using the right file...lol (it happened to me)
+
+*/
+
+```
+
 # log
 ```objective-c
 NSLog(@"Brian"); // log string "brian"
