@@ -1,12 +1,18 @@
-# c language 
+# c language
 
+run code online http://www.tutorialspoint.com/compile_c_online.php
 
-http://cocoadevcentral.com/articles/000081.php 
+tutorial http://www.tutorialspoint.com/cprogramming/
+
+---
+
+http://cocoadevcentral.com/articles/000081.php
 
 pointers: http://theocacao.com/document.page/234
 
 arrays: http://theocacao.com/document.page/231
 
+---
 
 - in a C program you should have at least 3 files:
   - a header file, containing your structs and function declaration(not definition)
@@ -28,7 +34,43 @@ _
 _bar
 _BAR
 _bar
+__
+
+a234234
+A23423
+Aaaa23423
 ```
+
+
+# data types
+```c
+_Bool // 0 -> FALSE, and 1 -> TRUE
+int  // number
+float // number with decimals -> 123.44
+double // double memory size of a float -> 324234234234234.23
+char // single character
+long int // huge number, no decimals
+
+```
+
+
+# strings (they are arrays of characters)
+```c
+// include spaces and an extra space for the ending character -> \0
+char myName [13] = "brian spinos";
+
+// [b][r][i][a][n][][s][p][i][n][o][s][\0]
+
+```
+
+# more strings
+```c
+char x[] = "brian";
+printf(" %s \n", x);
+
+```
+
+
 
 
 
@@ -61,16 +103,17 @@ int myVariable = myFunction (8, 12);
 
 
 
-- you need to declare functions outside of main , using a prototype 
+- you need to declare functions outside of main , using a prototype
   (this is not function definition, which goes inside the main function )
     - example
-    ```c
+
+```c
 
       // USE HEADER FILES !!!! <--------------------------------
       /* example of prototypes */
       int   difference ( int value1, int value2 );
       float changeDue  ( float amountPaid, float costOfItem );
-    ```
+```
 
 - function definition:
 ```c
@@ -86,7 +129,7 @@ int difference (int value1, int value2)
 
 # run a c program from a file:
 ```bash
-//Open Terminal and change to the directory which contains test2.c. Then, type "gcc test2.c -o test2" to compile. 
+//Open Terminal and change to the directory which contains test2.c. Then, type "gcc test2.c -o test2" to compile.
 $ gcc test2.c -o test2
 //Type "./test2" to run the program.
 $ ./test2
@@ -103,12 +146,17 @@ printf ("First value: %i second value: %i", var1, var2);
 
 /*
 
-int	%i / %d
-unsigned int	%u
-float	%f
-char	%c
+%i / %d   ->   int
+%u        ->   unsigned int
+%f        ->   float
+%c        ->   char
+%e        ->   scientific big number
+%p        ->   pointers
+%c        ->   char
+%ld       ->   long int
+%s        ->   character array
 
-// pointers  %p
+
 */
 ```
 
@@ -131,6 +179,9 @@ int   approxDistance  = (int)distance;  // <------  (int)distance is converting 
 int total = multiply ( trips, approxDistance );
 
 
+// you can have a space between the type cast and the variable! example:
+// (int)distance
+// (int) distance
 ```
 
 # more type casting
@@ -198,7 +249,7 @@ main ()
 # GCC combine two files
 
 ```bash
-$ gcc test3.c math_functions.c -o test3 
+$ gcc test3.c math_functions.c -o test3
 // Run the program by typing
 $ ./test3
 
@@ -216,7 +267,7 @@ typedef struct {
 } Song;   //  <---------- creates a new type variable named: Song
 
 
-// a field in a struct can be any type (even another struct). 
+// a field in a struct can be any type (even another struct).
 
 // Once you define a struct, you can use it the same way you'd use int, float or char.
 
@@ -278,8 +329,8 @@ myArray[2] = 22;
 myArray[3] = 8287;
 myArray[4] = 0;
 
+// you can have a space between the variable name and the square brackets!
 ```
-
 
 
 
@@ -329,7 +380,7 @@ main ()
   printf( "value of number:  %i\n", number );
   printf( "value of &number: %p\n", &number );
   printf( "value of pointer: %p\n", pointer );
-  
+
   // print value of pointer's target (number) using
   // the asterisk (*) operator
   printf( "value of pointer's _target_: %i\n", *pointer );  // <------------ use the * again on a pointer to show its value, and not the address. This is called dereferencing.
@@ -347,7 +398,19 @@ value of pointer's _target_: 5
 ```
 
 
+# pointer syntax
 
+```c
+// &x    ->    it means "address of the variable x"
+// *y    ->    it means "value of the pointer y"
+
+
+// all are valid
+int* numberPointer;
+int * numberPointer;
+int *numberPointer; // this is the prefered!
+
+```
 
 
 
@@ -360,39 +423,3 @@ malloc(); // returns a pointer
 free();  // frees used memory
 calloc();
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -59,7 +59,7 @@ int max(int num1, int num2)
   else
     result = num2;
   return result;
-}            
+}
 
 
 ```
@@ -116,6 +116,8 @@ $ ./hello
 
 ```c
 #define MAX_LEN 80
+
+#define MYNAME "brian spinos"
 ```
 
 
@@ -133,21 +135,3 @@ int x[5] = {1, 2, 3, 4, 5}
 
 int y = x[2]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
