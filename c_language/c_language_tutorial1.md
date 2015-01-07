@@ -155,7 +155,7 @@ printf ("First value: %i second value: %i", var1, var2);
 %c        ->   char
 %ld       ->   long int
 %s        ->   character array
-
+%x        ->   pointer address in hexadecimal?
 
 */
 ```
