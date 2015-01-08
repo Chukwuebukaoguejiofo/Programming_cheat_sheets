@@ -4,16 +4,16 @@
 
 ```
 Model class
-urlRoot: ''
-defaults: {}
-
+  urlRoot: ''
+  defaults: {}
+  
 
 
 ```
 
 ```
 Model instance
-{attr:value, ...}
+  {attr:value, ...}
 
 x.get('attr')
 x.set({attr: value})
@@ -30,21 +30,21 @@ x.toJSON()
 
 ```
 View class
-initialize: function
-event listeners
-tagName: ''
-id: ''
-className: ''
-events: {'event', 'function'}
-event handlers
-render: function
-template: _.template(...)  
+  initialize: function
+    event listeners
+  tagName: ''
+  id: ''
+  className: ''
+  events: {'event', 'function'}
+  event handlers
+  render: function
+  template: _.template(...)  
 
 ```
 
 ```
 View instance
-model: model_instance
+  model: model_instance
 
 x.render()
 x.$el.html()  
@@ -62,30 +62,30 @@ x.$el.html()
 
 ```
 Collection class
-initialize: function
-event listeners
-event handlers
-model: MODEL_CLASS
-url: '/url'  
-
+  initialize: function
+    event listeners
+  event handlers
+  model: MODEL_CLASS
+  url: '/url'  
+  
 
 ```
 
 
 ```
 Collection instance
-x.length
-x.add(model_instance1)
-x.at(index)
-x.get(id)
-x.remove(model_instance1)
+  x.length
+  x.add(model_instance1)
+  x.at(index)
+  x.get(id)
+  x.remove(model_instance1)
 
-x.reset(array_of_model_instances)
+  x.reset(array_of_model_instances)
 
-x.forEach(function(model_instance){})
-x.map(function(model_instance){})
-x.filter(function(model_instance){})
-// more functions by the undescore library!
+  x.forEach(function(model_instance){})
+  x.map(function(model_instance){})
+  x.filter(function(model_instance){})
+  // more functions by the undescore library!
 
 ```
 
@@ -97,17 +97,17 @@ x.filter(function(model_instance){})
 
 ```
 View class
-initialize: function
-event listeners
-event handlers
-render: function
+  initialize: function
+    event listeners
+  event handlers
+  render: function
 
 ```
 
 
 ```
 View instance
-collection: collection_instance
+  collection: collection_instance
 
 x.render()
 console.log(x.el)
@@ -143,9 +143,9 @@ model_instance.off('event')
 
 ```
 Router instance
-routes: {'url/:param': 'action', ... }
-action1: function
-action2: function  
+  routes: {'url/:param': 'action', ... }
+  action1: function
+  action2: function  
 
 
 x.navigate('url/url', {trigger: true})
@@ -162,18 +162,18 @@ x.navigate('url/url', {trigger: true})
 
 ```
 Model class
-<event-listener>: function
+  <event-listener>: function
 
 
 ```
 
 ```
 View class
-template: _.template('')
-events: {'click a': 'event-listener'}
-event-listener: function
-this.model.event-listener
-render: function  
+  template: _.template('')
+  events: {'click a': 'event-listener'}
+  event-listener: function
+    this.model.event-listener
+  render: function  
 
 ```
 
