@@ -76,10 +76,10 @@ https://devcenter.heroku.com/articles/direct-to-s3-image-uploads-in-rails
 
 ---------------------------------------
 
-Access Key ID:
+Access Key ID (example):
 
-AKIAJWLODVDTC3B5RSUA
+AKIAXAB9QQKTC3B5RHHD
 
-Secret Access Key:
+Secret Access Key (example):
 
-GUwnnD8L3geYssDDV5UouyBatwGf749O/PUnj4kS
+GUwzzD8L3geYssDDX5UoleBatwGf123O/JEnj4kS
