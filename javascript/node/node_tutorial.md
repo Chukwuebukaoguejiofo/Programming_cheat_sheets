@@ -23,7 +23,7 @@
 ```js
 //blocking code
 var contents = fs.readFileSync('/etc/hosts');
-console.log(contents); // doing this first, 
+console.log(contents); // doing this first,
 console.log('Doing something else'); // then doing this after
 
 //non-blocking code
@@ -113,7 +113,7 @@ http.createServer(function(request, response) {
     response.write(contents);
     response.end();
   });
-  
+
 }).listen(8080);
 
 
@@ -265,7 +265,7 @@ server.listen(8080);
 
 
 - access data piece by piece, chunck by chunk...
-- you can start manipulation that data as soon as it arrieves in the server 
+- you can start manipulation that data as soon as it arrieves in the server
 - streams are like channels, where data can flow through
 - there are different type of streams
   - readable streams
@@ -389,10 +389,10 @@ var http = require('http');
 
 http.createServer(function(request, response){
   var newFile = fs.createWriteStream("readme_copy.md"); // we will write to that file
-  
+
   // get size of file
   var fileBytes = request.headers['content-length'];
-  
+
   // keep track of how many bytes were uploaded to the server
   var uploadedBytes = 0;
 
@@ -441,39 +441,147 @@ http.createServer(function(request, response){
 
 
 
+# Node.js PART 4  (module)
+
+
+### examples:
+
+```js
+var http = require('http');
+
+var fs = require('fs');
+
+```
+
+
+### create a custom module
+
+
+```js
+// custom_hello.js (module)
+
+var hello = function(){
+  console.log("hello!");
+};
+
+module.exports = hello; // make module's function public! so others can use it
+
+
+// this way, the module will only have a single public function `hello`
+```
+
+```js
+// app.js
+
+var hello = require('./custom_hello'); // how to require your custom module!
+
+hello(); // calling the module's public method!
+```
+
+
+### another custom module (another way to write modules)
+
+```js
+// custom_goodbye.js (module)
+
+exports.goodbye = function(){
+  console.log("bye!");
+};
+
+
+// this way you can have multiple public functions on this module!
+```
+
+```js
+// app.js
+
+var gb = require('./custom_goodbye'); // how to require your custom module!
+
+gb.goodbye(); // calling the module's public method!
+
+// or in one line:
+// require('./custom_goodbye').goodbye();
+```
 
 
 
 
+### module with multiple public methods
+
+```js
+// my_module.js
+
+var foo = function(){ ... };
+var bar = function(){ ... };
+var baz = function(){ ... }; // its the module's private function
+
+exports.foo = foo
+exports.bar = bar
+```
+
+```js
+// app.js
+
+var myMod = require('./my_module');
+myMod.foo();
+myMod.bar();
+
+```
 
 
 
+# making http requests
+
+```js
+// make_request.js
+
+var http = require('http');
+
+var makeRequest = function(message){
+      //var message = "hello world";
+      var options = {
+        host: 'localhost', port: 8080, path: '/', method: 'POST'
+      };
+
+      var request = http.request(options, function(response){
+        response.on('data', function(){
+          console.log(data); // log response body
+        });
+      });
+
+      request.write()message; // begins the request above!
+      request.end();
+};
+
+makeRequest("hello world encapsulated!");
+
+// now allow this function to be available as the module's public function
+module.exports = makeRequest;
+```
+
+```js
+// app.js
+
+var makeRequest = require('./make_request');
+
+makeRequest("hello there again!");
+makeRequest("who are you?");
+
+```
 
 
 
+# how does Node look for the modules?
+  - same directory as the application for a file with that name
+  - node will look in `<my_app_folder>/node_modules/make_request.js` directory
+  - node will look in `~/brianspinos777/node_modules/make_request.js` directory
+  - node will look in `~/node_modules/make_request.js` directory
+  - node will look in `/node_modules/make_request.js` directory (root path)
+
+```js
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
