@@ -11,7 +11,7 @@ var name = (
 ```
 
 # Now, Clojures!
-
+```js
 // closures 
 // 1. use a variable
 // 2. put inside it a function that executes right away -> (function(){...})();
@@ -32,7 +32,7 @@ var x = (
 
 
 x();
-
+```
 
 
 # example 2 (not using a function that triggers right away)
