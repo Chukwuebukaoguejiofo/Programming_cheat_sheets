@@ -784,7 +784,7 @@ $ node app.js
 # Node.js PART 7 (persisting data)
 
 
-
+# THIS PART STILL NEEDS MORE STUFF TO BE ADDED
 
 
 ### you can use several databases, but we will be using REDIS
