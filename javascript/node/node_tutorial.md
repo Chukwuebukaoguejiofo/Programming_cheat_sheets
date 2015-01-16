@@ -856,6 +856,17 @@ redisClient.smembers("names", function(err, names){
 
 
 
+# Node.js (GOTCHAS)
+
+### specify port number
+```bash
+PORT=9090 node server.js
+
+# node runs the only .js file ???
+PORT=9090 node .
+
+```
+
 
 
 
