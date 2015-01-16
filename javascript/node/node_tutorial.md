@@ -611,7 +611,7 @@ makeRequest("who are you?");
 //    $ npm install --save express # it will add a files/folders to the current directory (it adds it to the dependencies file)
 
 var express = require('express');
-var app = express();
+var app = express();  // create express server!
 
 // now we can define endpoints!
 
@@ -637,6 +637,8 @@ app.listen(8080);
 ```js
 var require = require('request');
 var url = require('url');
+var express = require('express');
+var app = express(); // create express server!
 
 app.get('/tweets/:username', function(req, response){
   var username = req.params.username; // get the `:username` from the url
@@ -651,12 +653,14 @@ app.get('/tweets/:username', function(req, response){
   var twitterUrl = url.format(options);
   //request(twitterUrl).pipe(response);
 
-  request(url, function(err, res, body){
+  request(twitterUrl, function(err, res, body){
     var tweets = JSON.parse(body);
     response.locals = {tweets: tweets, name: username};
     response.render('tweets.ejs');
   });
 });
+
+app.listen(8080);
 
 ```
 
