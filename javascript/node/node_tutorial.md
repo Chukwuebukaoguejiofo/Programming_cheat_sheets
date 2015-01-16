@@ -705,30 +705,30 @@ var io = require('socket.io')(server); // allow it to use the http server to lis
 // now socket.io and express are using the same http server
 
 io.on('connection', function(client){
-  console.log('Client connected...');
-  client.emit('messages', {hello: 'world'}); // emitting the messages event on our client, the browser, and send the object {hello: 'world'}
+    console.log('Client connected...');
+    client.emit('messages', {hello: 'world'}); // emitting the messages event on our client, the browser, and send the object {hello: 'world'}
 
-  client.on('message', function(data){ // send 'messages' from client, the browser, back to the server
-    //console.log(data);
-    client.broadcast.emit("messages", data); // broadcast to all other clients connected
-  });
+    client.on('message', function(data){ // send 'messages' from client, the browser, back to the server
+        //console.log(data);
+        client.broadcast.emit("messages", data); // broadcast to all other clients connected
+    });
 
-  client.on('join', function(name){
-    client.nickname = name; // set the nickname associated to the client, now the variable is available both on the server and on the client!
-  });
+    client.on('join', function(name){
+        client.nickname = name; // set the nickname associated to the client, now the variable is available both on the server and on the client!
+    });
 
 
-  client.on('messages', function(data){
-    var nickname = client.nickname;
-    client.broadcast.emit("message", nickname + ": " + message);
-    client.emit("messages", nickname + ": " + message);
-  });
+    client.on('messages', function(data){
+        var nickname = client.nickname;
+        client.broadcast.emit("message", nickname + ": " + message);
+        client.emit("messages", nickname + ": " + message);
+    });
     
 
 });
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 server.listen(8080);
