@@ -681,13 +681,98 @@ app.listen(8080);
 
 
 
+# Node.js PART 3 (socket.io)
+
+### lets build a chat application in the browser!
+
+- using a duplexed websocket connection!
+- Socket.io abstracts websockets with fallbacks
+
+```bash
+// install socket.io
+
+$ npm install --save socket.io
+```
+
+```js
+// app.js (the server)
+
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app); // create http server and have it dispatch requests to express
+var io = require('socket.io')(server); // allow it to use the http server to listen for requests
+
+// now socket.io and express are using the same http server
+
+io.on('connection', function(client){
+  console.log('Client connected...');
+  client.emit('messages', {hello: 'world'}); // emitting the messages event on our client, the browser, and send the object {hello: 'world'}
+
+  client.on('message', function(data){ // send 'messages' from client, the browser, back to the server
+    //console.log(data);
+    client.broadcast.emit("messages", data); // broadcast to all other clients connected
+  });
+
+  client.on('join', function(name){
+    client.nickname = name; // set the nickname associated to the client, now the variable is available both on the server and on the client!
+  });
 
 
+  client.on('messages', function(data){
+    var nickname = client.nickname;
+    client.broadcast.emit("message", nickname + ": " + message);
+    client.emit("messages", nickname + ": " + message);
+  });
+    
+
+});
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+server.listen(8080);
+```
 
 
+```html
+<!-- /index.html (the client)-->
 
+<!-- src="/socket.io/socket.io.js" - should be in some folder ??? -->
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
+<script type="text/javascript">
+  var socket = io.connect('http://localhost:8080');
+  socket.on('messages', function(data){  // listening to the 'messages' event...
+    alert(data.hello);  // data = {hello: 'world'}
+    // right here -> insert the message in the page with jQuery some how!
+  });
 
+  $('#chart_form').submit(function(e){
+    var message = $('#chat_input').val();
+
+    // emit the 'messages' event
+    socket.emit('messages', message);
+  });
+
+  var server = io.connect('http://localhost:8080');
+  server.on('connect', function(data){
+    $('#status').html('Connected to chattr!');
+    nickname = prompt("What is your nickname?");
+    server.emit('join', nickname); // send that nickname variable to the server!
+  });
+</script>
+
+```
+
+```bash
+# start the server
+
+$ node app.js
+
+# go to http://localhost:8080 # in browser 1
+# go to http://localhost:8080 # in browser 2
+```
 
 
 
