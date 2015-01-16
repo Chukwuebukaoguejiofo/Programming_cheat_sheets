@@ -738,7 +738,7 @@ server.listen(8080);
 ```html
 <!-- /index.html (the client)-->
 
-<!-- src="/socket.io/socket.io.js" - should be in some folder ??? -->
+<!-- src="/socket.io/socket.io.js" - Express knows to serve the socket.io client js for this path. -->
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/javascript">
