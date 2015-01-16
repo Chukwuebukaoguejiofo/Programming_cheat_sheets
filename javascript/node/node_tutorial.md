@@ -584,6 +584,12 @@ makeRequest("who are you?");
 ```
 
 
+# MORE STUFF HERE...
+# MORE STUFF HERE...
+# MORE STUFF HERE...
+# MORE STUFF HERE...
+# MORE STUFF HERE...
+# MORE STUFF HERE...
 
 
 
@@ -592,10 +598,79 @@ makeRequest("who are you?");
 
 
 
+# Node.js PART 5 (express)
 
 
+- first require the library
+
+```js
+// /app.js
 
 
+// you need to install it first:
+//    $ npm install --save express # it will add a files/folders to the current directory (it adds it to the dependencies file)
+
+var express = require('express');
+var app = express();
+
+// now we can define endpoints!
+
+app.get('/', function(request, response){
+  response.sendFile(__dirname + "/index.html");
+});
+
+app.listen(8080);
+
+// $ curl http://localhost:8080/ # a get request to the '/' root!
+//    200 ok
+```
+
+
+```html
+<!-- /index.html -->
+<p>hello world</p>
+```
+
+### Express routes
+
+
+```js
+var require = require('request');
+var url = require('url');
+
+app.get('/tweets/:username', function(req, response){
+  var username = req.params.username; // get the `:username` from the url
+
+  options = {
+    protocol: "http:",
+    host: "api.twitter.com",
+    pathname: '/1/statuses/user_timeline.json',
+    query: { screen_name: username, count: 10}
+  }
+
+  var twitterUrl = url.format(options);
+  //request(twitterUrl).pipe(response);
+
+  request(url, function(err, res, body){
+    var tweets = JSON.parse(body);
+    response.locals = {tweets: tweets, name: username};
+    response.render('tweets.ejs');
+  });
+});
+
+```
+
+
+```js
+// /tweets.ejs
+
+<h1>Tweets for @<%= name %></h1>
+<ul>
+  <% tweets.forEach(function(tweet){ %>
+    <li><%= tweet.text %></li>
+  <%  }); %>
+</ul>
+```
 
 
 
