@@ -681,7 +681,7 @@ app.listen(8080);
 
 
 
-# Node.js PART 3 (socket.io)
+# Node.js PART 6 (socket.io)
 
 ### lets build a chat application in the browser!
 
