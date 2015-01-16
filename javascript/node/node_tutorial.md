@@ -799,44 +799,44 @@ $ npm install redis --save
 
 ```js
 var redis = require('redis');
-var client = redis.createClient();
+var redisClient = redis.createClient(); // `redisClient` NOT TO BE CONFUSED WITH `client`
 
 
 // REDIS SET
-client.set("message1", "hello, yes this is dog"); // key, value
-client.set("message2", "hello, no this is spider"); // key, value
+redisClient.set("message1", "hello, yes this is dog"); // key, value
+redisClient.set("message2", "hello, no this is spider"); // key, value
 
 // REDIS GET
-client.get("message1", function(err, reply){
+redisClient.get("message1", function(err, reply){
   console.log(reply); // "hello, yes this is dog"
 });
 
 // REDIS LIST LPUSH
 var message = "hello, this is dog";
-client.lpush("messages", message, function(err, reply){
+redisClient.lpush("messages", message, function(err, reply){
   // the callback is optional
   // console.log(reply); // "1" -> the length of the list
-  client.ltrim("messages", 0, 1); // keeps first two strings and removes the rest
+  redisClient.ltrim("messages", 0, 1); // keeps first two strings and removes the rest
 });
 
 // REDIS LRANGE
-client.lrange("messages", 0, -1, function(err, messages){
+redisClient.lrange("messages", 0, -1, function(err, messages){
   console.log(messages); // replies with all strings in list
 });
 
 
 // REDIS SET SADD
-client.sadd("names", "Dog");
-client.sadd("names", "Spider");
-client.sadd("names", "Gregg");
+redisClient.sadd("names", "Dog");
+redisClient.sadd("names", "Spider");
+redisClient.sadd("names", "Gregg");
 
 // REDIS SET SREM
-client.srem("names", "Dog");
-client.srem("names", "Spider");
-client.srem("names", "Gregg");
+redisClient.srem("names", "Dog");
+redisClient.srem("names", "Spider");
+redisClient.srem("names", "Gregg");
 
 // REDIS SET SMEMBERS
-client.smembers("names", function(err, names){
+redisClient.smembers("names", function(err, names){
   console.log(names); // show members of the set
 });
 ```
