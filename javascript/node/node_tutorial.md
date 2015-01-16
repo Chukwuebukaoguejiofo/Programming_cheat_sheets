@@ -742,25 +742,25 @@ server.listen(8080);
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/javascript">
-  var socket = io.connect('http://localhost:8080');
-  socket.on('messages', function(data){  // listening to the 'messages' event...
-    alert(data.hello);  // data = {hello: 'world'}
-    // right here -> insert the message in the page with jQuery some how!
-  });
+    var socket = io.connect('http://localhost:8080');
+    socket.on('messages', function(data){  // listening to the 'messages' event...
+        alert(data.hello);  // data = {hello: 'world'}
+        // right here -> insert the message in the page with jQuery some how!
+    });
 
-  $('#chart_form').submit(function(e){
-    var message = $('#chat_input').val();
+    $('#chart_form').submit(function(e){
+        var message = $('#chat_input').val();
 
-    // emit the 'messages' event
-    socket.emit('messages', message);
-  });
+        // emit the 'messages' event
+        socket.emit('messages', message);
+    });
 
-  var server = io.connect('http://localhost:8080');
-  server.on('connect', function(data){
-    $('#status').html('Connected to chattr!');
-    nickname = prompt("What is your nickname?");
-    server.emit('join', nickname); // send that nickname variable to the server!
-  });
+    var server = io.connect('http://localhost:8080');
+    server.on('connect', function(data){
+        $('#status').html('Connected to chattr!');
+        nickname = prompt("What is your nickname?");
+        server.emit('join', nickname); // send that nickname variable to the server!
+    });
 </script>
 
 ```
