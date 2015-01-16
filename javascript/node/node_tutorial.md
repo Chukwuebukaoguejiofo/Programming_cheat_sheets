@@ -650,10 +650,11 @@ app.get('/tweets/:username', function(req, response){
     query: { screen_name: username, count: 10}
   }
 
-  var twitterUrl = url.format(options);
+  var twitterUrl = url.format(options); // url.format(); is from the 'url library'
   //request(twitterUrl).pipe(response);
 
-  request(twitterUrl, function(err, res, body){
+  request(twitterUrl, function(err, res, body){ // request(); is from the 'request library'
+    // `res` is different from  `response` 
     var tweets = JSON.parse(body);
     response.locals = {tweets: tweets, name: username};
     response.render('tweets.ejs');
