@@ -226,6 +226,110 @@ app.use(function(request, response, next){
 
 ```
 
+### Gotcha - Dont use `next();` after `response.send('foo');`
+```js
+// /app.js
+// ...
+app.use(function(request, response){
+  response.send('done!');  // this will stop triggering all the next widdlewares... BAD!
+  next(); // <------- this would not work because of the above line
+});
+// ...
+
+```
+
+
+### serving static assets
+
+- the static middleware serves EVERYTHING!!! under the specific folder
+
+```js
+// /app.js
+// ...
+app.use(express.static('public'););
+
+// ...
+
+```
+
+
+
+### loading data using AJAX
+
+
+```html
+<!-- /public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Building Blocks</title>
+</head>
+<body>
+ <h1>Blocks</h1>
+ <ul class='block-list'></ul>
+ <script src="jquery.js"></script>
+ <script src="client.js"></script>
+</body>
+</html>
+```
+
+```js
+// /public/client.js
+
+$(function(){
+  $.get('/blocks', appendToList);
+
+  function appendToList(blocks) {
+    var list = [];
+    for(var i in blocks){
+      list.push($('<li>', { text: blocks[i] }));
+    }
+    $('.block-list').append(list);
+  }
+});
+
+```
+
+
+```js
+// /app.js
+
+var express = require('express');
+var app = express();
+
+app.use(express.static('public'));
+
+app.get('/blocks', function(request, response) {
+  var blocks = ['Fixed', 'Movable', 'Rotating'];
+  response.json(blocks);
+});
+
+app.listen(3000);
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
