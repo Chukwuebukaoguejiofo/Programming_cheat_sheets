@@ -200,7 +200,7 @@ server.on('close', function(){ ... });
 
 
 
-# example of chat (not complete?)
+# example of chat
 
 ```js
 var http = require('http');
