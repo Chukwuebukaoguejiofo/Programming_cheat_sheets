@@ -203,23 +203,33 @@ server.on('close', function(){ ... });
 # example of chat (not complete?)
 
 ```js
-var events = require('events');
-var EventEmitter = events.EventEmitter;
+var http = require('http');
+var EventEmitter = require('events').EventEmitter;
 
 var chat = new EventEmitter();
 var users = [], chatlog = [];
 
 chat.on('message', function(message) {
   chatlog.push(message);
+  //console.log('\n\n' +  chatlog + '\n\n');
 });
 
 chat.on('join', function(nickname) {
   users.push(nickname);
+  //console.log('\n\n' +  users + '\n\n');
 });
 
 // Emit events here
 chat.emit('message', "hello there");
 chat.emit('join', "welcome");
+
+
+
+http.createServer(function(request, response) {
+  response.writeHead(200);
+  response.end();
+
+}).listen(8080);
 
 ```
 
