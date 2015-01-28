@@ -3,6 +3,8 @@
 
   - Your application should have at least one module file, 
     - and one controller file for each controller.
+  - you can add twitter-bootstrap to your angular project! just add the CSS in the HTML `<head>`  
+    - `<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">`
 
 ### example:
 
@@ -466,18 +468,11 @@ function formController ($scope) {
 
 
 # validation
+  - remember that you need SERVER SIDE VALIDATION
 
 
 ```html
-<!DOCTYPE html>
-<html>
 
-<head>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-</head>
-
-<body>
-<h2>Validation Example</h2>
 
 <form  ng-app=""  ng-controller="validateCtrl"
 name="myForm" novalidate>
@@ -512,15 +507,151 @@ function validateCtrl($scope) {
 }
 </script>
 
-</body>
-</html>
+
 
 ```
 
 
+# twitter-bootstrap example
 
+```html
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
 
+<body ng-controller="userController">
+<div class="container">
 
+<h3>Users</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Edit</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>
+        <button class="btn" ng-click="editUser(user.id)">
+          <span class="glyphicon glyphicon-pencil"></span>  Edit
+        </button>
+      </td>
+      <td>{{ user.fName }}</td>
+      <td>{{ user.lName }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<button class="btn btn-success" ng-click="editUser('new')">
+<span class="glyphicon glyphicon-user"></span>  Create New User
+</button>
+<hr>
+
+<h3 ng-show="edit">Create New User:</h3>
+<h3 ng-hide="edit">Edit User:</h3>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">First Name:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
+    </div>
+  </div> 
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Last Name:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10">
+    <input type="password" ng-model="passw1" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Repeat:</label>
+    <div class="col-sm-10">
+    <input type="password" ng-model="passw2" placeholder="Repeat Password">
+    </div>
+  </div>
+</form>
+
+<hr>
+<button class="btn btn-success" ng-disabled="error || incomplete">
+<span class="glyphicon glyphicon-save"></span>  Save Changes
+</button>
+
+</div>
+
+<script src= "myUsers.js"></script>
+
+</body>
+</html>
+```
+
+```js
+// /myUsers.js
+
+function userController($scope) {
+$scope.fName = '';
+$scope.lName = '';
+$scope.passw1 = '';
+$scope.passw2 = '';
+$scope.users = [
+{id:1, fName:'Hege',  lName:"Pege" },
+{id:2, fName:'Kim',   lName:"Pim" },
+{id:3, fName:'Sal',   lName:"Smith" },
+{id:4, fName:'Jack',  lName:"Jones" },
+{id:5, fName:'John',  lName:"Doe" },
+{id:6, fName:'Peter', lName:"Pan" }
+];
+$scope.edit = true;
+$scope.error = false;
+$scope.incomplete = false; 
+
+$scope.editUser = function(id) {
+  if (id == 'new') {
+    $scope.edit = true;
+    $scope.incomplete = true;
+    $scope.fName = '';
+    $scope.lName = '';
+    } else {
+    $scope.edit = false;
+    $scope.fName = $scope.users[id-1].fName;
+    $scope.lName = $scope.users[id-1].lName; 
+  }
+};
+
+$scope.$watch('passw1',function() {$scope.test();});
+$scope.$watch('passw2',function() {$scope.test();});
+$scope.$watch('fName', function() {$scope.test();});
+$scope.$watch('lName', function() {$scope.test();});
+
+$scope.test = function() {
+  if ($scope.passw1 !== $scope.passw2) {
+    $scope.error = true;
+    } else {
+    $scope.error = false;
+  }
+  $scope.incomplete = false;
+  if ($scope.edit && (!$scope.fName.length ||
+  !$scope.lName.length ||
+  !$scope.passw1.length || !$scope.passw2.length)) {
+       $scope.incomplete = true;
+  }
+};
+
+}
+
+```
 
 
 
