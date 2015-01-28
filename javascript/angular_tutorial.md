@@ -1,5 +1,5 @@
 # angular tutorial
-  -  you should load the Angular.js in the HTML <head>, or before your scripts!
+  -  you should load the Angular.js in the HTML `<head>`, or before your scripts!
 
   - Your application should have at least one module file, 
     - and one controller file for each controller.
