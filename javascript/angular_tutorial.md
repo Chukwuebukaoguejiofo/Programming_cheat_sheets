@@ -1,4 +1,6 @@
 # angular tutorial
+  - https://docs.angularjs.org/tutorial/
+
   -  you should load the Angular.js in the HTML `<head>`, or before your scripts!
 
   - Your application should have at least one module file, 
@@ -19,6 +21,8 @@
 
 
 - The `ng-bind` puts the application variable `name` inside the <p> element.
+
+- Each controller has its own scope: the HTML element where they were defined.
 
 ```html
 <!DOCTYPE html>
@@ -656,7 +660,19 @@ $scope.test = function() {
 
 
 
+# includes (like rails partials)
+  - if your main html gets too long, use this!
 
+```html
+<body>
+
+<div class="container">
+  <div ng-include="'file1.htm'"></div>
+  <div ng-include="'file2.htm'"></div>
+</div>
+
+</body>
+```
 
 
 
