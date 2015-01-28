@@ -210,15 +210,16 @@ uppercase   Format a string to upper case.
 ### filtering input
   - like a name search
   - The `filter` filter selects a subset of an array
+  - its filtering against the `my_search_text` variable
 
 
 ```html
 <div ng-app="" ng-controller="namesController">
 
-<p><input type="text" ng-model="test"></p>
+<p><input type="text" ng-model="my_search_text"></p>
 
 <ul>
-  <li ng-repeat="x in names | filter:test | orderBy:'country'">
+  <li ng-repeat="x in names | filter:my_search_text | orderBy:'country'">
     {{ (x.name | uppercase) + ', ' + x.country }}
   </li>
 </ul>
