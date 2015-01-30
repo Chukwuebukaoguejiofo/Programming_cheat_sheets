@@ -2,7 +2,7 @@
 
 ```bash
 $ npm install express
-
+$ npm install -g express-generator # so you can generate your app!!! with `$ express myapp`
 # or a specific version:
 $ npm install express@4.9
 
