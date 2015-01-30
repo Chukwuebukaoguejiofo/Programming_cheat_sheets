@@ -3,6 +3,16 @@
 ```bash
 $ npm install express
 $ npm install -g express-generator # so you can generate your app!!! with `$ express myapp`
+  $ express myapp --hogan -c less  # for mustache and less
+  $ cd myapp
+  $ npm install # for dependencies
+  $ npm start # to start the app # it will start in port 3000
+
+
+
+
+
+
 # or a specific version:
 $ npm install express@4.9
 
