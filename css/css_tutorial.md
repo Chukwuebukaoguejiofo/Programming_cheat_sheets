@@ -18,13 +18,13 @@ http://www.tizag.com/cssT/reference.php
 /*This is a comment*/
 ```
 
- ## syntax
+## syntax
 ```
 "HTML tag" { "CSS Property" : "Value" ; }
 p {color: white; }
 ```
 
- ## internal CSS
+## internal CSS
 ```html
 
 <html>
@@ -74,7 +74,7 @@ h3{ color: white; }
 ```
 
 
- ##Class
+##Class
 ```css
  p.first{ color: blue; }
  p.second{ color: red; }
@@ -82,14 +82,14 @@ h3{ color: white; }
 
 
 
- ## background color
+## background color
 ```css
 h4 { background-color: white; }
 p  { background-color: #1078E1; }
 ```
 
 
- #background image
+#background image
 
 ```css
 
@@ -104,7 +104,7 @@ background-position: 0px 5px;
 background-attachment:fixed;
 */
 ```
- ##font and text
+##font and text
 ```css
  h4 { color: red; }
 
@@ -135,7 +135,7 @@ background-attachment:fixed;
  p {text-indent:50px;}
 ```
 
- ## padding
+## padding
 ```css
  p {padding: 15px; border: 1px solid black; }     /*  padding:25px 50px;  */
 
@@ -162,7 +162,7 @@ background-attachment:fixed;
     border: 1px solid red;
  }
 ```
- ## margin
+## margin
 ```css
 p {margin: 5px; border: 1px solid black; }     /* margin:100px 50px; */
 h5{margin: 0px; border: 1px solid red;}
@@ -180,7 +180,7 @@ border: 1px solid black; }
 h5{margin: 0px 5px 10px 3px;
  border: 1px solid red;}
 ```
- ## border
+## border
 ```css
 p.solid {border-style: solid; }
 p.double {border-style: double; }
@@ -212,7 +212,7 @@ h4 { border-top-style: double;
 border-top-color: purple;
 border-top-width: thick; }
 ```
- ##list style
+##list style
 ```css
 ol { list-style-type: upper-roman; }
 ol { list-style-type: none; }
@@ -224,7 +224,7 @@ ul { list-style-position: inside; }
 ol { list-style-position: outside; }
 ```
 
- ## links
+## links
  ```css
 a:link { color: red; }
 a:visited { color: red; }
@@ -254,15 +254,15 @@ border: 2px solid black;
 
 }
 ```
- ##cursor
+##cursor
 ```css
 p { cursor: wait }
 h4 { cursor: help }
 h5 { cursor: crosshair }
 ```
- ## properties
+## properties
 
- ## position
+## position
  ```css
 h3 {
 	 position: relative;
@@ -289,10 +289,10 @@ top:30px;
 right:5px;
 }
 ```
- ##layers
+##layers
 
 
- ##float
+##float
  ```css
 img.floatLeft {
     float: left;
@@ -313,13 +313,13 @@ img.floatRightClear {
 
 ```
 
- ##ID
+##ID
  ```css
 p#exampleID1 { background-color: white; }
 p#exampleID2 { text-transform: uppercase; }
 ```
 
- ##visibility and display
+##visibility and display
 ```css
 h1.hidden {display:none;} /* hides and does not take up space */
 
@@ -329,7 +329,7 @@ li {display:inline;} /* makes elements go in the same line */
 
 p.hide {display:block;} /* makes elements take up all the line */
 ```
- ## grouping
+## grouping
 ```css
  h1,h2,p { color:green; }
 ```

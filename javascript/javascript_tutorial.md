@@ -3,6 +3,8 @@
 # important notes:
 
 - In JavaScript, all objects have the `valueOf()` and `toString()` methods.
+- scope: is about what variables can I access
+- context: the value of `this`
 
 ```js
 x.valueOf();
