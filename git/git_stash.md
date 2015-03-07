@@ -1,5 +1,12 @@
 # git stash
 
+- why? when you are in the middle of working with something, and you need to stop right away and work with something else
+
+- so you can store them in a temporary area!
+
+- then when you are done with the emergency, you can apply back your changes and resume your work!!!
+
+
 ### GOTCHAS
 
 - if the `$ git stash pop` has a conflict, it will not drop the stash! for your safety!!!
@@ -11,13 +18,8 @@
 - can’t show untracked files in the stash
 
 
+### save
 
-
-- why? when you are in the middle of working with something, and you need to stop right away and work with something else
-
-- so you can store them in a temporary area!
-
-- then when you are done with the emergency, you can apply back your changes and resume your work!!!
 
 
 ```bash
