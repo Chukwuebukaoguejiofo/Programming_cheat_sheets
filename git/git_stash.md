@@ -28,7 +28,7 @@
 # after the stash, it restores the state from the last commit (so it moves those files to a temp area)
 $ git stash save  # same as $ git stash # does not include untracked files # it saves both the staged and unstaged files
 $ git stash save "my message"  # does not include untracked files # it saves both the staged and unstaged files
-$ git stash save --include-untracked
+$ git stash save --include-untracked # to show the untracked files in the stash, use: `git show stash@{0}^3 --name-only` 
 $ git stash save --keep-index # the staged files will not be stashed # only the unstaged files will be stashed # does not include untracked files
 $ git stash save -u "message" # save with uncommited files too
 
