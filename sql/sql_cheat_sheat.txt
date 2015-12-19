@@ -1,1 +1,28 @@
 https://www.codecademy.com/articles/sql-commands?r=master
+
+
+# Command line.
+$ mysql -u root -p
+$ # press enter, there is no password...
+$ show databases;
+$ create database myDatabase;
+$ drop database myDatabase;
+$ use myDatabase;
+$ show tables;
+
+$ create table myTable(
+    id int(11) unsigned auto_increment primary key not null,
+    username varchar(25) not null,
+    password varchar(25) not null,
+    email varchar(40) not null
+);
+
+$ show tables;
+$ drop table myTable;
+$ describe myTable;
+
+
+
+
+
+
