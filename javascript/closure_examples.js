@@ -28,5 +28,5 @@ var user = (function () {
 
 
 user.publicfunction();
-
 user.name;
+// user.print_password();  // ERROR!
