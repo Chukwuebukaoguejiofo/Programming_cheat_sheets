@@ -53,7 +53,5 @@ brian.bar  // 123
 
 brian.constructor == Human; // true
 
-
-
-
-
+brian instanceof Person;     // true
+brian instanceof Human; // true
