@@ -12,6 +12,7 @@ user();
 
 //------------------------------------ clojure returning an object
 var user = (function () {
+    // private fields and methods
     var password = "123456";
     var print_password = function(){
         console.log('Your password is ' + password);

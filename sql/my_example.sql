@@ -1,6 +1,10 @@
 /*
 
 # Command line.
+# start the server
+$ mysqld
+# to stop the SQL server  # ps aux | grep mysqld   # kill -9 #process id
+
 $ mysql -u root -p
 $ # press enter, there is no password...
 $ show databases;
