@@ -1,5 +1,4 @@
-// JavaScript OOP
-
+//----------------------------------------------- JavaScript OOP
 
 function Human(name){
     var lifespan = 100;
@@ -11,8 +10,6 @@ function Human(name){
         console.log("Yummy " + food + "!\n")
     }
 }
-
-
 
 function Person(name, age){
     var country = "USA";  // class variable
@@ -32,11 +29,9 @@ function Person(name, age){
     }
 }
 
-Person.prototype = new Human;  // inheritance
+Person.prototype = new Human;  // inheritance (Person instance will inherit from Human)
 
 Person.prototype.foo = "bar";  // add aditional stuff ouside of a definition!
-
-
 
 var brian = new Person("brian spinos", 27);
 brian.getName();
@@ -46,7 +41,6 @@ brian.socialize("Erich");
 brian.walk("fast");
 brian.eat("burger");
 
-
 brian.foo;
 brian.__proto__.bar = 123;
 brian.bar  // 123
@@ -55,3 +49,34 @@ brian.constructor == Human; // true
 
 brian instanceof Person;     // true
 brian instanceof Human; // true
+
+// constructor function
+function Person(name){
+    this.name = name
+
+    this.talk = function(){
+        console.log('Hi, my name is ' + this.name + '!');
+    }
+}
+
+var brian = new Person('brian');
+
+Person.prototype.fly = function(){
+    console.log('I am flying!');
+}
+
+brian.__proto__.run = function(){
+    console.log('I am running!');
+}
+
+brian.talk(); // Hi, my name is brian!
+brian.fly();  // 'I am flying!'
+brian.run();  // 'I am running!'
+
+Person.prototype === brian.__proto__  // true
+typeof brian.__proto__  // "object"
+typeof Person.prototype  // "object"
+typeof Person  // "function"
+
+
+
