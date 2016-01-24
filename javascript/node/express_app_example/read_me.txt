@@ -8,3 +8,5 @@ $ npm install ejs  # for ejs template
 $ npm install socket.io
 
 $ node app.js  # start the app
+
+- go to http://localhost:3000/index  to see the socket.io (websockets) working!
