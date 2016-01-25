@@ -1,7 +1,8 @@
 (function(){  // wrap in a closure is good pactice
     var app = angular.module("usersControllerModule", []);
 
-    app.controller('usersController', function(){
+    app.controller('usersController', function($scope){
+        $scope.greetings = 'hello there!'
         this.foo = "bar";
         this.myObject = {name: 'brian', age: 27};
         this.the_boolean = true;
