@@ -123,3 +123,12 @@ int main( )
    return 0;
 }
 //------------------------------------------------------------------
+
+
+
+/*
+Compile the code:
+  $ clang -framework Foundation prog1.m -o prog1
+Run the code:
+  $ ./prog1
+*/
