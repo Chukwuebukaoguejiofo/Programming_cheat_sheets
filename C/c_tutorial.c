@@ -11,14 +11,19 @@ const int daysInWeek  = 7;
 
 // - stack memory: it's an actual stack, functions push their local variables there,
 //   and as soon as the function exits, the local variables are freed. If you use the "static" keyword
-//   for the local variable, it will not be lost, but only available for that function. -> you can NOT
-//   resize an array allocated on the stack
+//   for the local variable, it will not be lost, but only available for that function.
+//      - you can NOT resize an array allocated on the stack.
 // - Heap memory: use it for your structs! And local variables that you want to become
-//   global variables. You are responsible to free them. -> you CAN resize an array allocated on the HEAP
+//   global variables. You are responsible to free them.
+//      - you CAN resize an array allocated on the HEAP.
 // - Calloc() initializes all elements to ZERO, it takes two arguments: num, size
 // - You should always use free() to deallocate memory that has been allocated with malloc()
 //   or calloc(), as soon as you don't need it any more.
 
+//------------------------------------------------------------
+
+// - In C single quotes identify a single character, while double quotes create a string literal.
+//   'a' is a single a character literal, while "a" is a string literal containing an 'a' and a null terminator
 
 //------------------------------------------------------------ structs
 typedef struct Person{
