@@ -52,9 +52,6 @@ int main( )
    return 0;
 }
 
-
-
-
 //------------------------------------------- class implementation  (foo.cpp)
 #include "Box.h" // You include the class description
 
@@ -87,9 +84,9 @@ inline T const& Max (T const& a, T const& b)
 {
     return a < b ? b:a;
 }
+
 int main ()
 {
-
     int i = 39;
     int j = 20;
     cout << "Max(i, j): " << Max(i, j) << endl;
@@ -117,16 +114,15 @@ using namespace std;
 
 template <class T>
 class Stack {
-  private:
-    vector<T> elems;     // elements
-
-  public:
-    void push(T const&);  // push element
-    void pop();               // pop element
-    T top() const;            // return top element
-    bool empty() const{       // return true if empty.
-        return elems.empty();
-    }
+    private:
+        vector<T> elems;     // elements
+    public:
+        void push(T const&);  // push element
+        void pop();               // pop element
+        T top() const;            // return top element
+        bool empty() const{       // return true if empty.
+            return elems.empty();
+        }
 };
 
 template <class T>
