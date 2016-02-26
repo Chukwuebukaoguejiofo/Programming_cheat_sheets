@@ -10,6 +10,10 @@ Gotchas:
 	- set $scope.foo inside and outside a $http.get() function
 	- use $http inside a cunction
 	- dont pass a $scope to a factory
+	
+	- to separate out your files, you should wrap them in a closure, and use the following notation:
+		angular.module('myApp')
+			.controller('FooCtrl', function(){ ... });
 
 
 
