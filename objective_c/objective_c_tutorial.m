@@ -114,6 +114,13 @@ int main( )
 
    //---
    [brian greet:@"Mr." andName:@"Smith"];
+   
+   
+   //--- setting a string:
+   NSString *foo = nil;
+   NSString *bar = @"Dude";
+   NSLog(foo);
+   NSLog(bar);
 
 
 
