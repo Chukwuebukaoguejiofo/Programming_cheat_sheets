@@ -1,0 +1,20 @@
+// Im not sure if this is right for now
+
+
+
+// vertices, vertex = nodes, node
+
+// edge     = a link between two nodes
+
+// adjacent   = a neighbor
+
+
+V = {a,b,c,d}                       // vertices representation
+
+
+E = { {a,b}, {b,a}, {a,c} }        // edge representation
+
+
+
+
+adj[b] = {a, c}                     // adjacent vertices of a vertex

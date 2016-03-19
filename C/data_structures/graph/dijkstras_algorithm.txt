@@ -1,0 +1,25 @@
+Dijkstras - find the shortest path betwen two vertices:
+
+
+
+- use a minHeap
+
+
+- the nodes need to have a 'distance' property/field
+
+- assing 'infinity' to the distance' property/field of all nodes, and the first node to start assign ZERO to the 'distance' property/field
+
+
+
+- use two arrays for 'visited' and 'unvisited' nodes
+
+
+
+- get the first node of the 'unvisited' array and add it to the 'visited' array  (is it an array???)
+
+
+- update the 'distance' property/field of the neighbor nodes of the current node to the sum of the current node's 'distance' property/field plus the neighbor's 'distance' property/field  if the  neighbor's 'distance' property/field is grater then the result.   (each current node will have many neighbours)
+
+
+
+
