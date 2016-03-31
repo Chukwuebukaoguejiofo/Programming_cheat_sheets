@@ -4,6 +4,14 @@ using System;  // the keyword `using` means that the program is using a namespac
 // just as the name implies, its just a namespace
 namespace MyWorld 
 { 
+   //---------------------------- interface
+   public interface AbilityInterface
+   {
+      // interface members
+      void bark();
+      void swim();
+   }
+   //---------------------------- base class
    class Animal
    {
       // attributes:
@@ -18,8 +26,9 @@ namespace MyWorld
       } 
    }
 
-   // inheritance
-   class Dog : Animal 
+   //---------------------------- derived class
+   // inheritance and interface usage
+   class Dog : Animal, AbilityInterface
    {
       // attributes
       string color;
@@ -27,6 +36,10 @@ namespace MyWorld
       public void bark()
       {
          Console.WriteLine("barking...");
+      }
+      public void swim()
+      {
+         Console.WriteLine("swimming...");
       }
    }
    
