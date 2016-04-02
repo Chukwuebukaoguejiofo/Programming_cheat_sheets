@@ -9,6 +9,13 @@
     
     - the parent array is to identify the elements parent
     - the rank array is to keep track which Set is larger for optimization in the union function
+    
+    # reflexive: A is connected to A # to itself
+    # symmetric: if A is connected to B, then, vice-versa
+    # transitive: if A -> B -> C, then A -> C
+    # connected components:  the group
+    # implementation: make a class and feed it with the number of elements, ex: UnionFind(10)
+
 =end
 #-----------------------------------------------------------
 parent = []
