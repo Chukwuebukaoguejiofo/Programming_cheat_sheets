@@ -53,7 +53,7 @@ class UnionFind
     end
 
     #
-    # Finds out in what Set the element is in
+    # Finds out in what Set the element is in (and performs path compression)
     # @param parent {Array} - the parent array
     # @param x {Integer} - a integer representing an element
     # @return {Integer} - the representative element of the Set
@@ -69,7 +69,7 @@ end
 #--------------------------------------------------------------
 
 # creating a Set out of each element
-[0,1,2,3,4,5,6,7,8,9].each do |n|
+10.times do |n|
     UnionFind::makeSet(parent, rank, n)
 end
 
