@@ -1,14 +1,59 @@
+-- haskell tutorial
+
+-- links
 -- https://learnxinyminutes.com/docs/haskell/
 -- http://learnyouahaskell.com/making-our-own-types-and-typeclasses ???
 
+-- ==================================================================== print statement
+main = putStrLn "Hello World"
 
--- ------------------------------------------------------ functions
-add x y = x + y
+-- ==================================================================== multiple print statements
+main = do
+    putStrLn "Hello World1"
+    putStrLn "Hello World2"
+    putStrLn "Hello World3"
 
-main = print (add 1 3)
--- main = print (2 `add` 3) -- this also works
--- ------------------------------------------------------ custom datatyps
+-- ==================================================================== variables (actualy constants)
+myMessage :: String -- declaration not necessary
+myMessage = "Hello World"
+main = putStrLn myMessage -- Hello World
 
+-- ==================================================================== functions
+addMe :: Int -> Int -> Int -- declaration not necessary
+addMe x y = x + y -- you can use any letters
+result1 = print (addMe 1 3)
+result2 = print (1 `addMe` 3) -- this also works
+
+main = do
+    result1 -- 4
+    result2 -- 4
+    print (addMe 1 3) -- 4
+    print (1 `addMe` 3) -- 4
+
+-- ====================================================================  custom data types
+data Person = Person { 
+    name :: String,
+    address :: String,
+    age :: Int
+} deriving (Eq, Show)
+
+-- ------- a function that operates on a structure
+getAge :: Person -> Int
+getAge (Person _ _ theAgeField) = theAgeField
+
+-- ------- instatiation
+brian = Person {name = "Brian Spinos", address = "123 Foo St", age = 27}
+ana = Person {name = "Ana Claudia", address = "123 Foo St", age = 22}
+
+-- ------- assigning a value to a variable (constant)
+brianAge = print (getAge brian)
+
+-- ------- the main function
+main = do
+    print brian  -- Person {name = "Brian Spinos", address = "123 Foo St", age = 27}
+    brianAge -- 27
+
+-- ====================================================================  Enums ?
 data Color = Red | Blue | Green
 
 -- a function called 'say' which takes as a parameter a 'Color' and returns a string
@@ -18,72 +63,36 @@ say Red = "You are Red!"
 say Blue = "You are Blue!"
 say Green =  "You are Green!"
 
-main = print (say Red)
--- ------------------------------------------------------ function declaration ???
-addMe :: Int -> Int -> Int
+main = print (say Red) -- "You are Red!"
 
-addMe x y = x + y
+-- ==================================================================== 
+sumOfValues = sum [1..3]
+myNegativeNumber = (-10)  -- needs parenthesis
+myBoolean = not(True)
+listOfNumbers = [3, 5, 7, 11]
+listOfNames = ["brian", "ana", "rick", "sandra"]
 
+-- Get the number in index 2
+thirdNumber = listOfNumbers !! 1
 
-x :: String
-x = "aaa"
-main = putStrLn x
--- main = print (addMe 4 5)
-
-
--- ------------------------------------------------------
-main = putStrLn "hello world"
-
--- ------------------------------------------------------
-data Player = Player String
-
-
-
--- ------------------------------------------------------
-
-
--- ------------------------------------------------------
-import Data.List
-import System.IO
-
--- dont use 'let' here, just in the REPL
-
-addMe :: Int -> Int -> Int
-addMe x y = x + y
-x = addMe 1 3
-
-sumOfVals = sum [1..10]
-neg = (-10)  -- needs parenthesis
-notTrue = not(True)
-list = [3,5,7,11]
-
--- Get the number in index 1
-index1 = list !! 1
-
-
-
-data Employee = Employee { name :: String,
-                           position :: String,
-                           idNum :: Int
-                           } deriving (Eq, Show)
-
-samSmith = Employee {name = "Sam Smith", position = "Manager", idNum = 1000}
-pamMarx = Employee {name = "Pam Marx", position = "Sales", idNum = 1001}
-
-
-myGetId :: Employee -> Int
-myGetId (Employee _ _ b) = b
-
-foo = print (myGetId samSmith)
-
+-- Get the name in index 0
+firstName = listOfNames !! 0
 
 main = do
-    print index1
-    print notTrue
-    print x
-    print samSmith  -- Employee {name="SamSmith", position="Manager", idNum=1000}
-    foo -- 1000
+    print sumOfValues -- 6
+    print myNegativeNumber -- -10
+    print myBoolean -- False
+    print thirdNumber -- 7
+    print firstName -- "brian"
 
+-- ==================================================================== importing libraries 
+import Data.List -- importing libraries
+import System.IO
 
+main = putStrLn "Hello World"
 
+-- ==================================================================== 
 
+-- ====================================================================  
+    
+-- ====================================================================  
