@@ -69,6 +69,11 @@ class AVLTree
         end
         return height(node.left) - height(node.right)
     end
+
+    def insert2(key)
+        node = Node.new(key)
+        @root = insert(node, key)
+    end
  
     def insert(node, key)
          
@@ -150,6 +155,7 @@ end
 tree = AVLTree.new
  
 #### Constructing tree given in the above figure 
+root = nil
 root = tree.insert(root, 10)
 root = tree.insert(root, 20)
 root = tree.insert(root, 30)
@@ -169,9 +175,4 @@ root = tree.insert(root, 25)
 tree.preOrder(root) # 30 20 10 25 40 50 
 tree.inOrder(root) # 10 20 25 30 40 50 
 tree.postOrder(root) # 10 25 20 50 40 30 
-
-
-
-
-
 
