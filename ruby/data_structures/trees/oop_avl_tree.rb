@@ -69,11 +69,6 @@ class AVLTree
         end
         return height(node.left) - height(node.right)
     end
-
-    def insert2(key)
-        node = Node.new(key)
-        @root = insert(node, key)
-    end
  
     def insert(node, key)
          
