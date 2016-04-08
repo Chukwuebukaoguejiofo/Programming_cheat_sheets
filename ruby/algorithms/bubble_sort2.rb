@@ -5,14 +5,32 @@
 #     every loop the last index is closer to index 1 (the last index is subtracted by 1)
 def bubbleSort(array)
     array.each_with_index do |e, j| # loop through all indexes
-        
-        # a - b - c == (a - b) - c;   
+
+        # using this flag is an improvement to the function 
+        # (the idea is that if you walk the whole indexes without swapping, 
+        # this means that the array is sorted!)
+        # so if the array is sorted, the function will only loop once!
+        was_swapped = false  
+
+        # be careful with parenthesis here...
+        # a - b - c == (a - b) - c  
         # a - b - c != a - (b - c)
         1.upto( (array.length - j) - 1) do |i|  # indexes: 1 upto the last index (the first time), and each loop, the last index decreases.
             if array[i] < array[i - 1] # if element is less then its previous (thats why we start with the second element
                 # swap in ruby:     a, b = b, a
                 array[i], array[i - 1] = array[i - 1], array[i] 
+
+                # part of the flag inprovement!
+                was_swapped = true
+            else
+                #puts "------------ not swapped  #{j}  #{i}"
             end
+        end
+
+        # part of the flag inprovement!
+        if was_swapped == false
+            #puts "------------ its already sorted son!  #{j}"
+            break  
         end
     end
     return array
