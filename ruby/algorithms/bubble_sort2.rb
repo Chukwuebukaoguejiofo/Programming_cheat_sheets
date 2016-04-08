@@ -9,7 +9,7 @@ def bubbleSort(array)
         # a - b - c == (a - b) - c;   
         # a - b - c != a - (b - c)
         1.upto( (array.length - j) - 1) do |i|  # indexes: 1 upto the last index (the first time), and each loop, the last index decreases.
-            if array[i] < array[i - 1] ) # if element is less then its previous (thats why we start with the second element
+            if array[i] < array[i - 1] # if element is less then its previous (thats why we start with the second element
                 # swap in ruby:     a, b = b, a
                 array[i], array[i - 1] = array[i - 1], array[i] 
             end
