@@ -51,7 +51,7 @@ module.exports = function(grunt){
             compile: {
                 files: {
                     // destination file : ['file1.coffee', 'file2.coffee']
-                    'assets/js/coffeeScripts.js': ['assets/coffee/**/*.coffee']
+                    'assets/js/file3.js': ['assets/coffee/**/*.coffee']
                 }
             }
         },
@@ -64,7 +64,7 @@ module.exports = function(grunt){
                 },
                 files: {
                     // destination file : ['file1.scss', 'file2.scss']
-                    'assets/css/sassStyles.css': ['assets/sass/**/*.scss']
+                    'assets/css/file3.css': ['assets/sass/**/*.scss']
                 }
             }
         },

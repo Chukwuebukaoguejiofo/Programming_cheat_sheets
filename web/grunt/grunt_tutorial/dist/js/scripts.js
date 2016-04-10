@@ -1,8 +1,14 @@
+function foo(){
+    console.log('foo2');
+}
+function bar(){
+    console.log('bar');
+}
 (function() {
   var cubes, list, math, num, number, opposite, race, square,
     slice = [].slice;
 
-  number = 44444444;
+  number = 444;
 
   opposite = true;
 
@@ -45,10 +51,3 @@
   })();
 
 }).call(this);
-
-function foo(){
-    console.log('foo2');
-}
-function bar(){
-    console.log('bar');
-}

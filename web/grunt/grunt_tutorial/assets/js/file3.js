@@ -2,7 +2,7 @@
   var cubes, list, math, num, number, opposite, race, square,
     slice = [].slice;
 
-  number = 44444444;
+  number = 444;
 
   opposite = true;
 
