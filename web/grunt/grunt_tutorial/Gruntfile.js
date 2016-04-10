@@ -4,16 +4,30 @@ module.exports = function(grunt){
     grunt.initConfig({
         //------------------------------------------------------------------------------------------------
         watch: { // for grunt.loadNpmTasks('grunt-contrib-watch');
+
             // files: ['<%= jshint.files %>'],
             // tasks: ['jshint']
+
             js: {  // a key, can be anything!
-                files: ['js/**/*.js'], // watch any js file in js folder
+                files: ['assets/js/**/*.js'], // watch any js file in js folder
                 tasks: ['concat:js'], // the task to run
             },
+
             css: {  // a key, can be anything!
-                files: ['css/**/*.css'], // watch any css file in css folder
+                files: ['assets/css/**/*.css'], // watch any css file in css folder
                 tasks: ['concat:css'], // the task to run
             },
+
+            coffee: {  // a key, can be anything!
+                files: ['assets/coffee/**/*.coffee'], // watch any coffeescript file in coffee folder
+                tasks: ['coffee'], // the task to run
+            },
+
+            sass: {  // a key, can be anything!
+                files: ['assets/sass/**/*.scss'], // watch any scss file in sass folder
+                tasks: ['sass'], // the task to run
+            },
+
             haml: {
                 files: ['*.haml'], // watch any haml file in root folder
                 tasks: ['haml'], // the task to run
@@ -23,12 +37,12 @@ module.exports = function(grunt){
         //------------------------------------------------------------------------------------------------
         concat: { // for grunt.loadNpmTasks('grunt-contrib-concat');
             js: {  // a key, can be anything!
-                src: ['js/file1.js', 'js/file2.js'], // a list of files
+                src: ['assets/js/**/*.js'], // a list of files
                 dest: 'dist/js/scripts.js' // the destination file (the folder can be generated!)
             },
             css: {  // a key, can be anything!
-                src: ['css/file1.css', 'css/file2.css'], // a list of files
-                dest: 'dist/css/scripts.css' // the destination file (the folder can be generated!)
+                src: ['assets/css/**/*.css'], // a list of files
+                dest: 'dist/css/styles.css' // the destination file (the folder can be generated!)
             },
         },
 
@@ -37,7 +51,7 @@ module.exports = function(grunt){
             compile: {
                 files: {
                     // destination file : ['file1.coffee', 'file2.coffee']
-                    'dist/coffeeToJs/scripts.js': ['js/**/*.coffee']
+                    'assets/js/coffeeScripts.js': ['assets/coffee/**/*.coffee']
                 }
             }
         },
@@ -50,7 +64,7 @@ module.exports = function(grunt){
                 },
                 files: {
                     // destination file : ['file1.scss', 'file2.scss']
-                    'dist/sassToCss/styles.css': ['sass/**/*.scss']
+                    'assets/css/sassStyles.css': ['assets/sass/**/*.scss']
                 }
             }
         },
@@ -147,8 +161,8 @@ module.exports = function(grunt){
 
     // the default task
     // $ grunt # runs the specified tasks
-    // its best to let 'watch' task in the end of the list
-    grunt.registerTask('default', ['concat', 'coffee', 'haml', 'sass', 'watch']);
+    // its best to let 'concat' and 'watch' task in the end of the list
+    grunt.registerTask('default', ['coffee', 'haml', 'sass', 'concat', 'watch']);
 
 
 };
