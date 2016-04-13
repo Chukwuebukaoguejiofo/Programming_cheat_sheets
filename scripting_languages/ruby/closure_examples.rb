@@ -1,4 +1,4 @@
-# Closures: block, proc and lambda
+# Closures: block, proc and lambda (its like a handler function in javascript!)
 
 #------------------------------ blocks with `yield`
 def make_sandwich(bread_type)
