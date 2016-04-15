@@ -1,7 +1,7 @@
 <?php
-
-function makeSandwhich($breadType, $meatHandler)
-	{
+	
+	// function using a closure as a second parameter
+	function makeSandwhich($breadType, $meatHandler){
 		$meat = 'beef';
 		$meatHandler($meat);
 
@@ -10,10 +10,11 @@ function makeSandwhich($breadType, $meatHandler)
 		echo $breadType;
 	}
 
-	$howToCook = 'well Done!';
-	makeSandwhich("flat bread\n", function(&$meat)  // in this function I want to work on the variable by reference!
-	use($howToCook)
-	{
+	$howToCook = 'well Done!'; // if you want to use an external variable inside your closure, you nee to pass it in the `use(...)` block
+	
+	// passing a closure as the second parameter to the function `makeSandwhich`
+	// in this function I want to work on the $meat variable by reference!
+	makeSandwhich("flat bread\n", function(&$meat) use($howToCook){
 		$meat = "$meat $howToCook\n";
 	});
 	
@@ -21,5 +22,4 @@ function makeSandwhich($breadType, $meatHandler)
     // flat bread
     // beef well Done!
     // flat bread
-
 ?>
