@@ -1,9 +1,8 @@
 /*
 
-# Command line.
-# start the server
-$ mysqld
-# to stop the SQL server  # ps aux | grep mysqld   # kill -9 #process id
+#------- Command line.
+$ mysqld # start the server
+$ ps aux | grep mysqld   # kill -9 my-process-id-here # to stop the SQL server
 
 $ mysql -u root -p
 $ # press enter, there is no password...
@@ -19,6 +18,8 @@ $ create table myTable(
     password varchar(25) not null,
     email varchar(40) not null
 );
+
+# you can also create indexes on table columns
 
 $ show tables;
 $ drop table myTable;
