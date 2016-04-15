@@ -2,9 +2,11 @@
 
 #------- Command line.
 $ mysqld # start the server
+
+
 $ ps aux | grep mysqld   # kill -9 my-process-id-here # to stop the SQL server
 
-$ mysql -u root -p
+$ mysql -u root -p # use mysql console
 $ # press enter, there is no password...
 $ show databases;
 $ create database myDatabase;
