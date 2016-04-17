@@ -22,14 +22,17 @@ $ git reset HEAD <file>  # unstage file (reverse of git add)
 $ git checkout -- <file> # blow away all changes since last commit
 
 
-$ git reset --soft HEAD^  # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
+$ git reset --soft HEAD^  # reverse of `git commit`, it will put files back to the stagging area  
+# dont do this after you push
 
 
 $ git commit --amend -m "new commit message"  # add to the last commit  # dont do this after you push
 
-$ git reset --hard HEAD^  # undo LAST COMMIT ADD ALL CHANGES, if you really screwed and want to start again fresh # dont do this after you push
+$ git reset --hard HEAD^  # undo LAST COMMIT ADD ALL CHANGES, if you really screwed and want to start again fresh 
+# dont do this after you push
 
-$ git reset --hard HEAD^^ # undo last 2 commits # dont do this after you push
+$ git reset --hard HEAD^^ # undo last 2 commits 
+# dont do this after you push
 ```
 
 
