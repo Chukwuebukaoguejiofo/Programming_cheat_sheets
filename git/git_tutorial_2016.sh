@@ -22,7 +22,7 @@ $ git checkout -- <file> # restores the file as it was in the last commit, and r
 
 $ git commit -m 'my message' # commit the stagging area
 
-$ git add # add all files to staging area
+$ git add . # add all files to staging area
 
 $ git reset --soft # this file does not exist
 $ git reset --soft HEAD^ # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
@@ -33,7 +33,8 @@ $ git reset # unstages all files
 # same as `$ git reset --mixed`
 
 # git reset is dangerous !!!
-$ git reset --hard # restores all files as they were in the last commit, and removes all the files from the staging area
+$ git reset --hard HEAD  # same as `$ git reset --hard` ???
+# restores all files as they were in the last commit, and removes all the files from the staging area
 # this command is usually followed by a `$ git clean -f`
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
@@ -48,7 +49,9 @@ $ git reset --hard # restores all files as they were in the last commit, and rem
 
 
 # git reset is dangerous !!!
-$ git reset --hard HEAD~1  # undo LAST COMMIT AND ALL CHANGES,
+$ git reset --hard HEAD~1  
+# (moves HEAD back once, so if you have 5 commits, it will point to commit number 4)
+# undo LAST COMMIT AND ALL CHANGES,
 # - if you really screwed and want to start again fresh
 # dont do this after you push !!!
 # - this command is usually followed by a `$ git clean -f`
@@ -60,7 +63,9 @@ $ git reset --hard HEAD~1  # undo LAST COMMIT AND ALL CHANGES,
 
 
 # git reset is dangerous !!!
-$ git reset --hard HEAD~2 # undo last 2 commits # dont do this after you push
+$ git reset --hard HEAD~2 
+# (moves HEAD back twice, so if you have 5 commits, it will point to commit number 3)
+# undo last 2 commits # dont do this after you push
 # - this command is usually followed by a `$ git clean -f`
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
@@ -71,7 +76,7 @@ $ git reset --hard HEAD~2 # undo last 2 commits # dont do this after you push
 #----------------------------------------------------------------------------------- saving changes
 $ git add <file> # adds the file to staging area
 
-$ git add # add all files to staging area
+$ git add . # add all files to staging area
 
 $ git commit -m 'my message' # commit the stagging area
 
