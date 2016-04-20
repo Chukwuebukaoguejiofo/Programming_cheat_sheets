@@ -24,8 +24,8 @@ $ git commit -m 'my message' # commit the stagging area
 
 $ git add . # add all files to staging area
 
-$ git reset --soft # this file does not exist
-$ git reset --soft HEAD^ # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
+$ git reset --soft # this file does not exist  # same as `git reset --soft HEAD` ???
+$ git reset --soft HEAD~1 # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
 
 # git reset is dangerous !!!
 $ git reset # unstages all files
@@ -33,7 +33,7 @@ $ git reset # unstages all files
 # same as `$ git reset --mixed`
 
 # git reset is dangerous !!!
-$ git reset --hard HEAD  # same as `$ git reset --hard` ???
+$ git reset --hard HEAD  # same as `$ git reset --hard`
 # restores all files as they were in the last commit, and removes all the files from the staging area
 # this command is usually followed by a `$ git clean -f`
 # Remember that resetting only affects tracked files,
