@@ -172,4 +172,11 @@ $ git clean -n # Perform a "dry run" of git clean.
 $ git clean -f # Remove UNTRACKED files from the current directory
 # CAREFUL, THIS IS NOT UNDOABLE!!!
 
-#-----------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------- branching
+# new files are not affeted
+# stagging changes are not affected when you change the branch
+
+$ git branch  # list all branches
+$ git checkout -b foo # create a new branch based on the current branch
+$ git merge foo  # merge the foo branch in to the current branch
+
