@@ -1,3 +1,25 @@
+//----------------------------------------------- class variables and methods
+
+function Person(name){
+    this.name = name;
+}
+
+Person.specie = "Human"; // class variable
+
+Person.breath = function(){ // class method
+	return "I am breathing..."
+};
+
+Person.specie; // "Human"
+Person.breath(); // "I am breathing..."
+
+brian = new Person('brian');
+brian.specie; // undefined  (since 'specie' is not an 'instance variable')
+brian.breath(); // Uncaught TypeError: brian.breath is not a function(…)  (since 'breath()' is not an 'instance method')
+
+brian.constructor.specie; // "Human"
+brian.constructor.breath(); // "I am breathing..."
+
 //----------------------------------------------- JavaScript OOP
 
 function Human(name){
