@@ -1,0 +1,63 @@
+CSS tutorial:
+
+colors:
+000 400 800 c00
+004 404 804 c04
+008 408 808 c08
+00c 40c 80c c0c
+040 440 840 c40
+044 444 844 c44
+048 448 848 c48
+04c 44c 84c c4c
+080 480 880 c80
+084 484 884 c84
+088 488 888 c88
+08c 48c 88c c8c
+0c0 4c0 8c0 cc0
+0c4 4c4 8c4 cc4
+0c8 4c8 8c8 cc8
+0cc 4cc 8cc ccc
+
+
+
+display:
+    inline or block  (block takes up all the horizontal space)
+    inline-block
+    none - as if the element is not there
+visibility: hidden - invisible but takes up space
+
+
+position
+    static (default) (scrolling moves it)
+    relative  (away from its normal position)
+    fixed  (scrolling does not move it)
+    absolute  (positioned relative to the parent???)
+
+    - top, bottom, left, and right properties.
+
+
+z-index - which element goes on top of which
+
+width:  (of content in box-model)
+    % is relative to the parent
+    auto - the browser calculates
+
+max-width:
+    % is relative to the parent
+
+Margin
+    auto - the browser calculates (to horizontally center the element within its parent.)
+    % is relative to the parent
+    inherit - (from the parent) (for indentation?)
+    -100% or -100px  is allowed - for overlapping
+
+clear
+    - specifies which side(s) of an element, floating elements are not allowed to float
+
+
+overflow: (Specifies what happens if content overflows an element's box)
+    auto  - if a element is floating, and part of it is going outside of its parent, use this!
+    scroll (clpped, but it will scroll)
+    visible(default)|hidden|scroll|auto|initial|inherit;
+
+
