@@ -6,19 +6,20 @@ function Person(name){
 
 Person.specie = "Human"; // class variable
 
-Person.breath = function(){ // class method
+Person.breathe = function(){ // class method
+	// `this` in here referes to the class, not the instance!
 	return "I am breathing..."
 };
 
 Person.specie; // "Human"
-Person.breath(); // "I am breathing..."
+Person.breathe(); // "I am breathing..."
 
 brian = new Person('brian');
 brian.specie; // undefined  (since 'specie' is not an 'instance variable')
-brian.breath(); // Uncaught TypeError: brian.breath is not a function(…)  (since 'breath()' is not an 'instance method')
+brian.breathe(); // Uncaught TypeError: brian.breathe is not a function(…)  (since 'breathe()' is not an 'instance method')
 
 brian.constructor.specie; // "Human"
-brian.constructor.breath(); // "I am breathing..."
+brian.constructor.breathe(); // "I am breathing..."
 
 //----------------------------------------------- JavaScript OOP
 
