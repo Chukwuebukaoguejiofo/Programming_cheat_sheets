@@ -25,7 +25,7 @@ brian.constructor.breathe(); // "I am breathing..."
 // PROTOTYPE: is the master object from where all instances are cloned!
 
 function Human(name){ // base class (and a constructor function)
-    var lifespan = 100; // class variable
+    var lifespan = 100; // internal variable (it will not be available outside the class definition)
     this.name = name; // instance variable
 
     this.walk = function(speed){ // instance method
