@@ -1,8 +1,14 @@
+#---------------------------------------------------------------------- 
 # commentatios (que nao serao tratados como codigo)
 
-
+#---------------------------------------------------------------------- 
 puts "hello"  # resultado: hello
 
+
+#---------------------------------------------------------------------- variaveis
+nome = "brian spinos"
+puts nome # resultado:  brian spinos
+#---------------------------------------------------------------------- funcoes
 # criando uma funcao:
 def	andar
   puts "estou andando"
@@ -11,6 +17,7 @@ end
 # usando uma funcao:
 walk  # resultado:  estou andando
 
+#---------------------------------------------------------------------- classes
 # classes (usadas para criar varios objetos do mesmo tipo)
 class Pessoa
 	def falar
@@ -29,3 +36,5 @@ brian.caminhar # estou caminhando
 erich = Pessoa.new # criando um objeto
 erich.falar # resultado: estou falando
 erich.caminhar # estou caminhando
+
+#---------------------------------------------------------------------- 
