@@ -54,6 +54,6 @@ brian.caminhar # estou caminhando
 
 erich = Pessoa.new # criando um objeto
 erich.falar # resultado: estou falando
-erich.caminhar # estou caminhando
+erich.caminhar # estou caminhando 
 
 #---------------------------------------------------------------------- 
