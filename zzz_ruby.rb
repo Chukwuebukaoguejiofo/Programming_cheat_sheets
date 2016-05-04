@@ -21,7 +21,7 @@ walk  # resultado:  estou andando
 
 # parametros sao os dados que voce da para a funcao
 def cumprimentar(nome)
-	puts "bom dia #{nome}, tudo joia?"
+	puts "bom dia #{nome}, tudo joia?" 
 end
 
 cumprimentar("brian") # resultado: bom dia brian, tudo joia?
