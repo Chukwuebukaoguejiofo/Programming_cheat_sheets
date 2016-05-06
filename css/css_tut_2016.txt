@@ -21,10 +21,23 @@ colors:
 
 
 display:
-    inline or block  (block takes up all the horizontal space)
-    inline-block
-    none - as if the element is not there
-visibility: hidden - invisible but takes up space
+    block  
+        - A block-level element always starts on a new line and takes up the full width available 
+         (stretches out to the left and right as far as it can).
+    inline
+        - An inline element does not start on a new line and only takes up as much width as necessary.
+    inline-block 
+        - its a modern alternative to 'floating' elements!
+        - you could use 'float: left' when you want some boxes side by side, 
+          and the ability to resize the screen, (but you would need to use 'clear: left;' 
+          for the next element that you dont want to float)
+          BUT!!!: you can use 'display: inline-block' and you dont need to use the 'clear: left;' 
+          for the next element that you dont want to float!!!
+    none 
+        - as if the element is not there
+visibility: 
+    hidden 
+        - invisible but takes up space
 
 
 position
@@ -36,23 +49,27 @@ position
     - top, bottom, left, and right properties.
 
 
-z-index - which element goes on top of which
+z-index 
+    - which element goes on top of which
+    - The z-index property specifies the stack order of an element.
+    - An element with greater stack order is always in front of an element with a lower stack order.
 
 width:  (of content in box-model)
-    % is relative to the parent
+    % (percentage) is relative to the parent
     auto - the browser calculates
 
 max-width:
-    % is relative to the parent
+    % (percentage) is relative to the parent
 
 Margin
     auto - the browser calculates (to horizontally center the element within its parent.)
-    % is relative to the parent
+    % (percentage) is relative to the parent
     inherit - (from the parent) (for indentation?)
     -100% or -100px  is allowed - for overlapping
 
 clear
     - specifies which side(s) of an element, floating elements are not allowed to float
+    - use it on an element that you dont want to float!
 
 
 overflow: (Specifies what happens if content overflows an element's box)
