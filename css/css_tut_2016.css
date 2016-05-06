@@ -64,7 +64,8 @@ max-width:
 Margin
     auto - the browser calculates (to horizontally center the element within its parent.)
     % (percentage) is relative to the parent
-    inherit - (from the parent) (for indentation?)
+    inherit - (from the parent) (for indentation!) 
+        - The inherit keyword specifies that a property should inherit its value from its parent element.
     -100% or -100px  is allowed - for overlapping
 
 clear
