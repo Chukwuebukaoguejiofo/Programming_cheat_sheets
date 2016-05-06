@@ -10,7 +10,7 @@ nome = "brian spinos"
 puts nome # resultado:  brian spinos
 #---------------------------------------------------------------------- funcoes
 # criando uma funcao:
-def	andar
+def andar
   puts "estou andando"
 end
 
