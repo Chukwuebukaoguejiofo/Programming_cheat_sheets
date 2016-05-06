@@ -11,7 +11,7 @@ puts nome # resultado:  brian spinos
 #---------------------------------------------------------------------- funcoes
 # criando uma funcao:
 def andar
-  puts "estou andando"
+  puts "estou andando" 
 end
 
 # usando uma funcao:
