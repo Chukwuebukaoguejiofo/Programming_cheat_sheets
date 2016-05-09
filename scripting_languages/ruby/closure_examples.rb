@@ -1,5 +1,67 @@
 # Closures: block, proc and lambda (its like a handler function in javascript!)
 
+# a block is code surrounded by the 'do' and 'end' key word, or curly braces '{ ... }'
+# a proc and lambda is an object that encapsulates a block, so you can save a block to a variable!
+# you can only have 1 block per function
+# you can have multiple procs passed to a function
+
+#------------------------------ an example of a block
+some_function do |x| # is is some variable that is already defined in this functions declaration
+    puts x + 10
+end
+
+#------------------------------ an example of a proc
+my_proc = Proc.new do |x|
+    puts x + 100
+end
+
+my_proc.call(1) # 101
+
+#------------------------------ an example of a lambda
+my_lambda = lambda do |x|
+    puts x + 100
+end
+
+my_lambda.call(1) # 101
+
+#------------------------------ an example of a staby lambda
+my_stabby_lambda = -> (x) do
+    puts x + 100
+end
+
+my_stabby_lambda.call(1) # 101
+
+#------------------------------ function declaration that uses a block
+def function_that_receives_a_block(&my_block)
+    foo = 2
+    my_block.call(foo) # you can pass parameters to the block if you want
+end
+
+#------------------------------ function called with a block
+function_that_receives_a_block do |f| # f represents 'foo' was already defined in the function definition
+    puts f * 5 # I can change f (that represents 'foo' in the function declaration)
+end
+
+# returns 10
+
+#------------------------------ function that uses multiple procs
+def function_that_uses_multiple_procs(process_a, process_b)
+    foo = 5
+    bar = 10
+    process_a.call(foo)
+    process_b.call(bar)
+end
+
+proc_a = Proc.new do |n|
+    puts n * 10
+end
+
+proc_b = Proc.new do |n|
+    puts n * 2
+end
+
+function_that_uses_multiple_procs(proc_a, proc_b) # returns 50 and 20
+
 #------------------------------ blocks with `yield`
 def make_sandwich(bread_type)
     meat = 'beef'
