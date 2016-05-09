@@ -32,6 +32,8 @@ echo "hello ${name}"  # you can use $name also! but it's best practice to use ${
 #----------------------------------------------------------- if statement
 if [ "foo" = "bar" ]; then  # not a double equals
     echo "they are equal"
+elif [ "foo2" = "bar2" ]; then
+    echo 'inside elif part'
 else
     echo "they are not equal"
 fi
@@ -43,20 +45,8 @@ my_function(){
     echo "hello Mr. ${last_name}, or would you prefer to be called ${first_name}?"
 }
 
-# call the function with a parameter:
+# call the function with parameters:
 my_function brian spinos
-
-
-#----------------------------------------------------------- loop
-
-# # multiple lines
-# for foo in $(ls); do
-#     echo $foo
-#     echo "------------------"
-# done
-
-# # one liner:
-# for x in 1 2 3 4 5; do echo $x; done
 
 #----------------------------------------------------------- arrays, and dictionaries
 # http://www.thegeekstuff.com/2010/06/bash-array-tutorial/
@@ -79,6 +69,70 @@ echo "${my_array[foo]}" # bar
 
 
 # declare an array:
-declare -a list_of_names2=('Debian2' 'Red hat2' 'Red hat2' 'Suse2' 'Fedora2');
+declare -a list_of_names=('john' 'mike' 'paul' 'susan' 'mary');
+
+#-----------------------------------------------------------
+
+echo $#  # number of arguments passed to the script
+
+#----------------------------------------------------------- for loop
+
+# one liner:
+for x in 1 2 3 4 5; do echo $x; done
+
+for name in brian ana rick sandra erich; do
+  echo "${name}"  # each name on a separate line.
+done
+
+for (( i=1; i<=10; i++ )); do  # you need the double parenthesis...
+    echo "item: ${i}"
+done
+
+# ./my_script_test.sh arg1 arg2
+for (( i=1; i<=$#; i++ )); do
+    echo "item: ${i}" # prints a number for each argument passed to the script
+done
+
+
+for f in $( ls ); do
+    echo "filename: ${f}" # prints all the filenames in the directory
+done
+
+for ((i=0; i<=$#; i++)); do
+    echo "${!i}" # echo the arguments, argument of index 0 is the name of the script.
+done
+
+#----------------------------------------------------------- command line tool
+# $ ./my_script_test.sh --name brian --file foo.html
+for ((i=1; i<=$#; i++)); do
+    if [ ${!i} = "-f" ] || [ ${!i} = "--file" ]; then
+        ((i++))
+        var1=${!i};
+        echo "-f or --file is ${var1}";
+    elif [ ${!i} = "-n" ] || [ ${!i} = "--name" ]; then
+        ((i++))
+        var2=${!i};
+        echo "-n or --name is ${var2}";
+    else
+        echo "whaaat?";
+    fi
+done;
+
+#----------------------------------------------------------- heredoc
+
+# a heredoc is a multiline string
+
+cat <<foobar
+
+
+    This is a heredoc
+        ... you can use any character here ...
+        ~!@#$%^&*()_+1234567890-=[]\;',./{}|:"<>?'
+
+        only the 'backtick' needs to be escaped  \`
+
+
+
+foobar
 
 #-----------------------------------------------------------
