@@ -26,7 +26,7 @@ echo ${name} # you need to use the dollar sign with the variable to use it
 
 #----------------------------------------------------------- variable interpolation
 name="erich"
-echo "hello ${name}"
+echo "hello ${name}"  # you can use $name also! but it's best practice to use ${name}
 
 
 #----------------------------------------------------------- if statement
