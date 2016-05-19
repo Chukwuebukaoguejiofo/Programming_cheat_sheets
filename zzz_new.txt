@@ -22,4 +22,23 @@ linux - its the program that operates your computer, its also the language of th
 variables - are used to store data. example name = 'brian'
 functions - are reusable chuncks code that does what you want. example:  save_user_to_database
 classes - are reusable chuncks of variables and functions grouped together
+objects - they are created using a 'class'. example: 'ferrari' is an object created with a 'car' class.
+
+
+getter function - is a function that gets a value
+setter function - is a function that sets a value
+
+argument, parameters - is data that you pass to your function so the function can work with that data
+callback function - is a function passed as a parameter to another function
+
+
+inheritance - when a class gets variables and functions from another class
+
+instance - its what is created with a class, the same as the 'object'
+
+instance variables - its variables that belong only to an instance ('object')
+instance functions - its functions that belong only to an instance ('object')
+
+class variables - its variables that belong only to a class 
+class functions - its functions that belong only to an class 
 
