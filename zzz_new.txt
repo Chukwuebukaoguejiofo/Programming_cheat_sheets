@@ -42,3 +42,7 @@ instance functions - its functions that belong only to an instance ('object')
 class variables - its variables that belong only to a class 
 class functions - its functions that belong only to an class 
 
+
+Instantiation -
+Declaration -
+Closure - 
