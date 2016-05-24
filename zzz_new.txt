@@ -50,3 +50,5 @@ Scope -
 modularity -
 pass by reference - 
 pass by value - 
+function, method, routine, action - 
+variable, field, column - 
