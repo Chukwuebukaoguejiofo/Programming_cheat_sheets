@@ -48,4 +48,5 @@ Declaration -
 Closure - 
 Scope -
 modularity -
-
+pass by reference - 
+pass by value - 
