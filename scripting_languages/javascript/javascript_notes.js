@@ -60,3 +60,24 @@ for(key in myObject){ console.log(key)} // object fields loop
 
 -> 4 == "4" // true
 -> 4 === "4" // false
+
+
+//----------------------------------------------------------------------------------------------------
+
+// modules
+var FOO = (function(){
+  var password = 123456
+
+  function greeting(){
+    console.log('hello, password is: ' + password)
+  }
+
+  return {
+    greeting: greeting
+  }  
+})();
+
+
+FOO.greetings(); // hello, password is: 123456
+
+FOO.password // undefined
