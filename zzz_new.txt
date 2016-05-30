@@ -54,3 +54,5 @@ function, method, routine, action -
 variable, field, column, attribute, member - 
 parameter, argument - 
 namespace - 
+constructor - 
+destructor - 
