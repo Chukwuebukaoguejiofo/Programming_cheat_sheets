@@ -44,16 +44,16 @@ class functions - its functions that belong only to an class
 
 Parameter - A parameter is a variable in a method definition
 Argument - arguments are the data you pass into the method's parameters.
-Instantiation -
-Declaration -
-Closure - 
-Scope -
-modularity -
-pass by reference - 
-pass by value - 
-function, method, routine, action - 
-variable, field, column, attribute, member - 
-namespace - 
-constructor - 
-destructor - 
+Instantiation - the act of creating an object by using a class
+Declaration - informing the computer that you will be using a variable or function
+Closure - a function that has variables attached to it, even if these variables are not in scope
+Scope - a group of variables and functions available to you at a specific part of your code
+modularity - creating groups of code that are independent of each other, but can work together
+pass by reference - passing the actual variable
+pass by value -  passing a copy of the variable
+function, method, routine, action - a chunck of code grouped together to be reused
+variable, field, column, attribute, member - a caontainer for a value
+namespace - a container for code, so you can separate it from other code
+constructor - the function in the class that is called when the object is instantiated
+destructor - the function in the class that is called when the object is deleted, or goes out out of scope
 
