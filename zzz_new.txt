@@ -56,4 +56,4 @@ variable, field, column, attribute, member - a caontainer for a value
 namespace - a container for code, so you can separate it from other code
 constructor - the function in the class that is called when the object is instantiated
 destructor - the function in the class that is called when the object is deleted, or goes out out of scope
-
+cache - a temporary storage place in the computer's memory for any data, a simple array could be used
