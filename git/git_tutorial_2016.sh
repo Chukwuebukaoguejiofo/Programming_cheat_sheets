@@ -185,6 +185,7 @@ $ git merge foo  # merge the foo branch in to the current branch
 
 # gotcha:  you need to add new files to the staging area (or else, GIT will not track them, an they will be lost)
 #           - changes to a file that was already added do not need to be added, GIT is smart enough to keep track of those changes, so dont worry!
+#           - GIT stash will keep track of the changes in the working directory and also in the staging area!
 $ git stash
 # now go to the other branch an fix your bug... then get back to your original branch and get back to normal life!
 $ git stash pop  # it will pop the changes from the stash stack and apply it to your working directory and staging area
