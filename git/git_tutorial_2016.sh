@@ -182,9 +182,10 @@ $ git checkout -b foo # create a new branch based on the current branch
 $ git merge foo  # merge the foo branch in to the current branch
 
 #----------------------------------------------------------------------------------- stashing
-
-# gotcha:  you need to add new files to the staging area (or else, GIT will not track them, an they will be lost)
-#           - changes to a file that was already added do not need to be added, GIT is smart enough to keep track of those changes, so dont worry!
+# gotcha:   - you need to add new files to the staging area, you dont need to commit them 
+#               - if you dont add the new files, GIT will not track them, and they will be lost
+#           - changes to tracked files do not need to be added, 
+#               - GIT is smart enough to keep track of those changes, so dont worry!
 #           - GIT stash will keep track of the changes in the working directory and also in the staging area!
 $ git stash
 # now go to the other branch an fix your bug... 
