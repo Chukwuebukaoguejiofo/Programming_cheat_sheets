@@ -139,6 +139,7 @@ $ git diff --cached # Shows what has been staged, but not committed
 #----------------------------------------------------------------------------------- remove files
 
 $ git remove <file>
+# also $ git rm <file> ???
 
 #----------------------------------------------------------------------------------- log
 
@@ -179,4 +180,14 @@ $ git clean -f # Remove UNTRACKED files from the current directory
 $ git branch  # list all branches
 $ git checkout -b foo # create a new branch based on the current branch
 $ git merge foo  # merge the foo branch in to the current branch
+
+#----------------------------------------------------------------------------------- stashing
+
+# gotcha:  you need to add new files to the staging area (or else, GIT will not track them, an they will be lost)
+#           - changes to a file that was already added do not need to be added, GIT is smart enough to keep track of those changes, so dont worry!
+$ git stash
+# now go to the other branch an fix your bug... then get back to your original branch and get back to normal life!
+$ git stash pop  # it will pop the changes from the stash stack and apply it to your working directory and staging area
+
+
 
