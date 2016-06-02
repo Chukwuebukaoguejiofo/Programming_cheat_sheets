@@ -35,7 +35,7 @@ $ git reset # unstages all files
 # git reset is dangerous !!!
 $ git reset --hard HEAD  # same as `$ git reset --hard`
 # restores all files as they were in the last commit, and removes all the files from the staging area
-# this command is usually followed by a `$ git clean -f`
+# this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
 # Combined, these two commands let you return the working directory
@@ -54,7 +54,7 @@ $ git reset --hard HEAD~1
 # undo LAST COMMIT AND ALL CHANGES,
 # - if you really screwed and want to start again fresh
 # dont do this after you push !!!
-# - this command is usually followed by a `$ git clean -f`
+# - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD~1 (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
 # Combined, these two commands let you return the working directory
@@ -66,7 +66,7 @@ $ git reset --hard HEAD~1
 $ git reset --hard HEAD~2 
 # (moves HEAD back twice, so if you have 5 commits, it will point to commit number 3)
 # undo last 2 commits # dont do this after you push
-# - this command is usually followed by a `$ git clean -f`
+# - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD~2 (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
 # Combined, these two commands let you return the working directory
@@ -187,8 +187,13 @@ $ git merge foo  # merge the foo branch in to the current branch
 #           - changes to a file that was already added do not need to be added, GIT is smart enough to keep track of those changes, so dont worry!
 #           - GIT stash will keep track of the changes in the working directory and also in the staging area!
 $ git stash
-# now go to the other branch an fix your bug... then get back to your original branch and get back to normal life!
+# now go to the other branch an fix your bug... 
+# then get back to the original state your project was with:  $ git stash pop
+# dont forget to go to your original branch!
+
 $ git stash pop  # it will pop the changes from the stash stack and apply it to your working directory and staging area
+                 # usually the stash object will disapear if successfull, but if it generates conflicts, it will not be erased!
 
-
+# show the list of stashes (the newest is on top?)
+$ git stash list 
 
