@@ -191,7 +191,7 @@ $ git merge foo  # merge the foo branch in to the current branch
 #           - changes to tracked files do not need to be added, 
 #               - GIT is smart enough to keep track of those changes, so dont worry!
 #           - GIT stash will keep track of the changes in the working directory and also in the staging area!
-$ git stash # same as `$ git stash save` ???
+$ git stash # same as `$ git stash save`
 # now go to the other branch an fix your bug... 
 # then get back to the original state your project was with:  $ git stash pop
 # dont forget to go to your original branch!
@@ -199,6 +199,8 @@ $ git stash # same as `$ git stash save` ???
 $ git stash pop  # it will pop the changes from the stash stack and apply it to your working directory and staging area
                  # usually the stash object will disapear if successfull, but if it generates conflicts, it will not be erased!
                  # same as `$ git stash apply; git stash drop` ???
+                 # `$ git stash apply` is the same as `$ git stash apply stash{0}` # it applies the top stash in the stack of stashes
+                 # `$ git stash drop` is the same as `$ git stash drop stash@{0}` # it drops the top stash in the stack of stashes
 
 # show the list of stashes (the newest is on top?)
 $ git stash list 
