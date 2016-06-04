@@ -3,7 +3,10 @@
 # https://www.atlassian.com/git/tutorials/
 #-----------------------------------------------------------------------------------
 
-HEAD - is a pointer to your last commit.
+HEAD - is a pointer to your last commit. 
+    - actually HEAD usually point to a branch and a branch points to a commit.
+    - when you are in detached mode, HEAD is pointing directly to a commit.
+INDEX - is the same as the staging area
 
 #-----------------------------------------------------------------------------------
 
@@ -182,7 +185,8 @@ $ git checkout -b foo # create a new branch based on the current branch
 $ git merge foo  # merge the foo branch in to the current branch
 
 #----------------------------------------------------------------------------------- stashing
-# gotcha:   - you need to add new files to the staging area, you dont need to commit them 
+# gotcha:   - you only need to worry about new files (untracked files)
+#           - you need to add new files to the staging area, you dont need to commit them 
 #               - if you dont add the new files, GIT will not track them, and they will be lost
 #           - changes to tracked files do not need to be added, 
 #               - GIT is smart enough to keep track of those changes, so dont worry!
