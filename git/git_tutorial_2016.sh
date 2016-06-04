@@ -191,7 +191,7 @@ $ git merge foo  # merge the foo branch in to the current branch
 #           - changes to tracked files do not need to be added, 
 #               - GIT is smart enough to keep track of those changes, so dont worry!
 #           - GIT stash will keep track of the changes in the working directory and also in the staging area!
-$ git stash
+$ git stash # same as `$ git stash save` ???
 # now go to the other branch an fix your bug... 
 # then get back to the original state your project was with:  $ git stash pop
 # dont forget to go to your original branch!
