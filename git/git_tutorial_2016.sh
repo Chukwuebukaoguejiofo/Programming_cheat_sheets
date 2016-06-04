@@ -198,6 +198,7 @@ $ git stash # same as `$ git stash save` ???
 
 $ git stash pop  # it will pop the changes from the stash stack and apply it to your working directory and staging area
                  # usually the stash object will disapear if successfull, but if it generates conflicts, it will not be erased!
+                 # same as `$ git stash apply; git stash drop` ???
 
 # show the list of stashes (the newest is on top?)
 $ git stash list 
