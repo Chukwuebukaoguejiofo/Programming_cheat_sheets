@@ -202,3 +202,30 @@ $ git stash pop  # it will pop the changes from the stash stack and apply it to 
 # show the list of stashes (the newest is on top?)
 $ git stash list 
 
+#----------------------------------------------------------------------------------- git rebase
+# What rebase does:
+#   1. moves your commits to a temp area
+#   2. addds the remote branch's commits, one at a time
+#   3. adds your commits one at a time
+
+# usually you do a rebase with the remote branch, so you can 
+# apply your changes on top of the most current version of the remote branch
+# BUT you can rebase anything...
+$ git fetch # fetch (but not merge) the changes of the remote branch
+$ git rebase # it will rebase the remote branch
+
+#--------------------------------- rebase local branches
+$ git checkout branch2
+$ git rebase master # master will be the base!
+
+# now update the master branch (so other people can have access to your changes)
+$ git checkout master
+$ git merge branch2 # a fast-forward commit, it just moves the HEAD pointer!
+
+#--------------------------------- conflicts:
+$ git status # not currently on any branch... you are in the middle of a rebase
+# ...fix the files with conflicts...
+$ git add <fixed-file>
+# do not commit, because you are not in a branch... you are in the middle of a rebase
+$ git rebase --continue
+# you could be doing this multiple times with the same conflict
