@@ -6,12 +6,12 @@ function foo(a, b){
 
 brian = {
 	name: 'brian'
-}
+};
 
 
 erich = {
 	name: 'erich'
-}
+};
 
 // the first argument is the value of `this` inside the foo function
 // call() accepts an argument list. 
