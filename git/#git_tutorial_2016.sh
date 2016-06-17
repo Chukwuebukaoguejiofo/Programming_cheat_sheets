@@ -206,6 +206,15 @@ $ git stash pop  # it will pop the changes from the stash stack and apply it to 
 $ git stash list 
 
 #----------------------------------------------------------------------------------- git rebase
+# before you start rebasing, make sure you committed your changes and that your stagging area is clean!
+
+$ git commit -m 'saving my work and cleaning the stagging area, before I rebase!'
+$ git fetch # fetches your remote branch, if set
+$ git rebase # rebases your remote brach, if set
+# now or latter...
+$ git push # push to the remote branch
+
+
 # What rebase does:
 #   1. moves your commits to a temp area
 #   2. addds the remote branch's commits, one at a time
