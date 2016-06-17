@@ -1,4 +1,6 @@
+# Closures are functions with data attached to them
 
+## Closures remember the variables on the parent scope, when they were called
 
 # first, this is a function that is called right away
 ```js
