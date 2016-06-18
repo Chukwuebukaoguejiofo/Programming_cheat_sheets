@@ -2,6 +2,11 @@
 
 /*
  * a simple hello world in Objective-c
+ *
+ * Compile the code:
+ *     $ clang -framework Foundation helloWorld.m -o helloWorld
+ * Run the code:
+ *     $ ./helloWorld
  */
 int main (int argc, const char * argv[])
 {
