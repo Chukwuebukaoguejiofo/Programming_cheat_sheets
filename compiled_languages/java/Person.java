@@ -5,7 +5,8 @@
 //--------------------------------------------------------------- class
 public class Person {
   String name;  // instance variable //(if its outside a function, its an instance varialbe)
-
+  
+  // constructor
   public Person(String name){
       // 'name' is the parameter, 'this.name' is the instance variable! (thats the difference)
       System.out.println("Name chosen is :" + name );
