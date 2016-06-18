@@ -4,8 +4,6 @@
 
 //--------------------------------------------------------------- class
 public class Person {
-
-
   String name;  // instance variable //(if its outside a function, its an instance varialbe)
 
   public Person(String name){
