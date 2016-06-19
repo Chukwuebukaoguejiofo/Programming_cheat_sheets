@@ -36,12 +36,9 @@ let brian = Person(name: "brian", age: 27)
 print("name is \(brian.name)\n")
 print("age: \(brian.age)\n")
 brian.setName("Erich")
+// brian.name = "Erick" // this also works!
 print("setting name to erich...\n")
 print("new name: \(brian.name)\n")
 
 print("addFive to 10: \(brian.addFive(10))\n")
-
-
-
-
 
