@@ -1,3 +1,42 @@
+# closures are first class functions that can access the parent scope 
+# at the moment of the closure's declaration,
+# even though that scope is not in scope anymore
+
+class Foo
+    attr_accessor :name
+
+    def createClosure
+        Proc.new do |newName|
+            @name = newName
+        end
+    end
+end
+
+foo = Foo.new
+foo.name = 'brian' # in the instance scope
+
+
+bar = foo.createClosure # in the instance scope
+
+# now we are not in the instance scope!
+bar.call('erich')  # access variables in another scope
+
+# proof that the closure did access another scope:
+foo.name # "erich"
+
+#=============== the code bellow are just examples of blocks, procs, and lambdas, they are not necessarily closures... :(
+
+
+
+
+
+
+
+
+
+
+
+
 # Closures: block, proc and lambda (its like a handler function in javascript!)
 
 # a block is code surrounded by the 'do' and 'end' key word, or curly braces '{ ... }'
