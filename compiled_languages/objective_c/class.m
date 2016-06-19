@@ -37,7 +37,19 @@
     @synthesize age;
     
     /*
-     * constructor
+     * constructor (actually any method can acts as a constructor... there is nothing special about 'init')
+     */
+    - (id)init
+    {
+        self = [super init];
+        if (self) {
+            self.name = @"No Name";
+        }
+        return self;
+    }
+    
+    /*
+     * we will use this method as a constructor
      * unfortunately, in Objective-c, you cannot have the same local variable name and instance variable name
      * so you need to use: 'myName' and 'name'
      */
