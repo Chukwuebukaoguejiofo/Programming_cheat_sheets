@@ -1,3 +1,6 @@
-var name = "brian"
+var lastName = "Spinos"
+// var lastName:String = "Spinos" same as above
 
-let lastName = "spinos" // constant
+let firstName = "brian" // constant
+// let firstName:String = "brian" same as above
+
