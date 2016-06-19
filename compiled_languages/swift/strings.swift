@@ -7,3 +7,7 @@ let firstName = "brian" // constant
 
 println(lastName) // append a new line at the end
 print(lastName) // no explicit new line at the end
+
+
+//---------- concatenation
+var fullName = "Brian " + "Spinos"
