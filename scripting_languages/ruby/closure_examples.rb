@@ -1,8 +1,7 @@
 # closures are first class functions that can access the parent scope 
-# at the moment of the closure's declaration,
+# (the the closure's parent scope at the moment of the closure's declaration),
 # even though that scope is not in scope anymore
-
-class Foo
+class Person
     attr_accessor :name
 
     def createClosure
@@ -12,17 +11,17 @@ class Foo
     end
 end
 
-foo = Foo.new
-foo.name = 'brian' # in the instance scope
+brian = Person.new
+brian.name = 'brian spinos' # in the instance scope
 
-
-bar = foo.createClosure # in the instance scope
+closure = brian.createClosure # in the instance scope
 
 # now we are not in the instance scope!
-bar.call('erich')  # access variables in another scope
+closure.call('erich')  # access variables in another scope
 
-# proof that the closure did access another scope:
-foo.name # "erich"
+# proof that the closure did access another scope,
+# and that it is in fact a closure:
+brian.name # "erich"
 
 #=============== the code bellow are just examples of blocks, procs, and lambdas, they are not necessarily closures... :(
 
@@ -37,7 +36,7 @@ foo.name # "erich"
 
 
 
-# Closures: block, proc and lambda (its like a handler function in javascript!)
+# block, proc and lambda (its like a handler function in javascript!)
 
 # a block is code surrounded by the 'do' and 'end' key word, or curly braces '{ ... }'
 # a proc and lambda is an object that encapsulates a block, so you can save a block to a variable!
@@ -70,20 +69,20 @@ end
 
 my_stabby_lambda.call(1) # 101
 
-#------------------------------ function declaration that uses a block
+#------------------------------ function declaration that uses a block as a parameter
 def function_that_receives_a_block(&my_block)
     foo = 2
     my_block.call(foo) # you can pass parameters to the block if you want
 end
 
-#------------------------------ function called with a block
+#------------------------------ function called with a block argument
 function_that_receives_a_block do |f| # f represents 'foo' was already defined in the function definition
-    puts f * 5 # I can change f (that represents 'foo' in the function declaration)
+    puts f * 5 # I can access f (that represents 'foo' in the function declaration)
 end
 
-# returns 10
+# returns => 10
 
-#------------------------------ function that uses multiple procs
+#------------------------------ function that uses multiple procs as parameters
 def function_that_uses_multiple_procs(process_a, process_b)
     foo = 5
     bar = 10
