@@ -44,8 +44,11 @@
     - (id)initWithNameX:(NSString *)myName 
                  andAge:(NSNumber *)myAge
     {
-        self.name = myName;
-        self.age = myAge;
+        self = [super init];
+        if (self) {
+            self.name = myName;
+            self.age = myAge;
+        }
         return self;
     }
 
