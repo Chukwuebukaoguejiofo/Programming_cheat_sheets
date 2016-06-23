@@ -4,7 +4,7 @@ class Employee:
 	'Common base class for all employees'
 	empCount = 0
 
-	def __init__(self, name, salary):
+	def __init__(self, name, salary):  # `self` is a pointer to the intance, `Employee` is a pointer to the class
 		self.name = name
 		self.salary = salary
 		Employee.empCount += 1
