@@ -3,40 +3,51 @@
 # https://www.atlassian.com/git/tutorials/
 #-----------------------------------------------------------------------------------
 
+-> HEAD is a pointer to the branch, and the branch is a pointer to a commit!
+
 HEAD - is a pointer to your last commit. 
     - actually HEAD usually point to a branch and a branch points to a commit.
     - when you are in detached mode, HEAD is pointing directly to a commit.
 INDEX - is the same as the staging area
 
-#-----------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------- git normal  work-flow:
+# ...modify a file...
 
-# git work flow:  adding a file, changing the file, adding it again, committing the file
+$ git add <file> # add the file to the 'next proposed commit'
+$ git commit -m 'my changes' # do the actual commit
+$ git push # push your changes to the server
 
+#----------------------------------------------------------------------------------- git add
+# this command adds the file or folder changes to the 'next proposed commit' a.k.a. the 'staging area'
 $ git add <file> # adds the file to staging area
+$ git add <folder> # adds the folder to staging area
+$ git add . # add all files to staging area
 
-$ git reset <file> # unstages a file
+#----------------------------------------------------------------------------------- git checkout
+$ git checkout -- <file> # restores the file as it was in the last commit, and removes the file from the staging area
+# same as `$ git checkout HEAD -- <file>`
+
+#----------------------------------------------------------------------------------- git commit
+$ git commit -m 'my message' # commit the stagging area
+
+#----------------------------------------------------------------------------------- git reset
+
+$ git reset <file> # unstages a file, so its not added to the next commit (but the working directory stays the same)
 # reverse of $ git add <file>
 # same as `$ git reset -- HEAD <file> `
 
 $ git reset --soft <file> # THIS COMMAND DOES NOT EXIST
 
-$ git checkout -- <file> # restores the file as it was in the last commit, and removes the file from the staging area
-# same as `$ git checkout HEAD -- <file>`
-
-$ git commit -m 'my message' # commit the stagging area
-
-$ git add . # add all files to staging area
-
 $ git reset --soft # this file does not exist  # same as `git reset --soft HEAD` ???
 $ git reset --soft HEAD~1 # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
 
-# git reset is dangerous !!!
-$ git reset # unstages all files
+$ git reset # BE CAREFULL 
+# unstages all files so they are NOT added to the next commit (but the working directory stays the same)
 # reverse of `$ git add .`
 # same as `$ git reset --mixed`
 
-# git reset is dangerous !!!
-$ git reset --hard HEAD  # same as `$ git reset --hard`
+$ git reset --hard HEAD  # Dangerous!!!
+# same as `$ git reset --hard`
 # restores all files as they were in the last commit, and removes all the files from the staging area
 # this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
@@ -50,9 +61,7 @@ $ git reset --hard HEAD  # same as `$ git reset --hard`
 # the evidence. Running both of them will make your working directory match
 # the most recent commit, giving you a clean slate to work with.
 
-
-# git reset is dangerous !!!
-$ git reset --hard HEAD~1  
+$ git reset --hard HEAD~1  # Dangerous!!!
 # (moves HEAD back once, so if you have 5 commits, it will point to commit number 4)
 # undo LAST COMMIT AND ALL CHANGES,
 # - if you really screwed and want to start again fresh
@@ -64,9 +73,7 @@ $ git reset --hard HEAD~1
 # to the exact state of a particular commit.
 # - NEW files are NOT affected by git reset --hard
 
-
-# git reset is dangerous !!!
-$ git reset --hard HEAD~2 
+$ git reset --hard HEAD~2 # Dangerous!!!
 # (moves HEAD back twice, so if you have 5 commits, it will point to commit number 3)
 # undo last 2 commits # dont do this after you push
 # - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD~2 (GIT will not remove them automatically)
