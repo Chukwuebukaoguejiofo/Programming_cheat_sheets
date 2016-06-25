@@ -1,5 +1,4 @@
-# closures are first class functions that can access the parent scope 
-# (the the closure's parent scope at the moment of the closure's declaration),
+# closures are first class functions that can access the parent scope of where they were defined (access is not dynamic)
 # even though that scope is not in scope anymore
 class Person
     attr_accessor :name
