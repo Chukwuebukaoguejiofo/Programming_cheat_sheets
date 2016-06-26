@@ -38,15 +38,42 @@ $ git reset <file> # unstages a file, so its not added to the next commit (but t
 
 $ git reset --soft <file> # THIS COMMAND DOES NOT EXIST
 
-$ git reset --soft # this file does not exist  # same as `git reset --soft HEAD` ???
-$ git reset --soft HEAD~1 # reverse of `git commit`, it will put files back to the stagging area  # dont do this after you push
+$ git reset --soft # this file does NOTHING  # same as `git reset --soft HEAD` ???
 
 $ git reset # BE CAREFULL 
 # unstages all files so they are NOT added to the next commit (but the working directory stays the same)
 # reverse of `$ git add .`
 # same as `$ git reset --mixed`
 
+$ git reset --soft HEAD~1 
+# reverse of `git commit`, 
+# moves the HEAD and BRANCH pointer to the previous commit
+# dont do this after you push
+# it will put files back to the stagging area  
+# the working directory stays intact!
+# the INDEX (staging area) will reflect what is in the working directory (as files that need to be committed)
+#
+# HEAD will have the version1 of a file,
+# INDEX (staging area) will have the version2 of a file,
+# Working Directory will have the version2 of a file,
+
+$ git reset --mixed HEAD~1  
+# reverse of ( `git add` followed by `git commit` )
+# --midex is the default option
+# moves the HEAD and BRANCH pointer to the previous commit
+# dont do this after you push
+# the working directory stays intact! BUT:
+# the INDEX (staging area) will reflect what is in HEAD~1  (so nothing will show up)
+#
+# HEAD will have the version1 of a file,
+# INDEX (staging area) will have the version1 of a file,
+# Working Directory will have the version2 of a file,
+
+
+
+
 $ git reset --hard HEAD  # Dangerous!!!
+# moves the HEAD and BRANCH pointer to the previous commit
 # same as `$ git reset --hard`
 # restores all files as they were in the last commit, and removes all the files from the staging area
 # this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD (GIT will not remove them automatically)
@@ -62,16 +89,26 @@ $ git reset --hard HEAD  # Dangerous!!!
 # the most recent commit, giving you a clean slate to work with.
 
 $ git reset --hard HEAD~1  # Dangerous!!!
-# (moves HEAD back once, so if you have 5 commits, it will point to commit number 4)
-# undo LAST COMMIT AND ALL CHANGES,
-# - if you really screwed and want to start again fresh
-# dont do this after you push !!!
-# - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD~1 (GIT will not remove them automatically)
-# Remember that resetting only affects tracked files,
-# so a separate command is required for cleaning up untracked ones.
-# Combined, these two commands let you return the working directory
-# to the exact state of a particular commit.
-# - NEW files are NOT affected by git reset --hard
+# 1. dont do this after you push !!!
+# 2. moves the HEAD and BRANCH pointer to the previous commit, so if you have 5 commits, it will point to commit number 4
+# 3. reverse of ( making changes followed by `git add` followed by `git commit` )
+# 4. undo LAST COMMIT AND ALL CHANGES,
+#     - if you really screwed and want to start again fresh
+# 5. this command is usually followed by a `$ git clean -f` 
+#     - because GIT will only untrack files that are not in HEAD~1 
+#       (GIT will not remove them automatically)
+# 6. Remember that resetting only affects tracked files,
+#     - so a separate command is required for cleaning up untracked ones.
+# 7. Combined, these two commands let you return the working directory
+#    to the exact state of a particular commit.
+# 8. NEW files are NOT affected by git reset --hard
+#
+# 9. the INDEX (staging area) will reflect what is in HEAD~1  (so nothing will show up)
+# 10. the working directory will  reflect what is in HEAD~1  (and all changes will be LOST)
+#
+# HEAD will have the version1 of a file,
+# INDEX (staging area) will have the version1 of a file,
+# Working Directory will have the version1 of a file,
 
 $ git reset --hard HEAD~2 # Dangerous!!!
 # (moves HEAD back twice, so if you have 5 commits, it will point to commit number 3)
