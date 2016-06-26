@@ -69,9 +69,6 @@ $ git reset --mixed HEAD~1
 # INDEX (staging area) will have the version1 of a file,
 # Working Directory will have the version2 of a file,
 
-
-
-
 $ git reset --hard HEAD  # Dangerous!!!
 # moves the HEAD and BRANCH pointer to the previous commit
 # same as `$ git reset --hard`
@@ -285,3 +282,9 @@ $ git add <fixed-file>
 # do not commit, because you are not in a branch... you are in the middle of a rebase
 $ git rebase --continue
 # you could be doing this multiple times with the same conflict
+
+#----------------------------------------------------------------------------------- cherry-pick
+$ git cherry-pick <commit>
+# adds the changes introduces in the <commit> into a new commit! ???
+
+
