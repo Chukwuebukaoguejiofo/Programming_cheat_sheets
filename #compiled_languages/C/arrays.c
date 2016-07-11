@@ -75,6 +75,14 @@ int main()
         printf("myRefNums[%d]: %d\n", i, *myRefNums[i]);
         i++;
     }
+    
+    printf("\n");
+    int ** temp; // myRefNums is an array of pointers (so a pointer to pointer)
+    temp = myRefNums; 
+    while(*temp){ 
+        printf("myRefNums: %d\n", **temp);
+        temp++; // because myRefNums++ does not work (array is not an lvalue)
+    }
 
     //-------------------------------------------------------
     return 0;
