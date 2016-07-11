@@ -1,11 +1,7 @@
-// js binary tree:
+//  simple binary search tree (with no balancing)
 
-// node - could be an instance, or null
+// node: could be an instance, or null
 
-function debug(title, data){
-    console.log('----------------------- ' + title);
-    console.log(data);
-}
 
 function Node(data){
     this.data = data;
