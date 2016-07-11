@@ -2,7 +2,36 @@
 
 #include <stdio.h> // for printf()
 
+/*
+ * Gotchas!
+ * - `->` has higher precedence
+ * - 0 and '\0' are NULL
+ * - do NOT dereference a null pointer!  (int * x; *x;)
+ * - 
+ * - 
+ * - 
+ */
+
 int main(){
+    
+    // pointers
+    int num = 10;
+    
+    // always initialize pointers (they could be pointing to some random data...)
+    int * num_p = &num; // pointers always take addresses
+    
+    // NEVER direference a NULL pointer
+    int * nullPtr = 0;
+    // printf("%d \n", *nullPtr); // ERROR: segmentation fault
+    
+    
+    // dereference a pointer (get the value it's pointing to):
+    printf("%d\n", *num_p);
+    
+    // walk through memory using a pointer:
+    printf("%d\n", *(num_p + 1) ); // it can be any offset
+    
+    //------------------------------------------------------------------------------------------------------
 
     int myNum = 10;
     int * pointer = &myNum; // a pointer receives an address of an int, not a string, not an int...
