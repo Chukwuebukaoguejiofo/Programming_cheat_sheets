@@ -1,4 +1,9 @@
 <?php
+
+/* A closure is a function that:
+ * 	- can be passed around like a variable (first class citizen)
+ *	- has access to the parent scope where it as declared
+ */
 	
 	// function using a closure as a second parameter
 	function makeSandwhich($breadType, $meatHandler){
