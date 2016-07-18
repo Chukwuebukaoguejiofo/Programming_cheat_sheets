@@ -2,8 +2,8 @@
  *
  *            X
  *          /   \ 
- *	   Y	 T3
- *	  / \     
+ *	       Y	 T3
+ *	      / \     
  *       T1  T2  
  */
 function(root){
@@ -23,9 +23,9 @@ function(root){
  *
  *             X
  *           /   \ 
- *	    T1	  Y
- *	         / \     
- *	        T2  T3  
+ *	        T1	  Y
+ *	       / \     
+ *	     T2  T3  
  */
 function(root){
 	// identifying nodes
