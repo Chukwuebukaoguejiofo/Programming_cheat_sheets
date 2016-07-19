@@ -91,6 +91,22 @@ DLList.prototype.removeTail = function(){
     }
 };
 
+DLList.prototype.findByPosition = function(position){
+    //...
+};
+
+DLList.prototype.removeByPosition = function(position){
+    //...
+};
+
+DLList.prototype.findByData = function(data){
+    //...
+};
+
+DLList.prototype.removeByData = function(data){
+    //...
+};
+
 DLList.prototype.toString = function(){
     if(this.head){
         // has head
