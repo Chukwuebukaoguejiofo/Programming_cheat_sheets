@@ -1,7 +1,5 @@
 // Doublely linked list
 
-
-
 function Node(data){
     this.data = data;
     this.prev = null;
@@ -29,6 +27,8 @@ DLList.prototype.addHead = function(data){
         this.head = node;
         this.tail = node;
     }
+
+    this.size++;
 };
 
 DLList.prototype.addTail = function(data){
@@ -45,6 +45,8 @@ DLList.prototype.addTail = function(data){
         this.head = node;
         this.tail = node;
     }
+
+    this.size++;
 };
 
 DLList.prototype.removeHead = function(){
@@ -60,6 +62,8 @@ DLList.prototype.removeHead = function(){
             this.head = null;
             this.tail = null;
         }
+
+        this.size--;
     }else{
         // no head
         console.log('List is empty...');
@@ -79,6 +83,8 @@ DLList.prototype.removeTail = function(){
             this.head = null;
             this.tail = null;
         }
+
+        this.size--;
     }else{
         //no tail
         console.log('List is empty...');
@@ -102,10 +108,8 @@ DLList.prototype.toString = function(){
     }
 };
 
-
-
+//--------------------------------------------------
 var list = new DLList();
-
 
 list.addTail(10); // 10
 list.addTail(20); // 10, 20
@@ -120,3 +124,13 @@ list.addHead(100); // 100, 20, 30, 40, 50, 60, 70
 list.removeTail(); // 100, 20, 30, 40, 50, 60
 
 list.toString(); // 100, 20, 30, 40, 50, 60
+list.size; // 6
+
+
+
+
+
+
+
+
+
