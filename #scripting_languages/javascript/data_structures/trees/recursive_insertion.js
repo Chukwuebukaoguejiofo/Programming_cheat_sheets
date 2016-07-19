@@ -2,6 +2,8 @@
  * Recursive insertion needs two parameters:
  * 1. the currentRoot
  * 2. the data to be inserted
+ * 
+ * this can be used to have access to the node ancestry (parent, grandParent, ...)
  */
 Tree.prototype.insertRecursive = function(currentRoot, data){
     var newNode = new Node(data);
