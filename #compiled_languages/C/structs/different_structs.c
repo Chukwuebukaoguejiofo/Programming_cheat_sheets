@@ -16,7 +16,7 @@ typedef struct Person_b{
     int age;
     char * name;
     char address[50];
-} Person_bb;
+} Person_bb; // Person_bb only works if there is a typedef!
 
 typedef struct Person_c{
     int age;
