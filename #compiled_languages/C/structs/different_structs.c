@@ -11,7 +11,8 @@ struct Person_a{
     char address[50];
 };
 
-struct Person_b{
+// can be used as struct Person_b foo, or simply: Person_bb foo
+typedef struct Person_b{
     int age;
     char * name;
     char address[50];
@@ -36,6 +37,12 @@ int main(void) {
     erich.age = 25;
     // erich.address = "123 Foobar e"; // array is not a left value...
     strcpy(erich.address, "123 Foobar e");
+    
+    Person_bb mike;
+    mike.name = "Mike"; // pointer = pointer
+    mike.age = 30;
+    // mike.address = "123 Foobar m"; // array is not a left value...
+    strcpy(mike.address, "123 Foobar m");
 
     Person_cc * rick = (Person_cc*)malloc(sizeof(Person_cc)); // always allocate memory for struct pointers!!!
     rick->name = "Rick"; // pointer = pointer
@@ -52,6 +59,10 @@ int main(void) {
     printf("%s\n", erich.name);
     printf("%d\n", erich.age);
     printf("%s\n", erich.address);
+    
+    printf("%s\n", mike.name);
+    printf("%d\n", mike.age);
+    printf("%s\n", mike.address);
 
     printf("%s\n", rick->name);
     printf("%d\n", rick->age);
@@ -59,4 +70,3 @@ int main(void) {
 
     return 0;
 }
-
