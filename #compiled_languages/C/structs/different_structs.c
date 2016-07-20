@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // for printf()
+#include <stdlib.h>  // for malloc()
+#include <string.h> // for strcpy()
 
 
 //----------------------- structs
