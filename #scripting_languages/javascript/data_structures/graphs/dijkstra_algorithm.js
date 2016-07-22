@@ -21,8 +21,6 @@ function getMinDistance(distFromSrcArray, wasVisitedArray){
     return min_index;
 }
 
-
-
 // print the distances from the nodes to the source
 function printSolution(distFromSrcArray){
 	console.log("Vertex Distance from Source\n");
@@ -72,9 +70,8 @@ function dijkstra(graph, src){
     }
     
     // print the constructed distFromSrcArray
-	printSolution(distFromSrcArray);
+    printSolution(distFromSrcArray);
 }
-
 
 // Let us create the example graph discussed above */
 var graph = [
@@ -91,8 +88,9 @@ var graph = [
 
 dijkstra(graph, 0);
 
+/* 
+output:
 
-/* begin output:
 Vertex Distance from Source
 0        0
 1        4
