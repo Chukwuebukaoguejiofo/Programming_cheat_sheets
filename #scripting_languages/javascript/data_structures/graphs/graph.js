@@ -1,38 +1,37 @@
-// graph
-
-// https://www.syncano.io/blog/data-structures-in-javascript/
-
-// it can be represented as a edge list, 
-// or adjancecy matrix ?
-
-// vertex is a node
-
-// edge is a connection between nodes 
-
-// directed and undirected graphs
-
-// degree of a node: number of connection of the node
-
-// adjencency list or adjacency matrix https://www.youtube.com/watch?v=WtfGRS1BsBI
-
-// adj list - array of linkd lists
-// adj matrix - 2D array
-
-// self loops
-
-// DFS BFS(needs a Queue)
-
+/*
+ * graph
+ *
+ * https://www.syncano.io/blog/data-structures-in-javascript/
+ *
+ * it can be represented as a edge list, 
+ * or adjancecy matrix ?
+ *
+ * vertex is a node
+ *
+ * edge is a connection between nodes 
+ *
+ * directed and undirected graphs
+ *
+ * degree of a node: number of connection of the node
+ *
+ * adjencency list or adjacency matrix https://www.youtube.com/watch?v=WtfGRS1BsBI
+ *
+ * adj list - array of linkd lists
+ * adj matrix - 2D array
+ *
+ * self loops
+ *
+ * DFS BFS(needs a Queue)
+ *
+ */
 function AdjListNode(dest){
     this.dest = dest;
     this.next = null;
 }
 
-
-
 function AdjList(){
     this.head = null;
 }
-
 
 function Graph(n){
     this.nodeCOunt = 0;
@@ -79,8 +78,6 @@ function Graph(n){
     };
 }
 
-
-
 var graph = new Graph(5);
 
 graph.addEdge(0,1);
@@ -91,9 +88,7 @@ graph.addEdge(1,4);
 graph.addEdge(2,3);
 graph.addEdge(3,4);
 
-
 graph.printGraph();
-
 
 /* output: 
 
