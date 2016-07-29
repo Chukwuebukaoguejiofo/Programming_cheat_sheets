@@ -7,7 +7,7 @@
             {name: 'baz', id: 102, size: 3},
         ];
     })
-    .directive('jobberPortalDraggable', function(){
+    .directive('brianDirective', function(){
         return {
             restrict: 'A',
             scope: {
@@ -24,7 +24,7 @@
 <div ng-app="app">
    <div ng-controller='MainCtrl'>
      <div ng-repeat="widget in items  track by $index">
-         <div jobber-portal-draggable widget="widget">
+         <div brian-directive widget="widget">
              <p>{{widget.name}} - {{widget.id}} - size: {{widget.size}}</p>
          </div>
      </div>
