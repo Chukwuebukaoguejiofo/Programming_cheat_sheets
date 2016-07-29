@@ -1,4 +1,23 @@
 <script>
+
+    /**
+     * The directive scope:
+     *  - scope: true  ->  The directive gets a new scope, the parent's scope DOES affect the directive's scope
+     *                     but the directive's scope does not affect the parent's scope.
+     *  - scope: false ->  The directive shares the parent's scope! they are mutually affected.
+     * 
+     * - scope: {}     ->  The directive gets a NEW and ISOLATED scope, the scope does not inherite the parent scope properties
+     *                     It is a completely isolated scope.
+     *                     BUT, the scope can access data from the HTML attributes.
+     * - scope: {
+     *       foo: '=', // this is for two-way data binding!  
+     *       bar: '@', // this is for one-way data binding! and it only accepts primitive values ??? 
+     *       baz: '&', // this is for functions 
+     *   }
+     * 
+     * - the use of `scope.apply()`  -> When you are inside a callback that does not belong to Angular, but to a 3rd party library, 
+     *                                  you can call this function to update the bound variables! 
+     */
     angular.module("app", [])
     .controller('MainCtrl', function($scope){
         $scope.items = [
@@ -13,7 +32,7 @@
             scope: {
                 widget: '='
             },
-            link: function(scope, el, attrs){
+            link: function(scope, el, attrs, ctrl){
                 scope.widget.size *= 10; 
                 scope.widget.name += '_alt';
             }
