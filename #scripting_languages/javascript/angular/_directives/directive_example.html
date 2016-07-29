@@ -1,0 +1,43 @@
+<script>
+    angular.module("app", [])
+    .controller('MainCtrl', function($scope){
+        $scope.items = [
+            {name: 'foo', id: 100, size: 1},
+            {name: 'bar', id: 101, size: 2},
+            {name: 'baz', id: 102, size: 3},
+        ];
+    })
+    .directive('jobberPortalDraggable', function(){
+        return {
+            restrict: 'A',
+            scope: {
+                widget: '='
+            },
+            link: function(scope, el, attrs){
+                scope.widget.size *= 10; 
+                scope.widget.name += '_alt';
+            }
+        }
+    })
+</script>
+
+<div ng-app="app">
+   <div ng-controller='MainCtrl'>
+     <div ng-repeat="widget in items  track by $index">
+         <div jobber-portal-draggable widget="widget">
+             <p>{{widget.name}} - {{widget.id}} - size: {{widget.size}}</p>
+         </div>
+     </div>
+   </div>
+</div>
+
+
+
+<!--
+RESULT:
+
+foo_alt - 100 - size: 10
+bar_alt - 101 - size: 20
+baz_alt - 102 - size: 30
+
+-->
