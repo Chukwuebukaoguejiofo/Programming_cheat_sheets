@@ -3,8 +3,8 @@
 # commands (not sure its in order)
 ```bash
 $ heroku accounts
-$ heroku accounts:set kipu
-$ ssh-add identity.heroku.kipu  # private key ???
+$ heroku accounts:set zoogle
+$ ssh-add identity.heroku.zoogle  # private key ???
 $ heroku keys:add # then you can choose wich key to upload to heroku
 $ heroku create --region eu
 $ RAILS_ENV=production bundle exec rake assets:precompile
@@ -101,7 +101,7 @@ https://help.github.com/articles/generating-ssh-keys
 
 # app path
 
-`/Users/brianspinos777/Sites/kipu/socialize`
+`/Users/brianspinos777/Sites/zoogle/socialize`
 
 # the URL
 
