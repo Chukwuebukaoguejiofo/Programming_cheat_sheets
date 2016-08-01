@@ -56,12 +56,12 @@ root :to => "scheduled_jobs#index"
 # http://localhost:3002/my_scheduler/  # of course, still in the dummy app
 ```
 
-# mount/atach you gem to a real rails App, like HealthMatters
+# mount/atach you gem to a real rails App, like MyApp
 ```ruby
-# in healthmatters config/routes.rb file:
+# in myapp config/routes.rb file:
 mount MyScheduler::Engine, :at => "scheduled_jobs"  
 # Devise gem does this! it provides the 'devise_for' method! cool!
-# then in healthMatters you can go to http://localhost:3000/scheduled_jobs
+# then in myApp you can go to http://localhost:3000/scheduled_jobs
 # I imagine it will go to the gem's root path...
 ```
 
