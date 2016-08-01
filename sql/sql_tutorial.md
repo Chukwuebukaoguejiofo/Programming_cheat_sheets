@@ -109,16 +109,16 @@ SELECT users.id, users.email FROM users;
 
 --  id |               email
 -- ----+------------------------------------
---   5 | kyle@kipusystems.com
---  12 | tobias@kipusystems.com
---  15 | alan.haikal@kipusystems.com
---   9 | spinos@kipusystems.com
---  14 | hze_processor@kipuworks.com
---  11 | lab_doctor@kipusystems.com
---  10 | no_lab_doctor@kipusystems.com
+--   5 | kyle@foo.com
+--  12 | michael@foo.com
+--  15 | alan.haikal@foo.com
+--   9 | spinos@foo.com
+--  14 | xyz_processor@foo.com
+--  11 | lab_doctor@foo.com
+--  10 | no_lab_doctor@foo.com
 --   6 | test@test.com
---  13 | sally@kipusystems.com
---  16 | jeffrey.fiorentino@kipusystems.com
+--  13 | sally@foo.com
+--  16 | jeffrey.fiorentino@foo.com
 -- (10 rows)
 
 SELECT patients.first_name, patients.id FROM patients;
@@ -151,10 +151,10 @@ SELECT patients.first_name, patients.id FROM patients;
 SELECT users.id, patients.id, patients.first_name, users.username FROM users INNER JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
 -- ----+----+-----------------+-----------------------
---   5 |  5 | Cristal         | kipu_kyletai
---  12 | 12 | rick            | tobifrano
+--   5 |  5 | Cristal         | zoogle_mike
+--  12 | 12 | rick            | m.smith
 --   9 |  9 | erich ######### | developer
---  14 | 14 | Delete_me       | hze_process
+--  14 | 14 | Delete_me       | xyz_process
 --  11 | 11 | Emilia          | lab_doctor
 --  10 | 10 | alan            | no_lab_doctor
 --   6 |  6 | Arnold          | DestinationHopeDoctor
@@ -171,19 +171,19 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users RIG
 --  16 | 16 | edward          | jfiorentino
 --  10 | 10 | alan            | no_lab_doctor
 --   9 |  9 | erich ######### | developer
---   5 |  5 | Cristal         | kipu_kyletai
+--   5 |  5 | Cristal         | zoogle_mike
 --  13 | 13 | brian           | SallyAbu
 --  11 | 11 | Emilia          | lab_doctor
 --     |  2 | Derek           |
 --     |  8 | Freddy          |
 --     |  7 | Erika           |
 --     | 45 | helloworld      |
---  14 | 14 | Delete_me       | hze_process
+--  14 | 14 | Delete_me       | xyz_process
 --     |  1 | Brandon         |
 --   6 |  6 | Arnold          | DestinationHopeDoctor
 --     |  3 | Herold          |
 --     |  4 | Julia           |
---  12 | 12 | rick            | tobifrano
+--  12 | 12 | rick            | m.smith
 --     | 46 | rick            |
 -- (17 rows)
 ```
@@ -193,11 +193,11 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users RIG
 SELECT users.id, patients.id, patients.first_name, users.username FROM users LEFT JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
 -- ----+----+-----------------+-----------------------
---   5 |  5 | Cristal         | kipu_kyletai
---  12 | 12 | rick            | tobifrano
+--   5 |  5 | Cristal         | zoogle_mike
+--  12 | 12 | rick            | m.smith
 --  15 |    |                 | alan.haikal
 --   9 |  9 | erich ######### | developer
---  14 | 14 | Delete_me       | hze_process
+--  14 | 14 | Delete_me       | xyz_process
 --  11 | 11 | Emilia          | lab_doctor
 --  10 | 10 | alan            | no_lab_doctor
 --   6 |  6 | Arnold          | DestinationHopeDoctor
@@ -211,11 +211,11 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users LEF
 SELECT users.id, patients.id, patients.first_name, users.username FROM users FULL JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
 -- ----+----+-----------------+-----------------------
---   5 |  5 | Cristal         | kipu_kyletai
---  12 | 12 | rick            | tobifrano
+--   5 |  5 | Cristal         | zoogle_mike
+--  12 | 12 | rick            | m.smith
 --  15 |    |                 | alan.haikal
 --   9 |  9 | erich ######### | developer
---  14 | 14 | Delete_me       | hze_process
+--  14 | 14 | Delete_me       | xyz_process
 --  11 | 11 | Emilia          | lab_doctor
 --  10 | 10 | alan            | no_lab_doctor
 --   6 |  6 | Arnold          | DestinationHopeDoctor
