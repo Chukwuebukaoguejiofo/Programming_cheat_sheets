@@ -2,12 +2,12 @@
 
 http://guides.rubyonrails.org/v3.2.19/engines.html
 
-- all controllers, views, models, assets, , helpers, routes... are namespace under your gems module, in this case: `KipuScheduler`
+- all controllers, views, models, assets, , helpers, routes... are namespace under your gems module, in this case: `MyScheduler`
 
-- this gem will have its own namespace found in `/lib/kipu_scheduler/engine.rb`
+- this gem will have its own namespace found in `/lib/my_scheduler/engine.rb`
 
 ```bash
-$ rails plugin new kipu_scheduler --mountable # create an engine (which is a mountable plugin, hence the option name)
+$ rails plugin new my_scheduler --mountable # create an engine (which is a mountable plugin, hence the option name)
 ```
 
 # when adding this gem to your rails app:
@@ -15,9 +15,9 @@ $ rails plugin new kipu_scheduler --mountable # create an engine (which is a mou
 ```ruby
 # in your rails app, not this gem:
 # in the Gemfile:
-gem 'kipu_scheduler', :path => "/path/to/kipu_scheduler"
+gem 'my_scheduler', :path => "/path/to/my_scheduler"
 # OR
-gem 'kipu_scheduler', :path => "vendor/engines/kipu_scheduler"
+gem 'my_scheduler', :path => "vendor/engines/my_scheduler"
 ```
 # change gemspec file
 ```ruby
@@ -32,12 +32,12 @@ $ rake db:migrate # at the root of your new gem!
 
 $ cd test/dummy/ # this is your gem host APP
 $ rails server
-# http://localhost:3000/kipu_scheduler/scheduled_jobs # this is in the dummy app, of the gem
+# http://localhost:3000/my_scheduler/scheduled_jobs # this is in the dummy app, of the gem
 ```
 
 # if you want the scaffold css (optional)
 ```html
-<!-- app/views/layouts/kipu_scheduler/application.html.erb -->
+<!-- app/views/layouts/my_scheduler/application.html.erb -->
 
 <%= stylesheet_link_tag "scaffold" %>
 ```
@@ -47,19 +47,19 @@ $ rails server
 # go to the dummy app of the gem:
 $ cd test/dummy/ # this is your gem host APP
 $ rails console
-$ KipuScheduler::ScheduledJob # remember that your gem stuff is namespaced
+$ MyScheduler::ScheduledJob # remember that your gem stuff is namespaced
 $ ScheduledJob # this will not work
 ```
 # add a root path to your gem:
 ```ruby
 root :to => "scheduled_jobs#index"
-# http://localhost:3002/kipu_scheduler/  # of course, still in the dummy app
+# http://localhost:3002/my_scheduler/  # of course, still in the dummy app
 ```
 
 # mount/atach you gem to a real rails App, like HealthMatters
 ```ruby
 # in healthmatters config/routes.rb file:
-mount KipuScheduler::Engine, :at => "scheduled_jobs"  
+mount MyScheduler::Engine, :at => "scheduled_jobs"  
 # Devise gem does this! it provides the 'devise_for' method! cool!
 # then in healthMatters you can go to http://localhost:3000/scheduled_jobs
 # I imagine it will go to the gem's root path...
@@ -68,10 +68,10 @@ mount KipuScheduler::Engine, :at => "scheduled_jobs"
 # now you need to copy your new gem's migrations to the HOST APP:
 ```bash
 # in the host app, run:
-$ rake kipu_scheduler:install:migrations
+$ rake my_scheduler:install:migrations
 # This command, when run for the first time will *COPY* over all the migrations from the engine, that is in the host app's gemfile
 
-# the tables are also namespaced with 'kipu_scheduler_' : --> kipu_scheduler_scheduled_jobs
+# the tables are also namespaced with 'my_scheduler_' : --> my_scheduler_scheduled_jobs
 
 # now from the host app:
 $ rake db:migrate
@@ -82,7 +82,7 @@ $ rake db:migrate
 # I can do '<%= User.count %>' in the gem's view... it works
 
 # remember that User.count will be the HOST app User.count
-# for your gem's rescource, you need to namespace it: KipuScheduler::User
+# for your gem's rescource, you need to namespace it: MyScheduler::User
 
 # but I dont have access to the HOST APP's application controller from the gem
 ```
