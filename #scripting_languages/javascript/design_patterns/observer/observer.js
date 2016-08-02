@@ -1,19 +1,15 @@
-// design patterns
-
-// observer pattern
-
-// subject (example: a button, a timmer, a view of MVC)
-    // the subject will maintain a list of observers
-
-// observer - the listener, the one observing the subject
-
-
-// pub-sub is based on observer patterns
-
 /**
- *
+ * observer pattern
+ * 
+ * subject (example: a button, a timmer, a view of MVC)
+ *      the subject will maintain a list of observers
+ * 
+ * observer - the listener, the one observing the subject
+ * 
+ * pub-sub is based on observer patterns
+ * 
+ * 
  */
-
 function Subject(value){
     var self = this;
     this.observers = [];
@@ -75,9 +71,3 @@ subject.update('xyz');
  * foo: xyz
  * foo: xyz
  */
-
-
-
-
-
-
