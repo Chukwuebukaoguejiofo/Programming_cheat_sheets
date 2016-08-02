@@ -22,7 +22,7 @@ function ShapeFactory(){
 			return new Square();
 		}
 
-		return null;
+		return null; 
 	}
 }
 
