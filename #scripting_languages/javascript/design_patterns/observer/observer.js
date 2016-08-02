@@ -1,13 +1,21 @@
 /**
  * observer pattern
  * 
- * subject (example: a button, a timmer, a view of MVC)
+ * subject - also called publisher (example: a button, a timmer, a view of MVC)
  *      the subject will maintain a list of observers
  * 
- * observer - the listener, the one observing the subject
+ * observer - also called subscribers, the listener, the one observing the subject
  * 
  * pub-sub is based on observer patterns
  * 
+ * when to use observer pattern:
+ *      when you need other objects to receive an update when another object changes
+ * 
+ * cons - the subject may send updates that are of no importance for the observer
+ * 
+ * the interface: 
+ *   subject: addObserver(o), removeObserver(o), notifyObservers()
+ *   observer: update()
  * 
  */
 function Subject(value){
