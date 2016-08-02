@@ -5,43 +5,43 @@
  * the Shape interface: draw() 
  */
 function ShapeFactory(){
-	this.getShape = function(shapeType){
-		if(shapeType == null){
-			return null;
-		}	
+    this.getShape = function(shapeType){
+        if(shapeType == null){
+            return null;
+        }   
 
-		if(shapeType == "circle"){
-			return new Circle();
-		} 
+        if(shapeType == "circle"){
+            return new Circle();
+        } 
 
-		if(shapeType == "rectangle"){
-			return new Rectangle();
-		}
+        if(shapeType == "rectangle"){
+            return new Rectangle();
+        }
 
-		if(shapeType == "square"){
-			return new Square();
-		}
+        if(shapeType == "square"){
+            return new Square();
+        }
 
-		return null; 
-	}
+        return null; 
+    }
 }
 
 function Rectangle(){
-	this.draw = function(){
-		console.log('Drawing a Rectangle!');
-	}
+    this.draw = function(){
+        console.log('Drawing a Rectangle!');
+    }
 }
 
 function Square (){
-	this.draw = function(){
-		console.log('Drawing a Square!');
-	}
+    this.draw = function(){
+        console.log('Drawing a Square!');
+    }
 }
 
 function Circle (){
-	this.draw = function(){
-		console.log('Drawing a Circle!');
-	}
+    this.draw = function(){
+        console.log('Drawing a Circle!');
+    }
 }
 
 //------- usage:
