@@ -2,7 +2,7 @@
  * factory pattern
  * The objective is to create an object
  *
- * the Shape interface: draw()
+ * the Shape interface: draw() 
  */
 function ShapeFactory(){
 	this.getShape = function(shapeType){
