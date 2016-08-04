@@ -33,6 +33,22 @@
  * 
  * the internal-nodes store only keys, and an int pointer (file offset) to the child nodes ???
  * 
+ * 
+ * 
+ * 
+B-tree of order 5 OR m=5
+
+max children = 5
+
+min children = ceil(m/2) = 3
+B-tree of degree 5 OR t=5
+
+max keys = 2t-1
+
+min keys = t-1
+
+
+ * 
  * /
 
 
