@@ -5,6 +5,8 @@
  * 
  * http://goneill.co.nz/btree-demo.php (demo)
  * http://goneill.co.nz/btree.php
+ * 
+ * http://comet.lehman.cuny.edu/jung/cmp420758/chapter18.pdf
  *
  * this type of tree is NOT fully loaded into memory,
  * instead each node if fetched from a file 
