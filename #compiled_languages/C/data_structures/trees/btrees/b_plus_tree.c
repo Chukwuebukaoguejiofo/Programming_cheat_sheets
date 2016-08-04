@@ -15,7 +15,7 @@
  * 
  * the pointers are ints that refer to a offset in the database file
  * 
- * the are 3 types of nodes: root, non-leaf-nodes and leaf-nodes
+ * the are 3 types of nodes: root, internal-nodes and leaf-nodes
  * the leaf nodes should also be a doublely linked list, for range queries
  * 
  * 
