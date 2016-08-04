@@ -18,6 +18,11 @@
  * the are 3 types of nodes: root, internal-nodes and leaf-nodes
  * the leaf nodes should also be a doublely linked list, for range queries
  * 
+ * usually the b+ tree node has 100 to 1000 child nodes,
+ * the height of the tree should be from 3 to 5 ?
+ * 
+ * leaf-nodes have int pointers (file offset) to find the record
+ * the leaf nodes also have another int pointer to find the record within the PAGE ???
  * 
  * /
 
