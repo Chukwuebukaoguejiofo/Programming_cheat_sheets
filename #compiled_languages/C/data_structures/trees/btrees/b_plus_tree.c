@@ -2,6 +2,9 @@
  * http://www.cburch.com/cs/340/reading/btree/
  * 
  * http://technicalpostsbyarifkhan.blogspot.com/2014/01/b-tree-data-structure-explained.html
+ * 
+ * http://goneill.co.nz/btree-demo.php (demo)
+ * http://goneill.co.nz/btree.php
  *
  * this type of tree is NOT fully loaded into memory,
  * instead each node if fetched from a file 
@@ -9,9 +12,13 @@
  * these fetches are called 'BLOCKS' and your OS as a speicif 'BLOCK SIZE' that varies from 4K, 8K, and more???
  * 
  * data retrieved from DISK (external memory) is refered as 'BLOCK'
- * when data is retrieved from DISK (external memory) and added to the memory, it is called a 'PAGE'
+ * A piece of data that is stored to disk (and read into memory) as a unit is called a 'PAGE'
+ * 
+ * It is typical for a B-tree to store the number of records in a single node that make the 
+ * node size equal to the natural page size of the file-system. In this way, the disk acceses can be optimized.
  * 
  * 
+ * internal-nodes  keep only int pointers and leaf-nodes to store data.
  * 
  * the pointers are ints that refer to a offset in the database file
  * 
@@ -23,6 +30,8 @@
  * 
  * leaf-nodes have int pointers (file offset) to find the record
  * the leaf nodes also have another int pointer to find the record within the PAGE ???
+ * 
+ * the internal-nodes store only keys, and an int pointer (file offset) to the child nodes ???
  * 
  * /
 
