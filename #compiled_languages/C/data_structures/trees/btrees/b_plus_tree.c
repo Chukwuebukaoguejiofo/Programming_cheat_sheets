@@ -7,8 +7,8 @@
  *    - PAGE is a chunck of data retrieved from DISK, then added to memory
  * 
  *  memory types:
- *    - 1. primary memory, RAM, ROM...
- *    - 2. secondary memory, external memory, disk...
+ *    - 1. primary memory, main memory, RAM, ROM... (all the same)
+ *    - 2. secondary memory, external memory, disk...  (all the same)
  * 
  * 
  * 
