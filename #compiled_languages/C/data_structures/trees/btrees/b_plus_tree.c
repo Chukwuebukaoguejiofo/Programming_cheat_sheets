@@ -6,7 +6,9 @@
  *    - BLOCK is a chunk of data retrieved from DISK
  *    - PAGE is a chunck of data retrieved from DISK, then added to memory
  * 
- * 
+ *  memory types:
+ *    - 1. primary memory, RAM, ROM...
+ *    - 2. secondary memory, external memory, disk...
  * 
  * 
  * 
