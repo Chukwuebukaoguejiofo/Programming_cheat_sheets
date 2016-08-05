@@ -1,4 +1,15 @@
 /** 
+ * 
+ * Gotchas:
+ *    - A pointer is not like the 'C pointer', it is just a number to be used as a file offset.
+ *    - The leaf-nodes do not store the record data, just a pointer to it.
+ *    - BLOCK is a chunk of data retrieved from DISK
+ *    - PAGE is a chunck of data retrieved from DISK, then added to memory
+ * 
+ * 
+ * 
+ * 
+ * 
  * http://www.cburch.com/cs/340/reading/btree/
  * 
  * http://technicalpostsbyarifkhan.blogspot.com/2014/01/b-tree-data-structure-explained.html
