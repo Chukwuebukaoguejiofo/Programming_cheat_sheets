@@ -51,6 +51,20 @@ min keys = t-1
 
 
  * 
+ * to access fields in a database row, use offsets, since you need to declare each field type, 
+ * which gives you the size of each field!
+ * 
+ * b+ trees do not store row data in the leaf-nodes, they store int pointers to the BLOCK and record offset 
+ * (to find the row in the Database file)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * /
 
 
