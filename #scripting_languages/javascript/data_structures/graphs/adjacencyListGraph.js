@@ -47,7 +47,6 @@ function Graph(size){
 }
 
 
-
 var graph = new Graph(5);
 
 graph.addEdge(0,1);
@@ -59,7 +58,6 @@ graph.addEdge(2,3);
 graph.addEdge(3,4);
 
 graph.printGraph();
-
 
 /* OUTPUT:
 
