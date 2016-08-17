@@ -1,7 +1,7 @@
 /** 
  * Dijkstra (working)
  * http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
- * /
+ */
 function Graph(size){
     var self = this;
     self.size = size;
