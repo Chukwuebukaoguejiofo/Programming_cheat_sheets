@@ -1,8 +1,7 @@
-// https://www.youtube.com/watch?v=gcmjC-OcWpI&index=14&list=PLlipSLnrfrUlclWAcvmyxcn6R7tzwALhM
-
-
-// Disjoint sets
-
+/** 
+ * Disjoint sets
+ * https://www.youtube.com/watch?v=gcmjC-OcWpI&index=14&list=PLlipSLnrfrUlclWAcvmyxcn6R7tzwALhM
+ */
 function DisjointSet(size){
     var self = this;
 
