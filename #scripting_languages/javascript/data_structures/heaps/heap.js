@@ -14,6 +14,7 @@ function Heap(){
 	self.siftDown = siftDown;
 	self.push = push;
 	self.pop = pop;
+	self.peek = peek;
 
 	function parentIndex(i){
 		return Math.floor((i - 1) / 2);
@@ -125,6 +126,10 @@ function Heap(){
 		self.size--;
 
 		return firstVal;
+	}
+	
+	function peek(){
+		return self.array[0];
 	}
 }
 
