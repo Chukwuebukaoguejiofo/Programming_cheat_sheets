@@ -1,5 +1,5 @@
 /**
- * Heap
+ * Heap (working!)
  * http://opendatastructures.org/ods-python-screen.pdf (chapter 10 - HEAPS)
  *
  * implemented as an array, but represented as a tree
