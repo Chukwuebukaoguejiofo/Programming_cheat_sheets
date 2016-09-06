@@ -50,7 +50,6 @@ function HashTable(size){
 
     function inset(key, value){
         newEntry = null;
-        last = null;
         var index = hashFunction(key);
 
         next = self.table[index];
