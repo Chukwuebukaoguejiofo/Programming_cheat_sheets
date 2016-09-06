@@ -1,4 +1,4 @@
-// heap data structure
+// heap
 
 function Heap(){
 	var self = this;
