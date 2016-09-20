@@ -17,17 +17,15 @@ function getData(){
 }
 
 
-
 function loadData(){
     getData()
     .then(function(data){
         console.log('got: ' + data);
-    }).catch(function(error){
+    })
+    .catch(function(error){
         console.log('error: ' + error);
     });
 }
 
 
-
 loadData(); // got: 123
-
