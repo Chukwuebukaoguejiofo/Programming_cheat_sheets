@@ -1,4 +1,5 @@
-/** Promises, for async code!
+/** 
+ * Promises, for async code!
  * https://www.youtube.com/watch?v=104J7_HyaG4
  */
 function getData(){
