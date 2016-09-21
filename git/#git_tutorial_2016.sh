@@ -191,11 +191,8 @@ $ git remove <file>
 # also $ git rm <file> ???
 
 #----------------------------------------------------------------------------------- log
-
 $ git log # Shows all of the previous commit messages in reverse order
-
 $ git log --pretty=oneline # Shows commits on one line
-
 $ git log --pretty=format:"%h : %an : %ar : %s"
 # %h - Abbreviated Hash
 # %an - Authors Name
@@ -203,15 +200,10 @@ $ git log --pretty=format:"%h : %an : %ar : %s"
 # %s - First Line of Comment
 
 $ git log -p -2 # Shows the last 2 commit changes
-
 $ git log --stat # Prints abbreviated stats
-
 $ git log --since=1.weeks # Show only changes in the last week
-
 $ git log --since="2014-04-12" # Show changes since this date
-
 $ git log --author="Brian Spinos" # Changes made by author
-
 $ git log --before="2014-04-13" # Changes made before this date
 
 #----------------------------------------------------------------------------------- cleaning
