@@ -18,6 +18,10 @@ $ exit
 # key pair
 
 ```bash
+
+# http://sshkeychain.sourceforge.net/mirrors/SSH-with-Keys-HOWTO/SSH-with-Keys-HOWTO-4.html
+
+
 # public key and private key (I guess you can change their names)
 # id_rsa - that is you password/file
 id_rsa
@@ -36,11 +40,18 @@ $ ssh-keygen -C "this is a comment, its usualy an email address..."
 
 
 # copy contents of the public key to the server:
+# you public key should go in the server you want to access,
+# in the ~/.ssh/authorized_keys file of the server you want to access!
 $ cat id_rsa.pub | pbcopy
 
 
-# paste contents of your public keys into this file:
+# paste contents of your public keys into this file, on the server you want to access:
 # each pub key should go into a separate line
 ~/.ssh/authorized_keys
+
+
+
+# P.S.: you private key stays on your computer, 
+# and the public key goes in the computer you want to access, in the ~/.ssh/authorized_keys file.
 
 ```
