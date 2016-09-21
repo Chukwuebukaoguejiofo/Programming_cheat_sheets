@@ -3,12 +3,11 @@
 # https://www.atlassian.com/git/tutorials/
 #-----------------------------------------------------------------------------------
 
--> HEAD is a pointer to the branch, and the branch is a pointer to a commit!
-
-HEAD - is a pointer to your last commit. 
-    - actually HEAD usually point to a branch and a branch points to a commit.
+-> HEAD is a pointer to the branch, and the branch is a pointer to a commit (the last commit)
+    - commits are like nodes in a tree (there is the root node and it branches out)
     - when you are in detached mode, HEAD is pointing directly to a commit.
-INDEX - is the same as the staging area
+    
+-> INDEX - is the same as the staging area.
 
 #----------------------------------------------------------------------------------- git normal  work-flow:
 # ...modify a file...
@@ -24,7 +23,12 @@ $ git add <folder> # adds the folder to staging area
 $ git add . # add all files to staging area
 
 #----------------------------------------------------------------------------------- git checkout
-$ git checkout -- <file> # restores the file as it was in the last commit, and removes the file from the staging area
+$ git checkout <some-existing-branch> 
+# go to that branch.
+
+
+$ git checkout -- <file> 
+# restores the file as it was in the last commit, and removes the file from the staging area
 # same as `$ git checkout HEAD -- <file>`
 
 #----------------------------------------------------------------------------------- git commit
@@ -32,7 +36,8 @@ $ git commit -m 'my message' # commit the stagging area
 
 #----------------------------------------------------------------------------------- git reset
 
-$ git reset <file> # unstages a file, so its not added to the next commit (but the working directory stays the same)
+$ git reset <file> 
+# unstages a file, so its not added to the next commit (but the working directory stays the same)
 # reverse of $ git add <file>
 # same as `$ git reset -- HEAD <file> `
 
@@ -288,3 +293,7 @@ $ git cherry-pick <commit>
 # adds the changes introduces in the <commit> into a new commit! ???
 
 
+#----------------------------------------------------------------------------------- remotes
+$ git remote # list of remotes
+$ git remote show origin # information about the remote: list of local and remote branches branches, fetch and push URLs...
+$ git remote show <your-remote>
