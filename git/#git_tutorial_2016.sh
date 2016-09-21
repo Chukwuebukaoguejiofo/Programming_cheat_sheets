@@ -297,3 +297,50 @@ $ git cherry-pick <commit>
 $ git remote # list of remotes
 $ git remote show origin # information about the remote: list of local and remote branches branches, fetch and push URLs...
 $ git remote show <your-remote>
+$ git remote add origin2 https://github.com/brianspinos777/foo-bar.git  # origin is the name of the remote
+$ git remote rm <remote-name> # removes the remote
+$ git push -u <remote-name> <branch-name> # push a branch to a remote and make git remember the upstream.
+
+#----------------------------------------------------------------------------------- remote branches
+# Creating remote branches
+
+$ git checkout -b shopping_cart
+$ git push origin shopping_cart # this links local branch to the remote branch, and track it
+$ git push # git knows to push to the origin/shopping_cart
+
+$ git branch -r  # list remote branches
+
+# if another person wants to work on your new remote branch:
+$ git pull
+$ git remote -v # list remote branches
+$ git checkout shopping_cart # git will automatically track this branch!
+$ git push # now, git knows to push to the origin/shopping_cart
+
+$ git remote show origin # shows remote branches, and local branches configured for 'git pull' and 'git push'
+
+# Delete remote branch
+
+$ git push origin :shopping_cart # deletes only the remote branch
+$ git branch -D shopping_cart # force delete branch
+
+$ git remote prune origin  # if you run `git remote show origin`, and there are `stale` branches (meaning that someone deleted that remote branch), run this command to clean these references
+
+
+#----------------------------------------------------------------------------------- tags
+# They are a reference to a specific commit
+$ git tag # list tags
+$ git checkout <tag-name> # check out code at this commit
+$ git tag -a <tag-name> -m "a message with the tag description" # create a new tag
+$ git push --tags  # push the tags also
+
+#----------------------------------------------------------------------------------- blame
+# see who commited those changes to that file
+$ git blame index.html --date short # you can see for each line: the commit SHA, the Author, the Date, the Line number, and the content of that line.
+
+#----------------------------------------------------------------------------------- Aliases
+$ git config --global alias.mylog "log --pretty=format: '%h %s [%an]' --graph"
+$ git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+$ git config --global alias.st status
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
