@@ -2,7 +2,7 @@
  * AVL tree
  * http://www.geeksforgeeks.org/avl-tree-set-2-deletion/
  */
-
+ 
 // An AVL tree node
 function Node(){
     this.key;
@@ -19,14 +19,37 @@ function AvlTree(){
     //
 
     self.insert = insert;
+    self.remove = remove;
     self.preOrder = preOrder;
     self.inOrder = inOrder;
     self.postOrder = postOrder;
-    self.deleteNode = deleteNode;
+    
 
     //
     // private
     //
+
+    var TreeRoot = null;
+
+    function insert(key){
+        TreeRoot = _insert(TreeRoot, key);
+    }
+
+    function remove(key){
+        TreeRoot = deleteNode(TreeRoot, key);
+    }
+
+    function preOrder(){
+        _preOrder(TreeRoot);
+    }
+
+    function inOrder(){
+        _inOrder(TreeRoot);
+    }
+
+    function postOrder(){
+        _postOrder(TreeRoot);
+    }
 
     // A utility function to get height of the tree
     function height(node){
@@ -41,8 +64,10 @@ function AvlTree(){
         return (a > b)? a : b;
     }
 
-    /* Helper function that allocates a new node with the given key and
-        null left and right pointers. */
+    /**
+     * Helper function that allocates a new node with the given key and
+     * null left and right pointers. 
+     */
     function newNode(key){
         var node = new Node();
                             
@@ -98,16 +123,16 @@ function AvlTree(){
         return height(node.left) - height(node.right);
     }
 
-    function insert(node, key){
+    function _insert(node, key){
         /* 1.  Perform the normal BST rotation */
         if(node == null){
             return newNode(key);
         }
      
         if(key < node.key){
-            node.left  = insert(node.left, key);
+            node.left  = _insert(node.left, key);
         }else{
-            node.right = insert(node.right, key);
+            node.right = _insert(node.right, key);
         }
      
         /* 2. Update height of this ancestor node */
@@ -149,33 +174,33 @@ function AvlTree(){
 
     // A utility function to print preorder traversal of the tree.
     // The function also prints height of every node
-    function preOrder(root){
+    function _preOrder(root){
         if(root != null)
         {
             console.log(root.key + ' ');
-            preOrder(root.left);
-            preOrder(root.right);
+            _preOrder(root.left);
+            _preOrder(root.right);
         }
     }
 
     // A utility function to print inorder traversal of the tree.
     // The function also prints height of every node
-    function inOrder(root){
+    function _inOrder(root){
         if(root != null)
         {
-            inOrder(root.left);
+            _inOrder(root.left);
             console.log(root.key + ' ');
-            inOrder(root.right);
+            _inOrder(root.right);
         }
     }
 
     // A utility function to print postorder traversal of the tree.
     // The function also prints height of every node
-    function postOrder(root){
+    function _postOrder(root){
         if(root != null)
         {
-            postOrder(root.left);
-            postOrder(root.right);
+            _postOrder(root.left);
+            _postOrder(root.right);
             console.log(root.key + ' ');
         }
     }
@@ -285,15 +310,15 @@ function AvlTree(){
 }
  
 var tree = new AvlTree();
-var root = null;
+// var root = null;
 
 /* Constructing tree given in the above figure */
-root = tree.insert(root, 10);
-root = tree.insert(root, 20);
-root = tree.insert(root, 30);
-root = tree.insert(root, 40);
-root = tree.insert(root, 50);
-root = tree.insert(root, 25);
+tree.insert(10);
+tree.insert(20);
+tree.insert(30);
+tree.insert(40);
+tree.insert(50);
+tree.insert(25);
 
 
 /* The constructed AVL Tree would be
@@ -304,11 +329,11 @@ root = tree.insert(root, 25);
    10  25    50
 */
 
-root = tree.deleteNode(root, 25);
-root = tree.deleteNode(root, 50);
+tree.remove(25);
+tree.remove(50);
 
 
 console.log("Pre order traversal of the constructed AVL tree is \n");
-tree.inOrder(root); // 10 20 30 40
+tree.inOrder(); // 10 20 30 40
      
   
