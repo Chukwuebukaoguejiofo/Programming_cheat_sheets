@@ -1,5 +1,7 @@
-// AVL tree
-
+/**
+ * AVL tree
+ * http://www.geeksforgeeks.org/avl-tree-set-2-deletion/
+ */
 
 // An AVL tree node
 function Node(){
