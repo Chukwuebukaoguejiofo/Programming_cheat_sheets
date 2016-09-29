@@ -54,7 +54,7 @@ $ cat id_rsa.pub | pbcopy
 # P.S.: you private key stays on your computer, 
 # and the public key goes in the computer you want to access, in the ~/.ssh/authorized_keys file.
 
-The known_hosts file lets the client authenticate the server, to check that it isn't connecting to an impersonator. 
-The authorized_keys file lets the server authenticate the user.
+# The known_hosts file lets the client authenticate the server, to check that it isn't connecting to an impersonator. 
+# The authorized_keys file lets the server authenticate the user.
 
 ```
