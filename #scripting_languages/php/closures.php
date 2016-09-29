@@ -28,11 +28,11 @@ echo $brian->getName();
 $varForTheClosure = 'outside world';
 $myClosure = $brian->getClosure($varForTheClosure);
 
-$brian = null;
+$brian = null; // delete brian object
 
 echo $myClosure();
 
-// echo $brian->getName(); // error (because Name is private! but the closure has access to it!)
+// echo $brian->getName(); // error (because the object was deleted! but the closure still has access to it!)
 
 
 ?>
