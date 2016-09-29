@@ -110,7 +110,7 @@ MyClass::MyClass($name);  //
         }
     }
 	
-	echo "----------------- bar\n";
+    echo "----------------- bar\n";
     $bar = new Bar();
 
     //echo $bar->barPrivateField;      // fatal error
@@ -121,17 +121,17 @@ MyClass::MyClass($name);  //
     //$bar->barProtectedMethod();    // fatal error
     $bar->barPublicMethod();
 
-	echo "----------------- bar's parentStuff\n";
+    echo "----------------- bar's parentStuff\n";
     $bar->parentStuff();
 
-	echo "----------------- bar accessing Foo methods and fields\n";
+    echo "----------------- bar accessing Foo methods and fields\n";
     //$bar->fooPrivateMethod();     // fatal error
     //$bar->fooProtectedMethod();   // fatal error
     $bar->fooPublicMethod();
 
-	// echo $bar->fooPrivateField; // Undefined 
-	// echo $bar->fooProtectedField; // Cannot access protected property
-	echo $bar->fooPublicField;
+    // echo $bar->fooPrivateField; // Undefined 
+    // echo $bar->fooProtectedField; // Cannot access protected property
+    echo $bar->fooPublicField;
 
 // output:
 
