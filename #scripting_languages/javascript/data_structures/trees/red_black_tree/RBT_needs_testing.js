@@ -1,4 +1,4 @@
-// this is a translation from Java
+// this is a translation from Java.
 
 
 /**
