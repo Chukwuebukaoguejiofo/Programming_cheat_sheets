@@ -1,22 +1,7 @@
 // this is a translation from Java
 
-// ISSUES:  null.get()
-
-function AtomicReference(){
-    var val = null;
-    this.get = function(){
-        return val;
-    }
-
-    this.set = function(v){
-        val = v;
-    }
-}
 
 /**
- * Date 10/29/2015
- * @author Tushar Roy
- *
  * Red Black Tree
  *
  * Time complexity
@@ -32,12 +17,15 @@ function AtomicReference(){
  */
 function RedBlackTree(){
     var self = this;
+
+    self.rootReference = null;
     
     // public functions
     self.insert = insert;
-    self.printRedBlackTree = printRedBlackTree;
-    self._delete = _delete;
+    self._printRedBlackTree = _printRedBlackTree;
+    self._deleteFn = _deleteFn;
     self.validateRedBlackTree = validateRedBlackTree;
+    self.inOrder = inOrder;
 
 
     var Color = {
@@ -89,22 +77,21 @@ function RedBlackTree(){
     }
 
     /**
-     * Main _delete method of red black tree.
+     * Main deleteFn method of red black tree.
      */
-    function _delete(root, data) {
-        var rootReference = new AtomicReference();
-        _delete(root, data, rootReference);
-        if(rootReference.get() == null) {
+    function _deleteFn(root, data) {
+        deleteFn(root, data, self.rootReference);
+        if(self.rootReference == null) {
             return root;
         } else {
-            return rootReference.get();
+            return self.rootReference;
         }
     }
 
     /**
      * Main print method of red black tree.
      */
-    function printRedBlackTree(root) {
+    function _printRedBlackTree(root) {
         printRedBlackTree(root, 0);
     }
 
@@ -245,8 +232,8 @@ function RedBlackTree(){
                 //get the sibling of root. It is returning optional means
                 //sibling could be empty
                 var sibling = findSiblingNode(root);
-                //if sibling is empty or of BLACK color
-                if(sibling !== null || sibling.get().color == Color.BLACK) {
+                //if sibling IS empty or of BLACK color
+                if(sibling == null || sibling.color == Color.BLACK) {
                     //check if root is left child of its parent
                     if(isLeftChild(root)) {
                         //this creates left left situation. So do one right rotate
@@ -271,7 +258,7 @@ function RedBlackTree(){
                     //and its sibling to Black. And then change color of their
                     //parent to red if their parent is not a root.
                     root.color = Color.BLACK;
-                    sibling.get().color = Color.BLACK;
+                    sibling.color = Color.BLACK;
                     //if parent's parent is not null means parent is not root.
                     //so change its color to RED.
                     if(root.parent.parent != null) {
@@ -283,7 +270,7 @@ function RedBlackTree(){
             //this is mirror case of above. So same comments as above.
             if(root.color == Color.RED && root.right.color == Color.RED) {
                 var sibling = findSiblingNode(root);
-                if(sibling !== null || sibling.get().color == Color.BLACK) {
+                if(sibling == null || sibling.color == Color.BLACK) {
                     if(!isLeftChild(root)) {
                         leftRotate(root, true);
                     } else {
@@ -293,7 +280,7 @@ function RedBlackTree(){
                     }
                 } else {
                     root.color = Color.BLACK;
-                    sibling.get().color = Color.BLACK;
+                    sibling.color = Color.BLACK;
                     if(root.parent.parent != null) {
                         root.parent.color = Color.RED;
                     }
@@ -307,29 +294,30 @@ function RedBlackTree(){
      * Using atomicreference because java does not provide mutable wrapper. Its like
      * double pointer in C.
      */
-    function _delete(root, data, rootReference) {
+    function deleteFn(root, data, rootReference) {
+        // debugger;
         if(root == null || root.isNullLeaf) {
             return;
         }
         if(root.data == data) {
-            //if node to be _deleted has 0 or 1 null children then we have
-            //_deleteOneChild use case as discussed in video.
+            //if node to be deleteFnd has 0 or 1 null children then we have
+            //deleteFnOneChild use case as discussed in video.
             if(root.right.isNullLeaf || root.left.isNullLeaf) {
-                _deleteOneChild(root, rootReference);
+                deleteFnOneChild(root, self.rootReference);
             } else {
                 //otherwise look for the inorder successor in right subtree.
                 //replace inorder successor data at root data.
-                //then _delete inorder successor which should have 0 or 1 not null child.
+                //then deleteFn inorder successor which should have 0 or 1 not null child.
                 var inorderSuccessor = findSmallest(root.right);
                 root.data = inorderSuccessor.data;
-                _delete(root.right, inorderSuccessor.data, rootReference);
+                deleteFn(root.right, inorderSuccessor.data, self.rootReference);
             }
         }
-        //search for the node to be _deleted.
+        //search for the node to be deleteFnd.
         if(root.data < data) {
-            _delete(root.right, data, rootReference);
+            deleteFn(root.right, data, self.rootReference);
         } else {
-            _delete(root.left, data, rootReference);
+            deleteFn(root.left, data, self.rootReference);
         }
     }
 
@@ -343,20 +331,20 @@ function RedBlackTree(){
     }
 
     /**
-     * Assumption that node to be _deleted has either 0 or 1 non leaf child
+     * Assumption that node to be deleteFnd has either 0 or 1 non leaf child
      */
-    function _deleteOneChild(nodeToBeDelete, rootReference) {
+    function deleteFnOneChild(nodeToBeDelete, rootReference) {
         var child = nodeToBeDelete.right.isNullLeaf ? nodeToBeDelete.left : nodeToBeDelete.right;
         //replace node with either one not null child if it exists or null child.
-        replaceNode(nodeToBeDelete, child, rootReference);
-        //if the node to be _deleted is BLACK. See if it has one red child.
+        replaceNode(nodeToBeDelete, child, self.rootReference);
+        //if the node to be deleteFnd is BLACK. See if it has one red child.
         if(nodeToBeDelete.color == Color.BLACK) {
             //if it has one red child then change color of that child to be Black.
             if(child.color == Color.RED) {
                 child.color = Color.BLACK;
             } else {
                 //otherwise we have double black situation.
-                _deleteCase1(child, rootReference);
+                deleteFnCase1(child, self.rootReference);
             }
         }
     }
@@ -366,12 +354,12 @@ function RedBlackTree(){
      * If double black node becomes root then we are done. Turning it into
      * single black node just reduces one black in every path.
      */
-    function _deleteCase1(doubleBlackNode, rootReference) {
+    function deleteFnCase1(doubleBlackNode, rootReference) {
         if(doubleBlackNode.parent == null) {
-            rootReference.set(doubleBlackNode);
+            self.rootReference = doubleBlackNode;
             return;
         }
-        _deleteCase2(doubleBlackNode, rootReference);
+        deleteFnCase2(doubleBlackNode, self.rootReference);
     }
 
     /**
@@ -379,8 +367,8 @@ function RedBlackTree(){
      * so that sibling becomes black. Double black node is still double black so we need
      * further processing.
      */
-    function _deleteCase2(doubleBlackNode, rootReference) {
-        var siblingNode = findSiblingNode(doubleBlackNode).get();
+    function deleteFnCase2(doubleBlackNode, rootReference) {
+        var siblingNode = findSiblingNode(doubleBlackNode);
         if(siblingNode.color == Color.RED) {
             if(isLeftChild(siblingNode)) {
                 rightRotate(siblingNode, true);
@@ -388,10 +376,10 @@ function RedBlackTree(){
                 leftRotate(siblingNode, true);
             }
             if(siblingNode.parent == null) {
-                rootReference.set(siblingNode);
+                self.rootReference = siblingNode;
             }
         }
-        _deleteCase3(doubleBlackNode, rootReference);
+        deleteFnCase3(doubleBlackNode, self.rootReference);
     }
 
     /**
@@ -399,16 +387,16 @@ function RedBlackTree(){
      * This reduces black node for both the paths from parent. Now parent is new double black
      * node which needs further processing by going back to case1.
      */
-    function _deleteCase3(doubleBlackNode, rootReference) {
+    function deleteFnCase3(doubleBlackNode, rootReference) {
 
-        var siblingNode = findSiblingNode(doubleBlackNode).get();
+        var siblingNode = findSiblingNode(doubleBlackNode);
 
         if(doubleBlackNode.parent.color == Color.BLACK && siblingNode.color == Color.BLACK && siblingNode.left.color == Color.BLACK
                 && siblingNode.right.color == Color.BLACK) {
             siblingNode.color = Color.RED;
-            _deleteCase1(doubleBlackNode.parent, rootReference);
+            deleteFnCase1(doubleBlackNode.parent, self.rootReference);
         } else {
-            _deleteCase4(doubleBlackNode, rootReference);
+            deleteFnCase4(doubleBlackNode, self.rootReference);
         }
     }
 
@@ -417,25 +405,25 @@ function RedBlackTree(){
      * and parent. This increases one black node on double black node path but does not affect black node count on
      * sibling path. We are done if we hit this situation.
      */
-    function _deleteCase4(doubleBlackNode, rootReference) {
-        var siblingNode = findSiblingNode(doubleBlackNode).get();
+    function deleteFnCase4(doubleBlackNode, rootReference) {
+        var siblingNode = findSiblingNode(doubleBlackNode);
         if(doubleBlackNode.parent.color == Color.RED && siblingNode.color == Color.BLACK && siblingNode.left.color == Color.BLACK
         && siblingNode.right.color == Color.BLACK) {
             siblingNode.color = Color.RED;
             doubleBlackNode.parent.color = Color.BLACK;
             return;
         } else {
-            _deleteCase5(doubleBlackNode, rootReference);
+            deleteFnCase5(doubleBlackNode, self.rootReference);
         }
     }
 
     /**
      * If sibling is black, double black node is left child of its parent, siblings right child is black
      * and sibling's left child is red then do a right rotation at siblings left child and swap colors.
-     * This converts it to _delete case6. It will also have a mirror case.
+     * This converts it to deleteFn case6. It will also have a mirror case.
      */
-    function _deleteCase5(doubleBlackNode, rootReference) {
-        var siblingNode = findSiblingNode(doubleBlackNode).get();
+    function deleteFnCase5(doubleBlackNode, rootReference) {
+        var siblingNode = findSiblingNode(doubleBlackNode);
         if(siblingNode.color == Color.BLACK) {
             if (isLeftChild(doubleBlackNode) && siblingNode.right.color == Color.BLACK && siblingNode.left.color == Color.RED) {
                 rightRotate(siblingNode.left, true);
@@ -443,7 +431,7 @@ function RedBlackTree(){
                 leftRotate(siblingNode.right, true);
             }
         }
-        _deleteCase6(doubleBlackNode, rootReference);
+        deleteFnCase6(doubleBlackNode, self.rootReference);
     }
 
     /**
@@ -452,8 +440,8 @@ function RedBlackTree(){
      * left rotation at sibling without any further change in color. This removes double black and we are done. This
      * also has a mirror condition.
      */
-    function _deleteCase6( doubleBlackNode, rootReference) {
-        var siblingNode = findSiblingNode(doubleBlackNode).get();
+    function deleteFnCase6( doubleBlackNode, rootReference) {
+        var siblingNode = findSiblingNode(doubleBlackNode);
         siblingNode.color = siblingNode.parent.color;
         siblingNode.parent.color = Color.BLACK;
         if(isLeftChild(doubleBlackNode)) {
@@ -464,14 +452,14 @@ function RedBlackTree(){
             rightRotate(siblingNode, false);
         }
         if(siblingNode.parent == null) {
-            rootReference.set(siblingNode);
+            self.rootReference = siblingNode;
         }
     }
 
     function replaceNode(root, child, rootReference) {
         child.parent = root.parent;
         if(root.parent == null) {
-            rootReference.set(child);
+            self.rootReference = child;
         }
         else {
             if(isLeftChild(root)) {
@@ -481,6 +469,18 @@ function RedBlackTree(){
             }
         }
     }
+
+    function inOrder(node){
+        if(node){
+            inOrder(node.left);
+            // console.log(node.data);
+            if(!node.isNullLeaf){
+                console.log(node.data);
+            }
+
+            inOrder(node.right);
+        }
+    };
 
     function printRedBlackTree(root, space) {
         if(root == null || root.isNullLeaf) {
@@ -512,11 +512,11 @@ function RedBlackTree(){
         }
 
         if(root.left == null && root.right == null) {
-            if(blackCount.get() == 0) {
-                blackCount.set(currentCount);
+            if(blackCount == 0) {
+                blackCount = currentCount;
                 return true;
             } else {
-                return currentCount == blackCount.get();
+                return currentCount == blackCount;
             }
         }
         return checkBlackNodesCount(root.left, blackCount, currentCount) && checkBlackNodesCount(root.right, blackCount, currentCount);
@@ -550,43 +550,45 @@ root = redBlackTree.insert(root, 32);
 root = redBlackTree.insert(root, 26);
 root = redBlackTree.insert(root, 35);
 root = redBlackTree.insert(root, 19);
-redBlackTree.printRedBlackTree(root);
+redBlackTree.inOrder(root);
 
-// root = redBlackTree._delete(root, 50);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 40);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, -10);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 15);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 17);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 24);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 21);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 32);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 26);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 19);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 25);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 17);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, -15);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 20);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 35);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 34);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 30);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 28);
-// console.log(redBlackTree.validateRedBlackTree(root));
-// root = redBlackTree._delete(root, 10);
-// console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 50);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 40);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, -10);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 15);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 17);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 24);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 21);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 32);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 26);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 19);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 25);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 17);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, -15);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 20);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 35);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 34);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 30);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 28);
+console.log(redBlackTree.validateRedBlackTree(root));
+root = redBlackTree._deleteFn(root, 10);
+console.log(redBlackTree.validateRedBlackTree(root));
+
+
