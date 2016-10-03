@@ -1,7 +1,6 @@
 <?php
 
 class Builder{
-    
     var $html = "";
     
     public function label($field){
@@ -16,9 +15,7 @@ class Builder{
     
     public function build(){
         echo "<form>\n" . $this->html . "</form>";
-    }
-    
-    
+    } 
 }
 
 function form_for($resource, $fn){
@@ -26,8 +23,6 @@ function form_for($resource, $fn){
     $fn($builder);
     $builder->build();
 }
-
-
 
 form_for(1, function(&$builder){
     $builder->label('name');
@@ -39,8 +34,6 @@ form_for(1, function(&$builder){
     $builder->label('address');
     $builder->text_field('address');
 });
-
-
 
 /*
 OUTPUT:
