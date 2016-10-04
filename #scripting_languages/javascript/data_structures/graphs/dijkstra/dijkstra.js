@@ -39,6 +39,10 @@ function Graph(size){
 
         for(var count = 0; count < self.size; count++){
 
+            // src -> is the fixed node, from where we want to know the distances of other nodes.
+            // u -> is the currentNode being processed, its the src only in the first iteration.
+            // v -> is the neighborForCurrentNode 
+
           
             // u is always equal to src in first iteration.
             var u = getNodeWithSmallestDist();
