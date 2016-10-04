@@ -1,6 +1,7 @@
 # SSH
 
 ```bash
+# ssh is used to login into another machine.
 # ssh <user>@<machine_or_IP>
 ssh brian@computer.com
 ssh brianspinos777@98.247.120.193
