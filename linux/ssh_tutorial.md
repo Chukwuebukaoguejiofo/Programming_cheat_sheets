@@ -46,15 +46,20 @@ $ cat id_rsa.pub | pbcopy
 
 
 # paste contents of your public keys into this file, on the server you want to access:
-# each pub key should go into a separate line
+# each .pub key should go into a separate line
+# this is basically a list of 'users' that can access the machine.
 ~/.ssh/authorized_keys
+
+# this is basically a list of 'machines' that can access your computer ?
+~/.ssh/known_hosts
 
 
 
 # P.S.: you private key stays on your computer, 
-# and the public key goes in the computer you want to access, in the ~/.ssh/authorized_keys file.
+# and your public key goes in the computer you want to access, in the ~/.ssh/authorized_keys file.
 
-# The known_hosts file lets the client authenticate the server, to check that it isn't connecting to an impersonator. 
-# The authorized_keys file lets the server authenticate the user.
+# The ~/.ssh/known_hosts file lets the client authenticate the server, 
+# to check that it isn't connecting to an impersonator. 
+# The ~/.ssh/authorized_keys file lets the server authenticate the user.
 
 ```
