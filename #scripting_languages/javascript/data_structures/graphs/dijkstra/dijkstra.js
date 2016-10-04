@@ -38,6 +38,9 @@ function Graph(size){
         self.dist[src] = 0;
 
         for(var count = 0; count < self.size; count++){
+
+          
+            // u is always equal to src in first iteration.
             var u = getNodeWithSmallestDist();
 
             self.visited[u] = true;
@@ -125,5 +128,4 @@ graph.addEdge(7,8, 100);
 
 graph.dijkstra(0);
 graph.srcToNode(0); // 0 -> 6 -> 7 -> 8
-
 
