@@ -22,6 +22,9 @@ $ exit
 
 # http://sshkeychain.sourceforge.net/mirrors/SSH-with-Keys-HOWTO/SSH-with-Keys-HOWTO-4.html
 
+# The public key can decrypt what was encrypted by the private key and,
+# the private key can decrypt what was encrypted by the public key.
+
 
 # public key and private key (I guess you can change their names)
 # id_rsa - that is you password/file
