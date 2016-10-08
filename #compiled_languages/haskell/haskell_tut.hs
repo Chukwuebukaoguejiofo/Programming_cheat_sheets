@@ -38,6 +38,22 @@ isOdd n
 
 main = do
     print (isOdd 2)
+    
+-- ==================================================================== functions as parameters
+
+multiplyBy2 :: Int -> Int
+multiplyBy2 x = x * 2
+
+-- double10 is a function that takes:
+-- (function that takes an Int and returns an Int ) and returns an Int
+double10 :: (Int -> Int) -> Int 
+
+-- function implementation:
+double10 func = func 10 -- the '=' sign means: 'return' in haskell 
+
+
+main = do
+    print (double10 multiplyBy2)
 
 -- ====================================================================  custom data types
 data Person = Person { 
