@@ -21,14 +21,14 @@ main = putStrLn myMessage -- Hello World
 -- ==================================================================== functions
 addMe :: Int -> Int -> Int -- declaration not necessary
 addMe x y = x + y -- you can use any letters
-result1 = print (addMe 1 3)
-result2 = print (1 `addMe` 3) -- this also works
+result1 = print(addMe 1 3)
+result2 = print(1 `addMe` 3) -- this also works
 
 main = do
     result1 -- 4
     result2 -- 4
-    print (addMe 1 3) -- 4
-    print (1 `addMe` 3) -- 4
+    print(addMe 1 3) -- 4
+    print(1 `addMe` 3) -- 4
 
 -- ==================================================================== If statements
 isOdd :: Int -> Bool
@@ -37,7 +37,7 @@ isOdd n
     | otherwise = True -- "else return true"
 
 main = do
-    print (isOdd 2)
+    print(isOdd 2)
     
 -- ==================================================================== functions as parameters
 
@@ -51,9 +51,16 @@ double10 :: (Int -> Int) -> Int
 -- function implementation:
 double10 func = func 10 -- the '=' sign means: 'return' in haskell 
 
+main = do
+    print(double10 multiplyBy2)
+    
+-- ==================================================================== anonymous functions (lambdas)
+-- double the elements in the array, and return a new array
+-- '\x' is the anonymous functions
+foo = map (\x -> x * 2) [1..10]
 
 main = do
-    print (double10 multiplyBy2)
+    print(foo) -- [2,4,6,8,10,12,14,16,18,20]
 
 -- ====================================================================  custom data types
 data Person = Person { 
@@ -71,11 +78,11 @@ brian = Person {name = "Brian Spinos", address = "123 Foo St", age = 27}
 ana = Person {name = "Ana Claudia", address = "123 Foo St", age = 22}
 
 -- ------- assigning a value to a variable (constant)
-brianAge = print (getAge brian)
+brianAge = print(getAge brian)
 
 -- ------- the main function
 main = do
-    print brian  -- Person {name = "Brian Spinos", address = "123 Foo St", age = 27}
+    print(brian)  -- Person {name = "Brian Spinos", address = "123 Foo St", age = 27}
     brianAge -- 27
 
 -- ====================================================================  Enums ?
@@ -88,7 +95,7 @@ say Red = "You are Red!"
 say Blue = "You are Blue!"
 say Green =  "You are Green!"
 
-main = print (say Red) -- "You are Red!"
+main = print(say Red) -- "You are Red!"
 
 -- ==================================================================== 
 sumOfValues = sum [1..3]
