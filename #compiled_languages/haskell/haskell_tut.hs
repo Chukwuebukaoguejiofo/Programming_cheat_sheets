@@ -30,6 +30,15 @@ main = do
     print (addMe 1 3) -- 4
     print (1 `addMe` 3) -- 4
 
+-- ==================================================================== If statements
+isOdd :: Int -> Bool
+isOdd n
+    | n `mod` 2 == 0 = False -- "if n % 2 == 0 return false"
+    | otherwise = True -- "else return true"
+
+main = do
+    print (isOdd 2)
+
 -- ====================================================================  custom data types
 data Person = Person { 
     name :: String,
