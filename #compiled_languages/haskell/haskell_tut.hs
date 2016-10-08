@@ -56,7 +56,7 @@ main = do
     
 -- ==================================================================== anonymous functions (lambdas)
 -- double the elements in the array, and return a new array
--- '\x' is the anonymous functions
+-- '(\x -> x * 2)' is an anonymous functions that takes x as an argument and multiplies it by 2.
 foo = map (\x -> x * 2) [1..10]
 
 main = do
