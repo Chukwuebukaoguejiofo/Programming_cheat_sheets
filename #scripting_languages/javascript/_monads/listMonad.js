@@ -3,26 +3,25 @@
  * This is an example of the 'List' Monad.
  */
 function ListMonad(list){
-    var self = this;
-
-    var _list = list;
+    var self = this,
+        _list = list;
 
     self.bind = bind;
     self.extract = extract;
-
 
     /**
      * a callback that is applied for each element in the list
      */
     function bind(callback){
         var newList = []
-        _list.forEach(function(val){
 
+        _list.forEach(function(val){
             // eliminate falsy values
             if(val){
                 newList.push(callback(val));
             }
         });
+        
         return new ListMonad(newList);
     }
 
@@ -42,18 +41,16 @@ function List(list){
 }
 
 //----------------------------------
+function double(val){
+    return val * 2;
+}
 
+function plusOneHundred(val){
+    return val + 100;
+}
 
 List([2, 4, 'foo', 'bar', null, undefined, NaN])
-.bind(function(val){ 
-    return val * 2;
-})
-.bind(function(val){ 
-    return val + 100;
-})
+.bind(double)
+.bind(plusOneHundred)
 .extract(); // [104, 108]
-
-
-
-
 
