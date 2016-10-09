@@ -43,8 +43,6 @@ section .text
         mov rdx, foo_length
         syscall ; call the kernel
 
-
-
         ; exit my program
         mov rax, SYSCALL_EXIT
         mov rdi, 0
@@ -56,7 +54,6 @@ section .text
 ; rdx: length of output?
 ; rax: what to do (exit, read, write)
 ; rdi: where to write to, like stdout ?
-
 
 
 ; rax - temporary register; when we call a syscal, rax must contain syscall number ?
