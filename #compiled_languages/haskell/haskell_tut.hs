@@ -29,7 +29,12 @@ main = do
     result2 -- 4
     print(addMe 1 3) -- 4
     print(1 `addMe` 3) -- 4
+    
+-- ==================================================================== function with parenthesis
+foo x y z = x + y + z
 
+main = do
+    print(foo 5 (foo 5 5 5) 5) -- 25
 -- ==================================================================== If statements
 isOdd :: Int -> Bool
 isOdd n
