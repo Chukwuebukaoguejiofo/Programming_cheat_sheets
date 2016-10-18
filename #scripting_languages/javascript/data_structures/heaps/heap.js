@@ -54,7 +54,7 @@ function Heap(){
         // check if there should be children
         // if its a leaf, there is no children
         if(self.isLeaf(i)){
-            console.log('array[' + i + '] -> ' + self.array[i] + ' is leaf');
+            //console.log('array[' + i + '] -> ' + self.array[i] + ' is leaf');
             return;
         }
 
