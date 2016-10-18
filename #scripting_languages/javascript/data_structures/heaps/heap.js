@@ -1,136 +1,132 @@
 // heap
 
 function Heap(){
-	var self = this;
+    var self = this;
 
-	self.size = 0;
-	self.array = [];
-	self.parentIndex = parentIndex;
-	self.rightChildIndex = rightChildIndex;
-	self.leftChildIndex = leftChildIndex;
-	self.isLeaf = isLeaf;
-	self.isIndexInBounds = isIndexInBounds;
-	self.siftUp = siftUp;
-	self.siftDown = siftDown;
-	self.push = push;
-	self.pop = pop;
-	self.peek = peek;
+    self.size = 0;
+    self.array = [];
+    self.parentIndex = parentIndex;
+    self.rightChildIndex = rightChildIndex;
+    self.leftChildIndex = leftChildIndex;
+    self.isLeaf = isLeaf;
+    self.isIndexInBounds = isIndexInBounds;
+    self.siftUp = siftUp;
+    self.siftDown = siftDown;
+    self.push = push;
+    self.pop = pop;
+    self.peek = peek;
 
-	function parentIndex(i){
-		return Math.floor((i - 1) / 2);
-	}
+    function parentIndex(i){
+        return Math.floor((i - 1) / 2);
+    }
 
-	function rightChildIndex(i){
-		return i * 2 + 2;
-	}
+    function rightChildIndex(i){
+        return i * 2 + 2;
+    }
 
-	function leftChildIndex(i){
-		return i * 2 + 1;
-	}
+    function leftChildIndex(i){
+        return i * 2 + 1;
+    }
 
-	function isLeaf(i){
-		return i >= (Math.floor(self.size / 2));
-	}
+    function isLeaf(i){
+        return i >= Math.floor(self.size / 2);
+    }
 
-	function isIndexInBounds(i){
-		return 0 <= i && i <= self.size;
-	}
+    function isIndexInBounds(i){
+        return 0 <= i && i < self.size; // there was a bug: return 0 <= i && i <= self.size;
+    }
 
-	function siftUp(i){
-		pIndex = self.parentIndex(i);
+    function siftUp(i){
+        pIndex = self.parentIndex(i);
 
-		if( self.isIndexInBounds(pIndex) && self.array[i] < self.array[pIndex] ){
-			// swap
-			var temp = self.array[i];
-			self.array[i] = self.array[pIndex];
-			self.array[pIndex] = temp;
+        if( self.isIndexInBounds(pIndex) && self.array[i] < self.array[pIndex] ){
+            // swap
+            var temp = self.array[i];
+            self.array[i] = self.array[pIndex];
+            self.array[pIndex] = temp;
 
-			self.siftUp(pIndex);
-		} 
-	}
+            self.siftUp(pIndex);
+        } 
+    }
 
-	function siftDown(i){
+    function siftDown(i){
 
-		if(self.isLeaf(i)){
-			return;
-		}
+        // check if there should be children
+        // if its a leaf, there is no children
+        if(self.isLeaf(i)){
+            console.log('array[' + i + '] -> ' + self.array[i] + ' is leaf');
+            return;
+        }
 
-		rightChildIndex = self.rightChildIndex(i);
-		leftChildIndex = self.leftChildIndex(i);
+        var rightChildIndex = self.rightChildIndex(i);
+        var leftChildIndex = self.leftChildIndex(i);
+        var smallest = leftChildIndex;
 
-		if( self.isIndexInBounds(rightChildIndex) ){
-			if(self.array[leftChildIndex] < self.array[rightChildIndex]){
-				if(self.array[leftChildIndex] < self.array[i]){
-					// swap
-					var temp = self.array[leftChildIndex];
-					self.array[leftChildIndex] = self.array[i];
-					self.array[i] = temp;
+        // check if there is a right child
+        if( self.isIndexInBounds(rightChildIndex) &&  self.array[rightChildIndex] <  self.array[leftChildIndex]){
+            smallest = rightChildIndex;
+        }   
 
-					self.siftDown(leftChildIndex);
-				}
-			}else{ // right child value is smaller
-				if(self.array[rightChildIndex] < self.array[i]){
-					// swap
-					var temp = self.array[rightChildIndex];
-					self.array[rightChildIndex] = self.array[i];
-					self.array[i] = temp;
+        if(self.array[i] > self.array[smallest]){
+            // swap
+            var temp = self.array[smallest];
+            self.array[smallest] = self.array[i];
+            self.array[i] = temp;
 
-					self.siftDown(rightChildIndex);
-				}
-			}
-		}
+            self.siftDown(smallest);
+        }
+    }
 
-		if( self.isIndexInBounds(leftChildIndex) ){
-			if(self.array[leftChildIndex] < self.array[i]){
-				// swap
-				var temp = self.array[leftChildIndex];
-				self.array[leftChildIndex] = self.array[i];
-				self.array[i] = temp;
+    function push(data){
+        // add to last index, siftUp
 
-				self.siftDown(leftChildIndex);
-			}
-		}
-	}
+        //console.log('pushing ' + data + '...');
 
-	function push(data){
-		// add to last index, siftUp
+        var lastIndex = self.size;
+        self.array[lastIndex] = data;
+        self.siftUp(lastIndex);
+        self.size++;
 
-		var nextIndex = self.size;
-		self.array[nextIndex] = data;
+        //console.log(self.array);
+    }
 
-		self.siftUp(self.size);
+    function pop(){
+        // swap first and last, size--, siftDown top, return the pop
 
-		self.size++;
+        //console.log('poping...');
+        
+        if(self.size == 0){
+            return;
+        }
 
-	}
+        var firstIndex = 0;
+        var lastIndex = self.size - 1;
+        var firstVal = self.array[firstIndex];
 
-	function pop(){
-		// swap first and last, size--, siftDown top, return the pop
+        // swap
+        var temp = self.array[firstIndex];
+        self.array[firstIndex] = self.array[lastIndex];
+        self.array[lastIndex] = temp;
+        self.array.pop();
+        self.siftDown(firstIndex);
+        self.size--; // this is the BUG ? this line should have gone before `self.siftDown(firstIndex);` not after...
+        
+        //console.log(self.array);
 
-		if(self.size == 0){
-			return;
-		}
+        return firstVal;
+    }
+    
+    function peek(){
+        return self.array[0];
+    }
 
-		var firstVal = self.array[0];
-		var lastIndex = self.size - 1;
+    function increaseKey(i){
+        //...
+    }
 
-		// swap
-		var temp = self.array[0];
-		self.array[0] = self.array[lastIndex];
-		self.array[lastIndex] = temp;
-
-		self.array.pop();
-
-		self.siftDown(0);
-
-		self.size--;
-
-		return firstVal;
-	}
-	
-	function peek(){
-		return self.array[0];
-	}
+    function decreaseKey(i){
+        //...
+    }
 }
 
 var heap = new Heap();
