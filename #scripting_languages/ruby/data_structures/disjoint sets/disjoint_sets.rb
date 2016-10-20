@@ -1,3 +1,7 @@
+#
+# Disjoint sets (also called union-find algorithm)
+# all elements start off with a -1 value (which you can think of as the number of elements a set has!)
+#
 class DisjointSet
     def initialize(size)
         @size = size
