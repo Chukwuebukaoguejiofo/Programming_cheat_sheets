@@ -16,6 +16,10 @@ function Graph(size){
     self.size = size;
     for(var i = 0; i < size; i++){
       self.array[i] = [];
+
+      for(var j = 0; j < size; j++){
+        self.array[i][j] = null;
+      }
     }
   }
 
