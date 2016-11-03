@@ -35,7 +35,7 @@ class HashTable
     def hashFunction(key)
         hashval = 0
         i = 0
-        uLONG_MAX = 4294967295
+        uLONG_MAX = 4611686018427387903 #4294967295
 
         # Convert our string to an integer 
         while(hashval < uLONG_MAX && i < key.size)
