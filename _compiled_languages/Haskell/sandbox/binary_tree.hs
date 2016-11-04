@@ -1,3 +1,5 @@
+-- http://learnyouahaskell.com/making-our-own-types-and-typeclasses (close to the middle of the page)
+
 data Tree a = 
     EmptyTree | Node a (Tree a) (Tree a) 
     deriving (Show, Read, Eq)  
