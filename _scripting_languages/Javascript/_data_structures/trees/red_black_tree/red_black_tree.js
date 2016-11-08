@@ -1,5 +1,8 @@
 // http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html
 
+// a working and tested red black tree!
+
+
 var RED = 0;
 var BLACK = 1;
 
