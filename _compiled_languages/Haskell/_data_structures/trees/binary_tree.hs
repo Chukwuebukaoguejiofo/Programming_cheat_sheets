@@ -1,32 +1,34 @@
--- Haskell binary tree (comments may not be correct...)
+-- Haskell binary tree
 
 -- functions need to start with lower-case
 -- dont use tabs
 -- be carefull with indentation
 
-data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)  
+data Tree a = EmptyNode | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)  
 
 
-createNode :: a -> Tree a  -- pass a value and returns a tree
-createNode value = Node value EmptyTree EmptyTree  -- node creation! 
+createNode :: foo -> Tree foo  -- pass a value and returns a tree with that value
+createNode value = Node value EmptyNode EmptyNode  -- node creation! 
   
-treeInsert :: (Ord a) => a -> Tree a -> Tree a  -- pass a value and a tree
-treeInsert value EmptyTree = createNode value  -- if you pass a value and an 'empty tree' -> call createNode function
-treeInsert value (Node a left right)   -- if you pass a value and a full tree, do the following:
-    | value == a = Node value left right    -- if the value == the value of the tree
+treeInsert :: (Ord foo) => foo -> Tree foo -> Tree foo  -- pass a value and a tree, and it returns a tree
+treeInsert value EmptyNode = createNode value  -- if you pass a value and an EmptyNode, then call createNode function
+treeInsert value (Node a left right)   -- if you pass a value and a Node, do the following: -- here you have access to the object's fields! ('a', 'left', 'right')
+    | value == a = Node value left right    -- if the value == the value of the Node passed in, then return a Node as root?
     | value < a  = Node a (treeInsert value left) right  -- if value is less:  return the root, but recurse on the root's left value
     | value > a  = Node a left (treeInsert value right)  -- if value is greater:  return the root, but recurse on the root's right value
     
-treeElem :: (Ord a) => a -> Tree a -> Bool  -- pass in a value and a tree
-treeElem value EmptyTree = False            -- if you pass a value and an empty tree, return False
-treeElem value (Node a left right)          -- if you pass in a value and a tree, do the following:
+isValInTree :: (Ord foo) => foo -> Tree foo -> Bool  -- pass in a value and a tree, returns a boolean
+isValInTree value EmptyNode = False            -- if you pass a value and an EmptyNode, return False
+isValInTree value (Node a left right)          -- if you pass in a value and a Node, do the following: -- here you have access to the object's fields! ('a', 'left', 'right')
     | value == a = True                           -- if value == value of the root, return true
-    | value < a  = treeElem value left            -- if value < root value, recurse with left sub tree
-    | value > a  = treeElem value right           -- if value > root value, recurse with right sub tree
+    | value < a  = isValInTree value left            -- if value < root value, recurse with left Node
+    | value > a  = isValInTree value right           -- if value > root value, recurse with right Node
     
 
 
 main = do
     let nums = [8,6,4,1,7,3,5]  
-    let numsTree = foldr treeInsert EmptyTree nums  
-    print numsTree 
+    let numsTree = foldr treeInsert EmptyNode nums  
+    print numsTree -- Node 5 (Node 3 (Node 1 EmptyNode EmptyNode) (Node 4 EmptyNode EmptyNode)) (Node 7 (Node 6 EmptyNode EmptyNode) (Node 8 EmptyNode EmptyNode))
+
+    print(isValInTree 4 numsTree) -- True
