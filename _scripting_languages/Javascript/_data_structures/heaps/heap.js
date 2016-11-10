@@ -1,10 +1,19 @@
 // heap
 
 function Heap(){
+    
+    //
+    // public
+    //
     var self = this;
 
     self.size = 0;
     self.array = [];
+    
+    //
+    // public functions
+    //
+    
     self.parentIndex = parentIndex;
     self.rightChildIndex = rightChildIndex;
     self.leftChildIndex = leftChildIndex;
@@ -15,6 +24,10 @@ function Heap(){
     self.push = push;
     self.pop = pop;
     self.peek = peek;
+    
+    //
+    // private
+    //
 
     function parentIndex(i){
         return Math.floor((i - 1) / 2);
@@ -128,6 +141,10 @@ function Heap(){
         //...
     }
 }
+
+//
+// API
+//
 
 var heap = new Heap();
 
