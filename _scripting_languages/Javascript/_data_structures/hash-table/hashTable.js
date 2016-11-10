@@ -12,6 +12,7 @@ function HashTable(size){
     //
     // public
     //
+    
     var self = this;
     self.size = size;
     self.table = [];
