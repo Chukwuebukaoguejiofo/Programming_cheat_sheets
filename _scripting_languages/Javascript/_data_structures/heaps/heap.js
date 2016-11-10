@@ -5,8 +5,8 @@ function Heap(){
     //
     // public
     //
+    
     var self = this;
-
     self.size = 0;
     self.array = [];
     
