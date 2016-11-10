@@ -3,6 +3,11 @@
  * http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
  */
 function Graph(size){
+    
+    //
+    // public
+    //
+    
     var self = this;
     self.size = size;
     self.graph = [];
@@ -17,7 +22,16 @@ function Graph(size){
     self.addEdge = addEdge;
     self.displayGraph = displayGraph;
     self.init = init;
+    
+    //
+    // initialization
+    //
+    
     self.init();
+    
+    //
+    // private
+    //
 
     function init(){
         for(var i = 0; i < self.size; i++){
@@ -117,6 +131,10 @@ function Graph(size){
         console.log(graph.graph);
     }
 }
+
+//
+// API
+//
 
 var graph = new Graph(9);
 
