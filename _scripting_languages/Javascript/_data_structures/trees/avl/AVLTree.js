@@ -308,6 +308,10 @@ function AvlTree(){
 
 
 }
+
+//
+// API
+//
  
 var tree = new AvlTree();
 // var root = null;
