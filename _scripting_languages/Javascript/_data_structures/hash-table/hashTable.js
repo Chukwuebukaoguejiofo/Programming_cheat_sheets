@@ -8,15 +8,30 @@ function Entry(key, value){
 }
 
 function HashTable(size){
+    
+    //
+    // public
+    //
     var self = this;
     self.size = size;
     self.table = [];
-
-    // public
+    
+    //
+    // public functions
+    //
+    
     self.inset = inset;
     self.get = get;
+    
+    //
+    // initialization
+    //
 
     create(self.size);
+    
+    //
+    // private
+    //
 
     function create(){
         for(var i = 0; i < self.size; i++){
@@ -102,6 +117,10 @@ function HashTable(size){
     }
 }
 
+
+//
+// API
+//
 
 var ht = new HashTable(1024); // size needs to be a power of 2
 
