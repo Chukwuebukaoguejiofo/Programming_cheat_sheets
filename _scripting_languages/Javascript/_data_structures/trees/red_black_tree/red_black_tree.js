@@ -1,88 +1,113 @@
-// http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html
-
-// a working and tested red black tree!
-
-
-var RED = 0;
-var BLACK = 1;
-
 /**
- * var nil = new Node(-1); 
+ * 
  */
 function Node(key){
-    this.color = BLACK;
-    this.left = nil, 
-    this.right = nil, 
-    this.parent = nil;
+    this.color = null;
+    this.left = null, 
+    this.right = null, 
+    this.parent = null;
     this.key = key;
 }
 
 /**
- * var nil = new Node(-1); 
- */
-function NilNode(key){
-    return new Node(-1);
-}
-
-var nil = new NilNode(-1); 
-
-
-/**
- *
+ * A working and tested red black tree!
+ * http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html
  */
 function RedBlackTree(){
 
-   var self = this;
+    //
+    // public
+    //
 
-   self.printTree = printTree;
-   self.findNode = findNode;
-   self.insert = insert;
-   self.fixTree = fixTree;
-   self.rotateLeft = rotateLeft;
-   self.rotateRight = rotateRight;
-   self._deleteTree = _deleteTree;
-   self.transplant = transplant;
-   self._delete = _delete;
-   self._deleteFixup = _deleteFixup;
-   self.treeMinimum = treeMinimum;
-   self.getRoot = getRoot;
+    var self = this,
+        RED = 0,
+        BLACK = 1,
+        nullNode = createNullNode(),
+        root = nullNode;
 
-   self.print = print;
+    //
+    // public functions
+    //
 
+    self.printTree = printTree;
+    self.findNode = findNode;
+    self.insert = insert;
+    self.fixTree = fixTree;
+    self.rotateLeft = rotateLeft;
+    self.rotateRight = rotateRight;
+    self.deleteTree = deleteTree;
+    self.transplant = transplant;
+    self.remove = remove;
+    self.deleteFixup = deleteFixup;
+    self.treeMinimum = treeMinimum;
+    self.getRoot = getRoot;
+    self.print = print;
 
-   //      
+    //
+    // private functions
+    //
 
-    
-    var root = nil;
+    function message(msg){
+        console.log(msg);
+    }
+
+    function createNode(key){
+        node = new Node(key);
+
+        node.color = BLACK;
+        node.left = nullNode, 
+        node.right = nullNode, 
+        node.parent = nullNode;
+        node.key = key;
+
+        return node;
+    }
+
+    function createNullNode(){
+        node = new Node(null);
+
+        node.color = BLACK;
+        node.left = null, 
+        node.right = null, 
+        node.parent = -1;
+
+        return node;
+    }
 
     function getRoot(){
         return root;
     }
 
     function print(){
-        self.printTree(rbt.getRoot());
+        self.printTree(self.getRoot());
     }
 
     function printTree(node) {
-        if (node == nil) {
+        if (node == nullNode) {
             return;
         }
         printTree(node.left);
-        console.log(((node.color==RED)?"Color: Red ":"Color: Black ")+"Key: "+node.key+" Parent: "+node.parent.key+"\n");
+
+        console.log(
+            ((node.color == RED) ? "Color: Red " : "Color: Black " ) + 
+            "Key: " + node.key + 
+            " Parent: " + node.parent.key
+        );
+        
         printTree(node.right);
     }
 
     function findNode(nodeToFind, node) {
-        if (root == nil) {
+        if (root == nullNode) {
             return null;
         }
 
         if (nodeToFind.key < node.key) {
-            if (node.left != nil) {
+            if (node.left != nullNode) {
                 return findNode(nodeToFind, node.left);
             }
         } else if (nodeToFind.key > node.key) {
-            if (node.right != nil) {
+            if (node.right != nullNode) {
                 return findNode(nodeToFind, node.right);
             }
         } else if (nodeToFind.key == node.key) {
@@ -91,19 +116,37 @@ function RedBlackTree(){
         return null;
     }
 
-    function insert(value) {
-        node = new Node(value);
+    function insert(key) {
+
+        message("------------------------- inserting " + key + "\n");
+
+        node = createNode(key);
 
         temp = root;
-        if (root == nil) {
+
+        
+
+
+        if (root == nullNode) {
             root = node;
             node.color = BLACK;
-            node.parent = nil;
+            node.parent = nullNode;
+
+            message("Root is " + node.key);
         } else {
             node.color = RED;
             while (true) {
+
+                message("currentNode: " + temp.key);
+
+
                 if (node.key < temp.key) {
-                    if (temp.left == nil) {
+
+                    message( "    " + node.key + " < " + temp.key + " so, going left");
+                    if (temp.left == nullNode) {
+
+                        message("    found a spot in " + temp.key + "'s left");
+
                         temp.left = node;
                         node.parent = temp;
                         break;
@@ -111,7 +154,12 @@ function RedBlackTree(){
                         temp = temp.left;
                     }
                 } else if (node.key >= temp.key) {
-                    if (temp.right == nil) {
+
+                    message("    " +  node.key + " >= " + temp.key + " so, going right");
+
+                    if (temp.right == nullNode) {
+
+                        message("    found a spot in " + temp.key + "'s right");
                         temp.right = node;
                         node.parent = temp;
                         break;
@@ -127,11 +175,11 @@ function RedBlackTree(){
     //Takes as argument the newly inserted node
     function fixTree(node) {
         while (node.parent.color == RED) {
-            uncle = nil;
+            uncle = nullNode;
             if (node.parent == node.parent.parent.left) {
                 uncle = node.parent.parent.right;
 
-                if (uncle != nil && uncle.color == RED) {
+                if (uncle != nullNode && uncle.color == RED) {
                     node.parent.color = BLACK;
                     uncle.color = BLACK;
                     node.parent.parent.color = RED;
@@ -150,7 +198,7 @@ function RedBlackTree(){
                 rotateRight(node.parent.parent);
             } else {
                 uncle = node.parent.parent.left;
-                 if (uncle != nil && uncle.color == RED) {
+                 if (uncle != nullNode && uncle.color == RED) {
                     node.parent.color = BLACK;
                     uncle.color = BLACK;
                     node.parent.parent.color = RED;
@@ -173,7 +221,7 @@ function RedBlackTree(){
     }
 
     function rotateLeft(node) {
-        if (node.parent != nil) {
+        if (node.parent != nullNode) {
             if (node == node.parent.left) {
                 node.parent.left = node.right;
             } else {
@@ -181,7 +229,7 @@ function RedBlackTree(){
             }
             node.right.parent = node.parent;
             node.parent = node.right;
-            if (node.right.left != nil) {
+            if (node.right.left != nullNode) {
                 node.right.left.parent = node;
             }
             node.right = node.right.left;
@@ -192,13 +240,13 @@ function RedBlackTree(){
             right.left.parent = root;
             root.parent = right;
             right.left = root;
-            right.parent = nil;
+            right.parent = nullNode;
             root = right;
         }
     }
 
     function rotateRight(node) {
-        if (node.parent != nil) {
+        if (node.parent != nullNode) {
             if (node == node.parent.left) {
                 node.parent.left = node.left;
             } else {
@@ -207,7 +255,7 @@ function RedBlackTree(){
 
             node.left.parent = node.parent;
             node.parent = node.left;
-            if (node.left.right != nil) {
+            if (node.left.right != nullNode) {
                 node.left.right.parent = node;
             }
             node.left = node.left.right;
@@ -218,14 +266,14 @@ function RedBlackTree(){
             left.right.parent = root;
             root.parent = left;
             left.right = root;
-            left.parent = nil;
+            left.parent = nullNode;
             root = left;
         }
     }
 
     //Deletes whole tree
-    function _deleteTree(){ 
-        root = nil;
+    function deleteTree(){ 
+        root = nullNode;
     }
     
     //Deletion Code .
@@ -233,19 +281,19 @@ function RedBlackTree(){
     //This operation doesn't care about the new Node's connections
     //with previous node's left and right. The caller has to take care
     //of that.
-    function transplant(target, _with){ 
-          if(target.parent == nil){
-              root = _with;
+    function transplant(target, node2){ 
+          if(target.parent == nullNode){
+              root = node2;
           }else if(target == target.parent.left){
-              target.parent.left = _with;
+              target.parent.left = node2;
           }else
-              target.parent.right = _with;
-          _with.parent = target.parent;
+              target.parent.right = node2;
+          node2.parent = target.parent;
     }
     
-    function _delete(value){
+    function remove(key){
 
-        z = new Node(value)
+        z = new createNode(key)
 
 
         if((z = findNode(z, root))==null)return false;
@@ -253,10 +301,10 @@ function RedBlackTree(){
         var y = z; // temporary reference y
         var y_original_color = y.color;
         
-        if(z.left == nil){
+        if(z.left == nullNode){
             x = z.right;  
             transplant(z, z.right);  
-        }else if(z.right == nil){
+        }else if(z.right == nullNode){
             x = z.left;
             transplant(z, z.left); 
         }else{
@@ -276,11 +324,11 @@ function RedBlackTree(){
             y.color = z.color; 
         }
         if(y_original_color==BLACK)
-            _deleteFixup(x);  
+            deleteFixup(x);  
         return true;
     }
     
-    function _deleteFixup(x){  
+    function deleteFixup(x){  
         while(x!=root && x.color == BLACK){ 
             if(x == x.parent.left){
                 w = x.parent.right;
@@ -340,117 +388,54 @@ function RedBlackTree(){
     }
     
     function treeMinimum(subTreeRoot){  
-        while(subTreeRoot.left!=nil){
+        while(subTreeRoot.left!=nullNode){
             subTreeRoot = subTreeRoot.left;
         }
         return subTreeRoot;
     }
     
-    // function consoleUI() {
-    //     Scanner scan = new Scanner(System.in);
-    //     while (true) {
-    //         console.log("\n1.- Add items\n"
-    //                 + "2.- Delete items\n"
-    //                 + "3.- Check items\n"
-    //                 + "4.- Printtree\n"
-    //                 + "5.- Delete tree\n");
-    //         choice = scan.nextInt();
-
-    //         item;
-    //         node;
-    //         switch (choice) {
-    //             case 1:
-    //                 item = scan.nextInt();
-    //                 while (item != -999) {
-    //                     node = new Node(item);
-    //                     insert(node);
-    //                     item = scan.nextInt();
-    //                 }
-    //                 printTree(root);
-    //                 break;
-    //             case 2:
-    //                 item = scan.nextInt();
-    //                 while (item != -999) {
-    //                     node = new Node(item);
-    //                     console.log("\nDeleting item " + item);
-    //                     if (_delete(node)) {
-    //                         console.log(": _deleted!");
-    //                     } else {
-    //                         console.log(": does not exist!");
-    //                     }
-    //                     item = scan.nextInt();
-    //                 }
-    //                 console.log();
-    //                 printTree(root);
-    //                 break;
-    //             case 3:
-    //                 item = scan.nextInt();
-    //                 while (item != -999) {
-    //                     node = new Node(item);
-    //                     console.log((findNode(node, root) != null) ? "found" : "not found");
-    //                     item = scan.nextInt();
-    //                 }
-    //                 break;
-    //             case 4:
-    //                 printTree(root);
-    //                 break;
-    //             case 5:
-    //                 _deleteTree();
-    //                 console.log("Tree _deleted!");
-    //                 break;
-    //         }
-    //     }
-    // }
-    // public static function main(String[] args) {
-    //     RedBlackTree rbt = new RedBlackTree();
-    //     rbt.consoleUI();
-    // }
 }
 
-// usage
+//
+// API
+//
+
+var tree = new RedBlackTree();
+
+[8,1,7,2,6,3,5,4,9,10,11].forEach(function(n){
+    tree.insert(n);
+});
 
 
-var rbt = new RedBlackTree();
+/*
+tree.print()
 
-rbt.insert(7);
-rbt.insert(5);
-rbt.insert(6);
-rbt.insert(10);
-rbt.insert(9);
-rbt.insert(2);
-rbt.insert(3);
-rbt.insert(1);
-rbt.insert(8);
-rbt.insert(4);
-rbt.print(); // (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-
-
-/* OUTPUT: 
 Color: Black Key: 1 Parent: 2
-Color: Black Key: 2 Parent: 4
+Color: Black Key: 2 Parent: 5
 Color: Black Key: 3 Parent: 2
-Color: Black Key: 4 Parent: -1
-Color: Black Key: 5 Parent: 6
-Color: Black Key: 6 Parent: 4
-Color: Black Key: 7 Parent: 8
-Color: Red Key: 8 Parent: 6
-Color: Black Key: 9 Parent: 8
-Color: Red Key: 10 Parent: 9
+Color: Red Key: 4 Parent: 3
+Color: Black Key: 5 Parent: null
+Color: Black Key: 6 Parent: 7
+Color: Black Key: 7 Parent: 5
+Color: Black Key: 8 Parent: 9
+Color: Red Key: 9 Parent: 7
+Color: Black Key: 10 Parent: 9
+Color: Red Key: 11 Parent: 10
 */
 
 
-rbt._delete(1) // true
-rbt._delete(10) // true
-rbt.print(); // (2, 3, 4, 5, 6, 7, 8, 9)
+[3,2,1,11,10,9].forEach(function(n){
+    tree.remove(n);
+});
 
 
-/* OUTPUT: 
-Color: Black Key: 2 Parent: 3
-Color: Red Key: 3 Parent: 6
-Color: Red Key: 4 Parent: 5
-Color: Black Key: 5 Parent: 3
-Color: Black Key: 6 Parent: -1
-Color: Black Key: 7 Parent: 8
-Color: Red Key: 8 Parent: 6
-Color: Black Key: 9 Parent: 8
+/*
+tree.print()
+
+Color: Black Key: 4 Parent: 5
+Color: Red Key: 5 Parent: 7
+Color: Black Key: 6 Parent: 5
+Color: Black Key: 7 Parent: null
+Color: Black Key: 8 Parent: 7
 */
+
