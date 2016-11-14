@@ -1,45 +1,19 @@
-// singly linked list
+/** 
+ * Singly linked list
+ * http://code.tutsplus.com/articles/data-structures-with-javascript-singly-linked-list-and-doubly-linked-list--cms-23392
+ */
 
-// http://code.tutsplus.com/articles/data-structures-with-javascript-singly-linked-list-and-doubly-linked-list--cms-23392
-
-// functionality to add:
-
-// append
-// prepend
-// append at position
-// delete after
-// delete before
-// Traversing
-// Searching
-// Insertion
-// Deletion
-// Sorting
-// Merging
-
-
-// adding:  append, prepend, add_at(index), add_before(index), add_after(index)
-//          add_before(val), add_after(val)
-
-// reading:  head_val, tail_val, val_at(index), val_before(index), val_after(index)
-
-// updating: update_at(index), update_first, update_last, update_at(val)
-
-// deleting: delete_first, delete_last, delete_after(index), delete_bedore(index), delete_at
-
-
-
-
-
-
-
-
-
-
+/**
+ *
+ */
 function Node(data) {
     this.data = data;
     this.next = null;
 }
 
+/**
+ *
+ */
 function SinglyList() {
     this._length = 0;
     this.head = null;
@@ -128,11 +102,9 @@ SinglyList.prototype.remove = function(position) {
     return deletedNode;
 };
 
-
-
-
-//---------
-
+//
+// API
+//
 
 var list = new SinglyList();
 list.add(2);
