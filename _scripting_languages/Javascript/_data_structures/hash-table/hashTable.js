@@ -8,12 +8,12 @@ function Entry(key, value){
 }
 
 function HashTable(size){
-    
-    //
-    // public
-    //
-    
     var self = this;
+    
+    //
+    // public attributes
+    //
+    
     self.size = size;
     self.table = [];
     
@@ -31,7 +31,7 @@ function HashTable(size){
     create(self.size);
     
     //
-    // private
+    // private functions
     //
 
     function create(){
@@ -43,7 +43,10 @@ function HashTable(size){
     function strcmp(a, b){   
         return ( a < b ? -1 : ( a > b ? 1 : 0 ) );  
     }
-
+    
+    /**
+     *
+     */
     function hashFunction(key){
         var hashval = 0,
             i = 0,
@@ -59,11 +62,17 @@ function HashTable(size){
 
         return hashval % self.size;
     }
-
+    
+    /**
+     *
+     */
     function createEntry(key, value){
         return new Entry(key, value);
     }
-
+    
+    /**
+     *
+     */
     function inset(key, value){
         var index = hashFunction(key);
 
@@ -99,7 +108,10 @@ function HashTable(size){
             }
         }
     }
-
+    
+    /**
+     *
+     */
     function get(key){
         var index = hashFunction(key);
 
