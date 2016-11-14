@@ -1,10 +1,10 @@
 /* right rotate 
  *
- *            X
- *          /   \ 
- *	    Y	 T3
- *	  / \     
- *       T1  T2  
+ *            X                            y
+ *          /   \                        /   \ 
+ *	    Y	 T3         ->          T1    x
+ *	  / \                                /  \
+ *       T1  T2                             T2   T3
  */
 function(root){
 	// identifying nodes
@@ -21,11 +21,11 @@ function(root){
 
 /* left rotate
  *
- *             X
- *           /   \ 
- *	    T1	  Y
- *	          / \     
- *	         T2  T3  
+ *             X                            y
+ *           /   \                        /   \
+ *	    T1	  Y         ->          x       T3        
+ *	          / \                  / \                 
+ *	         T2  T3              T1   T2                
  */
 function(root){
 	// identifying nodes
