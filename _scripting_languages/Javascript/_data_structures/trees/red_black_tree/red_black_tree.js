@@ -1,5 +1,5 @@
 /**
- * 
+ * Red-Black-Tree Node
  */
 function Node(key){
     this.color = null;
@@ -14,16 +14,21 @@ function Node(key){
  * http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html
  */
 function RedBlackTree(){
+    
+    //
+    // private attributes
+    //
+    
+    var RED = 0,
+        BLACK = 1,
+        nullNode = createNullNode(),
+        root = nullNode;
 
     //
     // public
     //
 
-    var self = this,
-        RED = 0,
-        BLACK = 1,
-        nullNode = createNullNode(),
-        root = nullNode;
+    var self = this;
 
     //
     // public functions
@@ -115,38 +120,32 @@ function RedBlackTree(){
         }
         return null;
     }
-
+    
+    /**
+     * Insertion function.
+     * If the root is null, set it.
+     * visit each node, starting from the root, when you find a slot that is null, set it.
+     * 
+     */
     function insert(key) {
-
         message("------------------------- inserting " + key + "\n");
-
         node = createNode(key);
-
         temp = root;
-
-        
-
 
         if (root == nullNode) {
             root = node;
             node.color = BLACK;
             node.parent = nullNode;
-
             message("Root is " + node.key);
         } else {
             node.color = RED;
             while (true) {
-
                 message("currentNode: " + temp.key);
 
-
                 if (node.key < temp.key) {
-
                     message( "    " + node.key + " < " + temp.key + " so, going left");
                     if (temp.left == nullNode) {
-
                         message("    found a spot in " + temp.key + "'s left");
-
                         temp.left = node;
                         node.parent = temp;
                         break;
@@ -154,11 +153,8 @@ function RedBlackTree(){
                         temp = temp.left;
                     }
                 } else if (node.key >= temp.key) {
-
                     message("    " +  node.key + " >= " + temp.key + " so, going right");
-
                     if (temp.right == nullNode) {
-
                         message("    found a spot in " + temp.key + "'s right");
                         temp.right = node;
                         node.parent = temp;
@@ -172,7 +168,10 @@ function RedBlackTree(){
         }
     }
 
-    //Takes as argument the newly inserted node
+    /**
+     * Takes as argument the newly inserted node.
+     * after the insertion, this function crawls up the ancestry, looking for violations.
+     */
     function fixTree(node) {
         while (node.parent.color == RED) {
             uncle = nullNode;
@@ -219,7 +218,11 @@ function RedBlackTree(){
         }
         root.color = BLACK;
     }
-
+    
+    /**
+     * Performs a left rotation, on a node that is a root of a subtree.
+     * returns the new root of the subtree.
+     */
     function rotateLeft(node) {
         if (node.parent != nullNode) {
             if (node == node.parent.left) {
@@ -244,7 +247,11 @@ function RedBlackTree(){
             root = right;
         }
     }
-
+    
+    /**
+     * Performs a right rotation, on a node that is a root of a subtree.
+     * returns the new root of the subtree.
+     */
     function rotateRight(node) {
         if (node.parent != nullNode) {
             if (node == node.parent.left) {
@@ -271,7 +278,9 @@ function RedBlackTree(){
         }
     }
 
-    //Deletes whole tree
+    /**
+     * Deletes whole tree
+     */
     function deleteTree(){ 
         root = nullNode;
     }
@@ -291,10 +300,12 @@ function RedBlackTree(){
           node2.parent = target.parent;
     }
     
+    /**
+     *
+     *
+     */
     function remove(key){
-
         z = new createNode(key)
-
 
         if((z = findNode(z, root))==null)return false;
         var x;
@@ -328,11 +339,16 @@ function RedBlackTree(){
         return true;
     }
     
+    /**
+     * x -> node
+     * w -> Uncle
+     *
+     */
     function deleteFixup(x){  
-        while(x!=root && x.color == BLACK){ 
-            if(x == x.parent.left){
+        while(x != root && x.color == BLACK){ 
+            if(x == x.parent.left){ // if x is a left child
                 w = x.parent.right;
-                if(w.color == RED){
+                if(w.color == RED){  // if Uncle is RED
                     w.color = BLACK;
                     x.parent.color = RED;
                     rotateLeft(x.parent);
@@ -356,9 +372,9 @@ function RedBlackTree(){
                     rotateLeft(x.parent);
                     x = root;
                 }
-            }else{
+            }else{  // if x is a right child
                 w = x.parent.left;
-                if(w.color == RED){
+                if(w.color == RED){   // if Uncle is RED
                     w.color = BLACK;
                     x.parent.color = RED;
                     rotateRight(x.parent);
@@ -387,6 +403,10 @@ function RedBlackTree(){
         x.color = BLACK; 
     }
     
+    /**
+     *
+     *
+     */
     function treeMinimum(subTreeRoot){  
         while(subTreeRoot.left!=nullNode){
             subTreeRoot = subTreeRoot.left;
@@ -406,7 +426,6 @@ var tree = new RedBlackTree();
     tree.insert(n);
 });
 
-
 /*
 tree.print()
 
@@ -423,11 +442,9 @@ Color: Black Key: 10 Parent: 9
 Color: Red Key: 11 Parent: 10
 */
 
-
 [3,2,1,11,10,9].forEach(function(n){
     tree.remove(n);
 });
-
 
 /*
 tree.print()
@@ -438,4 +455,3 @@ Color: Black Key: 6 Parent: 5
 Color: Black Key: 7 Parent: null
 Color: Black Key: 8 Parent: 7
 */
-
