@@ -20,6 +20,7 @@ function AdjList(value){
     //
     // public
     //
+    
     self.head = null;
     self.tail = null;
 
@@ -51,25 +52,34 @@ function AdjList(value){
 
 function Graph(size){
     var self = this;
+    
+    //
+    // private attributes
+    //
+    
     var _size = size;
     var _array = [];
 
     //
-    // public
+    // public attributes
     //
     self.add = add;
     self.remove = remove;
     self.print = print;
+    
+    //
+    // Initialization
+    //
 
     init(size);
 
     //
-    // private
+    // private functions
     //
 
     /**
      * Constructor
-     * create an array of empty lists
+     * create an array of empty AdjLists
      */
     function init(size){
         for(var i = 0; i < _size; i++){
@@ -105,7 +115,10 @@ function Graph(size){
         prevNode.next = newNode; // prevNode.next (because the currentNode was null, so the prevNode should be valid! )
         list.tail = newNode;
     }
-
+    
+    /**
+     * 
+     */
     function remove(x, y){
         var list = _array[x],
             currentNode = list.head,
@@ -140,7 +153,10 @@ function Graph(size){
             currentNode = currentNode.next;
         }
     }
-
+    
+    /**
+     * 
+     */
     function print(){
         for(var i = 0; i < _size; i++){
             // _array[i].print();
