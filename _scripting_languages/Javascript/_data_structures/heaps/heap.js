@@ -1,12 +1,12 @@
 // heap
 
 function Heap(){
-    
-    //
-    // public
-    //
-    
     var self = this;
+    
+    //
+    // public variables
+    //
+    
     self.size = 0;
     self.array = [];
     
@@ -26,7 +26,7 @@ function Heap(){
     self.peek = peek;
     
     //
-    // private
+    // private functions
     //
 
     function parentIndex(i){
