@@ -5,19 +5,20 @@ using namespace std;
 class Person{
     public:
     
-    // attributes
-    string name;
-    int age;
-    
-    Person(string name, int age); // constructor
-    
-    // methods
-    string sayHello();
-    string sayName();
+        // constructor
+        Person(string name, int age); 
+        
+        // attributes
+        string name;
+        int age;
+   
+        // methods
+        string sayHello();
+        string sayName();
     
     private:
     
-    string password;
+        string password;
 };
 
 // constructor implementation (no return type allowed)
