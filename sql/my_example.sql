@@ -116,17 +116,20 @@ DELETE FROM users WHERE username='Alfreds Futterkiste' AND email='Maria Anders';
 
 -- --------------------------- joins
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
-FROM users INNER JOIN houses ON users.id=houses.user_id;  -- all rows have matches
+FROM users INNER JOIN houses ON users.id=houses.user_id;  -- returns only matched rows
 
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
-FROM users JOIN houses ON users.id=houses.user_id;  -- all rows have matches (same as INNER JOIN)
+FROM users JOIN houses ON users.id=houses.user_id;  -- returns only matched rows (same as INNER JOIN)
 
+-- returns all rows from from the second table (on the right side, in this case: 'houses'), 
+-- even if there is not match from the first table
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
-FROM users RIGHT JOIN houses ON users.id=houses.user_id;  -- the second table could not have matches...
+FROM users RIGHT JOIN houses ON users.id=houses.user_id;  
 
+-- returns all rows from from the first table (on the left side, in this case: 'users'), 
+-- even if there is not match from the second table
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
-FROM users LEFT JOIN houses ON users.id=houses.user_id; -- the first table could not have matches...
-
+FROM users LEFT JOIN houses ON users.id=houses.user_id; 
 
 -- --------------------------- the 'join table'
 
