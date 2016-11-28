@@ -1,5 +1,8 @@
+#
+# Person class
+#
 class Person:
-    "this is a person"
+    "this is a person class"
     personCount = 0 # class attribute
     
     def __init__(self, name, age):
@@ -13,6 +16,9 @@ class Person:
     def sayAge(self):
         print("I am " + str(self.age) + " years old.")
 
+#
+# API
+#
 
 brian = Person("Brian Spinos", 28)
 brian.sayHello()
@@ -23,3 +29,4 @@ erich.sayHello()
 erich.sayAge()
 
 print(Person.personCount) # 2
+print(Person.__doc__) # "this is a person class"
