@@ -1,56 +1,75 @@
+/**
+ * compile and run
+ * $ g++ test.cpp -o test
+ * $ ./test
+ */
 #include <iostream>
 #include <string> // string foo;
-#include <cstring> // for strcpy();
+#include <cstring> // strcpy();
 
 using namespace std;
 
-// the class definition usually goes in a *.h file
-
-
-class Person
-{
+/**
+ * the class definition usually goes in a *.h file
+ */
+class Person{
     public:
         Person(); // constructor
         ~Person(); // destructor
-        string walk();
-        void talk();
 
-        //--------------- instance variables
+        // instance variables
         char name[100];
         int age;
         string city;
         const char * address;  // c++ does not like 'char *', it needs to be a 'const char *'
+
+        // instance methods
+        string walk();
+        void talk();        
+    
     protected:
         char password[100];
+
     private:
         double length2;
-};
 
-//------------------------------------------- constructor
-Person::Person(void)  // no return type!  // the function needs to be in the declaration
-{
+}; // yes, we need a semicolon here.
+
+
+/**
+ * constructor
+ * no return type!  
+ * the function needs to be in the declaration
+ */
+Person::Person(void){
    // this->foo = 0;
    // this->bar = 0;
     cout << "A Person was created!" << endl;
 };
 
-//------------------------------------------- destructor
-Person::~Person(void)  // no return type!  // the function needs to be in the declaration
-{
+/**
+ * destructor
+ * no return type! 
+ * the function needs to be in the declaration
+ */
+Person::~Person(void){
    // this->foo = 0;
    // this->bar = 0;
     cout << "Object is being deleted" << endl;
 };
 
-//------------------------------------------- function implementation
-string Person::walk(void) // the function needs to be in the declaration
-{
+/**
+ * function implementation
+ * the function needs to be in the declaration
+ */
+string Person::walk(void){
     return "walking";
 };
 
-//------------------------------------------- main function
-int main( )
-{
+/**
+ * main function
+ */
+int main(){
     Person brian; // Declare a variable of type Person
 
     // brian.name = "brian j spinos";  //  does not work
@@ -82,9 +101,18 @@ int main( )
     cout << "erich's address is: " << erich.address <<endl;
     cout << "erich's action is: " << erich.walk() <<endl;
 
+
+    Person * dude = new Person();
+    strcpy(dude->name, "john doe");
+    dude->city = "phoenix";  // assigning a 'string' variable
+    dude->address = "123 foobar st";  // assigning a 'char *' variable
+    dude->age = 27;
+
+    cout << "dude's full name is: " << dude->name <<endl;
+    cout << "dude's age is: " << dude->age <<endl;
+    cout << "dude's city is: " << dude->city <<endl;
+    cout << "dude's address is: " << dude->address <<endl;
+    cout << "dude's action is: " << dude->walk() <<endl;
+
     return 0;
 };
-
-//------------------------------------------- compile and run
-// $ g++ test.cpp -o test
-// $ ./test
