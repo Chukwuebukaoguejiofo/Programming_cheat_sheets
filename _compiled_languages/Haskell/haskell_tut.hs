@@ -132,4 +132,38 @@ main = putStrLn "Hello World"
 
 -- ====================================================================  
     
+-- (kind of an if statement for the arguments)    
+foo :: Int -> String
+foo 1 = "you chose one!" ++ show 123 ++ show 345 ++ "hello"
+foo 2 = "you chose two!" 
+foo 3 = "you chose three!" 
+foo x = "you chose another number!"
+
+
+-- guards (like if statements)
+myGuardExample :: Int -> String
+myGuardExample x
+    | x == 1 = "you chose one!"
+    | x == 2 = "you chose two!"
+    | x == 3 = "you chose three!"
+    | otherwise = "you chose another number!"
+
+
+-- concatenation of strings and numbers
+myConcat :: String
+myConcat = "hello " ++ show 123 ++ " there!"
+
+
+-- annonymous function
+myLambda = map (\x -> x * 10) [1..3] -- [10, 20, 30] 
+
+
+-- case statement
+myCaseStatement :: Int -> String
+myCaseStatement x = case x of
+    1 -> "you picked 1"
+    2 -> "you picked 2"
+    3 -> "you picked 3"
+    _ -> "you picked another number"
+
 -- ====================================================================  
