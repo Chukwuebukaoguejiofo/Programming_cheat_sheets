@@ -4,6 +4,13 @@
 -- https://learnxinyminutes.com/docs/haskell/
 -- http://learnyouahaskell.com/making-our-own-types-and-typeclasses ???
 
+-- ==================================================================== Gotchas:
+-- in Haskell, the `=` sign is like a `return` in other languages
+-- the `::` is usially for declarations
+-- using functions as arguments, the functions is in the parenthesis! :  foo :: (Int -> Int) -> Int
+-- `show` is for displaying as a string
+-- `instance` is where we define the behaviour of type classes for our custom data types
+
 -- ==================================================================== print statement
 main = putStrLn "Hello World"
 
