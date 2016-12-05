@@ -186,3 +186,21 @@ main =  do
     print(foo myMult 4) -- 40
     
 -- ====================================================================  
+
+data Car = Car String deriving (Show, Eq)
+data Person = Person String Int Car | NoPerson deriving (Show, Eq)
+
+foo :: Person -> String
+foo (Person x y (Car z) )
+    | y == 1 = "y is one"
+    | z == "toyota" = "has toyota"
+    | otherwise = "other..."
+foo NoPerson = "no person here"
+
+main = do
+    print(foo(Person "brian" 10 (Car "toyota")))
+    print $ foo $ NoPerson
+    
+-- ====================================================================  
+
+-- ====================================================================  
