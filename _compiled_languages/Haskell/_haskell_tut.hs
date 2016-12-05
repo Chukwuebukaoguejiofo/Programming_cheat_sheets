@@ -173,4 +173,16 @@ myCaseStatement x = case x of
     3 -> "you picked 3"
     _ -> "you picked another number"
 
+-- ====================================================================  functions as parameters
+
+myMult :: Int -> Int -> Int
+myMult x y = x * y
+
+
+foo :: (Int -> Int -> Int) -> Int -> Int
+foo fn x = fn x 10
+
+main =  do
+    print(foo myMult 4) -- 40
+    
 -- ====================================================================  
