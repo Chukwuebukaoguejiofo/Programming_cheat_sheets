@@ -104,6 +104,15 @@ $ docker-compose run web rails db:create
 $ docker-compose -f docker-compose.yml ps
 $ docker-compose -f docker-compose.yml run web rails g scaffold user name lastname address phone
 ```
+### re-run your app
+```bash
+$ docker-compose up # it will run with the `docker-compose.yml` file
+```
+
+
+
+
+
 
 
 
