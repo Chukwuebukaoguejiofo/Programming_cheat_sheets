@@ -95,5 +95,9 @@ $ docker-compose up
 $ docker-compose run web rails db:create
 
 
-
+### see processes
+```bash
+$ docker-compose -f docker-compose.yml ps
+$ docker-compose -f docker-compose.yml run web rails g scaffold user name lastname address phone
+```
 
