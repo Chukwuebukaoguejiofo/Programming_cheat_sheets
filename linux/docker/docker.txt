@@ -4,3 +4,14 @@ https://docs.docker.com/docker-for-mac/
 
 # write a test container:
 $ docker run -d -p 80:80 --name webserver nginx # the go to http://localhost:80
+
+
+# Dockerfile
+FROM ruby:2.3.3
+COPY src/ /var/www/
+EXPOSE 80
+
+
+
+$ docker build -t docker-rails-test . # assuming the Dockerfile is in the current directory
+$ docker run -p 80:80 docker-rails-test
