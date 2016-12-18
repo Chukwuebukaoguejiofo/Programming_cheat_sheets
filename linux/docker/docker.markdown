@@ -103,6 +103,7 @@ $ docker-compose run web rails db:create
 
 $ docker-compose -f docker-compose.yml ps
 $ docker-compose -f docker-compose.yml run web rails g scaffold user name lastname address phone
+$ docker-compose -f docker-compose.yml run web rails db:migrate RAILS_ENV=development
 ```
 ### re-run your app
 ```bash
