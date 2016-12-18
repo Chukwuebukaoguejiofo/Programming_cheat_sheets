@@ -1,16 +1,22 @@
-install docker:
+# Docker
 
+### Install docker:
+```
 https://docs.docker.com/docker-for-mac/
+```
 
 
+### Tutorial: 
+```
+https://docs.docker.com/compose/rails/
+```
 
------------------ tutorial: https://docs.docker.com/compose/rails/
-
-# write a test container:
+### write a test container:
 $ docker run -d -p 80:80 --name webserver nginx # the go to http://localhost:80
 
 
-#------- Dockerfile
+### Dockerfile
+```
 FROM ruby:2.3.3
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /myapp
@@ -19,20 +25,23 @@ ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 ADD . /myapp
+```
 
 
-
-#------- Gemfile
+### Gemfile
+```
 source 'https://rubygems.org'
 gem 'rails', '5.0.0.1'
+```
 
-
+```
 $ touch Gemfile.lock
+```
 
 
 
-
-# docker-compose.yml
+### docker-compose.yml
+```
 version: '2'
 services:
   db:
@@ -46,23 +55,24 @@ services:
       - "3000:3000"
     depends_on:
       - db
+```
 
 
 
-
-# build the project:
+### build the project:
 $ docker-compose run web rails new . --force --database=postgresql --skip-bundle
 
-# if using linux:
+### if using linux:
 $ sudo chown -R $USER:$USER .
 
 
 
-# build again, if you changed the code:
+### build again, if you changed the code:
 $ docker-compose build
 
 
-#------- config/database.yml
+### config/database.yml
+```
 development: &default
   adapter: postgresql
   encoding: unicode
@@ -75,19 +85,15 @@ development: &default
 test:
   <<: *default
   database: myapp_test
+```
   
-  
-  
-  
- # You can now boot the app with:
+### You can now boot the app with:
 
 $ docker-compose up
   
-  # Finally, you need to create the database. In another terminal, run:
+### Finally, you need to create the database. In another terminal, run:
 $ docker-compose run web rails db:create
 
 
 
 
-$ docker build -t docker-rails-test . # assuming the Dockerfile is in the current directory
-$ docker run -p 80:80 docker-rails-test
