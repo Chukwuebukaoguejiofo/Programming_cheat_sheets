@@ -97,7 +97,13 @@ $ docker-compose run web rails db:create
 
 ### see processes
 ```bash
+# you have 'services' web and db ?
+# so you can do: $ docker-compose -f docker-compose.yml run web pwd
+# so you can do: $ docker-compose -f docker-compose.yml run db pwd
+
 $ docker-compose -f docker-compose.yml ps
 $ docker-compose -f docker-compose.yml run web rails g scaffold user name lastname address phone
 ```
+
+
 
