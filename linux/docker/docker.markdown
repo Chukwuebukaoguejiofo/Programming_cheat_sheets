@@ -111,7 +111,13 @@ $ docker-compose up # it will run with the `docker-compose.yml` file
 ```
 
 
-
+### check the environment of our container
+```bash
+$ docker-compose -f docker-compose.yml run web rails -v                              
+Rails 5.0.0.1
+$ docker-compose -f docker-compose.yml run web ruby -v 
+ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-linux]
+```
 
 
 
