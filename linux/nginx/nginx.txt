@@ -1,0 +1,2 @@
+nginx is a reverse proxy, and a web server
+you should use unicorn as a application server (nginx will sit in from of it)
