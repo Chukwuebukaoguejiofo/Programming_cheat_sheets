@@ -1,3 +1,17 @@
+### Image
+```
+An image is a blueprint
+An image is an inert, immutable, file that's essentially a snapshot of a container. 
+Images are created with the build command, and they'll produce a container when started with run. 
+Images are stored in a Docker registry such as registry.hub.docker.com
+```
+
+### Container
+```
+A container is an instance of an image
+```
+
+
 ### Images
 ```bash
 $ docker search ubuntu
