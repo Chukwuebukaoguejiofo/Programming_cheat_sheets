@@ -28,6 +28,8 @@ $ docker ps # Show running containers
 $ docker ps -a # show all containers
 $ docker start <container-id> # Restart a container
 $ docker rm <container-id> # delete container
+
+$ docker attach <container-id> # start a shell session, to exit, press CTRL + C
 ```
 
 
