@@ -4,7 +4,7 @@ DockerHub is like github, but for images, so you can create your own images!
 ```
 
 
-### Image
+### Images
 ```
 An image is a blueprint
 An image is an inert, immutable, file that's essentially a snapshot of a container. 
@@ -12,13 +12,6 @@ Images are created with the build command, and they'll produce a container when 
 Images are stored in a Docker registry such as registry.hub.docker.com
 ```
 
-### Container
-```
-A container is an instance of an image
-```
-
-
-### Images
 ```bash
 $ docker search ubuntu
 $ docker pull <image> # Download images from docker hub
@@ -32,6 +25,10 @@ $ docker run -it <my-docker-username>/<name-for-new-image> /bin/bash # start a s
 ```
 
 ### Containers
+```
+A container is an instance of an image
+```
+
 ```bash
 $ docker run <image> <command> # Create a container (boot and exit)
 $ docker run --rm  <image> <command> # Create a container (boot and exit) and also deletes it (it is a good practice!)
