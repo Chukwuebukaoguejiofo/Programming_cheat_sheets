@@ -1,3 +1,9 @@
+### https://hub.docker.com/
+```
+DockerHub is like github, but for images, so you can create your own images!
+```
+
+
 ### Image
 ```
 An image is a blueprint
