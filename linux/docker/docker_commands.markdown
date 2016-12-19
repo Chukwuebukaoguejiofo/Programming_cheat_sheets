@@ -22,6 +22,7 @@ $ docker images # List downloaded images
 ### Containers
 ```bash
 $ docker run <image> <command> # Create a container (boot and exit)
+$ docker run --rm  <image> <command> # Create a container (boot and exit) and also deletes it (it is a good practice!)
 $ docker run -it <image> sh # create a container and start a shell session
 $ docker ps # Show running containers
 $ docker ps -a # show all containers
