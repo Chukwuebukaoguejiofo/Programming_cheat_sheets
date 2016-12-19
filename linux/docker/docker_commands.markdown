@@ -52,8 +52,12 @@ $ docker attach <container-id> # start a shell session, to exit, press CTRL + C
 $ docker build -t myApp . # the '.' is to specify the location of the Dockerfile
 
 # run it!
-$ docker run -it -p 80:3000 myApp # myApp is the name we created in the 'build' command!
+# myApp is the name we created in the 'build' command!
+# in a server, use the '-d' option to run it in the background
+$ docker run -it -p 80:3000 myApp 
 
 # go to http://localhost:3000
+
+$ docker stop <container-name> # NOT IMAGE NAME
 
 ```
