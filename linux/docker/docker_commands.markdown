@@ -2,12 +2,13 @@
 ```
 DockerHub is like github, but for images, so you can create your own images!
 You can use DockerHub to download the image into you server! (so its easy to create multiple instances of your server!)
+You should work with GIT inside your container
 ```
 
 
 ### Images
 ```
-An image is a blueprint
+An image is a snapshot of a container
 An image is an inert, immutable, file that's essentially a snapshot of a container. 
 Images are created with the build command, and they'll produce a container when started with run. 
 Images are stored in a Docker registry such as registry.hub.docker.com
@@ -49,7 +50,7 @@ $ docker attach <container-id> # start a shell session, to exit, press CTRL + C
 ```bash
 # create your Dockerfile
 
-# create/build/update the image 'a system's snapshot'
+# create/build/update the image "a system's snapshot"
 $ docker build -t myApp . # the '.' is to specify the location of the Dockerfile
 
 # run it!
