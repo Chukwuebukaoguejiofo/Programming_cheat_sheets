@@ -1,6 +1,7 @@
 ### https://hub.docker.com/
 ```
 DockerHub is like github, but for images, so you can create your own images!
+You can use DockerHub to download the image into you server! (so its easy to create multiple instances of your server!)
 ```
 
 
