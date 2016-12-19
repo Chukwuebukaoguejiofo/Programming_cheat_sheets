@@ -42,3 +42,16 @@ $ docker attach <container-id> # start a shell session, to exit, press CTRL + C
 ```
 
 
+
+
+### workflow
+```bash
+# create your Dockerfile
+
+# create/build/update the image 'a system's snapshot'
+$ docker build -t myApp . # the '.' is to specify the location of the Dockerfile
+
+# run it!
+$ docker run -it -p 80:3000 myApp # myApp is the name we created in the 'build' command!
+
+```
