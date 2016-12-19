@@ -54,4 +54,6 @@ $ docker build -t myApp . # the '.' is to specify the location of the Dockerfile
 # run it!
 $ docker run -it -p 80:3000 myApp # myApp is the name we created in the 'build' command!
 
+# go to http://localhost:3000
+
 ```
