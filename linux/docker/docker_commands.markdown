@@ -24,3 +24,7 @@ $ docker ps -a # show all
 $ docker run -it <image> sh
 ```
 
+### search images
+```bash
+$ docker search ubuntu
+```
