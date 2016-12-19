@@ -1,7 +1,0 @@
-nginx is a reverse proxy, and a web server
-you should use unicorn as a application server (nginx will sit in from of it)
-
-
-difference between 'forward proxy' and 'reverse proxy':
-forward proxy: hides the identities of clients
-reverse proxy: hides the identities of servers
