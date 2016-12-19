@@ -17,6 +17,12 @@ A container is an instance of an image
 $ docker search ubuntu
 $ docker pull <image> # Download images from docker hub
 $ docker images # List downloaded images
+
+
+# create you own image, notice the '.' specifying the folder where the 'Dockerfile' is in
+$ docker build -t <my-docker-username>/<name-for-new-image>  . # example: $ docker build -t brianspinos777/my_foo_image
+$ docker run -it <my-docker-username>/<name-for-new-image> /bin/bash # start a shell session
+
 ```
 
 ### Containers
