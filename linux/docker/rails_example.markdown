@@ -53,8 +53,11 @@ gem 'rails', '5.0.0.1'
 ```
 
 
-### clean-up! removes all containers that are not running
+### clean-up! 
+```bash
+# removes all containers that are not running
 $ docker rm -fv $(docker ps -aq)
+```
 
 ### run the docker-compose.yml
 ```bash
