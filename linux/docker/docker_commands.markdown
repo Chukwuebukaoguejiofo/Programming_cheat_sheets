@@ -45,6 +45,12 @@ $ docker start <container-id> # Restart a container
 $ docker rm <container-id> # delete container
 
 $ docker attach <container-id> # start a shell session, to exit, press CTRL + C
+
+# remove stale containers
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+
 ```
 
 
