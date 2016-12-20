@@ -28,7 +28,7 @@ $ docker run -it <my-docker-username>/<name-for-new-image> /bin/bash # start a s
 
 ### Containers
 ```
-A container is an instance of an image
+A container is running image
 ```
 
 ```bash
