@@ -28,6 +28,10 @@ $ docker images # List downloaded images
 $ docker build -t <my-docker-username>/<name-for-new-image>  . # example: $ docker build -t brianspinos777/my_foo_image
 $ docker run -it <my-docker-username>/<name-for-new-image> /bin/bash # start a shell session
 
+# tagging images
+$ docker tag <image-id> <my-docker-hub-username>/<my-image-name>:<my-tag-name>
+$ docker tag 5db5f8471261 ouruser/sinatra:devel # as an example
+
 ```
 
 ### Containers
