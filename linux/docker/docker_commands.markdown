@@ -32,6 +32,9 @@ $ docker run -it <my-docker-username>/<name-for-new-image> /bin/bash # start a s
 $ docker tag <image-id> <my-docker-hub-username>/<my-image-name>:<my-tag-name>
 $ docker tag 5db5f8471261 ouruser/sinatra:devel # as an example
 
+# remove all local? images
+$ docker rmi $(docker images -a )
+
 ```
 
 ### Containers
@@ -53,8 +56,6 @@ $ docker attach <container-id> # start a shell session, to exit, press CTRL + C
 # remove stale containers
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
-
-
 ```
 
 
