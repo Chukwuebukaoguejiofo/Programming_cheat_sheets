@@ -5,6 +5,10 @@ You can use DockerHub to download the image into you server! (so its easy to cre
 You should work with GIT inside your container
 ```
 
+### Dockerfile
+```
+The Dockerfile is used to to specify instructions to create an image.
+```
 
 ### Images
 ```
