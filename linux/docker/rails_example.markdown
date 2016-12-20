@@ -61,13 +61,11 @@ $ docker rm -fv $(docker ps -aq)
 
 ### run the docker-compose.yml
 ```bash
+# this is the command that will create your rails app in the container, and localy
 $ docker-compose run web rails new . --force --database=postgresql --skip-bundle
 
 $ sudo chown -R $USER:$USER . # for linux (I did not test this)
 ```
-
-
-
 
 ### build the app
 ```bash
