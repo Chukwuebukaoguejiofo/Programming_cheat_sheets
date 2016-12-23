@@ -7,7 +7,7 @@
 
 
 
-$ ls | sed 's/brian/BRIAN/'  
+$ ls | sed 's/brian/BRIAN/g'  # `s` means `search`, and `g` means `global`
 # substitution output # it does not delete anything, 
 # just generates output
 
