@@ -1,3 +1,4 @@
+# SED is used for text replacements
 # sed is a stream editor
 # the string parameter is a series of multiple commands to operate on each line
 
