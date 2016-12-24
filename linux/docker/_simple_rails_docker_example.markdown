@@ -56,16 +56,16 @@ gem 'rails', '5.0.0.1'
 ### commands
 ```bash
 # create an image, based on the Dockerfile
-$ docker build -t my_demo_container .
+$ docker build -t my_test_image .
 
 # create a container, based on the image we created
 # make sure no other containers are using port 3000
 #   - $ docker ps # check the 'PORTS' column, if any container is using port 3000
 #   - $ docker stop <CONTAINER_ID_OR_NAME> # stop any containers that are using port 3000
-$ docker run -itP -p 3000:3000 my_demo_container # now go to http://localhost:3000/users
+$ docker run --name my_test_container -itP -p 3000:3000 my_test_image # now go to http://localhost:3000/users
 
 # CTRL + P + Q  # to quit the container (without stopping it)
 
-$  docker start  my_demo_container  # to restart a previously stopped container
-$  docker stop  my_demo_container  # to stop a previously running container
+$ docker start  my_test_container  # to restart a previously stopped container
+$ docker stop  my_test_container  # to stop a previously running container
 ```
