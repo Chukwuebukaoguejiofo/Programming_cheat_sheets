@@ -66,6 +66,6 @@ $ docker run --name my_test_container -itP -p 3000:3000 my_test_image # now go t
 
 # CTRL + P + Q  # to quit the container (without stopping it)
 
-$ docker start  my_test_container  # to restart a previously stopped container
+$ docker start  my_test_container  # to restart a previously stopped container (it takes a couple seconds...)
 $ docker stop  my_test_container  # to stop a previously running container
 ```
