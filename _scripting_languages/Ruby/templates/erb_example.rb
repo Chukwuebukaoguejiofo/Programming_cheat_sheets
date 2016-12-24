@@ -1,3 +1,5 @@
+# http://www.garethrees.co.uk/2014/01/12/create-a-template-rendering-class-with-erb/
+
 require 'erb'
 
 class MyController
