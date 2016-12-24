@@ -37,3 +37,20 @@ $ docker ps # also shows that its running again!
 $ docker stop <container-id-or-name> 
 $ docker ps # shows that its not there anymore! only on `docker ps -a`
 ```
+
+
+
+
+### Gotchas
+``` bash
+$ docker run <IMAGE_ID_OR_NAME>  # creates a new container.
+
+$ docker build . # creates a new IMAGE, based on the Dockerfile in the current folder.
+
+$ docker start <CONTAINER_ID_OR_NAME>  # start a previously stopped container.
+
+$ docker stop <CONTAINER_ID_OR_NAME>  # stop a container, that was previously running.
+
+$ docker attach <CONTAINER_ID_OR_NAME>  # start a shell session in that container. (container needs to be started)
+
+```
