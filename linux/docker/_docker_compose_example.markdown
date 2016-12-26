@@ -8,6 +8,12 @@
 $ docker run -d -p 80:80 --name my_ngingx_container nginx # the go to http://localhost:80
 ```
 
+
+### create files
+```bash
+$ touch Dockerfile Gemfile Gemfile.lock docker-compose.yml
+```
+
 ### create a Dockerfile
 ```bash
 FROM ruby:2.3.3
