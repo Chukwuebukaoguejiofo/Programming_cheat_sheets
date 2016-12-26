@@ -107,6 +107,7 @@ $ docker-compose up # go to http://localhost:3000
 ```bash
 $ docker-compose run my_rails_service rails g scaffold user firstname lastname address phone
 $ docker-compose run my_rails_service rails db:migrate
+# then go to http://localhost:3000/users
 ```
 
 ### make local changes, then rebuild your project:
