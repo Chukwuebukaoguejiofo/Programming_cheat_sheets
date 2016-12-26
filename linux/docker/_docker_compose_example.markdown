@@ -117,7 +117,7 @@ $ docker-compose up  # not sure if you need to do this...
 # - A server is already running. Check /myapp/tmp/pids/server.pid.
 # Just delete the contents of that file!
 # then run $ docker-compose up
-```bash
+```
 
 ### tear down project (destroy)
 ```bash
