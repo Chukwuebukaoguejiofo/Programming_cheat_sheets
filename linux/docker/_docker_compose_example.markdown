@@ -57,7 +57,7 @@ services:
 ```
 
 
-### build the project:
+### Create rails app:
 ```bash
 # `my_rails_service` can be found in the docker-compose.yml file!
 # this command creates the project locally also!
@@ -65,7 +65,7 @@ services:
 $ docker-compose run my_rails_service rails new . --force --database=postgresql --skip-bundle
 ```
 
-### change the config/database.yml file locally
+### Change the config/database.yml file locally
 ```yaml
 default: &default
   adapter: postgresql
@@ -85,7 +85,7 @@ development:
 
 ```
 
-### build again, if you changed the local code: ???
+### Build again, if you changed the local code: ???
 ```bash
 $ docker-compose build
 ```
@@ -110,7 +110,7 @@ $ docker-compose run my_rails_service rails db:migrate
 # then go to http://localhost:3000/users
 ```
 
-### make local changes, then rebuild your project:
+### Make local changes, then rebuild your project:
 ```bash
 $ docker-compose stop # not sure if you need to do this...
 # make changes
