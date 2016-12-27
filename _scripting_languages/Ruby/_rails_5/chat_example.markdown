@@ -81,7 +81,7 @@ class MessagesController < ApplicationController
 end
 ```
 
-```html
+```erb
 #-------------------------- application.html.erb  (add this code) 
     <div id="user_nav">
     <% if user_signed_in? %>
@@ -327,12 +327,11 @@ Rails.application.routes.draw do
 end
 ```
 
+```javascript
+//-------------------------- application.js (append content)
 
-#-------------------------- application.js (append content)
-=begin 
 //= require cable
-=end
-
+```
 
 
 
