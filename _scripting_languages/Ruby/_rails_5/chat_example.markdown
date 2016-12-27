@@ -1,26 +1,20 @@
-# rails chat app: (rails 5)
+### rails chat app: (rails 5)
 
-
-
-
+```bash
 $ rails new my_chat_app
-
 $ cd my_chat_app 
+```
 
 
-
-$ touch 
-
-
-# gems
-
+### gems
+```ruby
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'redis', '~> 3.2'
+```
 
+```bash
 $ bundle install
-
-
 
 $ rails generate devise:install
 $ rails generate devise User
@@ -29,12 +23,12 @@ $ rails g model Message body:text user:references chat_room:references
 
 $ rails g model ChatRoom title:string user:references
 $ rails db:migrate
+```
 
 
 
 
-
-
+```ruby
 #-------------------------- application_controller.rb
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
@@ -85,9 +79,10 @@ end
 #-------------------------- app/controllers/messages_controller.rb (create this new file)
 class MessagesController < ApplicationController
 end
+```
 
+```html
 #-------------------------- application.html.erb  (add this code) 
-=begin
     <div id="user_nav">
     <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.
@@ -106,9 +101,11 @@ end
 
 
     <%= yield %> 
-=end
+```
+
+```coffeescript
 #-------------------------- app/assets/javascripts/channels/rooms.coffee (create this new file)
-=begin
+
 jQuery(document).on 'turbolinks:load', ->
   messages = $('#messages')
   if $('#messages').length > 0
@@ -141,9 +138,11 @@ jQuery(document).on 'turbolinks:load', ->
         textarea.val('')
       e.preventDefault()
       return false
-=end
+```
+
+```erb
 #-------------------------- app/views/chat_rooms/show.html.erb (create this new file)
-=begin
+
 <h1><%= @chat_room.title %></h1>
 
 <p>@chat_room.messages <%= @chat_room.messages.count %></p>
@@ -161,9 +160,9 @@ jQuery(document).on 'turbolinks:load', ->
 <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
   <%= render @chat_room.messages %>
 </div>
-=end
+
 #-------------------------- app/views/chat_rooms/index.html.erb
-=begin 
+
 <h1>Chat rooms</h1>
 
 <p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
@@ -172,18 +171,17 @@ jQuery(document).on 'turbolinks:load', ->
   <%= render @chat_rooms %>
 </ul>
 
-=end
 #-------------------------- app/views/chat_rooms/_chat_room.html.erb
-=begin 
+
 <li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
 
-=end
+
 
 
 
 
 #-------------------------- app/views/chat_rooms/new.html.erb
-=begin 
+
 <h1>Add chat room</h1>
 
 <%= form_for @chat_room do |f| %>
@@ -194,13 +192,13 @@ jQuery(document).on 'turbolinks:load', ->
 
   <%= f.submit "Add!", class: 'btn btn-primary' %>
 <% end %>
-=end
+
 
 
 
 
 #-------------------------- app/views/messages/_message.html.erb
-=begin 
+
 <div class="card">
   <div class="card-block">
     <div class="row">
@@ -216,11 +214,11 @@ jQuery(document).on 'turbolinks:load', ->
     </div>
   </div>
 </div>
-=end
+```
 
 
 
-
+```ruby
 #-------------------------- app/channels/chat_rooms_channel.rb
 class ChatRoomsChannel < ApplicationCable::Channel
   def subscribed
@@ -294,10 +292,13 @@ module ApplicationHelper
               opts
   end
 end
+```
 
+
+```css
 
 #-------------------------- application.css (append contents)
-=begin 
+
 @import "bootstrap";
 
 
@@ -308,9 +309,11 @@ end
     margin: 0.5rem;
   }
 }
-=end
+
+```
 
 
+```ruby
 #-------------------------- routes.rb
 Rails.application.routes.draw do
   devise_for :users
@@ -322,7 +325,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
+```
 
 
 #-------------------------- application.js (append content)
@@ -333,7 +336,7 @@ end
 
 
 
-
+```ruby
 #-------------------------- app/channels/application_cable/connection.rb
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
@@ -356,7 +359,7 @@ module ApplicationCable
   end
 end
 
-
+```
 
 
 
