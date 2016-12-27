@@ -297,7 +297,7 @@ end
 
 ```css
 
-#-------------------------- application.css (append contents)
+#-------------------------- application.css (append contents) -> rename to application.css.scss
 
 @import "bootstrap";
 
