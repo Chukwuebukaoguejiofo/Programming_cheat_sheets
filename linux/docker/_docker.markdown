@@ -43,9 +43,9 @@ $ docker ps # shows that its not there anymore! only on `docker ps -a`
 
 ### Gotchas
 ``` bash
-$ docker run <IMAGE_ID_OR_NAME>  # creates a new container.
+$ docker build -t my-new-image-name . # creates a new IMAGE, based on the Dockerfile in the current folder.
 
-$ docker build . # creates a new IMAGE, based on the Dockerfile in the current folder.
+$ docker run -it --name my-new-container-name <IMAGE_ID_OR_NAME>  # creates a new container.
 
 $ docker start <CONTAINER_ID_OR_NAME>  # start a previously stopped container.
 
