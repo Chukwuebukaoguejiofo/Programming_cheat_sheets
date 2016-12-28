@@ -1,6 +1,9 @@
 ### Docker compose tutorial:
 
-# https://docs.docker.com/compose/gettingstarted/
+[docker compose tutorial youtube](http://www.youtube.com/watch?v=Uez88TWOECg)
+
+[gettingstarted](https://docs.docker.com/compose/gettingstarted/)
+
 
 ```bash
 # spin an NGINX container
