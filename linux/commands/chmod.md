@@ -1,7 +1,7 @@
 ### chmod changed the permission on a file
 
 ### usage:
-```
+```bash
 $ schmod <user-permission><group-permission><other-users-permission> file
 
 # r = 4
