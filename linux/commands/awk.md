@@ -1,4 +1,4 @@
-### Awk is 'excel' of linux!
+### Awk is the 'excel' of linux!
 
 ### brian.txt
 ```
