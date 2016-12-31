@@ -11,6 +11,7 @@ name : erich : age : 26 : address : 123 foobar
 name : rich : age : 40 : address : 789 foobar
 ```
 
+### use a ':' delimeter, print columns 2 and 4, of the brian.txt file
 ```bash
 $ awk -F: '{print $2  $4}' brian.txt 
 ```
