@@ -1,5 +1,10 @@
 ### DOCKER
 ```
+(digitalocen and nginx loadbalancing)
+https://www.youtube.com/watch?v=JBtWxj9l7zM
+https://www.youtube.com/watch?annotation_id=annotation_42917443&feature=iv&index=3&list=PLoYCgNOIyGAAzevEST2qm2Xbe3aeLFvLc&src_vid=JBtWxj9l7zM&v=K6WER0oI-qs
+https://www.youtube.com/watch?annotation_id=annotation_42917443&feature=iv&index=3&list=PLoYCgNOIyGAAzevEST2qm2Xbe3aeLFvLc&src_vid=JBtWxj9l7zM&v=K6WER0oI-qs
+
 https://www.youtube.com/watch?v=UV3cw4QLJLs
 https://www.youtube.com/watch?v=1OLyXJJPBSA (good!)
 ```
