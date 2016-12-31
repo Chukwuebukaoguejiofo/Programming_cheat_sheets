@@ -74,9 +74,13 @@ $ cat id_rsa.pub | pbcopy
 
 ```bash
 
-# In Unix, ssh-agent is a background program that handles passwords for SSH private keys. The ssh-add command prompts the user for a private key password and adds it to the list maintained by ssh-agent. Once you add a password to ssh-agent, you will not be prompted for it when using SSH or scp to connect to hosts with your public key.
+# In Unix, ssh-agent is a background program that handles passwords for SSH private keys. 
+# The ssh-add command prompts the user for a private key password and adds it to the list maintained by ssh-agent. 
+# Once you add a password to ssh-agent, you will not be prompted for it when using SSH or scp to connect to hosts 
+# with your public key.
 #
-# The public part of the key loaded into the agent must be put on the target system in ~/.ssh/authorized_keys; see How do I set up SSH public-key authentication to connect to a remote system?
+# The public part of the key loaded into the agent must be put on the target system in ~/.ssh/authorized_keys; 
+# see How do I set up SSH public-key authentication to connect to a remote system?
 #
 # To use ssh-agent and ssh-add, follow the steps below:
 #
