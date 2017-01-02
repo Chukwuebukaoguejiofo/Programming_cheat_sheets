@@ -1,4 +1,9 @@
 ### DOCKER
+
+```gotchas
+- containers are running images!
+```
+
 ```
 (digitalocen and nginx loadbalancing)
 https://www.youtube.com/watch?v=JBtWxj9l7zM
