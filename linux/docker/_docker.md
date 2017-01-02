@@ -1,6 +1,7 @@
 ### DOCKER
 
-```gotchas
+###### Gotchas
+```
 - containers are running images!
 ```
 
