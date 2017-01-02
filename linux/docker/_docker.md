@@ -102,4 +102,6 @@ $ docker diff # shows changed files in the container's FS.
 $ docker ps -a # shows running and stopped containers.
 
 $ docker stats --all # shows a running list of containers.
+
+$ docker commit <container> <new-image-name>  # use a container to create an image
 ```
