@@ -1,7 +1,7 @@
-https://www.codecademy.com/articles/sql-commands?r=master
+###### https://www.codecademy.com/articles/sql-commands?r=master
 
 
-# Command line.
+```bash
 # start the server
 $ mysqld
 # to stop the SQL server  # ps aux | grep mysqld   # kill -9 #process id
@@ -24,7 +24,7 @@ $ create table myTable(
 $ show tables;
 $ drop table myTable;
 $ describe myTable;
-
+```
 
 
 
