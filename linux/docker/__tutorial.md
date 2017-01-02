@@ -4,6 +4,7 @@
 ###### Images
 ```
 images are snapshots of a system (a picture of the state of the system)
+```
 
 ###### Containers
 ```
