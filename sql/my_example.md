@@ -1,6 +1,6 @@
-/*
+### MySql
 
-#------- Command line.
+```bash
 $ mysqld # start the server
 
 
@@ -27,7 +27,9 @@ $ show tables;
 $ drop table myTable;
 $ describe myTable;
 
-*/
+```
+
+```sql
 
 create database BrianTestDeleteMe;
 use BrianTestDeleteMe;
@@ -155,6 +157,6 @@ select * from rooms where id IN (
     select room_id from rooms_users where user_id=1  -- dont use semi-colon here, it will terminate the query...
 );
 
-
+```
 
 
