@@ -1,7 +1,12 @@
 ### docker main tutorial
 
+
+###### Images
 ```
 images are snapshots of a system (a picture of the state of the system)
+
+###### Containers
+```
 containers are running instances of an image
 ```
 
