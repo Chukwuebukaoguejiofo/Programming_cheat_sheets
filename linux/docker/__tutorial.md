@@ -29,6 +29,12 @@ $ docker rmi <image>
 # run a container based on an image
 $ docker run -it --name <my-new-container-name> <image>
 
+# run a container based on an image (with port forwarding)
+$ docker run -it -p 80:80 --name <my-new-container-name> <image>
+
+# run a container based on an image (as a backgroud process)
+$ docker run -it -d --name <my-new-container-name> <image>
+
 # Stop the container without quitting
 # CTRL + P + Q 
 
