@@ -56,3 +56,17 @@ $ docker attach <container>
 $ docker commit <container> <new-image-name>
 
 ```
+
+
+###### Dockerfile example https://docs.docker.com/engine/reference/builder/
+```bash
+FROM ubuntu  # FROM <image>:<tag>
+MAINTAINER Brian Spinos 
+ENV foo=bar baz=quux
+WORKDIR /some_existing_folder_in_the_container
+RUN mkdir my_app
+COPY folder_from_host folder_in_container
+EXPOSE 80
+RUN echo "Hello world"
+```
+
