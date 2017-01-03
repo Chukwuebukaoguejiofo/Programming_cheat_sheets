@@ -37,7 +37,9 @@ $ docker run -it -p 80:80 --name <my-new-container-name> <image>
 # run a container based on an image (as a backgroud process)
 $ docker run -it -d --name <my-new-container-name> <image>
 
-# run a container based on an image (with a volume, so you can make changes in the host, and see them in the container!)
+# run a container based on an image 
+# (with a volume, so you can make changes in the host, and see them in the container!)
+# NOTICE: If you decide to deploy this image, you need to rebuild it! $ docker build -t my_updated-image .
 $ docker run -it -v <src-path>:<dest-path> --name <my-new-container-name> <image>
 
 # Stop the container without quitting
