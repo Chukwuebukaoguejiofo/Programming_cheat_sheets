@@ -1,6 +1,6 @@
 ### docker main tutorial
 
-(https://www.youtube.com/watch?v=YFl2mCHdv24)[youtube tutorial]
+[youtube tutorial](https://www.youtube.com/watch?v=YFl2mCHdv24)
 
 
 ###### Images
