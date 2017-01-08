@@ -1,8 +1,6 @@
-# this is an example of the xargs commad:
+### xargs is the 'forEach' of linux!
 
-# xargs is the 'forEach' of linux!
-
-
+```bash
 $ ls | xargs grep "test"  # the results of the `ls` command will be an array passed to `xargs` 
 
 # OUTPUT:
@@ -12,3 +10,4 @@ $ ls | xargs grep "test"  # the results of the `ls` command will be an array pas
 # rich.txt:bar test
 
 # it outputs the lines of the files that have the word "test" in them, case sensitive
+```
