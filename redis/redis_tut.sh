@@ -14,7 +14,11 @@ $ redis-cli
 $ keys * 
 
 # set key "name" to value "brian"
-$ set name brian
+$ set name foo
+
+# get a key
+$ get foo # "brian"
+
 
 # get type of "key"
 $ type <key>
