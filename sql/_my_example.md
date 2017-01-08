@@ -4,10 +4,10 @@
 $ mysql.server start # start the server
 $ mysql.server stop # stop the server
 
+# not recomended
 $ mysqld # start the server
-
-
 $ ps aux | grep mysqld   # kill -9 my-process-id-here # to stop the SQL server
+
 
 $ mysql -u root -p # use mysql console
 $ # press enter, there is no password...
