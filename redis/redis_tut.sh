@@ -4,6 +4,10 @@
 $ redis-server
 # Ctrl + C # to exit 
 
+# redis console
+# the server needs to be running...
+$ redis-cli
+
 # redis commands: http://redis.io/commands
 
 # get all keys:
