@@ -1,6 +1,6 @@
 ### find command
 
-(http://www.binarytides.com/linux-find-command-examples/)[examples]
+[http://www.binarytides.com/linux-find-command-examples/](examples)
 
 ```bash
 # find all C files recursively under the ~/Desktop folder
