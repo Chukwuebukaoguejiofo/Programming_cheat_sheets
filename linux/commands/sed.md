@@ -1,4 +1,6 @@
-# SED is used for text replacements
+### SED is used for text replacements
+
+```bash
 # sed is a stream editor
 # the string parameter is a series of multiple commands to operate on each line
 
@@ -15,3 +17,4 @@ $ ls | sed 's/brian/BRIAN/g'  # `s` means `search`, and `g` means `global`
 # OUTPUT
 # BRIAN.txt
 # erich.txt
+```
