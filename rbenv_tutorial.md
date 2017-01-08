@@ -1,6 +1,6 @@
 # Rbenv
 
-# add this to ~/.bash_profile
+###### add this to ~/.bash_profile
 ```bash
 # Initialize rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
