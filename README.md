@@ -1,6 +1,6 @@
-# md_files
+# Programming cheat sheets
 
-### md_files is just a collection of notes about any: 
+###### A collection of notes about any: 
   - Programming language
   - Framework
   - Library
