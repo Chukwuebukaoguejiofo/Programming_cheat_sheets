@@ -1,12 +1,10 @@
-### REDIS
+# REDIS
 
-```bash
 # start server:
 $ redis-server
 # Ctrl + C # to exit 
-```
 
-###### redis commands: http://redis.io/commands
+# redis commands: http://redis.io/commands
 
 # get all keys:
 $ keys * 
