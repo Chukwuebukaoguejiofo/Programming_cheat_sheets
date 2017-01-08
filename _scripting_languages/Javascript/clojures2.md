@@ -1,9 +1,9 @@
 # Closures are functions with data attached to them
 
-## Closures remember the variables on the parent scope, when they were called
+###### Closures remember the variables on the parent scope, when they were called
 
+###### Use this to enforce public/private methods.
 
-# Use this to enforce public/private methods.
 ```js
 a = (function () {
     var privatefunction = function () {
