@@ -4,13 +4,18 @@
 $ mysql.server start # start the server
 $ mysql.server stop # stop the server
 
+
 # not recomended
 $ mysqld # start the server
 $ ps aux | grep mysqld   # kill -9 my-process-id-here # to stop the SQL server
 
+# to use mysql console, the server needs to be running...
+# -p is a password flag, type your password, if there is no password, 
+# use the -p tag with no parameters, like this:
+$ mysql -u root -p 
 
-$ mysql -u root -p # use mysql console
-$ # press enter, there is no password...
+$ quit # to quit the mysql console
+
 $ show databases;
 $ create database myDatabase;
 $ drop database myDatabase;
