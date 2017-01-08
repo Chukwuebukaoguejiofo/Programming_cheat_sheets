@@ -1,5 +1,14 @@
 ### REDIS
 
+```bash
+# start server:
+$ redis-server
+# Ctrl + C # to exit 
+
+# redis console
+# the server needs to be running...
+$ redis-cli
+```
 
 ```bash
 # keys
