@@ -1,6 +1,9 @@
 ### MySql
 
 ```bash
+$ mysql.server start # start the server
+$ mysql.server stop # stop the server
+
 $ mysqld # start the server
 
 
