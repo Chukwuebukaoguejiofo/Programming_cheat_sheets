@@ -26,6 +26,10 @@ You will need to make multiple passes through the 'sorted subset'
 
 ### Shell sort:
 ```
+'K' = N/2
+Loop through the array and swaps with the elements at 'K' distance away.
+You will need to make multiple passes through the array, each time, halfing 'K'
+then when 'K' is equal to 1, do an Insertion sort
 ```
 
 ### Merge sort:
