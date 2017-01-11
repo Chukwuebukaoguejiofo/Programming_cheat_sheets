@@ -23,3 +23,15 @@ you will be shifting the elements in the 'sorted subset' to the right, as you lo
 you grabbed!
 You will need to make multiple passes through the 'sorted subset'
 ```
+
+### Shell sort:
+```
+```
+
+### Merge sort:
+```
+```
+
+### Quick sort:
+```
+```
