@@ -1,12 +1,11 @@
 #
-# How the iteration of indexes should be for an array of 6 elements:
+# Iteration example for 5 elements
 #
-# 1 2 3 4 5
-# 1 2 3 4
-# 1 2 3
-# 1 2 
-# 1  
-#
+# 0 1 2 3 4
+# 0 1 2 3
+# 0 1 2
+# 0 1 
+# 0  
 #
 def bubble_sort(array)
     #
@@ -23,8 +22,8 @@ def bubble_sort(array)
             index_a = i - 1
             index_b = i
             if array[index_a] > array[index_b]
+                
                 #swap
-
                 temp = array[index_b]
                 array[index_b] = array[index_a]
                 array[index_a] = temp
@@ -41,5 +40,6 @@ def bubble_sort(array)
     return array
 end
 
-bubble_sort [6,5,4,7,8,9,0,3000,1,2,3,6,3]
-#=> [0, 1, 2, 3, 3, 4, 5, 6, 6, 7, 8, 9, 3000]
+bubble_sort [50,60,40,70,30,80,20,90,10]
+#=> [10, 20, 30, 40, 50, 60, 70, 80, 90]
+
