@@ -2,7 +2,7 @@
 
 function shellSort(array){
     for(var h = array.length; h = parseInt(h / 2); ){
-        for(var i = h; i < array.length; i++){
+        for(var i = h; i < array.length; i++){ // i will be the right side pair
             var k = array[i];
             for (var j = i; j >= h && k < array[j - h]; j -= h){
                 array[j] = array[j - h];
