@@ -2,6 +2,8 @@
 
 // http://stackoverflow.com/questions/55611/javascript-private-methods
 
+// ISSUE: no protected members, and private members need to be declared before used
+
 var Person = (function(){
 
     // CONSTRUCTOR:
