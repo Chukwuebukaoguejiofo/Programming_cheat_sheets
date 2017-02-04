@@ -2,7 +2,8 @@
 
 
 ```bash
-# sync  folders
+# sync  folders, the <src-folder> will be under the <dest-folder>
+# so `$ rsync -r src dest ` will sync src with dest/src
 # $ rsync -r <src-folder> <dest-folder> 
 
 
