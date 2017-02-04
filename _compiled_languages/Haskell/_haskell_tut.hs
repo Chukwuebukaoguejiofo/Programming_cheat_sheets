@@ -5,6 +5,7 @@
 -- http://learnyouahaskell.com/making-our-own-types-and-typeclasses ???
 
 -- ==================================================================== Gotchas:
+-- indentation is important
 -- in Haskell, the `=` sign is like a `return` in other languages
 -- the `::` is usially for declarations
 -- using functions as arguments, the functions is in the parenthesis! :  foo :: (Int -> Int) -> Int
