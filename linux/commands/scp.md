@@ -4,5 +4,5 @@
 
 ```bash
 # will copy all the contents of src to a new folder called src_backup
-scp -r src src_backup
+$ scp -r src src_backup
 ```
