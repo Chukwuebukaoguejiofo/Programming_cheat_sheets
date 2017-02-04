@@ -203,4 +203,18 @@ main = do
     
 -- ====================================================================  
 
+-- simple monad example
+-- monads are like burritos, they are a wrapper to a value
+-- here "Just" is a monad that wraps the value 10.
+-- so you pass in a function that should return another monad.
+-- pseudo code:   Monad 10 >>= function_that_returns_another_monad 
+main =
+    print $ Just 10 >>= (\ x -> if (x == 0) then fail "zero" else Just (x * 10) )
+    -- returns:  Just 100
+    
+
+-- ====================================================================  
+
+-- ====================================================================  
+
 -- ====================================================================  
