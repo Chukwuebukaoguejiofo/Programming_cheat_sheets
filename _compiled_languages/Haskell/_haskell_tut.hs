@@ -243,5 +243,9 @@ Just (+3) <*> Just 2 == Just 5
 -- A monad is a data type that implements the Monad typeclass.
 -- A Maybe implements all three, so it is a functor, an applicative, and a monad.
 
+-- functors: you apply a function to a wrapped value using fmap or <$>
+-- applicatives: you apply a wrapped function to a wrapped value using <*> or liftA
+-- monads: you apply a function that returns a wrapped value, to a wrapped value using >>= or liftM
+
 -- ====================================================================  
 
