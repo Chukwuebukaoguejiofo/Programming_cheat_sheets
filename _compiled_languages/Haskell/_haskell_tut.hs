@@ -214,8 +214,34 @@ main =
     -- returns:  Just 100
     
 
--- ====================================================================  
+-- ====================================================================  functors
+-- http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html
+
+-- A Functor is any data type that defines how fmap applies to it.
+
+-- <$> is the infix version of fmap, so you will often see this instead: getPostTitle <$> (findPost 1)
+
+
+
+-- what happens when you apply a function to another function?
+-- > import Control.Applicative
+-- > let foo = fmap (+3) (+2) --   let foo = (+3) <$> (+2)
+-- > foo 10
+-- 15
+-- So functions are Functors too!
+-- When you use fmap on a function, you're just doing function composition! (combining functions)
+
+-- ====================================================================  Applicatives
+
+Just (+3) <*> Just 2 == Just 5
+-- the functions are also wrapped in a context (Just)
 
 -- ====================================================================  
 
+-- A functor is a data type that implements the Functor typeclass.
+-- An applicative is a data type that implements the Applicative typeclass.
+-- A monad is a data type that implements the Monad typeclass.
+-- A Maybe implements all three, so it is a functor, an applicative, and a monad.
+
 -- ====================================================================  
+
