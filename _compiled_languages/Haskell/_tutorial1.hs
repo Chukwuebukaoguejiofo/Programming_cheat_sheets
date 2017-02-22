@@ -13,6 +13,13 @@ exampleA = 3 + 3 -- 6
 exampleB = (+3) 5 -- 8
 
 
+-- ===================================================== combining functions
+addTen x = x + 10
+addFive x = x + 5
+addTenAndFive = addTen . addFive
+exampleM = addTenAndFive 5 -- 20
+
+
 -- ===================================================== functors
 -- functors: are data types that implement fmap
 -- fmap applies a function to a wrapped value
@@ -79,5 +86,6 @@ main = do
     displayExample exampleJ
     displayExample exampleK
     displayExample exampleL
+    displayExample exampleM
     displayFileIOExample -- here you are expected to type in a file name (in the terminal)
 
