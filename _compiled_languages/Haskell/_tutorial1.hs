@@ -56,6 +56,14 @@ exampleK = Just 200 >>= half >>= half >>= half -- Just 25
 -- ===================================================== IO monad
 displayFileIOExample = getLine >>= readFile >>= putStrLn
 
+-- ===================================================== list monad
+half' x = if even x
+    then [ (x `div` 2) ]
+    else []
+
+plus100 x = [x+100]
+
+exampleL = [10,20,30] >>= half' >>= plus100 -- [105,110,115]
 
 -- =====================================================
 main = do
@@ -70,5 +78,6 @@ main = do
     displayExample exampleI
     displayExample exampleJ
     displayExample exampleK
+    displayExample exampleL
     displayFileIOExample -- here you are expected to type in a file name (in the terminal)
 
