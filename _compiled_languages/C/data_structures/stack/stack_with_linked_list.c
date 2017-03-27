@@ -35,24 +35,37 @@ Stack * createStack(){
 
 void push(Stack ** stack, int key, int value){
     Node * node = createNode(key, value);
+
+    /**
+     * An alias, so we can write `s->size`,
+     * instead of `(*stack)->size`,
+     */
+    Stack * s = *stack;
     
-    if( (*stack)->size == 0){
-        (*stack)->top = node;
-        (*stack)->size++;
-    } else if( (*stack)->size > 0){
-        node->next = (*stack)->top;
-        (*stack)->top = node;
-        (*stack)->size++;
+    if( s->size == 0){
+        s->top = node;
+        s->size++;
+    } else if( s->size > 0){
+        node->next = s->top;
+        s->top = node;
+        s->size++;
     }
 }
 
 Node * pop(Stack ** stack){
-    if( (*stack)->size == 0 ){
+
+    /**
+     * An alias, so we can write `s->size`,
+     * instead of `(*stack)->size`,
+     */
+    Stack * s = *stack;
+
+    if( s->size == 0 ){
         return NULL;
-    } else if( (*stack)->size > 0 ){
-        Node * node = (*stack)->top;
-        (*stack)->top = (*stack)->top->next;
-        (*stack)->size--;
+    } else if( s->size > 0 ){
+        Node * node = s->top;
+        s->top = s->top->next;
+        s->size--;
         return node;
     }
 }
@@ -78,6 +91,8 @@ int main()
     push(&stack, 1, 10);
     push(&stack, 2, 20);
     push(&stack, 3, 30);
+    push(&stack, 4, 40);
+    push(&stack, 5, 50);
     
     Node * x = pop(&stack);
     printf("Node poped: (key: %d value: %d) \n\n", x->key, x->value);
