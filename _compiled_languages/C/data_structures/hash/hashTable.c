@@ -3,143 +3,150 @@
 #include <limits.h>
 #include <string.h>
 
+//
+// Hash Table
+//
 
-typedef struct entry{
+typedef struct Node{
     char * key;
     char * value;
-    struct entry * next;
-}Entry;
+    struct Node * next;
+} Node;
 
 
-typedef struct hashtable{
+typedef struct htable{
     int size;
-    struct entry * *table;
-}HashTable;
+    Node ** table; // array of pointers
+} HTable;
 
 
-/* Create a new hashtable. */
-HashTable * createHashTable(int size){
+/**
+ * Create a new htable. 
+ */
+HTable * createHTable(int size){
 
-    /* Allocate the table itself. */
-    HashTable * hashtable = malloc(sizeof(HashTable));
+    // Allocate the table itself. 
+    HTable * htable = malloc(sizeof(HTable));
 
-    /* Allocate pointers to the head nodes. */
-    hashtable->table = malloc(sizeof(Entry *) * size);
+    // Allocate pointers to the head nodes.
+    htable->table = malloc(sizeof(Node *) * size);
 
+    htable->size = size;
 
-    /* init the enties */
-    for(int i = 0; i < size; i++){
-        hashtable->table[i] = NULL;
+    // init the enties
+    int i;
+    for(i = 0; i < size; i++){
+        htable->table[i] = NULL;
     }
 
-    hashtable->size = size;
-
-    return hashtable;
+    return htable;
 }
 
-/* Hash a string for a particular hash table. */
-int hashFunction(HashTable * hashtable, char * key){
+/**
+ * Hash a string to get an index for the underlying array `htable->table` 
+ */
+int hashFunction(HTable * htable, char * key){
 
     unsigned long int hashval;
     int i = 0;
 
-    /* Convert our string to an integer */
+    // Convert our string to an integer.
     while(hashval < ULONG_MAX && i < strlen(key)){
-        hashval = hashval << 8;
+        hashval = hashval << 8; // asme as: `hashval * 256`
         hashval += key[i];
         i++;
     }
 
-    return hashval % hashtable->size;
+    return hashval % htable->size;
 }
 
-/* Create an entry. */
-Entry * createEntry(char * key, char * value){
-    Entry * newEntry = malloc(sizeof(Entry));
-    newEntry->key = strdup(key);
-    newEntry->value = strdup(value);
-    newEntry->next = NULL;
+/**
+ * Create an node. 
+ */
+Node * createNode(char * key, char * value){
+    Node * node = (Node *)malloc(sizeof(Node));
+    node->key = strdup(key);
+    node->value = strdup(value);
+    node->next = NULL;
 
-    return newEntry;
+    return node;
 }
 
-/* Insert an entry into a hash table. */
-void insertIntoHashTable(HashTable * hashtable, char * key, char * value){
-    Entry * newEntry = NULL;
-    Entry * last = NULL;
+/**
+ * Insert a node into a hash table. 
+ */
+void insert(HTable * htable, char * key, char * value){
 
-    int index = hashFunction(hashtable, key);
+    int index = hashFunction(htable, key);
 
-    Entry * next = hashtable->table[index];
+    Node * currentNode = htable->table[index];
 
-    while(next != NULL && next->key != NULL && strcmp(key, next->key) > 0){
-        last = next;
-        next = next->next;
+    while(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) > 0){
+        currentNode = currentNode->next;
     }
 
-    /* There's already an entry.  Let's replace that string. */
-    if(next != NULL && next->key != NULL && strcmp(key, next->key) == 0){
+    // If there's already a node.  Let's replace that string.
+    if(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) == 0){
 
-        free(next->value);
-        next->value = strdup(value);
+        free(currentNode->value);
+        currentNode->value = strdup(value);
 
-    /* Nope, could't find it.  Time to grow an entry. */
-    } else{
-        newEntry = createEntry(key, value);
+    // Nope, could't find it. add a node.
+    } else { 
+        Node * newNode = createNode(key, value);
 
-        /* We're at the start of the linked list in this index. */
-        if(next == hashtable->table[index]){
-            newEntry->next = next;
-            hashtable->table[index] = newEntry;
+        // We're at the start of the linked list in this index.
+        if(currentNode == htable->table[index]){
+            newNode->next = currentNode;
+            htable->table[index] = newNode;
 
-        /* We're at the end of the linked list in this index. */
-        } else if (next == NULL){
-            last->next = newEntry;
+        // We're at the end of the linked list in this index.
+        } else if (currentNode == NULL){
+            currentNode->next = newNode;
 
-        /* We're in the middle of the list. */
+        // We're in the middle of the list.
         } else {
-            newEntry->next = next;
-            last->next = newEntry;
+            newNode->next = currentNode;
+            currentNode->next = newNode;
         }
     }
 }
 
-/* Retrieve an entry from a hash table. */
-char * getFromHashTable(HashTable * hashtable, char * key){
-    int index = 0;
-    Entry * entry;
+/* Retrieve an node from a hash table. */
+char * get(HTable * htable, char * key){
 
-    index = hashFunction(hashtable, key);
+    int index = hashFunction(htable, key);
+
+    Node * currentNode = htable->table[index];
 
     /* Step through the index, looking for our value. */
-    entry = hashtable->table[index];
-    while(entry != NULL && entry->key != NULL && strcmp(key, entry->key) > 0){
-        entry = entry->next;
+    while(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) > 0){
+        currentNode = currentNode->next;
     }
 
-    /* Did we actually find anything? */
-    if(entry == NULL || entry->key == NULL || strcmp(key, entry->key) != 0){
+    // Did we actually find anything?
+    if(currentNode == NULL || currentNode->key == NULL || strcmp(key, currentNode->key) != 0){
         return NULL;
-
-    } else{
-        return entry->value;
+    }else{
+        return currentNode->value;
     }
 
 }
 
-
 int main(){
-    HashTable * hashtable = createHashTable(1024); // size needs to be a power of 2
+    
+    // size needs to be 2 to the power of any number. (2^10)
+    HTable * htable = createHTable(1024); 
 
-    insertIntoHashTable(hashtable, "one", "1");
-    insertIntoHashTable(hashtable, "two", "2");
-    insertIntoHashTable(hashtable, "three", "3");
-    insertIntoHashTable(hashtable, "four", "4");
+    insert(htable, "one", "1");
+    insert(htable, "two", "2");
+    insert(htable, "three", "3");
+    insert(htable, "four", "4");
 
-    printf("%s\n", getFromHashTable(hashtable, "one"));
-    printf("%s\n", getFromHashTable(hashtable, "two"));
-    printf("%s\n", getFromHashTable(hashtable, "three"));
-    printf("%s\n", getFromHashTable(hashtable, "four"));
+    printf("%s\n", get(htable, "one"));
+    printf("%s\n", get(htable, "two"));
+    printf("%s\n", get(htable, "three"));
+    printf("%s\n", get(htable, "four"));
 
     return 0;
 }
