@@ -25,7 +25,8 @@ typedef struct Tree{
 Tree * createTree();
 Node * createNode(int key, int value);
 void printNode(Node * node, char * msg);
-void insert2(Node ** node, int key, int value);
+void insertRecursive(Node ** node, int key, int value);
+void insertIterative(Tree ** tree, Node ** node, int key, int value);
 void insert(Tree ** tree, int key, int value);
 void preOrder(Node * node);
 void inOrder(Node * node);
@@ -67,21 +68,55 @@ void printNode(Node * node, char * msg){
 }
 
 void insert(Tree ** tree, int key, int value){
-    insert2( &((*tree)->root), key, value );
+    // insertRecursive( &((*tree)->root), key, value );
+    insertIterative(tree,  &((*tree)->root), key, value );
 }
 
-void insert2(Node ** node, int key, int value){
+void insertRecursive(Node ** node, int key, int value){
     
-    if( (*node) == NULL){
+    if( *node == NULL ){
         Node * temp = createNode(key, value);
         *node = temp;
         return;
     }
 
     if(key < (*node)->key){
-        insert2( &(*node)->left, key, value);
+        insertRecursive( &(*node)->left, key, value);
     }else if(key > (*node)->key){
-        insert2( &(*node)->right, key, value);
+        // insertRecursive( &(*node)->right, key, value);
+        insertRecursive( &(*node)->right, key, value);
+    }
+
+}
+
+void insertIterative(Tree ** tree, Node ** node, int key, int value){
+
+    Node * newNode = createNode(key, value);
+    
+    if( *node == NULL ){
+        *node = newNode;
+        (*tree)->root = *node;
+        return;
+    }
+
+    Node * currentNode = *node;
+
+    while(1){
+        if( key > (currentNode)->key){
+            if((currentNode)->right == NULL){
+                (currentNode)->right = newNode;
+                return;
+            }else{
+                currentNode = (currentNode)->right;
+            }
+        }else{
+            if((currentNode)->left == NULL){
+                (currentNode)->left = newNode;
+                return;
+            }else{
+                currentNode = (currentNode)->left;
+            }
+        }
     }
 
 }
@@ -96,7 +131,7 @@ void preOrder(Node * node){
 }
 
 void inOrder(Node * node){
-    if (node != NULL){
+    if(node != NULL){
         inOrder(node->left);
         printNode(node, "");
         inOrder(node->right);
@@ -134,7 +169,7 @@ Node * search(Tree ** tree, int key){
 }
 
 Node* search2(Node ** node, int key){
-    if( *node == NULL){
+    if( *node == NULL ){
         return NULL;
     }
 
@@ -151,13 +186,15 @@ void main(){
 
     Tree * tree = createTree();
 
-    insert(&tree, 5, 50);
+    insert(&tree, 6, 60);
     insert(&tree, 3, 30);
     insert(&tree, 8, 80);
     insert(&tree, 2, 20);
-    insert(&tree, 4, 40);
-    insert(&tree, 6, 60);
     insert(&tree, 7, 70);
+    insert(&tree, 4, 40);
+    insert(&tree, 1, 10);
+    insert(&tree, 5, 50);
+    insert(&tree, 9, 90);
 
     printf("In Order Display\n");
     inOrder2(tree);
