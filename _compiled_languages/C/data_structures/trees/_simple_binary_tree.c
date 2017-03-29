@@ -91,15 +91,17 @@ void insertRecursive(Node ** node, int key, int value){
 
 void insertIterative(Tree ** tree, Node ** node, int key, int value){
 
+    Node * currentNode = *node;
+
     Node * newNode = createNode(key, value);
     
-    if( *node == NULL ){
-        *node = newNode;
-        (*tree)->root = *node;
+    if( currentNode == NULL ){
+        currentNode = newNode;
+        (*tree)->root = currentNode;
         return;
     }
 
-    Node * currentNode = *node;
+    
 
     while(1){
         if( key > (currentNode)->key){
