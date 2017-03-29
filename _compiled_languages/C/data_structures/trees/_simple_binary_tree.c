@@ -68,11 +68,24 @@ void printNode(Node * node, char * msg){
 }
 
 void insert(Tree ** tree, int key, int value){
+
+    /**
+     * An alias, so we can write `t->size`,
+     * instead of `(*tree)->size`,
+     */
+    Tree * t = *tree;
+
     // insertRecursive( &((*tree)->root), key, value );
-    insertIterative(tree,  &((*tree)->root), key, value );
+    insertIterative(tree,  &(t->root), key, value );
 }
 
 void insertRecursive(Node ** node, int key, int value){
+
+    /**
+     * An alias, so we can write `currentNode->right`,
+     * instead of `(*node)->right`,
+     */
+    Node * currentNode = *node;
     
     if( *node == NULL ){
         Node * temp = createNode(key, value);
@@ -80,24 +93,35 @@ void insertRecursive(Node ** node, int key, int value){
         return;
     }
 
-    if(key < (*node)->key){
-        insertRecursive( &(*node)->left, key, value);
-    }else if(key > (*node)->key){
-        // insertRecursive( &(*node)->right, key, value);
-        insertRecursive( &(*node)->right, key, value);
+    if(key < currentNode->key){
+        insertRecursive( &currentNode->left, key, value);
+    }else if(key > currentNode->key){
+        // insertRecursive( &(currentNode->right) , key, value);
+        insertRecursive( &(currentNode->right) , key, value);
     }
 
 }
 
 void insertIterative(Tree ** tree, Node ** node, int key, int value){
 
+    /**
+     * An alias, so we can write `t->size`,
+     * instead of `(*tree)->size`,
+     */
+    Tree * t = *tree;
+
+    /**
+     * An alias, so we can write `currentNode->right`,
+     * instead of `(*node)->right`,
+     */
     Node * currentNode = *node;
+
 
     Node * newNode = createNode(key, value);
     
     if( currentNode == NULL ){
         currentNode = newNode;
-        (*tree)->root = currentNode;
+        t->root = currentNode;
         return;
     }
 
@@ -171,15 +195,22 @@ Node * search(Tree ** tree, int key){
 }
 
 Node* search2(Node ** node, int key){
+
+    /**
+     * An alias, so we can write `currentNode->right`,
+     * instead of `(*node)->right`,
+     */
+    Node * currentNode = *node;
+
     if( *node == NULL ){
         return NULL;
     }
 
-    if(key < (*node)->key){
-        search2( &((*node)->left), key );
-    }else if(key > (*node)->key){
-        search2( &((*node)->right), key );
-    }else if(key == (*node)->key){
+    if(key < currentNode->key){
+        search2( &(currentNode->left), key );
+    }else if(key > currentNode->key){
+        search2( &(currentNode->right), key );
+    }else if(key == currentNode->key){
         return *node;
     }
 }
