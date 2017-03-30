@@ -2,7 +2,7 @@
 #include<stdio.h>
 
 //
-// Binary tree key structure
+// Binary tree data structure
 //
 
 typedef struct Node {
@@ -24,18 +24,19 @@ typedef struct Tree{
 
 Tree * createTree();
 Node * createNode(int key, int value);
+Node * searchRecursive(Node ** node, int key);
+Node * search(Tree ** tree, int key);
+Node * searchIterative(Node ** node, int key);
 void printNode(Node * node, char * msg);
 void insertRecursive(Node ** node, int key, int value);
 void insertIterative(Tree ** tree, Node ** node, int key, int value);
 void insert(Tree ** tree, int key, int value);
 void preOrder(Node * node);
 void inOrder(Node * node);
-void inOrder2(Tree * tree);
+void inOrderTree(Tree * tree);
 void postOrder(Node * node);
-void deleteNode(Node * node);
-void deleteNode2(Tree * tree);
-Node * search2(Node ** node, int key);
-Node * search(Tree ** tree, int key);
+void deleteNode(Node ** node);
+void deleteTree(Tree ** tree);
 
 //
 // implementations
@@ -75,7 +76,7 @@ void insert(Tree ** tree, int key, int value){
      */
     Tree * t = *tree;
 
-    // insertRecursive( &((*tree)->root), key, value );
+    // insertRecursive( &(t->root), key, value );
     insertIterative(tree,  &(t->root), key, value );
 }
 
@@ -125,22 +126,20 @@ void insertIterative(Tree ** tree, Node ** node, int key, int value){
         return;
     }
 
-    
-
     while(1){
-        if( key > (currentNode)->key){
-            if((currentNode)->right == NULL){
-                (currentNode)->right = newNode;
+        if( key > currentNode->key){
+            if(currentNode->right == NULL){
+                currentNode->right = newNode;
                 return;
             }else{
-                currentNode = (currentNode)->right;
+                currentNode = currentNode->right;
             }
         }else{
-            if((currentNode)->left == NULL){
-                (currentNode)->left = newNode;
+            if(currentNode->left == NULL){
+                currentNode->left = newNode;
                 return;
             }else{
-                currentNode = (currentNode)->left;
+                currentNode = currentNode->left;
             }
         }
     }
@@ -153,7 +152,6 @@ void preOrder(Node * node){
         preOrder(node->left);
         preOrder(node->right);
     }
-
 }
 
 void inOrder(Node * node){
@@ -164,7 +162,7 @@ void inOrder(Node * node){
     }
 }
 
-void inOrder2(Tree * tree){
+void inOrderTree(Tree * tree){
     inOrder(tree->root);
 }
 
@@ -176,25 +174,7 @@ void postOrder(Node * node){
     }
 }
 
-void deleteNode(Node * node){
-    if(node != NULL){
-        deleteNode(node->left);
-        deleteNode(node->right);
-
-        printNode(node, "FREE");
-        free(node);
-    }
-}
-
-void deleteNode2(Tree * tree){
-    deleteNode(tree->root);
-}
-
-Node * search(Tree ** tree, int key){
-    return search2( &((*tree)->root), key);
-}
-
-Node* search2(Node ** node, int key){
+void deleteNode(Node ** node){
 
     /**
      * An alias, so we can write `currentNode->right`,
@@ -202,14 +182,85 @@ Node* search2(Node ** node, int key){
      */
     Node * currentNode = *node;
 
-    if( *node == NULL ){
+    if(currentNode != NULL){
+        deleteNode( &(currentNode->left) );
+        deleteNode( &(currentNode->right) );
+
+        printNode(currentNode, "FREE");
+
+        currentNode->key = 0;
+        currentNode->value = 0;
+        currentNode->left = NULL;
+        currentNode->right = NULL;
+
+        free(currentNode);
+    }
+}
+
+void deleteTree(Tree ** tree){
+
+    /**
+     * An alias, so we can write `t->size`,
+     * instead of `(*tree)->size`,
+     */
+    Tree * t = *tree;
+
+    deleteNode( &(t->root) );
+}
+
+Node * search(Tree ** tree, int key){
+
+    /**
+     * An alias, so we can write `t->size`,
+     * instead of `(*tree)->size`,
+     */
+    Tree * t = *tree;
+
+    // return searchRecursive( &(t->root), key);
+    return searchIterative( &(t->root), key);
+}
+
+Node * searchIterative(Node ** node, int key){
+
+    /**
+     * An alias, so we can write `currentNode->right`,
+     * instead of `(*node)->right`,
+     */
+    Node * currentNode = *node;
+
+    if( currentNode == NULL ){
+        return NULL;
+    }
+
+    while(currentNode != NULL){
+        if(key == currentNode->key){
+            return currentNode;
+        }
+
+        if(key > currentNode->key){
+            currentNode = currentNode->right;
+        }else{
+            currentNode = currentNode->left;
+        }
+    }
+}
+
+Node * searchRecursive(Node ** node, int key){
+
+    /**
+     * An alias, so we can write `currentNode->right`,
+     * instead of `(*node)->right`,
+     */
+    Node * currentNode = *node;
+
+    if( currentNode == NULL ){
         return NULL;
     }
 
     if(key < currentNode->key){
-        search2( &(currentNode->left), key );
+        searchRecursive( &(currentNode->left), key );
     }else if(key > currentNode->key){
-        search2( &(currentNode->right), key );
+        searchRecursive( &(currentNode->right), key );
     }else if(key == currentNode->key){
         return *node;
     }
@@ -230,7 +281,7 @@ void main(){
     insert(&tree, 9, 90);
 
     printf("In Order Display\n");
-    inOrder2(tree);
+    inOrderTree(tree);
 
     printf("Pre Order Display\n");
     preOrder(tree->root);
@@ -238,12 +289,15 @@ void main(){
     printf("Post Order Display\n");
     postOrder(tree->root);
 
-    Node * result = search(&tree, 4);
-    printNode(result, "Result:");
+    Node * resultA = search(&tree, 4);
+    printNode(resultA, "Result:");
 
-    Node * result2 = search(&tree, 10000);
-    printNode(result2, "Result:");
+    Node * resultB = search(&tree, 10000);
+    printNode(resultB, "Result:");
 
-    deleteNode2(tree);
+    deleteTree(&tree);
+
+    printf("In Order Display\n");
+    inOrderTree(tree);
 
 }
