@@ -1,4 +1,2 @@
-- write a heap data structure in c
- - stack, 
- - queue
- - DISJOINT SET
+- HEAP
+- DISJOINT SET
