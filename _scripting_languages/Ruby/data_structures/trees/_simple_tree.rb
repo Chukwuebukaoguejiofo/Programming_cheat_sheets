@@ -22,21 +22,31 @@ class Tree
     end
 
     def insert(key, value)
-        insertIteratively(@root, key, value)
+        # Iterative insertion:
+        #insertIteratively(@root, key, value)
+        
+        # Recursive insertion:
+        @root = insertRecursively(@root, key, value)
         
         # this will not work because Ruby cannot pass arguments by reference
+        # you cannot reassign a variable from inside a function, and have the results persist,
+        # you can only update the value
         # insertRecursively(@root, key, value) 
     end
-
-    def inOrder(node)
-        if node != nil
-            inOrder(node.left)
-            print "Node: #{node.key} \n\n"
-            inOrder(node.right)
-        end
+    
+    def inOrder
+      inOrderRecursively(@root)
     end
 
-    # private
+    private
+    
+    def inOrderRecursively(node)
+        if node != nil
+            inOrderRecursively(node.left)
+            print "Node: #{node.key} \n\n"
+            inOrderRecursively(node.right)
+        end
+    end
 
     def insertIteratively(root, key, value)
 
@@ -90,30 +100,15 @@ end
 
 t = Tree.new
 
-#------------------------------------------------ insert
-# t.insert(1, 100)
-# t.insert(2, 200)
-# t.insert(3, 300)
-# t.insert(4, 400)
-# t.insert(5, 500)
-# t.insert(6, 600)
-# t.insert(7, 700)
-# t.insert(8, 800)
-# t.insert(9, 900)
-# t.insert(10, 1000)
+t.insert(1, 100)
+t.insert(2, 200)
+t.insert(3, 300)
+t.insert(4, 400)
+t.insert(5, 500)
+t.insert(6, 600)
+t.insert(7, 700)
+t.insert(8, 800)
+t.insert(9, 900)
+t.insert(10, 1000)
 
-# t.inOrder(t.root)
-
-#------------------------------------------------ insertRecursively
-t.root = t.insertRecursively(t.root, 1, 100)
-t.root = t.insertRecursively(t.root, 2, 200)
-t.root = t.insertRecursively(t.root, 3, 300)
-t.root = t.insertRecursively(t.root, 4, 400)
-t.root = t.insertRecursively(t.root, 5, 500)
-t.root = t.insertRecursively(t.root, 6, 600)
-t.root = t.insertRecursively(t.root, 7, 700)
-t.root = t.insertRecursively(t.root, 8, 800)
-t.root = t.insertRecursively(t.root, 9, 900)
-t.root = t.insertRecursively(t.root, 10, 1000)
-
-t.inOrder(t.root)
+t.inOrder
