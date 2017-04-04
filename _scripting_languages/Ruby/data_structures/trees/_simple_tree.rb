@@ -23,8 +23,9 @@ class Tree
 
     def insert(key, value)
         insertIteratively(@root, key, value)
-
-        # insertRecursively(@root, key, value)
+        
+        # this will not work because Ruby cannot pass arguments by reference
+        # insertRecursively(@root, key, value) 
     end
 
     def inOrder(node)
