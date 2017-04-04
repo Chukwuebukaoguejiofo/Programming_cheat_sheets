@@ -16,6 +16,23 @@ class Tree{
     }
 
     public function insert($key, $value){
+        // Iterative insertion:
+        //$this->insertIteratively($key, $value);
+
+        // Recursive insertion:
+        $this->insertRecursively($this->root, $key, $value);
+
+    }
+
+    public function inOrder(){
+        $this->inOrderRecursively($this->root);
+    }
+
+    //
+    // Private
+    //
+
+    private function insertIteratively($key, $value){
 
         $newNode = new Node($key, $value);
         
@@ -45,17 +62,35 @@ class Tree{
         }   
     }
 
-    public function inOrder($node){
+    private function insertRecursively(&$node, $key, $value){
+
+        $newNode = new Node($key, $value);
+
+        if($node == null){
+            $node = $newNode;
+            return;
+        }
+
+        if($key > $node->key){
+            $this->insertRecursively($node->right, $key, $value);
+        }else{
+            $this->insertRecursively($node->left, $key, $value);
+        }
+
+    }
+
+    private function inOrderRecursively($node){
         if($node != null){
-            $this->inOrder($node->left);
+            $this->inOrderRecursively($node->left);
             echo "Node: $node->key \n";
-            $this->inOrder($node->right);
+            $this->inOrderRecursively($node->right);
         }
     }
 }
 
 
 $t = new Tree();
+
 
 $t->insert(1, 100);
 $t->insert(2, 200);
@@ -68,5 +103,4 @@ $t->insert(8, 800);
 $t->insert(9, 900);
 $t->insert(10, 1000);
 
-$t->inOrder($t->root);
-
+$t->inOrder();
