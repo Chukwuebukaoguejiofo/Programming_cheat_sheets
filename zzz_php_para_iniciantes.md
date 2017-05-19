@@ -120,8 +120,13 @@ O resultado será :  4
 
     $fulano = new Pessoa("Fulano", 20);
     $fulano->dizerOi();
+    
+    $ciclano = new Pessoa("Ciclano", 25);
+    $ciclano->dizerOi();
 ?>
 ```
 ```
-O resultado será :  Oi, meu nome é Fulano, eu tenho 20 anos.
+O resultado será :  
+    Oi, meu nome é Fulano, eu tenho 20 anos.
+    Oi, meu nome é Ciclano, eu tenho 25 anos.
 ```
