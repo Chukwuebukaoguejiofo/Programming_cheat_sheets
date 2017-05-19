@@ -6,6 +6,9 @@
 <?php
     echo "oi";
 ?>
+
+// o resultado será :  oi
+
 ```
 
 
