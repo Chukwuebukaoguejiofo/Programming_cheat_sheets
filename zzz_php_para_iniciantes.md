@@ -4,11 +4,14 @@
 ###### echo
 ```php
 <?php
+
+
     echo "oi";
+
 ?>
-
-// o resultado será :  oi
-
+```
+```
+o resultado será :  oi
 ```
 
 
@@ -20,9 +23,10 @@ $meuNome = "Fulano";
 
 echo $meuNome; 
 
-// o resultado será :  Fulano
-
 ?>
+```
+```
+O resultado será :  Fulano
 ```
 
 ###### Interpolação
@@ -33,9 +37,10 @@ $meuNome = "Fulano";
 
 echo "oi $meuNome, como vai?"; 
 
-// o resultado será :  oi Fulano, como vai?
-
 ?>
+```
+```
+o resultado será :  oi Fulano, como vai?
 ```
 
 ###### matematica
@@ -45,9 +50,9 @@ echo "oi $meuNome, como vai?";
 
     echo $soma;
 ?>
-
-// o resultado será :  2
-
+```
+```
+O resultado será :  2
 ```
 
 
@@ -60,9 +65,9 @@ echo "oi $meuNome, como vai?";
 
     dizerOi();
 ?>
-
-// o resultado será :  oi
-
+```
+```
+O resultado será :  oi
 ```
 
 
@@ -75,9 +80,9 @@ echo "oi $meuNome, como vai?";
 
     dizerOi("Fulano", 20);
 ?>
-
-// o resultado será :  oi Fulano, voce tem 20 anos
-
+```
+```
+O resultado será :  oi Fulano, voce tem 20 anos
 ```
 
 
@@ -94,9 +99,9 @@ echo "oi $meuNome, como vai?";
 
     echo $resultado;
 ?>
-
-// o resultado será :  4
-
+```
+```
+O resultado será :  4
 ```
 
 ###### classes
@@ -116,7 +121,7 @@ echo "oi $meuNome, como vai?";
     $fulano = new Pessoa("Fulano", 20);
     $fulano->dizerOi();
 ?>
-
-// o resultado será :  Oi, meu nome é Fulano, eu tenho 20 anos.
-
+```
+```
+O resultado será :  Oi, meu nome é Fulano, eu tenho 20 anos.
 ```
