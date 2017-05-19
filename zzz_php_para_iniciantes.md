@@ -98,3 +98,25 @@ echo "oi $meuNome, como vai?";
 // o resultado será :  4
 
 ```
+
+###### classes
+```php
+<?php
+    class Pessoa{
+        function __construct($nome, $idade){
+            $this->nome = $nome;
+            $this->idade = $idade;
+        }
+
+        function dizerOi(){
+            echo "Oi, meu nome é $this->nome, eu tenho $this->idade anos.";
+        }
+    }
+
+    $fulano = new Pessoa("Fulano", 20);
+    $fulano->dizerOi();
+?>
+
+// o resultado será :  Oi, meu nome é Fulano, eu tenho 20 anos.
+
+```
