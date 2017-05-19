@@ -1,9 +1,6 @@
 # PHP para iniciantes
 
-http://sandbox.onlinephpfunctions.com/
-
-Use este link pra executar codigo PHP: [Clique Aqui](http://sandbox.onlinephpfunctions.com/)
-
+Use este link pra executar codigo PHP: [sandbox.onlinephpfunctions.com](http://sandbox.onlinephpfunctions.com/)
 
 ###### echo
 ```php
