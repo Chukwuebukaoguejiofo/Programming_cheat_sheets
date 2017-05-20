@@ -131,3 +131,25 @@ O resultado será :
     Oi, meu nome é Fulano, eu tenho 20 anos.
     Oi, meu nome é Ciclano, eu tenho 25 anos.
 ```
+
+
+###### Condiçōes
+```php
+<?php
+
+$idade = 16;
+
+$podeDirigir = "Nao";
+
+if($idade < 18){
+    $podeDirigir = "Nao";
+}else{
+    $podeDirigir = "Sim";
+}
+
+echo $podeDirigir;
+?>
+```
+```
+O resultado será :  Nao
+```
