@@ -1,7 +1,7 @@
 # Vim
 
 ```bash
-$ vi <file>  # edit a file
+$ vi foo.txt # edit a file
 
 i  # insert mode
 ESC # not insert mode
@@ -54,19 +54,13 @@ ESC :e /path/to/file # go to another file
   delete whole line: dd
   undo:     u   4u
   redo: ctrl + r
-  ```
+```
 
 ```bash
-# create file:
-$ vi demo.txt
-
-
 <ESC> :q	#Quit vim
 <ESC> :q!	#Quit without saving changes i.e. discard changes
 <ESC> :r #fileName	Read data from file called fileName
 <ESC> :wq	#Write and quit (save and exit)
 <ESC> :w #fileName	Write to file called fileName (save as)
 <ESC> :w! #fileName	Overwrite to file called fileName (save as forcefully)
-
-
 ```
