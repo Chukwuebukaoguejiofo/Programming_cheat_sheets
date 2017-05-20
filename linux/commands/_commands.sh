@@ -5,7 +5,7 @@ $ ssh root@111.222.333.444
 $ ssh root@111.222.333.444 "ls -la" 
 
 # secure copy from another computer to your current computer.
-$ spc -r root@111.222.333.444:/var/foo .  
+$ scp -r root@111.222.333.444:/var/foo .  
 $ scp -r root@111.222.333.444:/home/rails/rails_project /Users/brianspinos777/Desktop/FileSharingApp
 
 # sync the server files with what is in your current computer.
