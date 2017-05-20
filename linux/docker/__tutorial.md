@@ -13,8 +13,15 @@ images are snapshots of a system (a picture of the state of the system)
 containers are running instances of an image
 ```
 
-###### commands
+###### Commands
 ```bash
+
+# create new container based on an image and run a command
+$ docker container run -it --name myImage nginx bash
+
+# run a command on an existing container
+$ docker container exec -it mysql bash
+
 
 # list images
 $ docker images
