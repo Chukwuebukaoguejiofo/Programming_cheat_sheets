@@ -1,4 +1,4 @@
-# VIM
+# Vim
 
 ```bash
 $ vi <file>  # edit a file
