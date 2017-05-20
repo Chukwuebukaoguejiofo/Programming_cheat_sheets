@@ -1,6 +1,6 @@
 # VIM
 
-```
+```bash
 $ vi <file>  # edit a file
 
 # up, down, left, right   # use the arrows, duh!
