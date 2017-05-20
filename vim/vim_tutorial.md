@@ -23,9 +23,6 @@ ESC :e /path/to/file # go to another file
 ```
 
 
-# Vim tutorial
-
-
 ```bash
 insert i # insert mode
 escape esc # not insert mode
