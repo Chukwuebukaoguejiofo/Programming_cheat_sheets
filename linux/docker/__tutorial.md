@@ -19,7 +19,7 @@ containers are running instances of an image
 # create new container based on an image and run a command
 $ docker container run -it --name <my-new-container-name> nginx bash
 
-# run a command on an existing container
+# run a command on an existing container (container needs to be running...)
 $ docker container exec -it <my-container-name> bash
 
 
