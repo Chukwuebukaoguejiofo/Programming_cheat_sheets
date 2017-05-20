@@ -3,6 +3,9 @@
 ```bash
 $ vi <file>  # edit a file
 
+i  # insert mode
+ESC # not insert mode
+
 # up, down, left, right   # use the arrows, duh!
 w # go to the beginning of the next word (good for fast forward)
 b # go to the beginning of the previous word (good for fast rewind)
@@ -20,12 +23,6 @@ ESC :%s/foo/bar/g #replace all
 
 ESC :e /path/to/file # go to another file
 
-```
-
-
-```bash
-insert i # insert mode
-escape esc # not insert mode
 ```
 
 # goto's
