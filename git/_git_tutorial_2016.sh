@@ -3,12 +3,14 @@
 # https://www.atlassian.com/git/tutorials/
 #-----------------------------------------------------------------------------------
 
+-> Working Directory
+
+-> INDEX (staging area)
+
 -> HEAD is a pointer to the branch, and the branch is a pointer to a commit (the last commit)
     - commits are like nodes in a tree (there is the root node and it branches out)
     - when you are in detached mode, HEAD is pointing directly to a commit.
     
--> INDEX - is the same as the staging area.
-
 #----------------------------------------------------------------------------------- git normal  work-flow:
 # ...modify a file...
 
