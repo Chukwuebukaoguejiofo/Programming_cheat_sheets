@@ -17,10 +17,12 @@ containers are running instances of an image
 ```bash
 
 # create new container based on an image and run a command
-$ docker container run -it --name myImage nginx bash
+$ docker container run -it --name <my-new-container-name> nginx bash
 
 # run a command on an existing container
-$ docker container exec -it mysql bash
+$ docker container exec -it <my-container-name> bash
+
+
 
 
 # list images
