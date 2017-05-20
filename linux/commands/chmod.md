@@ -1,4 +1,4 @@
-### chmod changed the permission on a file
+### chmod changes the permission on a file
 
 ### usage:
 ```bash
