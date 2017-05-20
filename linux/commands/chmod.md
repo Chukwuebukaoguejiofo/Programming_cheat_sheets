@@ -2,7 +2,7 @@
 
 ### usage:
 ```bash
-$ schmod <user-permission><group-permission><other-users-permission> file
+$ chmod <user-permission><group-permission><other-users-permission> file
 
 # r = 4
 # w = 2
