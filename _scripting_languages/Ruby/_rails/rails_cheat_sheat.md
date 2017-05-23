@@ -23,3 +23,8 @@ user.friend_ids # get friend ids
     <%= label_tag dom_id(category), category.name %>
 <% end %>
 ```
+
+###### Did you know?
+```
+files in the 'app' folder are auto-loaded!
+```
