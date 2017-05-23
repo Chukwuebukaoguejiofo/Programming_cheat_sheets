@@ -2,6 +2,7 @@
 
 ###### Migration
 ```
+rails g model ChatRoom title:string user:references
 ```
 
 ###### routes
