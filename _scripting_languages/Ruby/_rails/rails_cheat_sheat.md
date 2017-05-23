@@ -19,7 +19,7 @@ user.friend_ids # get friend ids
 <!-- checkboxes -->
 <%= hidden_field_tag "product[categoryids][]", nil %>
 <% Category.all.each do |category| %>
-    <%= check_box_tag "product[categoryids][]", category.id, @products.category_ids.include?(category.id) %>
-    <%= category.name %>
+    <%= check_box_tag "product[categoryids][]", category.id, @products.category_ids.include?(category.id), id: dom_id(category) %>
+    <%= label_tag dom_id(category), category.name %>
 <% end %>
 ```
