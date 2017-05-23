@@ -12,7 +12,12 @@ rails g model ChatRoom title:string user:references
 ###### ActiveRecord
 ```
 user.friend_ids # get friend ids
+```
 
+```
+.joins will just joins the tables and brings selected fields in return. if you call associations on joins query result, it will fire database queries again
+
+:includes will eager load the included associations and add them in memory. :includes loads all the included tables attributes. If you call associations on include query result, it will not fire any queries
 ```
 
 ###### Forms
