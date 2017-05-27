@@ -88,7 +88,7 @@ UserMailer.signup_confirmation(@user.email).deliver
       authentication: :plain,
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"],
+      enable_starttls_auto: true
       # domain: 'localhost2:3002', # not sure if I need this
-      # enable_starttls_auto: true # not sure if I need this
   }
 ```
