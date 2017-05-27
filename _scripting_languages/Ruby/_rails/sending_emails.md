@@ -44,6 +44,14 @@ UserMailer.signup_confirmation(@user.email).deliver
 ```
 
 
+```erb
+<p><%= @user.name %>,</p>
+<p>Thank you for signing up.</p>
+<p><%= link_to "User Profile", user_url(@user) %></p>
+<p style="color: red;">test</p>
+```
+
+
 ```ruby
   # development.rb
   
