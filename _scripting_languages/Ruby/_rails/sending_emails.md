@@ -1,7 +1,7 @@
 # Sending emails
 
 
-[https://www.youtube.com/watch?v=6htGDLfVGpQ](HTML emails)
+[HTML emails](https://www.youtube.com/watch?v=6htGDLfVGpQ)
 
 
 ```bash
