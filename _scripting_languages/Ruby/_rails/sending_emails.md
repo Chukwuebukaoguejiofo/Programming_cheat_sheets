@@ -2,6 +2,8 @@
 
 
 [HTML emails](https://www.youtube.com/watch?v=6htGDLfVGpQ)
+
+
 [Receiving emails in you rails app](http://railscasts.com/episodes/313-receiving-email-with-mailman?autoplay=true)
 
 
