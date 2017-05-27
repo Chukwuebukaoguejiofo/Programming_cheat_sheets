@@ -1,0 +1,86 @@
+# Sending emails
+
+
+
+
+
+```bash
+rails new EmailApp
+cd EmailApp
+rails g scaffold user name address email
+rails db:migrate
+rails g mailer user_mailer signup_confirmation
+
+export GMAIL_USERNAME="example@gmail.com"
+export GMAIL_PASSWORD="some_password_here"
+
+rails s
+```
+
+
+
+```ruby
+class UserMailer < ApplicationMailer
+    default from: "foo@foo.com"
+
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.user_mailer.signup_confirmation.subject
+  #
+  def signup_confirmation(user)
+    @greeting = "Hi"
+    @user = user
+
+    mail to: user.email, subject: "My Subject here"
+  end
+end
+```
+
+
+```ruby
+# controller
+UserMailer.signup_confirmation(@user.email).deliver
+```
+
+
+```ruby
+  # development.rb
+  
+  
+  # # Don't care if the mailer can't send.
+  # config.action_mailer.raise_delivery_errors = false
+
+
+  #
+  # You need to unblock your email:
+  #    https://www.google.com/settings/security/lesssecureapps
+  #
+  # This setting is not available for accounts with 2-Step Verification
+  # enabled. Such accounts require an application-specific password for
+  # less secure apps access
+  #
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    # this could be your IP for production?
+    # this is used for links in the email
+    # this could also be your domain, like example.com ?
+    host:'localhost',
+
+    # this could be port 80 for production?
+    # this is used for links in the email
+    port: '3000'
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      authentication: :plain,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"],
+      # domain: 'localhost2:3002', # not sure if I need this
+      # enable_starttls_auto: true # not sure if I need this
+  }
+```
