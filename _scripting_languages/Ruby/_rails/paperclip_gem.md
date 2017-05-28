@@ -114,7 +114,7 @@ rails db:migrate
 View form (make sure you just dont copy and paste, but integrate it in the existing `form_for`)
 -->
 <%= form_for(user, html: { multipart: true }) do |f| %>
-<!-- ... ->
+<!-- ... -->
 <div class="field">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
