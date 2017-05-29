@@ -2,7 +2,7 @@
 
 [Bootstrap github doc](https://github.com/seyhunak/twitter-bootstrap-rails#installing-the-css-stylesheets)
 
-[Inspinia there](https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S)
+[Inspinia theme](https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S)
 
 
 ```bash
