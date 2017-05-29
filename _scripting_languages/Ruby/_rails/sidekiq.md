@@ -63,11 +63,13 @@ rails g job generate_random_user
 
 
 ```bash
+# start redis in another tab
+# use redis as a persistent store, not as a cache
+# you can have 2 instances of Redis, one as a cache, another as a persistent store for sidekiq
+redis-server
+
 sidekiq
-# start redis also
 ```
-
-
 
 
 ```ruby
@@ -78,10 +80,8 @@ mount Sidekiq::Web => '/sidekiq'  # check how to wrap this with devise gem
 
 ```
 
-
-
 ```
-
+# browser
 http://localhost:3000/sedikiq
 ```
 
