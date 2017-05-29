@@ -74,9 +74,7 @@ end
 # use redis as a persistent store, not as a cache
 # you can have 2 instances of Redis, one as a cache, another as a persistent store for sidekiq
 
-GenerateRandomUserJob.perform_later(@user.id)
-# GenerateRandomUserJob.perform_async(@user.id)
- 
+GenerateRandomUserJob.perform_later(@user.id) 
 ```
 
 
