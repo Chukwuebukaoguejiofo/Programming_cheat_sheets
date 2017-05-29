@@ -63,6 +63,10 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 ```ruby
 # routes.rb.
 
+devise_for :users, controllers: {
+  sessions: 'users/sessions'
+}
+
 root to: "users#index"
 ```
 
@@ -76,10 +80,17 @@ root to: "users#index"
 
 ```
 
+
+```ruby
+# application_controller.rb
+before_action :authenticate_user!
+```
+
 ```bash
 rails generate devise user
 rails db:migrate
 rails g devise:views
+rails generate devise:controllers users
 rails s
 ```
 
