@@ -5,6 +5,7 @@
 
 ```bash
 rails new SidekiqApp
+cd SidekiqApp
 rails g scaffold user name email address
 rails db:migrate
 ```
