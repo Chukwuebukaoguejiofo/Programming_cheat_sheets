@@ -8,6 +8,9 @@ rails new DeviseApp
 cd DeviseApp
 rails g scaffold user name address # dont put email yet, let devise do it
 rails db:migrate
+
+export GMAIL_USERNAME="example@gmail.com"
+export GMAIL_PASSWORD="some_password_here"
 ```
 
 
@@ -54,10 +57,44 @@ Some setup you must do manually if you haven't yet:
 
 
 ```ruby
-# development.rb:
+# development.rb
+  
+  
+  # # Don't care if the mailer can't send.
+  # config.action_mailer.raise_delivery_errors = false
 
-# In production, :host should be set to the actual host of your application.
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #
+  # You need to unblock your email:
+  #    https://www.google.com/settings/security/lesssecureapps
+  #
+  # This setting is not available for accounts with 2-Step Verification
+  # enabled. Such accounts require an application-specific password for
+  # less secure apps access
+  #
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    # this could be your IP for production?
+    # this is used for links in the email
+    # this could also be your domain, like example.com ?
+    host:'localhost',
+
+    # this could be port 80 for production?
+    # this is used for links in the email
+    port: '3000'
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      authentication: :plain,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"],
+      enable_starttls_auto: true
+      # domain: 'localhost2:3002', # not sure if I need this
+  }
 ```
 
 ```ruby
