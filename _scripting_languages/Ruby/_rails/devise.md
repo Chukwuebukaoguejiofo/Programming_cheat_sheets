@@ -6,7 +6,7 @@
 ```bash
 rails new DeviseApp
 cd DeviseApp
-rails g scaffold user name email address
+rails g scaffold user name address # dont put email yet, let devise do it
 rails db:migrate
 ```
 
