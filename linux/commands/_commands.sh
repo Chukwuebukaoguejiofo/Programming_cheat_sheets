@@ -1,3 +1,15 @@
+# see file type
+file foo.txt 
+
+# see file tymime type
+file --mime foo.txt 
+
+# see file size
+du -h foo.txt 
+
+# see free space
+df -h  
+
 # login into another machine.
 $ ssh root@111.222.333.444 
 
