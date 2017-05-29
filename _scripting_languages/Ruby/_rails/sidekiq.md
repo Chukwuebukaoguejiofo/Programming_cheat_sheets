@@ -86,6 +86,6 @@ mount Sidekiq::Web => '/sidekiq'  # check how to wrap this with devise gem
 
 ```
 # browser
-http://localhost:3000/sedikiq
+http://localhost:3000/sidekiq
 ```
 
