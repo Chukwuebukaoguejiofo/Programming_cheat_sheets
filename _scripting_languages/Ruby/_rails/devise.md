@@ -75,9 +75,6 @@ root to: "users#index"
 ```erb
 <!-- application.html.erb -->
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
     <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.
       <%= link_to 'Edit profile', edit_user_registration_path %> |
