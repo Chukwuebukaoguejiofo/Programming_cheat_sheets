@@ -49,6 +49,26 @@ rails g job generate_random_user
 
 
 ```ruby
+# app/jobs/generate_random_user_job.rb
+
+class GenerateRandomUserJob < ApplicationJob
+  queue_as :default
+
+  def perform(*args)
+    # Do something later
+
+    sleep 2
+
+    puts "\n\n\n\n\n\n\n\n\n\n\n\n"
+    puts args
+    puts "\n\n\n\n\n\n\n\n\n\n\n\n"
+  end
+end
+
+```
+
+
+```ruby
 # controller
  GenerateRandomUserJob.perform_later
  # a best practice is to pass the ID, not the entire object
