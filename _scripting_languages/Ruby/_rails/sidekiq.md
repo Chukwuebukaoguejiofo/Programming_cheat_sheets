@@ -24,8 +24,7 @@ bundle install
 ```ruby
 # application.rb
 
-
-config.active_job.queue_adapter = Rails.env.production? :sidekiq : :async
+config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async
 
 ```
 
