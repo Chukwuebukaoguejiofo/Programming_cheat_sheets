@@ -1,5 +1,7 @@
 # Bootstrap
 
+[Bootstrap doc](http://getbootstrap.com/)
+
 [Bootstrap github doc](https://github.com/seyhunak/twitter-bootstrap-rails#installing-the-css-stylesheets)
 
 [Inspinia theme](https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S)
