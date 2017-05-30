@@ -9,7 +9,7 @@ rails g model ChatRoom title:string user:references
 #
 rails g migration AddUserNameToUsers user_name:string:index
 
-rails g migration RemoveUserNameToUsers user_name:string  # string, decimal, references, text
+rails g migration RemoveUserNameFromUsers user_name:string  # string, decimal, references, text
 ```
 
 ###### Controllers
