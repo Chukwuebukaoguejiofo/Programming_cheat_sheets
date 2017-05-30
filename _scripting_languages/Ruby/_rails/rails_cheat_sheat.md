@@ -1,7 +1,7 @@
 # Rails
 
 ###### Generators
-```
+```bash
 rails g model ChatRoom title:string user:references
 
 #
