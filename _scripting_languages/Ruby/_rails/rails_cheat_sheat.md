@@ -1,8 +1,15 @@
 # Rails
 
-###### Migration
+###### Generators
 ```
 rails g model ChatRoom title:string user:references
+
+#
+# Add user_name to users table and also add an index on that column
+#
+rails g migration AddUserNameToUsers user_name:string:index
+
+rails g migration RemoveUserNameToUsers user_name:string  # string, decimal, references, text
 ```
 
 ###### routes
