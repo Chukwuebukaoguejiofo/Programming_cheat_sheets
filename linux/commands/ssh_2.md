@@ -15,6 +15,7 @@
 # -f ~/.ssh/vps-cloud.web-server.key -> Specifies the filename of the key file.
 # -C "My web-server key"             -> Set a new comment.
 #
+cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/vps-cloud.web-server.key -C "My web-server key"
 
 #
