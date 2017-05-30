@@ -12,6 +12,12 @@ rails g migration AddUserNameToUsers user_name:string:index
 rails g migration RemoveUserNameToUsers user_name:string  # string, decimal, references, text
 ```
 
+###### Controllers
+```ruby
+# make this method available to the view.
+helper_method :some_method_in_the_controller
+```
+
 ###### routes
 ```
 ```
