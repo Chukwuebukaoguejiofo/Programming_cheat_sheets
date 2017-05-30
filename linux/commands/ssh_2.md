@@ -25,5 +25,5 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/vps-cloud.web-server.key -C "My web-server k
 ssh-copy-id -i ~/.ssh/id_rsa.pub user_in_server@server_ip
 
 # test
-ssh user_in_server@server_ip
+ssh user_in_server@server_ip 
 ```
