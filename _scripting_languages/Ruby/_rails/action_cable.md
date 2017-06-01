@@ -11,7 +11,7 @@ rails db:migrate
 
 ```bash
 brew services start redis
-#{ }brew services stop redis
+# brew services stop redis
 ```
 
 
