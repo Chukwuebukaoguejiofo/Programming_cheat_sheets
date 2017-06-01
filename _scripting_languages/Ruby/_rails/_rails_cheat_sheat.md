@@ -89,3 +89,12 @@ end
 ```
 files in the 'app' folder are auto-loaded!
 ```
+
+
+###### Research
+```
+cokies.signed['user.id']
+cokies.signed['user.expires_at']
+env['warden']
+
+```
