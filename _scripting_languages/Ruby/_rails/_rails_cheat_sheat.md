@@ -35,6 +35,28 @@ users_url # => http://localhost:3000/users
 users_path  # => /users
 ```
 
+```ruby
+# routes.rb
+resources :messages do
+  collection do
+    get 'oldest1'  # oldest1_messages_path
+    post 'latest1'  # latest1_messages_path
+  end
+
+  member do
+    get 'oldest2'  # oldest2_message_path
+    post 'latest2'  # latest2_message_path
+  end
+end
+
+
+#           Prefix Verb   URI Pattern                     Controller#Action
+# oldest1_messages GET    /messages/oldest1(.:format)     messages#oldest1
+# latest1_messages POST   /messages/latest1(.:format)     messages#latest1
+#  oldest2_message GET    /messages/:id/oldest2(.:format) messages#oldest2
+#  latest2_message POST   /messages/:id/latest2(.:format) messages#latest2
+```
+
 ###### ActiveRecord
 ```
 user.friend_ids # get friend ids
