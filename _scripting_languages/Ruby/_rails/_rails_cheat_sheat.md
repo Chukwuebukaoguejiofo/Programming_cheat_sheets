@@ -95,6 +95,10 @@ files in the 'app' folder are auto-loaded!
 ```
 cokies.signed['user.id']
 cokies.signed['user.expires_at']
+
 env['warden']
+
+session[:user_id] = user.id
+session[:user_id] = nil
 
 ```
