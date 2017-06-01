@@ -135,7 +135,7 @@ end
 
 
 ```erb
-# messages/index.html.erb
+<!-- messages/index.html.erb -->
 <hr>
 <%= form_for(@message, url: create2_messages_path, remote: true) do |f| %>
   <div class="field">
