@@ -22,7 +22,7 @@ config.action_cable.mount_path = '/websocketier'
 ```
 
 ```erb
-# application.html.erb
+<!-- application.html.erb -->
 <%= action_cable_meta_tag %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 ```
