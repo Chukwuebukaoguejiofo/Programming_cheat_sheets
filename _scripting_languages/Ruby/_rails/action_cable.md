@@ -64,38 +64,17 @@ end
 ```ruby
 # messages_controller.rb
 def create2
-    @message = Message.new(message_params)
-
-    respond_to do |format|
-      if @message.save
-
-        ActionCable.server.broadcast "chat", {
-          message: MessagesController.render(
-            partial: 'message',
-            locals: {message: @message}
-          ).squish
-        }
-
-        # format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        # format.json { render :show, status: :created, location: @message }
-      else
-        # format.html { render :new }
-        # format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
+  @message = Message.new(message_params)
+  if @message.save
+    ActionCable.server.broadcast "chat", {
+      message: MessagesController.render(
+        partial: 'message',
+        locals: {message: @message}
+      ).squish
+    }
+  end
 end
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 ```coffeescript
