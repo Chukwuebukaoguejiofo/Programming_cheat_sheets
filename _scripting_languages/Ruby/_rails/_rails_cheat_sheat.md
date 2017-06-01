@@ -85,6 +85,13 @@ end
 <% end %>
 ```
 
+
+###### Flash
+```
+Flash[:notice]’s message will persist to the next action and should be used when redirecting to another action via the ‘redirect_to’ method.
+Flash.now[:notice]’s message will be displayed in the view your are rendering via the ‘render’ method.
+```
+
 ###### Did you know?
 ```
 files in the 'app' folder are auto-loaded!
