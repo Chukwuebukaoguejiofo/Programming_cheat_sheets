@@ -2,6 +2,7 @@
 
 ###### New app
 ```bash
+rails _3.2.13_ new myApp # specify a different rails version
 rails new myApp --database=postgresql
 rails new myApp -d mysql
 
