@@ -3,6 +3,12 @@
 ###### New app
 ```bash
 rails new myApp --database=postgresql
+rails new myApp -d mysql
+
+
+# for VPNs
+# XXX.XXX.XX.XX is for the IP
+$ rails s -b XXX.XXX.XX.XX -p 3000 
 ```
 
 ###### Generators
