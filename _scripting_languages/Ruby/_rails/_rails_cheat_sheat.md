@@ -1,5 +1,10 @@
 # Rails
 
+###### New app
+```bash
+rails new myApp --database=postgresql
+```
+
 ###### Generators
 ```bash
 rails g model ChatRoom title:string user:references
