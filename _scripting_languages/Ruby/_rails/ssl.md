@@ -57,6 +57,9 @@ sudo nginx -t
 # start nginx
 sudo nginx 
 
+# stop nginx
+sudo nginx -s stop 
+
 
 # now go to the broser  
 # use safari browser (and click 'continue')
