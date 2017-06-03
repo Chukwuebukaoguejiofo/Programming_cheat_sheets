@@ -20,7 +20,10 @@ cd ~/.pow
 
 # The name of the symlink (BootstrapApp) determines the hostname you use (BootstrapApp.dev) 
 # to access the application it points to (~/Desktop/RailsApps/bootstrapApp/BootstrapApp)
-# http://BootstrapApp.dev  will be available!
+#
+# will be available:
+# http://BootstrapApp.dev
+# http://www.bootstrapapp.dev
 ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
 ```
 
