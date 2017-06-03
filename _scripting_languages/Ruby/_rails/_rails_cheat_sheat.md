@@ -30,6 +30,19 @@ rails g migration RemoveUserNameFromUsers user_name:string  # string, decimal, r
 helper_method :some_method_in_the_controller
 ```
 
+```ruby
+# flash.keep
+
+def index
+    # Will persist all flash values.
+    flash.keep
+ 
+    # You can also use a key to keep only some kind of value.
+    # flash.keep(:notice)
+    redirect_to users_url
+end
+```
+
 ###### routes
 ```
 users     GET    /users(.:format)                                  users#index
