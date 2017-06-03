@@ -104,6 +104,22 @@ Flash[:notice]’s message will persist to the next action and should be used wh
 Flash.now[:notice]’s message will be displayed in the view your are rendering via the ‘render’ method.
 ```
 
+
+###### Ruby
+```ruby
+# blocks
+def manage_user(&block)
+    # give the block a variable to work with.
+    user = {name: 'brian', age: 28}
+    block.call(user)
+end
+
+manage_user do |u|
+    puts u[:name].upcase # BRIAN
+    puts u[:age] * 100 # 2800
+end
+```
+
 ###### Did you know?
 ```
 files in the 'app' folder are auto-loaded!
