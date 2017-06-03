@@ -17,12 +17,9 @@ curl get.pow.cx | sh # install pow
 launchctl stop cx.pow.powd
 
 cd ~/.pow
-ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp .
+ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
 # http://BootstrapApp.dev  will be available!
 ```
-
-
-
 
 
 ```bash
