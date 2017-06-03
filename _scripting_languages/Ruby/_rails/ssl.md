@@ -28,7 +28,8 @@ cd ~/.pow
 # to be used by another computer on your local network, use LAN IP address.
 # P.S. make sure the LAN IP works on you computer first, make sure its correct.
 #      and make sure you have accessed the URL in your computer (it seems that Pow has a timeout limit set)
-# http://bootstrapapp.192.168.0.2.xip.io/ 
+# http://bootstrapapp.192.168.0.2.xip.io
+# http://www.bootstrapapp.192.168.0.2.xip.io
 #
 ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
 ```
