@@ -17,8 +17,11 @@ curl get.pow.cx | sh # install pow
 launchctl stop cx.pow.powd
 
 cd ~/.pow
-ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
+
+# The name of the symlink (BootstrapApp) determines the hostname you use (BootstrapApp.dev) 
+# to access the application it points to (~/Desktop/RailsApps/bootstrapApp/BootstrapApp)
 # http://BootstrapApp.dev  will be available!
+ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
 ```
 
 
