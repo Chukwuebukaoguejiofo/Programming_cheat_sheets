@@ -7,7 +7,15 @@
 
 ###### Using Pow and Nginx
 
-
+###### About Pow
+```
+Pow is a web server created by the company '37signals'
+its makes it easy to assign host names to multiple rails apps
+example:
+  http://railsApp1.dev
+  http://railsApp2.dev
+  http://railsApp3.dev
+```
 
 
 ```bash
