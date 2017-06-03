@@ -114,10 +114,14 @@ end
 ###### Flash
 ```ruby
 # message will persist to the next action and should be used when redirecting to another action via the ‘redirect_to’ method.
-Flash[:notice] 
+flash[:notice] 
 
 # message will be displayed in the view your are rendering via the ‘render’ method.
-Flash.now[:notice]
+flash.now[:notice]
+
+# keeps flash for another request (use when redirecting)
+flash.keep # keep all values
+flash.keep(:notice) # keep only the :notice value
 ```
 
 
