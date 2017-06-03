@@ -2,6 +2,7 @@
 
 
 [RailsCast SSL](http://railscasts.com/episodes/357-adding-ssl?autoplay=true)
+
 [Pow Website](http://pow.cx/)
 
 ###### Using Pow and Nginx
