@@ -26,8 +26,8 @@ cd ~/.pow
 # http://www.bootstrapapp.dev
 #
 # to be used by another computer on your local network, use LAN IP address.
-# P.S. it did not work for my iphone...
-# http://bootstrapapp.127.0.0.10.xip.io/ 
+# P.S. make sure the LAN IP works on you computer first, make sure its correct.
+# http://bootstrapapp.192.168.0.2.xip.io/ 
 #
 ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root folder
 ```
