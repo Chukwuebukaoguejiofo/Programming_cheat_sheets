@@ -36,6 +36,17 @@ ln -s ~/Desktop/RailsApps/bootstrapApp/BootstrapApp . # symlink your app's root 
 
 
 ```bash
+# stop Pow (use both commands):
+launchctl unload ~/Library/LaunchAgents/cx.pow.powd.plist
+sudo launchctl unload ~/Library/LaunchDaemons/cx.pow.firewall.plist
+
+# start Pow (use both commands):
+launchctl load ~/Library/LaunchAgents/cx.pow.powd.plist
+sudo launchctl load ~/Library/LaunchDaemons/cx.pow.firewall.plist
+```
+
+
+```bash
 # install nginx
 brew install nginx
 
