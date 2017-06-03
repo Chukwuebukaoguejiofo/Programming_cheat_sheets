@@ -108,13 +108,16 @@ Flash.now[:notice]’s message will be displayed in the view your are rendering 
 ###### Ruby
 ```ruby
 # blocks
-def manage_user(&block)
+def manage_user(msg, &block)
+
+    puts msg
     # give the block a variable to work with.
     user = {name: 'brian', age: 28}
     block.call(user)
 end
 
-manage_user do |u|
+manage_user('Hello!') do |u|
+    # Hello!
     puts u[:name].upcase # BRIAN
     puts u[:age] * 100 # 2800
 end
