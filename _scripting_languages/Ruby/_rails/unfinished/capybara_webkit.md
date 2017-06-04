@@ -66,4 +66,8 @@ page.execute_script("$('#area button.primary').click()")
 session = Capybara::Session.new :selenium # instantiate new session object
 session.visit() # use it to call DSL methods
 
+
+save_and_open_page # saves current snapshot of page
+print page.html # retrieve current state of DOM
+save_sceenshot('screenshot.png') # save screenshot
 ```
