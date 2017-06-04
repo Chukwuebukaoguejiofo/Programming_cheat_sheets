@@ -133,7 +133,7 @@ flash.keep(:notice) # keep only the :notice value
 ```bash
 # Use `bundle show [gemname]` to see where a bundled gem is installed.
 bundle show rspec
-/Users/brianspinos777/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/rspec-3.5.0
+#=> /Users/brianspinos777/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/rspec-3.5.0
 ```
 
 ###### Ruby
