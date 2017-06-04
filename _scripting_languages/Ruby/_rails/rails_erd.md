@@ -1,5 +1,6 @@
-# rails_erd (visual representation of your schema)
+# rails_erd 
 
+###### (visual representation of your schema)
 
 [tutorial](https://ryanboland.com/blog/creating-a-database-diagram-with-rails-erd/)
 
