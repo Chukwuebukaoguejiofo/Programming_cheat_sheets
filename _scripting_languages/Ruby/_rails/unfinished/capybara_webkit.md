@@ -1,4 +1,4 @@
-# Capybara
+# Capybara webkit
 
 [documentation](https://github.com/thoughtbot/capybara-webkit)
 
@@ -39,3 +39,18 @@ RSpec.describe "home page", :type => :request do
   end
 end
 ```
+
+
+```ruby
+# basic commands
+
+visit('page_url') # navigate to page
+click_link('id_of_link') # click link by id
+click_link('link_text') # click link by link text
+click_button('button_name') # fill text field
+fill_in('First Name', :with => 'John') # choose radio button
+choose('radio_button') # choose radio button
+check('checkbox') # check in checkbox
+uncheck('checkbox') # uncheck in checkbox
+select('option', :from=>'select_box') # select from dropdown
+attach_file('image', 'path_to_image') # upload file
