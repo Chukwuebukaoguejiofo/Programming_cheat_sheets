@@ -9,6 +9,8 @@ gem 'rails-erd'
 ```
 
 ```bash
+# brew install graphviz # If you dont have graphviz installed.
+
 bundle install
 erd --inheritance --direct --attributes=foreign_keys,content
 #=> Diagram saved to 'erd.pdf'.
