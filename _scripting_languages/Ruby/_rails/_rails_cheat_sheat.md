@@ -12,6 +12,11 @@ rails new myApp -d mysql
 $ rails s -b XXX.XXX.XX.XX -p 3000 
 ```
 
+###### Tasks
+```bash
+rails db:migrate RAILS_ENV=test
+```
+
 ###### Generators
 ```bash
 rails g model ChatRoom title:string user:references
