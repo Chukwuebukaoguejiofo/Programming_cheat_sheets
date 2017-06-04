@@ -25,6 +25,8 @@ end
 ```ruby
 # test  (not working yet)
 
+# myApp/spec/requests/users_spec.rb
+
 RSpec.describe "home page", :type => :request do
   it "displays the user's username after successful login" do
     user = FactoryGirl.create(:user, :name => "jdoe", :email => "secret")
