@@ -2,17 +2,28 @@
 
 [documentation](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#configure-your-test-suite)
 
+[factory_girl_rails Github](https://github.com/thoughtbot/factory_girl_rails)
+
+
+```ruby
+# Gemfile
+group :development, :test do
+  gem 'factory_girl_rails'
+end
+```
 
 
 ```ruby
 # rails_helper.rb
 
-config.include FactoryGirl::Syntax::Methods
-
+RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+end
 ```
 
 
 ###### create the folder for the factories
+
 ```
 myApp/spec/factories/
 ```
