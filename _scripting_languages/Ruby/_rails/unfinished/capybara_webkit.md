@@ -54,7 +54,16 @@ check('checkbox') # check in checkbox
 uncheck('checkbox') # uncheck in checkbox
 select('option', :from=>'select_box') # select from dropdown
 attach_file('image', 'path_to_image') # upload file
+```
+
+
+```ruby
+# need to research more about these:
 
 page.execute_script("$('#area button.primary').click()")
+
+
+session = Capybara::Session.new :selenium # instantiate new session object
+session.visit() # use it to call DSL methods
 
 ```
