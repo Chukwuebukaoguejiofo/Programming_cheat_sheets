@@ -1,4 +1,4 @@
-# Capybara webkit
+# Capybara webkit  (No Javascript? Only capybara with Selenium runs Javascript?)
 
 [documentation](https://github.com/thoughtbot/capybara-webkit)
 
