@@ -54,3 +54,7 @@ check('checkbox') # check in checkbox
 uncheck('checkbox') # uncheck in checkbox
 select('option', :from=>'select_box') # select from dropdown
 attach_file('image', 'path_to_image') # upload file
+
+page.execute_script("$('#area button.primary').click()")
+
+```
