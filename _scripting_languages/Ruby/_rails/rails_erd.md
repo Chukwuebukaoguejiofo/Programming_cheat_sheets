@@ -9,7 +9,8 @@ gem 'rails-erd'
 ```
 
 ```bash
-# brew install graphviz # If you dont have graphviz installed.
+# # If you dont have graphviz installed.
+# brew install graphviz 
 
 bundle install
 erd --inheritance --direct --attributes=foreign_keys,content
