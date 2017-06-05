@@ -2,6 +2,8 @@
 
 [Documentation](https://github.com/cucumber/cucumber-rails)
 
+[Blog](https://semaphoreci.com/community/tutorials/introduction-to-writing-acceptance-tests-with-cucumber)
+
 
 require 'capybara/cucumber'
 
@@ -113,5 +115,6 @@ Feature: Manage Articles
 ```bash
 # run cucumber
 
-[bundle exec] cucumber
+# The -s option is to hide the steps definition location
+[bundle exec] cucumber -s
 ```
