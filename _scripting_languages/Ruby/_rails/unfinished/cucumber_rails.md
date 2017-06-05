@@ -5,7 +5,7 @@
 [Blog](https://semaphoreci.com/community/tutorials/introduction-to-writing-acceptance-tests-with-cucumber)
 
 
-require 'capybara/cucumber'
+
 
 ```ruby
 # Gemfile
@@ -15,6 +15,14 @@ group :test do
 end
 ```
 
+
+
+```ruby
+# rails_helper.rb
+
+require 'capybara/cucumber'
+
+```
 
 
 ```bash
