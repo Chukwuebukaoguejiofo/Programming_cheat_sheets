@@ -12,6 +12,8 @@
 group :test do
   # we need the :require => false, so rails does snot complain
   gem 'cucumber-rails', :require => false
+  
+  gem 'selenium-webdriver' # not sure if we need this
 end
 ```
 
@@ -47,18 +49,52 @@ rails generate cucumber:install
 ```ruby
 # myApp/features/step_definitions/my_steps.rb
 
-Given /^I have articles titled (.+)$/ do |titles|
-  titles.split(', ').each do |title|
-    Article.create!(:title => title)
+Given /^I have users named (.+)$/ do |names|
+  names.split(', ').each do |name|
+    User.create!(name: name)
   end
 end
 
-Given /^I have no articles$/ do
-  Article.delete_all
+Given /^I have no users$/ do
+  User.delete_all
 end
 
-Then /^I should have ([0-9]+) articles?$/ do |count|
-  Article.count.should == count.to_i
+Then /^I should have ([0-9]+) users?$/ do |count|
+  User.count.should == count.to_i
+end
+
+
+#---------- By Brian
+
+When(/^I go to the list of users$/) do
+  visit users_path
+end
+
+
+
+Then(/^I should see "([^"]*)"$/) do |arg1|
+  page.html.should =~ /#{arg1}/
+end
+
+# Given(/^I am on the "([^"]*)"$/) do |arg1|
+#   visit path_to arg1
+# end
+
+Given(/^I am on the list of new users$/) do
+  visit new_user_path
+end
+
+When(/^I follow "([^"]*)"$/) do |arg1|
+  path_to arg1
+end
+
+When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
+  # puts page.body # for debugging!
+  fill_in arg1, with: arg2
+end
+
+When(/^I press "([^"]*)"$/) do |arg1|
+  click_button arg1
 end
 ```
 
@@ -68,13 +104,20 @@ end
 ```ruby
 # myApp/features/support/my_support.rb
 
+module MyModule
 def path_to(page_name)
   case page_name
 
   when /the homepage/
     root_path
-  when /the list of articles/
-    articles_path
+  when /the list of users/
+    users_path
+
+  when /the list of new users/
+    users_path
+
+  when /New User/
+    new_user_path
 
   # Add more page name => path mappings here
 
@@ -82,6 +125,13 @@ def path_to(page_name)
     raise "Can't find mapping from \"#{page_name}\" to a path."
   end
 end
+end
+
+
+# https://github.com/cucumber/cucumber/wiki/A-Whole-New-World
+World(MyModule)
+
+
 ```
 
 
@@ -90,28 +140,28 @@ end
 ```gherkin
 # myApp/features/my_test.feature
 
-Feature: Manage Articles
+Feature: Manage Users
   In order to make a blog
   As an author
-  I want to create and manage articles
+  I want to create and manage users
 
-  Scenario: Articles List
-    Given I have articles titled Pizza, Breadsticks
-    When I go to the list of articles
-    Then I should see "Pizza"
-    And I should see "Breadsticks"
+  Scenario: Users List
+    Given I have users named Brian, Erich
+    When I go to the list of users
+    Then I should see "Brian"
+    And I should see "Erich"
 
-  Scenario: Create Valid Article
-    Given I have no articles
-    And I am on the list of articles
-    When I follow "New Article"
-    And I fill in "Title" with "Spuds"
-    And I fill in "Content" with "Delicious potato wedges!"
-    And I press "Create"
-    Then I should see "New article created."
-    And I should see "Spuds"
-    And I should see "Delicious potato wedges!"
-    And I should have 1 article
+  Scenario: create user
+    Given I am on the list of new users
+    When I fill in "Name" with "Dude"
+    And I fill in "Email" with "dude@example.com"
+    And I fill in "Address" with "345 Foobar St"
+    And I press "Create User"
+    Then I should see "User was successfully created."
+    And I should see "Dude"
+    And I should see "dude@example.com"
+    And I should see "345 Foobar St"
+    And I should have 1 user
     
 ```
 
