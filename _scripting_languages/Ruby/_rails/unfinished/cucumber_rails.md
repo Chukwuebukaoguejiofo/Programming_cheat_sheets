@@ -20,7 +20,7 @@ end
 ```ruby
 # rails_helper.rb
 
-require 'capybara/cucumber'
+require 'capybara/cucumber' # I am not sure we need this
 
 ```
 
