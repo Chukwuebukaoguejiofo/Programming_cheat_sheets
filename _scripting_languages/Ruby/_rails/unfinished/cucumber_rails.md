@@ -158,6 +158,9 @@ Feature: Manage Users
     Then I should see "Brian"
     And I should see "Erich"
 
+  # use this on top of the feature key-word if you need
+  # to open the browser and test javascript
+  @javascript
   Scenario: create user
     Given I am on the list of new users
     When I fill in "Name" with "Dude"
@@ -168,8 +171,7 @@ Feature: Manage Users
     And I should see "Dude"
     And I should see "dude@example.com"
     And I should see "345 Foobar St"
-    And I should have 1 user
-    
+    And I should have 1 user    
 ```
 
 
