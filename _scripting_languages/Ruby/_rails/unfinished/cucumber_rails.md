@@ -17,7 +17,9 @@ group :test do
   # we need the :require => false, so rails does snot complain
   gem 'cucumber-rails', :require => false
   
-  gem 'selenium-webdriver' # not sure if we need this
+  # we need this for javascript testing
+  # and it needs to be version 2.53.4
+  gem 'selenium-webdriver', '2.53.4' 
 end
 ```
 
