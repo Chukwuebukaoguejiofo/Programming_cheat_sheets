@@ -73,7 +73,8 @@ end
 
 
 Then(/^I should see "([^"]*)"$/) do |arg1|
-  page.html.should =~ /#{arg1}/
+  # page.html.should =~ /#{arg1}/
+  expect(page).to have_content(arg1)
 end
 
 # Given(/^I am on the "([^"]*)"$/) do |arg1|
