@@ -6,6 +6,10 @@
 
 
 
+```
+You need Firefox 4 to be installed
+```
+
 
 ```ruby
 # Gemfile
