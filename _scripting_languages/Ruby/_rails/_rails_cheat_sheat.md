@@ -12,6 +12,39 @@ rails new myApp -d mysql
 $ rails s -b XXX.XXX.XX.XX -p 3000 
 ```
 
+
+###### Decorators
+```
+Decorators are classes that wrap an activeRecord instance, and provide more methods to be used in the view
+```
+
+###### Concers
+```
+Concerns are classes that wrap sharable code between controllers, or between models
+```
+
+###### cookies & sessions
+```ruby
+# in a controller
+
+# https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
+
+#
+# The full 'session' hash will be encrypted and added as a value to the cookie '_MyAppNameHere_session'.
+#
+session[:name] = "brian"                  # cookie: "_MyAppNameHere_session" content: an encrypted ruby hash?
+session[:age] = 28                        # cookie: "_MyAppNameHere_session" content: an encrypted ruby hash?
+session[:address] = "123 foobar st"       # cookie: "_MyAppNameHere_session" content: an encrypted ruby hash?
+# session[:name] = nil # to remove it
+
+#
+# Unlike 'session', each call to cookies[:some_key] will create a new cookie
+#
+cookies[:brian_cookie] = "bar" # cookie: "brian_cookie", content: bar
+# cookies[:brian_cookie] = nil # to remove it
+
+```
+
 ###### Tasks
 ```bash
 rails db:migrate RAILS_ENV=test
