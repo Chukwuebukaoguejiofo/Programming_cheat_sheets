@@ -1,5 +1,13 @@
 # Paperclip gem
 
+
+###### Issue
+```
+I am not able to save .docx files, try this:
+https://stackoverflow.com/questions/10808734/paperclip-uploads-for-office-files-docx-pptx-are-being-downloaded-as-zip-files
+https://technet.microsoft.com/en-us/library/ee309278(v=office.12).aspx
+```
+
 [Github for paperclip](https://github.com/thoughtbot/paperclip)
 
 [heroku's tutorial](https://devcenter.heroku.com/articles/paperclip-s3)
