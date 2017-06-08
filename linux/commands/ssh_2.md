@@ -5,6 +5,12 @@
 
 
 ```bash
+# not tested yet:
+cat ~/.ssh/id_rsa.pub | ssh root@192.168.99.99 'cat >> .ssh/authorized_keys'
+```
+
+
+```bash
 
 #
 # Paste contents of your public keys into this file, on the server you want to access:
