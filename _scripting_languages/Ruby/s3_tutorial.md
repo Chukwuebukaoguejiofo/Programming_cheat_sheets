@@ -1,9 +1,9 @@
 # AWSS S3 Tutorial
 
-# https://devcenter.heroku.com/articles/paperclip-s3  
+[Heroku's paperclip article](https://devcenter.heroku.com/articles/paperclip-s3)
 
 
-http://stackoverflow.com/questions/8131835/store-images-locally-for-development-s3-for-production-rails-paperclip
+[Store images locally](http://stackoverflow.com/questions/8131835/store-images-locally-for-development-s3-for-production-rails-paperclip)
 
 
 
