@@ -23,4 +23,7 @@ cobc -x -o demo main.o
 
 # Executing the program
 ./demo 
+
+# Output
+#=> Hello World
 ```
