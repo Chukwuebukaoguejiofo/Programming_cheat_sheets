@@ -15,7 +15,7 @@ drop database my_database;
 
 # Create a user
 create role brian_spinos;  
-Grant all privileges on my_database to brian_spinos; 
+Grant all privileges on my_database to brian_spinos; # not sure about this
 
 
 # use that DB (so you can run sql queries)
@@ -32,6 +32,10 @@ Grant all privileges on my_database to brian_spinos;
 
 # restart the ID's (primary keys will start from 1)
 truncate my_table; 
+
+# show current database and user
+\c
+#=> You are now connected to database "my_database" as user "dude".
 
 # Quit psql
 \q
