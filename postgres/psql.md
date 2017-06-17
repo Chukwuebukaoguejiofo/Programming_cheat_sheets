@@ -1,6 +1,6 @@
 # Postgres CLI
 
-```psql
+```bash
 # Start Postgres server
 psql
 
