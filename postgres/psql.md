@@ -25,7 +25,10 @@ Grant all privileges on my_database to brian_spinos;
 \d 
 
 # Describe table schema
-\d+ my_table;   
+\d+ my_table;  
+
+# Describe table schema, including table size on disk!
+\d+
 
 # restart the ID's (primary keys will start from 1)
 truncate my_table; 
