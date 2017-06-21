@@ -31,6 +31,15 @@ rails db:migrate RAILS_ENV=test
 bundle exec rspec .
 ```
 
+```
+# .rspec
+
+--color
+# --require spec_helper # I guess we dont need this, since its loaded in 'rails_helper'
+--require rails_helper
+
+```
+
 ```bash
 # generate spec/models/widget_spec.rb
 # The same generator pattern is available for all specs:
