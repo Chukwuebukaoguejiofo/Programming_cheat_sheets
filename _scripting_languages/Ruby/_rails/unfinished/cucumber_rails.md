@@ -30,6 +30,10 @@ end
 
 # require 'capybara/cucumber' # I am not sure we need this, It breaks factory girl
 
+# `require 'capybara/cucumber'` raises this exception, when used with rspec?: 
+# bundler: failed to load command: rspec (/Users/brianspinos777/.rbenv/versions/2.2.3/bin/rspec)
+# NoMethodError: undefined method `World' for main:Object
+
 ```
 
 
