@@ -28,7 +28,7 @@ end
 ```ruby
 # rails_helper.rb
 
-require 'capybara/cucumber' # I am not sure we need this
+# require 'capybara/cucumber' # I am not sure we need this, It breaks factory girl
 
 ```
 
