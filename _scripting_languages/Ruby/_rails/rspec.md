@@ -35,6 +35,7 @@ bundle exec rspec .
 # .rspec
 
 --color
+--format documentation # documentation progress
 # --require spec_helper # I guess we dont need this, since its loaded in 'rails_helper'
 --require rails_helper
 
