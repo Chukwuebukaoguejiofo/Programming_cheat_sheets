@@ -180,12 +180,12 @@ Feature: Manage Users
 
 
 
-
-
-
 ```bash
-# run cucumber
+# run cucumber tests:
 
 # The -s option is to hide the steps definition location
-[bundle exec] cucumber -s
+# use bundle exec, or else it could raise some errors
+bundle exec cucumber -s
+
 ```
+
