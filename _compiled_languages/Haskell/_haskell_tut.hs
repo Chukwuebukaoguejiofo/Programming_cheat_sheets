@@ -22,7 +22,7 @@
 -- (you can create custom types)
 -- Int, Integer, Float, Double, Bool, Char
 
--- ==================================================================== Typeclasses:
+-- ==================================================================== Typeclasses  (Haskell's interfaces):
 -- (A typeclass is a sort of interface that defines some behavior.)
 -- (you can create custom typeclasses)
 -- Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
