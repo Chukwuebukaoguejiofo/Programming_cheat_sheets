@@ -12,6 +12,12 @@
 -- `show` is for displaying as a string
 -- `instance` is where we define the behaviour of type classes for our custom data types
 
+
+-- ==================================================================== Curried functions:
+-- As you know, functions in Haskell are curried by default, which means that a function that seems 
+-- to take several parameters actually takes just one parameter and returns a function that takes the next 
+-- parameter and so on.
+
 -- ==================================================================== print statement
 main = putStrLn "Hello World"
 
