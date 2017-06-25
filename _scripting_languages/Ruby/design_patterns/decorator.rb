@@ -1,13 +1,7 @@
 #
 # Decorator
-# - an object is wrapped inside another object, 
-#   and the inner object's methods are inhanced by the wrapper object's methods
-#
-# strategy: 1 class, and many strategies
-# visitor: many classes, and many visitors with a method to do work for each class
-#
-# receives a strategy and uses its methods
-# receives a visitor  and the visitor does its thing
+#     - an object is wrapped inside another object, 
+#       and the inner object's methods are inhanced by the wrapper object's methods
 # 
 
 #
