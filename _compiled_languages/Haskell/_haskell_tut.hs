@@ -18,6 +18,14 @@
 -- to take several parameters actually takes just one parameter and returns a function that takes the next 
 -- parameter and so on.
 
+-- ====================================================================Types:
+-- Int, Integer, Float, Double, Bool, Char
+
+-- ==================================================================== Typeclasses:
+-- (A typeclass is a sort of interface that defines some behavior.)
+-- Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
+-- Functor, Applicatiive, Monads, Monoids
+
 -- ==================================================================== print statement
 main = putStrLn "Hello World"
 
