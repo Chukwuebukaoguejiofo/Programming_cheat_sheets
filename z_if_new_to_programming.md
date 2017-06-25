@@ -3,8 +3,8 @@
 HTML - its the language of the websites
 CSS - in websites, if the file that styles your webpage, like colors, size of letters, etc
 Javascript - its the language that add interactivity to your website
-
-
+```
+```
 Database - (its where your data is stored, its what makes your website remember things) you can think of it as a collection excel files
   database tables - you can think of it as a single excel file.
   database columns - like excel columns (its data of the same type)
