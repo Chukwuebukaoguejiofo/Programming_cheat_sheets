@@ -19,10 +19,12 @@
 -- parameter and so on.
 
 -- ====================================================================Types:
+-- (you can create custom types)
 -- Int, Integer, Float, Double, Bool, Char
 
 -- ==================================================================== Typeclasses:
 -- (A typeclass is a sort of interface that defines some behavior.)
+-- (you can create custom typeclasses)
 -- Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
 -- Functor, Applicatiive, Monads, Monoids
 
