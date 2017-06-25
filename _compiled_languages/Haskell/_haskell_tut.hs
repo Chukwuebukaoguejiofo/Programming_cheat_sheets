@@ -28,6 +28,15 @@
 -- Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
 -- Functor, Applicatiive, Monads, Monoids
 
+-- declaration of a typeclass:
+class YesNo a where  
+    yesno :: a -> Bool 
+    
+-- an implementation:
+instance YesNo Int where  
+    yesno 0 = False  
+    yesno _ = True 
+
 -- ==================================================================== print statement
 main = putStrLn "Hello World"
 
