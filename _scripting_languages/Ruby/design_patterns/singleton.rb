@@ -1,34 +1,32 @@
 
+#
+# Singleton Pattern
+#     - Uses only one instance of a class
+#
 
-#------------------------------------------------------ singleton
-# use only one instance
+class President
 
-class SingleObject
+    #create an object of President
+    @@instance = President.new
 
-
-    #create an object of SingleObject
-    @@instance = SingleObject.new
-
-    #make the constructor private so that this class cannot be
-    #instantiated
+    # Make the constructor private so that this class 
+    # cannot be instantiated
     private_class_method :new
 
-
-
-    #Get the only object available
-    def self.getInstance()
+    # Get the only object available
+    def self.get_instance()
         return @@instance
     end
 
-    def foo()
-        puts 'hello world'
+    def say_hello()
+        puts 'Good morning America!'
     end
 end
 
-# object = SingleObject.new # Error!
+#
+# president = President.new # Error!
+#
 
-#Get the only object available
-object = SingleObject.getInstance
-
-#show the message
-object.foo
+# Get the only object available
+president = President.get_instance
+president.say_hello # 'Good morning America!'
