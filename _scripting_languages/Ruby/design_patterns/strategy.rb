@@ -37,8 +37,8 @@ end
 #======= Usage:
 
 
-context = Calculation.new(Add.new)
-context.execute(10, 5) # 15
+calculation = Calculation.new(Add.new)
+calculation.execute(10, 5) # 15
 
-context = Calculation.new(Subtract.new)
-context.execute(10, 5) # 5
+calculation = Calculation.new(Subtract.new)
+calculation.execute(10, 5) # 5
