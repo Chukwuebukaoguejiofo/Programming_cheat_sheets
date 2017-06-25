@@ -5,7 +5,7 @@ public class HelloWorld {
      * all java files need to declare a class
      * you need a main function called 'main' in order to run the code.
      */
-    public static void main(String []args) {
+    public static void main(String[] args) {
        System.out.println("Hello World");
     }
 } 
