@@ -1,6 +1,9 @@
-https://lord.io/blog/2014/assembly-on-osx/
 
-install the latest NASM
+###### https://lord.io/blog/2014/assembly-on-osx/
+
+
+```bash
+# install the latest NASM
 $ brew install nasm # now close and open the terminal
 
 
@@ -13,3 +16,4 @@ ld hello_world.o -o hello_world
 
 # Run executable:
 ./hello_world
+```
