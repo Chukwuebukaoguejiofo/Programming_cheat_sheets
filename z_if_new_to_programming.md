@@ -1,9 +1,14 @@
 
+###### Web
+
 ```
 HTML - its the language of the websites
 CSS - in websites, if the file that styles your webpage, like colors, size of letters, etc
 Javascript - its the language that add interactivity to your website
 ```
+
+###### Databases
+
 ```
 Database - (its where your data is stored, its what makes your website remember things) you can think of it as a collection excel files
   database tables - you can think of it as a single excel file.
@@ -15,14 +20,17 @@ SQL - its the language to comunicate with the database
 
 ```
 scriptinng languages - Ruby in an example of a scripting language, its responsible to generate HTML, and to get data from a database.
+```
 
----------------------------------------------------------
+###### OS
 
+```
 linux - its the program that operates your computer, its also the language of the computer (behind the scenes)
+```
 
---------------------------------------------------------- about programing languages
+###### about programing languages
 
-
+```
 variables - are used to store data. example name = 'brian'
 functions - are reusable chuncks code that does what you want. example:  save_user_to_database
 classes - are reusable chuncks of variables and functions grouped together
