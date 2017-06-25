@@ -2,12 +2,7 @@
 # Visitor Patterns
 #     - have and object1 that accept object2, object2 will change the sate of object1
 #
-# strategy: 1 class, and many strategies
-# visitor: many classes, and many visitors with a method to do work for each class
 
-# receives a strategy and uses its methods
-# receives a visitor  and the visitor does its thing
-# class is wrapped and its methods are inhanced
 
 #
 # Class that will be visited
