@@ -1,44 +1,46 @@
-import Cocoa
+//
+// Class example
+//
 
-//--------------- class
 class Person {
     var name: String
     var age: Int
+    var address: String
     
-    /*
+    /**
      * constructor
      */
-    init(name: String, age: Int) {
+    init(name: String, age: Int, address: String){
         self.name = name
         self.age = age
+        self.address = address
     }
     
-    func getName() -> String 
-    {
+    func getName() -> String {
         return self.name
     }
     
-    func setName(name: String) 
-    {
+    func setName(name: String){
         self.name = name
     }
 
-    func addFive(c: Int) -> Int 
-    {
-        return c + 5
+    func multiply(x: Int, y: Int) -> Int {
+        return x * y
     }
 }
 
-//--------------- instantiation
-let brian = Person(name: "brian", age: 27)
+//
+// Usage:
+//
 
+let brian = Person(name: "Brian", age: 27, address: "123 4th Ave.")
 
-print("name is \(brian.name)\n")
-print("age: \(brian.age)\n")
-brian.setName("Erich")
-// brian.name = "Erick" // this also works!
-print("setting name to erich...\n")
-print("new name: \(brian.name)\n")
+print(brian.name) // Brian
 
-print("addFive to 10: \(brian.addFive(10))\n")
+print("Age: \(brian.age)") // Age: 27
 
+brian.setName(name: "Erich")
+brian.name = "Rick" // this also works!
+print("Name changed to: \(brian.name)") // Name changed to: Rick
+
+print( brian.multiply(x: 10, y: 2) ) // 20
