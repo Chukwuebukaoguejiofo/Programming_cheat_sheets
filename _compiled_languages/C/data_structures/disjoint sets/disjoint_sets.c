@@ -1,65 +1,72 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct DisjointSet{
-    int * array;
+//
+// Disjoint Sets
+//
+
+typedef struct Set{
     int size;
     int capacity;
-} DisjointSet;
+    int * array;
+} Set;
 
-DisjointSet * createDisjointSet(int capacity){
-    DisjointSet * disjointSet = (DisjointSet *)malloc(sizeof(DisjointSet));
-    disjointSet->size = 0;
-    disjointSet->capacity = capacity;
-    
-    disjointSet->array = (int *)malloc(sizeof(int) * capacity);
+Set * createSet(int capacity){
+    Set * set = (Set *)malloc(sizeof(Set));
+    set->size = 0;
+    set->capacity = capacity;
+    set->array = (int *)malloc(sizeof(int) * capacity);
     
     int i;
     
-    // initialize array:
+    // initialize array elements to -1
     for(i = 0; i < capacity; i++){
-        disjointSet->array[i] = -1;
+        set->array[i] = -1;
     }
     
-    return disjointSet;
+    return set;
 }
 
-int find(DisjointSet ** disjointSet, int index){
-    int parent = (*disjointSet)->array[index];
-    
+int find(Set ** set, int index){
+    int parent = (*set)->array[index];
+
+    /**
+     * Recursion base case:
+     *     - `parent` value is a negative number, it means it has no parent
+     */
     if(parent < 0){
         return index;
     }
     
-    (*disjointSet)->array[index] = find(disjointSet, parent);
+    // recursion
+    (*set)->array[index] = find(set, parent);
     
-    return (*disjointSet)->array[index]; // do I need this line?
-    
+    return (*set)->array[index];
 }
 
-void _union(DisjointSet ** disjointSet, int x, int y){
-    int xP = find(disjointSet, x);
-    int yP = find(disjointSet, y);
+void _union(Set ** set, int x, int y){
+    int xP = find(set, x);
+    int yP = find(set, y);
     
     if(xP == yP){
         return;
     }
     
-    if((*disjointSet)->array[xP] < (*disjointSet)->array[yP]){
-        (*disjointSet)->array[y] = xP;
-    }else if((*disjointSet)->array[xP] > (*disjointSet)->array[yP]){
-        (*disjointSet)->array[x] = yP;
-    }else if((*disjointSet)->array[xP] == (*disjointSet)->array[yP]){
-        (*disjointSet)->array[yP] = xP;
-        (*disjointSet)->array[xP]--;
+    if( (*set)->array[xP] < (*set)->array[yP] ){
+        (*set)->array[y] = xP;
+    }else if( (*set)->array[xP] > (*set)->array[yP] ){
+        (*set)->array[x] = yP;
+    }else if( (*set)->array[xP] == (*set)->array[yP] ){
+        (*set)->array[yP] = xP;
+        (*set)->array[xP]--;
     }
 }
 
-void display(DisjointSet ** disjointSet){
+void display(Set ** set){
     int i;
     
-    for(i = 0; i < (*disjointSet)->capacity; i++){
-        int val = (*disjointSet)->array[i];
+    for(i = 0; i < (*set)->capacity; i++){
+        int val = (*set)->array[i];
         
         printf("%d [%d] \n", i, val);
     }
@@ -67,18 +74,64 @@ void display(DisjointSet ** disjointSet){
 
 int main()
 {
-    DisjointSet * disjointSet = createDisjointSet(10);
+    Set * set = createSet(10);
     
-    _union(&disjointSet, 1,2);
-    _union(&disjointSet, 1,3);
-    _union(&disjointSet, 3,4);
-    _union(&disjointSet, 4,5);
+    // union
+    _union(&set, 5, 0);
+    _union(&set, 5, 1);
+    _union(&set, 5, 2);
+    _union(&set, 5, 3);
+
+    // find
+    int x;
+
+    x = find(&set, 1); // 5
+    printf(" -> index 1 belongs to %d \n", x);
+
+    x = find(&set, 2); // 5
+    printf(" -> index 2 belongs to %d \n", x);
+
+    x = find(&set, 3); // 5
+    printf(" -> index 3 belongs to %d \n", x);
+
+    //
+    //
+    //
+
+    x = find(&set, 4); // 5
+    printf(" -> index 4 belongs to %d \n", x);
+
+    x = find(&set, 5); // 5
+    printf(" -> index 5 belongs to %d \n", x);
+
+    x = find(&set, 6); // 5
+    printf(" -> index 6 belongs to %d \n", x);
     
-    find(&disjointSet, 1);
-    
-    display(&disjointSet);
+    display(&set);
    
 
     return 0;
 }
 
+
+/*
+// OUTPUT:
+
+ -> index 1 belongs to 5 
+ -> index 2 belongs to 5 
+ -> index 3 belongs to 5 
+ -> index 4 belongs to 4 
+ -> index 5 belongs to 5 
+ -> index 6 belongs to 6 
+0 [5] 
+1 [5] 
+2 [5] 
+3 [5] 
+4 [-1] 
+5 [-2] 
+6 [-1] 
+7 [-1] 
+8 [-1] 
+9 [-1] 
+
+*/
