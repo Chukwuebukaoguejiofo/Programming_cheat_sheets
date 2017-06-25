@@ -1,9 +1,9 @@
 #
 # Factory pattern
-# The objective is to create an object
+#     - The objective is to create an object
 #
-# the Shape interface: draw() 
-#
+
+
 class ShapeFactory
     def get_shape(shape_type)
         if shape_type == nil
