@@ -14,50 +14,56 @@ typedef struct Node{
 } Node;
 
 
-typedef struct htable{
+typedef struct hash{
     int size;
-    Node ** table; // array of pointers
-} HTable;
+    Node ** array; // array of pointers
+} Hash;
 
 
 /**
- * Create a new htable. 
+ * Create a new hash. 
  */
-HTable * createHTable(int size){
+Hash * createHash(int size){
 
-    // Allocate the table itself. 
-    HTable * htable = malloc(sizeof(HTable));
+    // Allocate the hash table itself. 
+    Hash * hash = malloc(sizeof(Hash));
 
     // Allocate pointers to the head nodes.
-    htable->table = malloc(sizeof(Node *) * size);
+    hash->array = malloc(sizeof(Node *) * size);
 
-    htable->size = size;
+    hash->size = size;
 
-    // init the enties
+    // init the array
     int i;
     for(i = 0; i < size; i++){
-        htable->table[i] = NULL;
+        hash->array[i] = NULL;
     }
 
-    return htable;
+    return hash;
 }
 
 /**
- * Hash a string to get an index for the underlying array `htable->table` 
+ * Hash a string to get an index for the underlying array `hash->array` 
  */
-int hashFunction(HTable * htable, char * key){
+int hashFunction(Hash * hash, char * key){
 
-    unsigned long int hashval;
+    unsigned long int hash_value = 0;
     int i = 0;
 
-    // Convert our string to an integer.
-    while(hashval < ULONG_MAX && i < strlen(key)){
-        hashval = hashval << 8; // asme as: `hashval * 256`
-        hashval += key[i];
+    /**
+     * Convert our key to a big number.
+     * Loop through the letters of the key 
+     * while the hash_value is less than ULONG_MAX
+     * multiplying hash_value by 256 
+     * and adding the int value of the character
+     */
+    while( i < strlen(key) && hash_value < ULONG_MAX ){
+        hash_value *= 256; // same as: `hash_value << 8`
+        hash_value += key[i];
         i++;
     }
 
-    return hashval % htable->size;
+    return hash_value % hash->size;
 }
 
 /**
@@ -75,11 +81,11 @@ Node * createNode(char * key, char * value){
 /**
  * Insert a node into a hash table. 
  */
-void insert(HTable * htable, char * key, char * value){
+void insert(Hash * hash, char * key, char * value){
 
-    int index = hashFunction(htable, key);
+    int index = hashFunction(hash, key);
 
-    Node * currentNode = htable->table[index];
+    Node * currentNode = hash->array[index];
 
     while(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) > 0){
         currentNode = currentNode->next;
@@ -87,18 +93,17 @@ void insert(HTable * htable, char * key, char * value){
 
     // If there's already a node.  Let's replace that string.
     if(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) == 0){
-
         free(currentNode->value);
         currentNode->value = strdup(value);
-
-    // Nope, could't find it. add a node.
     } else { 
+        // Nope, could't find it. add a node.
+        
         Node * newNode = createNode(key, value);
 
         // We're at the start of the linked list in this index.
-        if(currentNode == htable->table[index]){
+        if(currentNode == hash->array[index]){
             newNode->next = currentNode;
-            htable->table[index] = newNode;
+            hash->array[index] = newNode;
 
         // We're at the end of the linked list in this index.
         } else if (currentNode == NULL){
@@ -113,11 +118,11 @@ void insert(HTable * htable, char * key, char * value){
 }
 
 /* Retrieve an node from a hash table. */
-char * get(HTable * htable, char * key){
+char * get(Hash * hash, char * key){
 
-    int index = hashFunction(htable, key);
+    int index = hashFunction(hash, key);
 
-    Node * currentNode = htable->table[index];
+    Node * currentNode = hash->array[index];
 
     /* Step through the index, looking for our value. */
     while(currentNode != NULL && currentNode->key != NULL && strcmp(key, currentNode->key) > 0){
@@ -130,23 +135,20 @@ char * get(HTable * htable, char * key){
     }else{
         return currentNode->value;
     }
-
 }
 
 int main(){
+    Hash * hash = createHash(100); 
+
+    insert(hash, "name", "brian");
+    insert(hash, "address", "123 4th Ave");
+    insert(hash, "country", "USA");
+    insert(hash, "state", "AZ");
+
+    printf("%s\n", get(hash, "name")); // brian
+    printf("%s\n", get(hash, "address")); // 123 4th Ave
+    printf("%s\n", get(hash, "country")); // USA
+    printf("%s\n", get(hash, "state")); // AZ
     
-    // size needs to be 2 to the power of any number. (2^10)
-    HTable * htable = createHTable(1024); 
-
-    insert(htable, "one", "1");
-    insert(htable, "two", "2");
-    insert(htable, "three", "3");
-    insert(htable, "four", "4");
-
-    printf("%s\n", get(htable, "one"));
-    printf("%s\n", get(htable, "two"));
-    printf("%s\n", get(htable, "three"));
-    printf("%s\n", get(htable, "four"));
-
     return 0;
 }
