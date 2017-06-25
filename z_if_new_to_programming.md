@@ -11,7 +11,9 @@ Database - (its where your data is stored, its what makes your website remember 
   database rows - its like a line in an excel file, its a collection of data.
   
 SQL - its the language to comunicate with the database
-  
+```
+
+```
 scriptinng languages - Ruby in an example of a scripting language, its responsible to generate HTML, and to get data from a database.
 
 ---------------------------------------------------------
