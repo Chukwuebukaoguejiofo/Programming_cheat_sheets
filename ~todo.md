@@ -1,0 +1,3 @@
+- work on design patterns
+- work on graph databases
+- write a node chat-app, file-uploader...
