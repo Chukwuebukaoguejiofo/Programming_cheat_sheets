@@ -1,52 +1,77 @@
-// file name: Person.java
+/**
+ * File name: Main.java
+ *
+ * Compile:
+ *     $ javac Main.java
+ *
+ * Run program:
+ *     $ java Main
+ *
+ */
+public class Main{
 
-//--------------------------------------------------------------- class
-public class Person {
-    String name;  // instance variable //(if its outside a function, its an instance varialbe)
-  
-    /*
-     * constructor
+    /**
+     * We need a static class for it to be instantiated in the `main` function
+     * of the `Main` class
      */
-    public Person(String name){
-        // 'name' is the parameter, 'this.name' is the instance variable! (thats the difference)
-        System.out.println("Name chosen is: " + name );
-        this.name = name;
-    }
+    static class Person{
 
-    public void setName( String name ){
-        this.name = name;
-    }
+        //
+        // Instance variables
+        //
 
-    public void getName( ){
-        System.out.println( this.name );
-    }
+        private String name;  
+        private String age;  
+        private String address;  
   
-    public static void main(String []args){
-        /* Object creation */
-        Person brian = new Person( "brian" );
-
-        /* Call class method to set puppy's age */
-        brian.setName( "erich" );
-
-        /* Call another class method to get the Person's Name */
-        brian.getName( );
-
-        /* 
-         * You can access instance variable as follows as well 
-         * but its better to use encapsulation
+        /*
+         * Constructor
          */
-        System.out.println("Variable Value :" + brian.name );
+        public Person(String name){
+            this.name = name;
+            System.out.println("Name chosen is: " + name);
+        }
+
+        //
+        // Getters and setters
+        //
+
+        public void setName(String name){
+            this.name = name;
+            System.out.println("Name Set to: " + name);
+        }
+
+        public String getName(){
+            // System.out.println(this.name);
+            return this.name;
+        }
+
+    }
+
+    public static void main(String[] args){
+
+        Person brian = new Person("Brian"); 
+        // Name chosen is: brian
+
+        brian.setName("Erich");
+        String name = brian.getName();
+        System.out.println("Name: " + name);
+
+        /** 
+         * You can access instance variables as follows as well 
+         * but its better to use a method (encapsulation)
+         */
+        // System.out.println("Name: " + brian.name); // Name: Erich
+
     }
 }
-//--------------------------------------------------------------- abstract class
 
+/*
 
-//--------------------------------------------------------------- interface
+// OUTPUT:
 
+Name chosen is: Brian
+Name Set to: Erich
+Name: Erich
 
-//--------------------------------------------------------------- compile
-// $ javac Person.java
-// run
-// $ java Person
-
-
+*/
