@@ -37,6 +37,10 @@ instance YesNo Int where
     yesno 0 = False  
     yesno _ = True 
 
+-- the actual declaration of the 'functor' typeclass
+class Functor f where  
+    fmap :: (a -> b) -> f a -> f b 
+
 -- ==================================================================== print statement
 main = putStrLn "Hello World"
 
