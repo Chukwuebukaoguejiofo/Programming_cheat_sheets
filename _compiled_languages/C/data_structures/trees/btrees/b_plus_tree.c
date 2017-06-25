@@ -2,13 +2,13 @@
  * 
  * Gotchas:
  *    - A pointer is not like the 'C pointer', it is just a number to be used as a file offset.
- *    - The leaf-nodes do not store the record data, just a pointer to it.
+ *    - The leaf-nodes do not store the record data, just a pointer to it. (a file offset)
  *    - BLOCK is a chunk of data retrieved from DISK
  *    - PAGE is a chunck of data retrieved from DISK, then added to memory
  * 
  *  memory types:
- *    - 1. primary memory, main memory, internal memory, temporary storage, RAM... (all the same)
- *    - 2. secondary memory, external memory, permanent storage, disk...  (all the same)
+ *    - 1. RAM, primary memory, main memory, internal memory, temporary storage... (all the same)
+ *    - 2. DISK, secondary memory, external memory, permanent storage...  (all the same)
  * 
  * 
  * 
