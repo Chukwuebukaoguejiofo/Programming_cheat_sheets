@@ -1,5 +1,7 @@
-
-#------------------------------------------------------ strategy
+#
+# Strategy Patterns
+#     - have an object receive another object that encapsulates an algorithm.
+#
 # strategy: 1 class, and many strategies
 # visitor: many classes, and many visitors with a method to do work for each class
 
@@ -7,32 +9,36 @@
 # receives a visitor  and the visitor does its thing
 # class is wrapped and its methods are inhanced
 
+class Calculation
+    attr_accessor :strategy
+
+    def initialize(strategy)
+        @strategy = strategy
+    end
+
+    def execute(n, m)
+        return @strategy.execute(n, m)
+    end
+end
+
 class Add
-    def doOperation(n, m)
+    def execute(n, m)
         n + m
     end
 end
 
 class Subtract
-    def doOperation(n, m)
+    def execute(n, m)
         n - m
     end
 end
 
-class Context
-    def initialize(strategy)
-        @strategy = strategy
-    end
 
-    def executeStrategy(n, m)
-        return @strategy.doOperation(n, m)
-    end
-end
+#======= Usage:
 
 
-context = Context.new(Add.new)
-puts "10 + 5 = #{context.executeStrategy(10, 5)}"
+context = Calculation.new(Add.new)
+context.execute(10, 5) # 15
 
-context = Context.new(Subtract.new)
-puts "10 - 5 = #{context.executeStrategy(10, 5)}"
-
+context = Calculation.new(Subtract.new)
+context.execute(10, 5) # 5
