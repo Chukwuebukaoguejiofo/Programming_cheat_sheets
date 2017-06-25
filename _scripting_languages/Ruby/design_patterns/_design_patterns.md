@@ -1,6 +1,8 @@
 # Design Patterns
 
 ```
+https://sourcemaking.com/design_patterns # definitions! (GOOD)
+
 http://br.phptherightway.com/pages/Design-Patterns.html
 https://en.wikipedia.org/wiki/Software_design_pattern
 https://github.com/domnikl/DesignPatternsPHP
@@ -50,5 +52,3 @@ the client class should have a method
 ```
 -
 ```
-
-
