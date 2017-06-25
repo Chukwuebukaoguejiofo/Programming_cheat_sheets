@@ -5,21 +5,20 @@
 # the Shape interface: draw() 
 #
 class ShapeFactory
-    
-    def getShape(shapeType)
-        if shapeType == nil
+    def get_shape(shape_type)
+        if shape_type == nil
             return nil
         end 
 
-        if shapeType == "circle"
+        if shape_type == "circle"
             return Circle.new
         end
 
-        if shapeType == "rectangle"
+        if shape_type == "rectangle"
             return Rectangle.new
         end
 
-        if shapeType == "square"
+        if shape_type == "square"
             return Square.new
         end
 
@@ -47,14 +46,14 @@ end
 
 #======= Usage:
 
-shapeFactory = ShapeFactory.new
+shape_factory = ShapeFactory.new
 
-shape1 = shapeFactory.getShape("circle")
+shape1 = shape_factory.get_shape("circle")
 shape1.draw # 'Drawing a Circle!'
 
-shape2 = shapeFactory.getShape("rectangle")
+shape2 = shape_factory.get_shape("rectangle")
 shape2.draw # 'Drawing a Rectangle!'
 
-shape3 = shapeFactory.getShape("square")
+shape3 = shape_factory.get_shape("square")
 shape3.draw # 'Drawing a Square!' 
 
