@@ -40,7 +40,7 @@ namespace MyWorld {
       double[] balanceA = new double[10];
       // balanceA[0] = 4500.0; // not working ?
      
-      double[] balanceB = { 2340.0, 4523.69, 3421.0 };
+      double[] balanceB = { 10.0, 20.50, 30.0 };
 
       //
       // Methods
