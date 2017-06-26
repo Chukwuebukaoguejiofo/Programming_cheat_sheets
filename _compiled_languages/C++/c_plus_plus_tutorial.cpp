@@ -1,74 +1,137 @@
-// this tutorial needs to be finished
 
 #include <iostream>
+#include <string>
+
+// #include "Person.h" // You should include the class declarations
 
 using namespace std;
 
+//
+// Base class
+//
 
-// the class definition usually goes in a *.h file
+class Human {
 
-// multiple inheritance!
-class Box: public Shape, public Item
-
-{
     public:
-        double length;   // Length of a box
-        double breadth;  // Breadth of a box
-        double height;   // Height of a box
 
-        Box(); // constructor
+    string gender;
+    int height;
 
-        // Methods
-        double area();
-        double perim();
+    //
+    // Constructor
+    // in base class, the constructor parameters need to have a default value
+    //
+    Human(string gender = "", int height = 0);
+
+    //
+    // Methods
+    //
+
+    void setHeight(int height);
+    int getHeight();
+
     private:
-        double length2;      // Length of a box
-        double breadth2;     // Breadth of a box
-        double height2;      // Height of a box
+
+    char dna[100];
 };
 
-int main( )
-{
-   Box Box1;        // Declare Box1 of type Box
-   Box Box2;        // Declare Box2 of type Box
-   double volume = 0.0;     // Store the volume of a box here
 
-   // box 1 specification
-   Box1.height = 5.0;
-   Box1.length = 6.0;
-   Box1.breadth = 7.0;
+/**
+* Contructor
+* (constructor has no return type.)
+*/
+Human::Human(string gender, int height){
+    this->gender = gender;
+    this->height = height;
+}
 
-   // box 2 specification
-   Box2.height = 10.0;
-   Box2.length = 12.0;
-   Box2.breadth = 13.0;
-   // volume of box 1
-   volume = Box1.height * Box1.length * Box1.breadth;
-   cout << "Volume of Box1 : " << volume <<endl;
 
-   // volume of box 2
-   volume = Box2.height * Box2.length * Box2.breadth;
-   cout << "Volume of Box2 : " << volume <<endl;
+//
+// Methods
+//
+
+int Human::getHeight(){
+    return this->height;
+}
+
+void Human::setHeight(int height){
+    this->height = height;
+}
+
+//
+// Derived class
+//
+
+class Person: public Human {
+
+    public:
+
+    string name;
+    string address;
+    int age;
+
+    // constructor
+    Person(string name, int age); 
+
+    //
+    // Methods
+    //
+
+    void setName(string name);
+    string getName();
+
+    private:
+
+    char password[100];
+    char ssn[100];
+};
+
+
+/**
+ * Contructor
+ * (constructor has no return type.)
+ */
+Person::Person(string name, int age){
+   this->name = name;
+   this->age = age;
+}
+
+//
+// Methods
+//
+
+string Person::getName(){
+    return this->name;
+}
+
+void Person::setName(string name){
+    this->name = name;
+}
+
+//
+// Main function
+//
+
+int main(){
+
+    Person brian("Brian", 28);
+    Person erich("Erich", 25);
+
+    brian.name = "Brian2";
+
+    erich.name = "Erich2";
+    
+    string msg;
+
+    msg = brian.name;
+    cout << "Name of Person #1: " << msg <<endl;
+    // Name of Person #1: Brian2
+
+
+    msg = erich.name;
+    cout << "Name of Person #2: " << msg <<endl;
+    // Name of Person #2: Erich2
+
    return 0;
 }
 
-//------------------------------------------- class implementation  (foo.cpp)
-#include "Box.h" // You include the class description
-
-// Contructor
-Box::Box()  // no return type!
-{
-   this->l = 0;
-   this->w = 0;
-}
-
-// Methods
-double Box::area()
-{
-   return this->w * this->l;
-}
-
-double Box::perim()
-{
-   return 2*this->w + 2*this->l;
-}
