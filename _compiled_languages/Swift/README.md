@@ -9,9 +9,9 @@ https://swiftlang.ng.bluemix.net/?cm_mmc=developerWorks-_-dWdevcenter-_-swift-_-
 ###### Compile
 
 ```bash
-xcrun swift swift_tutorial.swift
+xcrun swift foo.swift
 
 # OR...
-swiftc swift_tutorial.swift -o swift_tutorial
-./swift_tutorial
+swiftc foo.swift -o foo
+./foo
 ```
