@@ -3,7 +3,8 @@
 #include <string> // string foo;
 #include <cstring> // strcpy();
 
-// #include "Person.h" // You should include the class declarations
+// You should include the class declaration and definitions in that file.
+// #include "Person.h" 
 
 using namespace std;
 
@@ -61,6 +62,7 @@ void Human::setHeight(int height){
 
 //
 // Derived class
+// C++ accepts multiple inheritance
 //
 
 class Person: public Human {
@@ -70,22 +72,31 @@ class Person: public Human {
     string name;
     string address;
     int age;
-
-    // constructor
-    Person(string name, int age); 
+    char foo[100];
+    const char * bar;  // c++ does not like 'char *', it needs to be a 'const char *' ????
 
     //
     // Methods
     //
+    
+    // constructor
+    Person(string name, int age); 
+
+    // destructor 
+    ~Person(); 
 
     void setName(string name);
     string getName();
+    
+    protected:
+    
+    char baz[100];
 
     private:
 
     char password[100];
     char ssn[100];
-};
+}; // yes, we need a semicolon here.
 
 
 /**
@@ -95,7 +106,14 @@ class Person: public Human {
 Person::Person(string name, int age){
    this->name = name;
    this->age = age;
+   cout << "A Person was created!" << endl;
 }
+
+Person::~Person(){
+    // this->foo = 0;
+    // this->bar = 0;
+    cout << "Object is being deleted" << endl;
+};
 
 //
 // Methods
@@ -114,24 +132,27 @@ void Person::setName(string name){
 //
 
 int main(){
-
-    Person brian("Brian", 28);
-    Person erich("Erich", 25);
-
-    brian.name = "Brian2";
-
-    erich.name = "Erich2";
+  
+    Person rick("Rick", 50);
+    rick.name = "Rick2";
+    cout << rick.name << endl; // Rick2
+    rick.setName("Rick3");
+    cout << rick.name << endl; // Rick3
     
-    string msg;
+    // rick.foo = "hello";  //  does not work
+    strcpy(rick.foo, "hello");
+    rick.bar = "howdy";
+    
 
-    msg = brian.name;
-    cout << "Name of Person #1: " << msg <<endl;
-    // Name of Person #1: Brian2
-
-
-    msg = erich.name;
-    cout << "Name of Person #2: " << msg <<endl;
-    // Name of Person #2: Erich2
+    Person * brian = new Person("Brian", 28);
+    brian->name = "Brian2";
+    cout << brian->name << endl; // Brian2
+    brian->setName("Brian3");
+    cout << brian->getName() << endl; // Brian3
+    
+    // brian->foo = "hello";  //  does not work
+    strcpy(brian->foo, "hello");
+    brian->bar = "howdy";
 
    return 0;
 }
