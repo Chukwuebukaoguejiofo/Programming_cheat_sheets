@@ -1,6 +1,7 @@
 
 #include <iostream>
-#include <string>
+#include <string> // string foo;
+#include <cstring> // strcpy();
 
 // #include "Person.h" // You should include the class declarations
 
