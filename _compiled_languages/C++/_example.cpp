@@ -87,6 +87,7 @@ class Person: public Human {
 
     void setName(string name);
     string getName();
+    string sayName();
     
     protected:
     
@@ -127,6 +128,12 @@ void Person::setName(string name){
     this->name = name;
 }
 
+string Person::sayName(){
+    string msg = "my name is ";
+    msg += this->name;
+    return msg;
+}
+
 //
 // Main function
 //
@@ -134,6 +141,7 @@ void Person::setName(string name){
 int main(){
   
     Person rick("Rick", 50);
+    cout << rick.sayName() << endl; // my name is Rick
     rick.name = "Rick2";
     cout << rick.name << endl; // Rick2
     rick.setName("Rick3");
@@ -145,6 +153,7 @@ int main(){
     
 
     Person * brian = new Person("Brian", 28);
+    cout << brian->sayName() << endl; // my name is Brian
     brian->name = "Brian2";
     cout << brian->name << endl; // Brian2
     brian->setName("Brian3");
@@ -156,4 +165,3 @@ int main(){
 
    return 0;
 }
-
