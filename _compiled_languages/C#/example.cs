@@ -1,91 +1,124 @@
-using System;  // the keyword `using` means that the program is using a namespace, 
-// so you dont need to prepend everything with the namespace...
 
-// just as the name implies, its just a namespace
-namespace MyWorld 
-{ 
-   //---------------------------- enum
+/**
+ * The keyword `using System;` means that the program is using the 'System' namespace, 
+ * so you dont need to prepend everything with the namespace.
+ */
+using System;
+
+
+/**
+ * just as the name implies, its just a namespace
+ */
+namespace MyWorld { 
+
+   // Enums
    enum Days { Sun, Mon, Tue, Wed, Thu, Fri, Sat };
    // int foo = (int)Days.Sun; // 0
    // int bar = (int)Days.Mon; // 1 
-   //---------------------------- interface
-   public interface AbilityInterface
-   {
-      // interface members
-      void bark();
-      void swim();
+   
+   //
+   // Interfaces
+   //
+   public interface AbilityInterface {
+      void fly();
+      void work();
       // void swap(ref int x, ref int y); // pass by reference
    }
-   //---------------------------- base class
-   class Animal
-   {
-      //constant
+
+   //
+   // Base class
+   //
+   class Human {
+
+      // Constants
       const double pi = 3.14159;   
 
-      // array
-      double [] balanceA = new double[10];
-      //balanceA[0] = 4500.0; // not working ?
-     
-      double[] balanceB = { 2340.0, 4523.69, 3421.0};
-
-      // attributes:
+      // Attributes:
       string name;
-      int age;
 
-      // methods:
-      public void walk()
-      {
+      // Array
+      double[] balanceA = new double[10];
+      // balanceA[0] = 4500.0; // not working ?
+     
+      double[] balanceB = { 2340.0, 4523.69, 3421.0 };
+
+      //
+      // Methods
+      //
+
+      public void walk(){
          // Console.WriteLine("walking: {0} {1} {2}", foo, bar, baz);
-         Console.WriteLine("walking...");
+         Console.WriteLine("Human walking...");
       } 
 
-      // casting
+      public void details(){
+         Console.WriteLine("Human: {0} {1} {2}", "foo", "bar", "baz");
+      } 
+
+      //
+      // Casting
+      //
+
       // double d = 123.45;
       // int x = (int)d;
    }
 
-   //---------------------------- derived class
-   // inheritance and interface usage
-   class Dog : Animal, AbilityInterface
-   {
-      // constructor
-      public Dog(string color)  //Parameterized constructor
-      {
-         Console.WriteLine("Object is being created, color = {0}", color);
-         color = color;
+   //
+   // derived class
+   // (using inheritance and interface)
+   //
+
+   class Person : Human, AbilityInterface {
+
+      // Attributes
+      string name;
+      string address;
+      int age;
+
+      // Constructor
+      public Person(string name, int age){
+         Console.WriteLine("Person created: {0}", name);
+         this.name = name;
+         this.age = age;
       }
 
-      // attributes
-      string color;
-
-      public void bark()
-      {
-         Console.WriteLine("barking...");
-      }
-      public void swim()
-      {
-         Console.WriteLine("swimming...");
+      public void fly(){
+         Console.WriteLine("Person flying...");
       }
 
-      //getters and setters
-      public void setColor(string color)
-      {
-         color = color;
+      public void work(){
+         Console.WriteLine("Person working...");
       }
-      public string getColor()
-      {
-         return color;
+
+      //
+      // Getters and setters
+      //
+
+      public void setName(string name){
+         this.name = name;
+      }
+
+      public string getName(){
+         return this.name;
       }
    }
-   
-   class ExecuteThisStuff  // main class 
-   {
-      static void Main(string[] args) // main function
-      {
-         Dog pup = new Dog("red");
-         pup.walk();
-         pup.bark();
-         pup.getColor();
+
+   //
+   // Main class
+   //
+   class ExecuteThisStuff {
+
+      // Main function
+      static void Main(string[] args){
+
+         Person brian = new Person("Brian", 28); // Person created: Brian
+         brian.walk(); // Human walking...
+         brian.fly(); // Person flying...
+         brian.details(); // Human: foo bar baz
+
+         brian.setName("Erich");
+         string name = brian.getName();
+         Console.WriteLine("New name: {0}", name); // New name: Erich
       }
    }
 }
