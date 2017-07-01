@@ -1,4 +1,5 @@
-# SCSS
+# SASS
+
 
 - its like a programing language, with arrays, variables, functions!
 - its extention is -> .scss
@@ -6,7 +7,8 @@
 
 
 
-# variables
+###### Variables
+
 ```scss
 // remember that variables have scope!, BUT you can overrite the global variable
 $main: #444; 
@@ -21,7 +23,8 @@ $main: #444;
 
 ```
 
-# interpolation
+###### Interpolation
+
 ```scss
 
 $side: top; 
@@ -39,7 +42,7 @@ sup {
 
 
 
-# @import
+###### @import
 ```scss
 // it imports a file!
 @import "buttons";  // import the _buttons.scss  // its a partial!
@@ -48,7 +51,8 @@ sup {
 ```
 
 
-# nesting
+###### Nesting
+
 ```scss
 
 .foo{
@@ -94,12 +98,8 @@ text: {
 
 
 
+###### Mixins
 
-
-
-
-
-# mixins
 ```scss
 // its like a ruby module/function! for properties! and it accepts arguments and a optional default value! awesome!
 
@@ -130,7 +130,7 @@ text: {
 
 
 
-# @extend
+###### @extend
 
 ```scss
 
