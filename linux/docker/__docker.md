@@ -1,7 +1,7 @@
-Docker
+# Docker
 
 
-#=====================================================================================
+```bash
 # Docker help:
 docker <container/image/volume> <sub-command> --help
 # Example: $ docker container run --help
@@ -55,10 +55,12 @@ docker --help
 #   update      Update configuration of one or more containers
 #   version     Show the Docker version information
 #   wait        Block until one or more containers stop, then print their exit codes
+```
 
 
+###### Images
 
-#===================================================================================== IMAGES
+```bash
 # Images are snapshots of a system (a picture of the state of the system)
 
 
@@ -84,9 +86,11 @@ $ docker rmi <image>
 $ docker image tag <image-id> <my-docker-hub-username>/<my-image-name>:<my-tag-name>
 $ docker tag <image-id> <my-docker-hub-username>/<my-image-name>:<my-tag-name>
 # Example: $ docker tag 5db5f8471261 ouruser/sinatra:devel
+```
 
+###### CONTAINERS
 
-#===================================================================================== CONTAINERS
+```bash
 # Containers are running instances of an image
 
 
@@ -198,11 +202,11 @@ $ docker run -it --name <my-new-container-name> <IMAGE> <COMMAND>
 $ docker container commit --author "Brian Spinos <brianspinos777@hotmail.com>" <container> <new-image-name>:<tag>
 $ docker commit --author "Brian Spinos <brianspinos777@hotmail.com>" <container> <new-image-name>:<tag>
 # Example: container commit --author "Brian Spinos <brianspinos777@hotmail.com>" foobar_container foobar_image:123
+```
 
+###### UNTESTED
 
-#===================================================================================== UNTESTED
-
-
+```bash
 $ docker container pause <container-id-or-name> 
 $ docker container unpause <container-id-or-name> 
 
@@ -250,9 +254,11 @@ $ docker container run -it -p 80:3000 <image>
 
 
 $ docker container run -d -p 80:80 --name webserver nginx # Then go to http://localhost:80
+```
 
+###### DOCKERFILE
 
-#========================================================================= DOCKERFILE
+```bash
 # Example https://docs.docker.com/engine/reference/builder/
 
 
@@ -277,16 +283,17 @@ ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 ADD . /myapp
+```
 
+######  Volumes
 
-#=========================================================================  VOLUMES
-
+```bash
 docker volume ls
+```
 
+######  Links
 
-#=========================================================================  LINKS
-
-
+```
 (digitalocen and nginx loadbalancing)
 https://www.youtube.com/watch?v=JBtWxj9l7zM
 https://www.youtube.com/watch?v=K6WER0oI-qs
@@ -296,13 +303,13 @@ https://www.youtube.com/watch?v=1OLyXJJPBSA (good!)
 # https://github.com/wsargent/docker-cheat-sheet
 https://hub.docker.com/
 
-youtube tutorial  # get link!!!!!
+youtube tutorial  # get link...
+```
 
+ 
+###### Misc
 
-#========================================================================= 
-
-
-
+```
 # https://hub.docker.com/
 
 # DockerHub is like github, but for images, so you can create your own images!
@@ -320,7 +327,7 @@ youtube tutorial  # get link!!!!!
 # $ docker search ubuntu
 # $ docker pull <image> # Download images from docker hub
 # $ docker images # List downloaded images
-
+```
 
 
 
