@@ -5,12 +5,17 @@
 ```bash
 # terminal
 
+# Install nginx
 brew install nginx 
 
+# Edit configuration
 subl /usr/local/etc/nginx/nginx.conf
 
-# start nginx
+# Start nginx
 sudo nginx
+
+# Restart Nginx to activate the changes:
+sudo nginx -s reload
 
 # http://localhost:80
 ```
