@@ -14,6 +14,9 @@ subl /usr/local/etc/nginx/nginx.conf
 # Start nginx
 sudo nginx
 
+# Stop nginx
+sudo nginx -s stop
+
 # Restart Nginx to activate the changes:
 sudo nginx -s reload
 
