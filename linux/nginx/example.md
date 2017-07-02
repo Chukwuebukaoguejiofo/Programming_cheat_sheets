@@ -48,8 +48,11 @@ Options:
 
 
 ```bash
+# Stop NGINX
 sudo nginx -s stop
+
+# Start NGINX with a different configuration file
 sudo nginx -c /usr/local/etc/nginx/nginx.conf.default
 
-# Go to http://localhost:80
+# Go to http://localhost:8080
 ```
