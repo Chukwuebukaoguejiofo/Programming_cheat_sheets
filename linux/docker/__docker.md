@@ -289,6 +289,15 @@ ADD . /myapp
 
 ```bash
 docker volume ls
+
+
+# Create new container and add a volume to it (which can be synced in both ways)
+# -v my_folder_full_path:container_folder_full_path  # they should sync each other!!!
+# -p myport:container_port
+# -d detached
+$ docker container run -v ~/foobar:/foobar <image>
+# Example: $ docker container run -it --name brian_volume_example_c -v ~/Desktop/foo/brian_data:/brian_data brian_volume_example_i
+
 ```
 
 ######  Links
