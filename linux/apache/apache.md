@@ -22,3 +22,8 @@ $ sudo apachectl stop
 # where that html file is:
 $ cat /Library/WebServer/Documents/index.html
 ```
+
+```bash
+# For help
+apachectl -h
+```
