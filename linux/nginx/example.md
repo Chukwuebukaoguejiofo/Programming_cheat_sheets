@@ -1,5 +1,7 @@
 # NGINX
 
+[NGINX cheat-sheet](https://gist.github.com/carlessanagustin/9509d0d31414804da03b)
+
 ###### https://www.sylvaindurand.org/setting-up-a-nginx-web-server-on-macos/
 
 ```bash
