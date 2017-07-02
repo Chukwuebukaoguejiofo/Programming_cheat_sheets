@@ -43,3 +43,13 @@ Options:
   -g directives : set global directives out of configuration file
 
 ```
+
+
+
+
+```bash
+sudo nginx -s stop
+sudo nginx -c /usr/local/etc/nginx/nginx.conf.default
+
+# Go to http://localhost:80
+```
