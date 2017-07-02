@@ -273,7 +273,7 @@ MAINTAINER Brian Spinos
 ENV foo=bar baz=quux
 WORKDIR /some_existing_folder_in_the_container
 RUN mkdir my_app
-COPY folder_from_host folder_in_container
+COPY folder_from_host folder_in_container # COPY my_folder_full_path container_folder_full_path
 EXPOSE 80
 RUN echo "Hello world"
 
