@@ -197,6 +197,11 @@ $ docker run -it --name <my-new-container-name> <IMAGE> <COMMAND>
 # Example: docker container run -it --name bozo foobar_image /bin/bash
 
 
+# Copy a folder from my computer to a running container:
+# cp my_folder_full_path my_running_container:container_folder_full_path
+$ docker container cp ~/foobar my-running-container:/foobar
+
+
 # (WARNING, NOT TESTED)
 # Create a new image from a container's changes
 $ docker container commit --author "Brian Spinos <brianspinos777@hotmail.com>" <container> <new-image-name>:<tag>
