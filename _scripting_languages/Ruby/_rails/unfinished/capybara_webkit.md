@@ -2,6 +2,8 @@
 
 [documentation](https://github.com/thoughtbot/capybara-webkit)
 
+[Rubydoc documentation](http://www.rubydoc.info/github/jnicklas/Capybara)
+
 
 ```ruby
 # Gemfile
