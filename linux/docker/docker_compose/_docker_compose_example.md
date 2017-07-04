@@ -5,7 +5,7 @@ Docker compose is a way to manage multiple docker containers that are related!
 ```
 
 
-### Docker compose tutorial:
+###### Docker compose tutorial:
 
 [docker compose tutorial youtube](http://www.youtube.com/watch?v=Uez88TWOECg)
 
@@ -19,13 +19,13 @@ $ docker run -d -p 80:80 --name my_ngingx_container nginx # the go to http://loc
 ```
 
 
-# Create files
+###### Create files
 
 ```bash
 $ touch Dockerfile Gemfile Gemfile.lock docker-compose.yml
 ```
 
-# Create a Dockerfile
+###### Create a Dockerfile
 
 ```bash
 FROM ruby:2.3.3
@@ -39,7 +39,7 @@ ADD . /myapp
 
 ```
 
-# Create a Gemfile
+###### Create a Gemfile
 
 ```ruby
 source 'https://rubygems.org'
@@ -47,13 +47,13 @@ gem 'rails', '5.0.0.1'
 
 ```
 
-# Create a Gemfile.lock (empty)
+###### Create a Gemfile.lock (empty)
 
 ```
 
 ```
 
-# Create a docker-compose.yml
+###### Create a docker-compose.yml
 
 ```yaml
 version: '2'
@@ -72,7 +72,7 @@ services:
 ```
 
 
-# Create rails app:
+###### Create rails app:
 
 ```bash
 # `my_rails_service` can be found in the docker-compose.yml file!
@@ -81,7 +81,7 @@ services:
 $ docker-compose run my_rails_service rails new . --force --database=postgresql --skip-bundle
 ```
 
-# Change the config/database.yml file locally
+###### Change the config/database.yml file locally
 
 ```yaml
 default: &default
@@ -102,32 +102,32 @@ development:
 
 ```
 
-# Build again, if you changed the local code: ???
+###### Build again, if you changed the local code: ???
 ```bash
 $ docker-compose build
 ```
 
-# Finally, you need to create the database. In another terminal, run:
+###### Finally, you need to create the database. In another terminal, run:
 ```bash
 $ docker-compose run my_rails_service rails db:create
 ```
 
 
-# You can now boot the app with:
+###### You can now boot the app with:
 ```bash
 $ docker-compose up # go to http://localhost:3000
 # $ docker-compose stop # to stop...
 ```
 
 
-# Run commands on your container: # which will reflect locally!
+###### Run commands on your container: # which will reflect locally!
 ```bash
 $ docker-compose run my_rails_service rails g scaffold user firstname lastname address phone
 $ docker-compose run my_rails_service rails db:migrate
 # then go to http://localhost:3000/users
 ```
 
-# Make local changes, then rebuild your project:
+###### Make local changes, then rebuild your project:
 ```bash
 $ docker-compose stop # not sure if you need to do this...
 # make changes
@@ -136,14 +136,14 @@ $ docker-compose up  # not sure if you need to do this...
 
 
 
-# If you get an error like:
+###### If you get an error like:
 ```bash
 # - A server is already running. Check /myapp/tmp/pids/server.pid.
 # Just delete the contents of that file!
 # then run $ docker-compose up
 ```
 
-# tear down project (destroy)
+###### tear down project (destroy)
 ```bash
 $ docker-compose down --volumes
 # it will not destroy the local files
