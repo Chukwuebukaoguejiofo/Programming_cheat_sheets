@@ -2,6 +2,8 @@
 
 [Documentation](https://github.com/teamcapybara/capybara)
 
+[Rubydoc documentation](http://www.rubydoc.info/github/jnicklas/Capybara)
+
 ```ruby
 # Gemfile
 
