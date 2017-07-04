@@ -1,3 +1,10 @@
+# Docker compose 
+
+```
+Docker compose is a way to manage multiple docker containers that are related!
+```
+
+
 ### Docker compose tutorial:
 
 [docker compose tutorial youtube](http://www.youtube.com/watch?v=Uez88TWOECg)
