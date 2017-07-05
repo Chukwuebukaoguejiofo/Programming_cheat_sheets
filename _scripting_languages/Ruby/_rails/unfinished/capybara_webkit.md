@@ -79,3 +79,16 @@ save_and_open_page # saves current snapshot of page
 print page.html # retrieve current state of DOM
 save_sceenshot('screenshot.png') # save screenshot
 ```
+
+
+
+```ruby
+click_link 'Hello'
+
+using_wait_time(10000) do
+    elements = all('#items')
+end
+
+expect(elements[0]).to have_content 'foobar'
+
+```
