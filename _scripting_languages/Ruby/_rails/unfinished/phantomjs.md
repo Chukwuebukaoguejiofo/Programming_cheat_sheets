@@ -30,7 +30,7 @@ phantomjs test.js
 ###### test.js
 
 ```javascript
-# test.js
+// test.js
 
 var page = require('webpage').create();
 var url = 'http://localhost:3000';
