@@ -68,3 +68,15 @@ RSpec.describe "home page", :type => :request do
 end
 
 ```
+
+
+```ruby
+click_link 'Hello'
+
+using_wait_time(10000) do
+    elements = all('#items')
+end
+
+expect(elements[0]).to have_content 'foobar'
+
+```
