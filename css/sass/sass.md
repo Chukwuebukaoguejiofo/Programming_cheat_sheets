@@ -1,7 +1,7 @@
 # SASS
 
 
-- its like a programing language, with arrays, variables, functions!
+- its like a programing language, with arrays, variables, functions, mixins!
 - its extention is -> .scss
 - it has another syntax -> .sass
 
