@@ -1,5 +1,11 @@
 # Capybara with Selenium
 
+###### Check out the usage with chrome browser!
+```
+https://github.com/flavorjones/chromedriver-helper
+```
+
+
 [Documentation](https://github.com/teamcapybara/capybara)
 
 [Rubydoc documentation](http://www.rubydoc.info/github/jnicklas/Capybara)
