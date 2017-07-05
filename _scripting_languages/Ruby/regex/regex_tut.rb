@@ -17,6 +17,7 @@ end
 # /(foo)+/ # one or more
 # /(foo)?/ # optional
 
+check "xxxbrianxxx", /brian/
 check "foo", /foo(.*)/
 check "foo", /^foo/ # starts with foo
 check "foo", /foo$/ # ends with foo
