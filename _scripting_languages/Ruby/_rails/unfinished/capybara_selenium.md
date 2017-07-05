@@ -79,4 +79,6 @@ end
 
 expect(elements[0]).to have_content 'foobar'
 
+page.evaluate_script("alert('hello')")
+
 ```
