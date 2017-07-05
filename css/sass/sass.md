@@ -3,7 +3,7 @@
 
 - its like a programing language, with arrays, variables, functions, mixins!
 - its extention is -> .scss (new extension)
-- it has another syntax -> .sass (old extension)
+- it has another syntax -> .sass (old extension) (no curly braces, no semicolons!)
 
 
 
