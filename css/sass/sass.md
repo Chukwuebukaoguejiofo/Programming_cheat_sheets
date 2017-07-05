@@ -2,8 +2,8 @@
 
 
 - its like a programing language, with arrays, variables, functions, mixins!
-- its extention is -> .scss
-- it has another syntax -> .sass
+- its extention is -> .scss (new extension)
+- it has another syntax -> .sass (old extension)
 
 
 
