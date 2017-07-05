@@ -1,5 +1,11 @@
 # Capybara webkit  (No Javascript? Only capybara with Selenium runs Javascript?)
 
+
+###### Check out the usage with chrome browser!
+```
+https://github.com/flavorjones/chromedriver-helper
+```
+
 [documentation](https://github.com/thoughtbot/capybara-webkit)
 
 [Rubydoc documentation](http://www.rubydoc.info/github/jnicklas/Capybara)
