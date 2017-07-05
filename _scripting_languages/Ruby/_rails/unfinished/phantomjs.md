@@ -9,6 +9,9 @@ https://github.com/teampoltergeist/poltergeist
 http://phantomjs.org/quick-start.html
 
 
+
+```bash
+
 # Install
 brew instal phantomjs
 
@@ -22,10 +25,13 @@ phantomjs
 
 # use a script!
 phantomjs test.js 
+```
 
 ###### test.js
 
 ```javascript
+# test.js
+
 var page = require('webpage').create();
 var url = 'http://localhost:3000';
 
