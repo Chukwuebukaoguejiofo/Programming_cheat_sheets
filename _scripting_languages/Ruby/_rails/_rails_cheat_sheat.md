@@ -52,7 +52,7 @@ rails db:migrate RAILS_ENV=test
 # Start rails in production
 rails s -e production
 
-# Compile assets and add them in the `public` folder
+# Concatenate and minify assets and add them in the `public` folder
 rake assets:precompile
 
 ```
