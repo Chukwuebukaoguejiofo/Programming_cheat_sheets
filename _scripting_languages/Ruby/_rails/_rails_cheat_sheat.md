@@ -48,6 +48,13 @@ cookies[:brian_cookie] = "bar" # cookie: "brian_cookie", content: bar
 ###### Tasks
 ```bash
 rails db:migrate RAILS_ENV=test
+
+# Start rails in production
+rails s -e production
+
+# Compile assets and add them in the `public` folder
+rake assets:precompile
+
 ```
 
 ###### Generators
