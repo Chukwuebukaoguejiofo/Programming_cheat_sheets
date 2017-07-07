@@ -46,14 +46,17 @@ blog/src/app/foos/foos.component.css
 ```
 
 ```html
-<img [src]="user.image"> // property binding
+<!-- property binding -->
+<img [src]="user.image">
 
-<div [class.foo]="1 === 1"></div> // dynamic HTML classes
+<!-- dynamic HTML classes -->
+<div [class.foo]="1 === 1"></div>
 
-<div [class]="user.name"></div> // dont do this, it overwrites all HTML classes
+<!-- Dont do this, it overwrites all HTML classes -->
+<div [class]="user.name"></div>
 
-
-<button (click)="foo(bar, $event)">Hello</button> // event binding
+<!-- Event binding -->
+<button (click)="foo(bar, $event)">Hello</button>
 
 
 <!-- two-way-binding -->
