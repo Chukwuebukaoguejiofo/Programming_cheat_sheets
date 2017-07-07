@@ -26,4 +26,8 @@ blog/src/main.ts # Angular entry point
 
 blog/src/app/app.module.ts # Where other components are registered
 
+# Component example:
+blog/src/app/foos/foos.component.ts # The class
+blog/src/app/foos/foos.component.html
+blog/src/app/foos/foos.component.css
 ```
