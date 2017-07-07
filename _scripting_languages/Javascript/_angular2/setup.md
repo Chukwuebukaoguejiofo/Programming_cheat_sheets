@@ -1,5 +1,6 @@
 # Angular 2 (Start an app)
 
+```bash
 # use node 6.9.0
 nvm use 6.9.0
 
@@ -17,3 +18,4 @@ npm start
 
 # tutorial
 # https://angular.io/guide/quickstart
+```
