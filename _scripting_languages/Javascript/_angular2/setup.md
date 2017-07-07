@@ -19,3 +19,11 @@ npm start
 # tutorial
 # https://angular.io/guide/quickstart
 ```
+
+
+```
+blog/src/main.ts # Angular entry point
+
+blog/src/app/app.module.ts # Where other components are registered
+
+```
