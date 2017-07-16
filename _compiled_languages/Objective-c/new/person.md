@@ -5,32 +5,45 @@
 
 ```objective-c
 
+//
+// Compile the code:
+//      $ gcc -framework Foundation test.m -o test
+//      $ ./test
+//
+
 #import <Foundation/Foundation.h>
- 
+
 @interface Person : NSObject {
     NSString * name;
     NSInteger age;
 }
 
-- (id)initWithName:(NSString *)name andAge:(NSInteger)age;
-- (void)print;
-- (void)greet;
+@property(nonatomic, readwrite, assign)  NSString *name; // generates the functions `name` and `setName`
+@property(nonatomic, readwrite, assign)  NSInteger age; // generates the functions `age` and `setAge`
+
+-(id)initWithName:(NSString *)name andAge:(NSInteger)age;
+-(void)print;
+-(void)greet;
 @end
 
 @implementation Person
 
-- (id)initWithName:(NSString *)_name andAge:(NSInteger)_age{
-    name = _name;
-    age = _age;
+@synthesize name;
+@synthesize age;
+
+-(id)initWithName:(NSString *)_name andAge:(NSInteger)_age{
+    self.name = _name;
+    self.age = _age;
+
     return self;
 }
 
-- (void)print{
+-(void)print{
     NSLog(@"Name: %@", name);
     NSLog(@"Age: %ld", age);
 }
 
-- (void)greet{
+-(void)greet{
     NSLog(@"Hello, my name is %@, I am %ld years old.", name, age);
 }
 
@@ -38,13 +51,32 @@
 
 
 int main(){
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];   
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
     Person * brian = [[Person alloc]initWithName:@"Brian Spinos" andAge:28];
-    [brian print];
+
+
     [brian greet]; // Hello, my name is Brian Spinos, I am 28 years old.
 
-   
+
+    [brian setName:@"Erich Smith"];
+    [brian setAge:22];
+
+
+    [brian greet]; // Hello, my name is Erich Smith, I am 22 years old.
+
+
+    NSString * name = [brian name];
+    NSLog(@"name: %@", name);
+
+    [brian setName:@"Rick Smith"];
+
+
+    NSString * name2 = [brian name];
+    NSLog(@"name2: %@", name2); // name2: Rick Smith
+
+
+
     [pool drain];
     return 0;
 }
