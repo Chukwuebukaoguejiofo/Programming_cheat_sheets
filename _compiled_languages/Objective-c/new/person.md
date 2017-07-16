@@ -76,6 +76,37 @@ int main(){
     NSLog(@"name2: %@", name2); // name2: Rick Smith
 
 
+    //
+    // NSNumber
+    //
+
+    NSNumber * myNumber = @123; // equivalent to [NSNumber numberWithInt:42]
+    NSLog(@"NSNumber: %@", myNumber); // NSNumber: 123
+
+
+    //
+    // Strings
+    //
+
+
+    NSString * myString = @"Hello";
+    NSLog(@"NSString: %@", myString);
+
+    //
+    // Array
+    //
+
+    NSArray * myArray = @[@"AAA", @"BBB", @"CCC"];
+    NSLog(@"NSArray: %@", myArray);
+
+    //
+    // Hashes
+    //
+
+    NSDictionary * myHash = @{@"name": @"brian", @"age": @28};
+    NSLog(@"NSDictionary: %@", myHash);
+
+
 
     [pool drain];
     return 0;
