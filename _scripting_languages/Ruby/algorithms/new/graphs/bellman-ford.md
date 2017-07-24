@@ -1,6 +1,7 @@
 # Bellman-Ford algorithm
 
 - calculates shortest distance from all nodes to a single selected node (same as dijkstra's algorithm)
+- not a greedy algorithm
 - it supports negative weights
 
 - initialize all nodes weight to infinity distance, the source node is set to ZERO distance
