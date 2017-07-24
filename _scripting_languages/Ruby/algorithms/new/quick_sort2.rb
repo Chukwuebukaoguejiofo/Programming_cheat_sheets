@@ -1,8 +1,9 @@
 # Quick sort
 # https://repl.it/languages/ruby
 #
-# Important: the pivot will not necessarily end up in the middle of the array,
-#            but it will end up close the where the left and right pointers meet
+# Important: the pivot position after swapping is unknown, 
+#            the only guarantee is that the left side of the array has values less than the pivot, 
+#            and the right side of the array has values >= the pivot
 #
 
 
