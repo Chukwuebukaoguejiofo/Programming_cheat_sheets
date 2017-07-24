@@ -1,7 +1,8 @@
 # Quick sort
 # https://repl.it/languages/ruby
 #
-# Important, this way is the easier way, using the `wall_index`
+# Important: the pivot will not necessarily end up in the middle of the array,
+#            but it will end up close the where the left and right pointers meet
 #
 
 
