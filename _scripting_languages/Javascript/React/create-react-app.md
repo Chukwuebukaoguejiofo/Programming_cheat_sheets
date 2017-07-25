@@ -9,4 +9,6 @@ $ create-react-app brian-app
 $ cd brian-app
 $ npm start # opens the browser in localhost:3000
 
+$ npm run build # to create a build for the server
+
 ```
