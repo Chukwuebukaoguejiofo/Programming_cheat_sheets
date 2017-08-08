@@ -14,3 +14,10 @@
 - So the hacker bypasses the login page.
 
 - Solution: Create an authenticity_token and place it in a hidden field in the form, so the server can know it came from the user, and not the hacker
+
+# SQL Injection
+
+- A Hacker types in SQL code to delete a tabel, or to make himself an admin...
+- If the server does not sanitize the user input, the SQL typed by the hacker will run.
+
+- Solution: Sanitize user input, escape SQL
