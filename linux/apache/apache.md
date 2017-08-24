@@ -37,11 +37,11 @@ apachectl -h
 
 # Apache config
 
-$ yum -y install httpd
-$ cd /ect/httpd/conf
-$ service httpd start
-$ apachectl -M # list modules
-$ apachectl configtest # test config file
+# $ yum -y install httpd
+# $ cd /ect/httpd/conf
+# $ service httpd start
+# $ apachectl -M # list modules
+# $ apachectl configtest # test config file
 
 # Apache supports load balancing
 
