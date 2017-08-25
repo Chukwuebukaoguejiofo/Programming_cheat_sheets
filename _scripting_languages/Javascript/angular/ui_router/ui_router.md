@@ -1,15 +1,10 @@
 # Ui Router
 
 
-```javascript
+- https://github.com/angular-ui/ui-router/wiki
+- $stateProvider  (UI ROUTER replaces ngRoute)
+- a state is a 'place' in the application
 
-// $stateProvider  (UI ROUTER replaces ngRoute)
-
-// https://github.com/angular-ui/ui-router/wiki
-
-// a state is a 'place' in the application
-
-```
 
 ```javascript
 // app.js
