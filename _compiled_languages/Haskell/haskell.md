@@ -8,15 +8,25 @@
 --  define a type  (like Int)
 
 
+-- Example of type constructors
+-- Int, Integer, Float, Double, Bool, Char
+
+
 -- 'User' is a 'nullary type constructor'
 data User = Name | LastName 
 
 -- A type constructor may have zero or more arguments
 data User x = Name x | LastName x 
+
+
+-- Maybe is a type constructor.
+-- Maybe Int is a type.
+-- Just is a value constructor.
+-- Just 42 is a value.
 ```
 
 
-###### Data/value constructor
+###### Data/value constructor (or simple 'constructor')
 
 ```Haskell
 
@@ -25,6 +35,15 @@ data User x = Name x | LastName x
 -- they are not types! but they are values
 data Bool = False | True 
 
+
+-- Here is an example of a type with just one data constructor: 
+data Point a = Pt a a
+
+
+-- Maybe is a type constructor.
+-- Maybe Int is a type.
+-- Just is a value constructor.
+-- Just 42 is a value.
 ```
 
 
@@ -90,6 +109,16 @@ Just (+3) <*> Just 2 == Just 5
 ```Haskell
 
 ```
+
+
+###### Newtype (like an alias?)
+
+```Haskell
+newtype Natural = MakeNatural Integer
+```
+
+
+
 
 
 
