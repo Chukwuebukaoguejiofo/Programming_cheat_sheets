@@ -30,13 +30,20 @@ data Bool = False | True
 
 ###### Functor
 
-```
-A Functor is any data type that defines how fmap applies to it.
+```haskell
+-- A Functor is any data type that defines how fmap applies to it.
+-- functors: you apply a function to a wrapped value using fmap or <$>
+
 ```
 
 ###### Applicative
 
 ```Haskell
+--  An applicative is a data type that implements the Applicative typeclass.
+-- applicatives: you apply a wrapped function to a wrapped value using <*> or liftA
+
+Just (+3) <*> Just 2 == Just 5
+-- the functions are also wrapped in a context (Just)
 
 ```
 
@@ -45,5 +52,37 @@ A Functor is any data type that defines how fmap applies to it.
 ```Haskell
 
 ```
+
+###### Typeclass  (Haskell's interfaces)
+
+```Haskell
+-- (A typeclass is a sort of interface that defines some behavior.)
+-- (you can create custom typeclasses)
+
+-- example of typeclasses:
+-- Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
+-- Functor, Applicatiive, Monads, Monoids
+
+
+
+-- declaration of a typeclass:
+class YesNo a where  
+    yesno :: a -> Bool 
+    
+-- an implementation:
+instance YesNo Int where  
+    yesno 0 = False  
+    yesno _ = True 
+
+-- the actual declaration of the 'functor' typeclass
+class Functor f where  
+    fmap :: (a -> b) -> f a -> f b 
+
+    
+```
+
+
+
+
 
 
