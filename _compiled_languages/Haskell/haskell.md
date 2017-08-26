@@ -84,10 +84,6 @@ instance YesNo Int where
     yesno 0 = False  
     yesno _ = True 
 
--- the actual declaration of the 'functor' typeclass
-class Functor f where  
-    fmap :: (a -> b) -> f a -> f b 
-
 
 ```
 
@@ -105,6 +101,16 @@ class Functor f where
     fmap :: (a -> b) -> f a -> f b 
 
 
+instance Functor [] where
+  fmap :: (a -> b) -> [a] -> [b]
+  fmap _ []     = []
+  fmap g (x:xs) = g x : fmap g xs
+  -- or we could just say fmap = map
+ 
+instance Functor Maybe where
+  fmap :: (a -> b) -> Maybe a -> Maybe b
+  fmap _ Nothing  = Nothing
+  fmap g (Just a) = Just (g a)
 
 ```
 
@@ -117,6 +123,12 @@ class Functor f where
 Just (+3) <*> Just 2 == Just 5
 -- the functions are also wrapped in a context (Just)
 
+
+instance Applicative [] where
+  pure :: a -> [a]
+  pure x = [x]
+
+  
 ```
 
 ###### Monad
