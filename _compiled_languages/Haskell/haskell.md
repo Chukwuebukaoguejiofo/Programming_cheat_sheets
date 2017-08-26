@@ -1,6 +1,21 @@
 # Haskell
 
 
+
+###### class
+```haskell
+-- Used to declare a typeclass (typeclass is Haskell's interfaces)
+```
+
+###### Instance
+```haskell
+-- Used for implementation of a typeclass (typeclass is Haskell's interfaces)
+
+```
+
+
+
+
 ###### Type constructor
 
 ```Haskell
@@ -107,6 +122,30 @@ Just (+3) <*> Just 2 == Just 5
 ###### Monad
 
 ```Haskell
+
+-- Maybe monad
+instance Monad Maybe where  
+    return x = Just x  
+    Nothing >>= f = Nothing  
+    Just x >>= f  = f x  
+    fail _ = Nothing  
+```
+
+###### Monoid  (it is a typeclass)
+
+```haskell
+class Monoid m where
+  mempty :: m
+  mappend :: m -> m -> m
+  mconcat :: [m] -> m
+  -- defining mconcat is optional, since it has the following default:
+  mconcat = foldr mappend mempty
+
+
+instance Monoid [a] where
+  mempty = []
+  mappend x y = x ++ y
+  mconcat = concat
 
 ```
 
