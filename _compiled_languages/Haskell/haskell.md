@@ -128,7 +128,7 @@ instance Applicative [] where
   pure :: a -> [a]
   pure x = [x]
 
-  
+
 ```
 
 ###### Monad
@@ -168,11 +168,11 @@ instance Monoid [a] where
 newtype Natural = MakeNatural Integer
 ```
 
+###### type (like an alias?)
 
-
-
-
-
-
+```haskell
+type Birds = Int  
+type Pole = (Birds,Birds)  
+```
 
 
