@@ -28,30 +28,6 @@ data Bool = False | True
 ```
 
 
-###### Functor
-
-```haskell
--- A Functor is any data type that defines how fmap applies to it.
--- functors: you apply a function to a wrapped value using fmap or <$>
-
-```
-
-###### Applicative
-
-```Haskell
---  An applicative is a data type that implements the Applicative typeclass.
--- applicatives: you apply a wrapped function to a wrapped value using <*> or liftA
-
-Just (+3) <*> Just 2 == Just 5
--- the functions are also wrapped in a context (Just)
-
-```
-
-###### Monad
-
-```Haskell
-
-```
 
 ###### Typeclass  (Haskell's interfaces)
 
@@ -78,7 +54,41 @@ instance YesNo Int where
 class Functor f where  
     fmap :: (a -> b) -> f a -> f b 
 
-    
+
+```
+
+
+###### Functor
+
+```haskell
+-- A functor is a typeclass (haskell's equivalent of an interface)
+-- A Functor is any data type that defines how fmap applies to it.
+-- functors: you apply a function to a wrapped value using fmap or <$>
+
+
+-- the actual declaration of the 'functor' typeclass
+class Functor f where  
+    fmap :: (a -> b) -> f a -> f b 
+
+
+
+```
+
+###### Applicative
+
+```Haskell
+--  An applicative is a data type that implements the Applicative typeclass.
+-- applicatives: you apply a wrapped function to a wrapped value using <*> or liftA
+
+Just (+3) <*> Just 2 == Just 5
+-- the functions are also wrapped in a context (Just)
+
+```
+
+###### Monad
+
+```Haskell
+
 ```
 
 
