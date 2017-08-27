@@ -1,4 +1,4 @@
-
+# Custom Monad
 
 
 ```haskell
@@ -24,17 +24,20 @@ import Control.Applicative
 import Control.Monad (liftM, ap)
 
 
+-- Foo Type constructor
+data Foo a = Bar a | Baz  deriving (Show) 
+
+
 -- Foo Functor
 instance Functor Foo where
   fmap = liftM
+
 
 -- Foo Applicative
 instance Applicative Foo where
   pure  = return
   (<*>) = ap
 
--- Foo Type constructor
-data Foo a = Bar a | Baz  deriving (Show) 
 
 -- Foo Monad
 instance Monad Foo where  
@@ -51,5 +54,4 @@ main = do
     
     
     
-
 ```
