@@ -165,6 +165,8 @@ $ webpack app.js bundle.js -p --watch
 ```
 
 ```javascript
+// webpack.config.js
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -185,6 +187,17 @@ module.exports = {
 // It is used to get CSS code generated,
 // and adding them to a file
 // var ExtractTextPlugin = require('extract-text-webpack-plugin')
+```
+
+```javascript
+// webpack.config.js
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+    //...
+}
+
 ```
 
 ```bash
