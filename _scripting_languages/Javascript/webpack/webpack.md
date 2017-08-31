@@ -95,12 +95,22 @@ $ npm install -D react react-dom babel babel-preset-react babel-preset-es2015 ba
 // WE NEED TO DO SOME STUFF HERE...
 ```
 
+
 ```javascript
 // webpack.config.js
 
-//...
-{test: /\.js$/, exclude: /node_modules/, use: 'babel-loader'}
-//...
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+    entry: {...},
+    output: {...},
+    module: {
+        rules: [
+            {test: /\.js$/, exclude: /node_modules/, use: 'babel-loader'}
+        ]
+    },
+}
+
 ```
 
 
