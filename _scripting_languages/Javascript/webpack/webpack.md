@@ -164,6 +164,15 @@ $ npm install -D html-webpack-plugin
 $ webpack app.js bundle.js -p --watch
 ```
 
+```javascript
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    //...
+}
+
+```
+
 -------
 
 ###### Loaders syntax
