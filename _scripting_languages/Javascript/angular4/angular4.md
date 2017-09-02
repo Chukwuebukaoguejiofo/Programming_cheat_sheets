@@ -38,7 +38,6 @@ $ ng g s services/users # remember to provide it in app.module.ts
 ###### Services
 
 ```bash
-
 # 1. Generate the service
 #    remember to provide it in app.module.ts 
 #    in the providers: [UsersService]
@@ -47,7 +46,7 @@ $ ng g s services/users
 # 2. import it in a component
 # 3. pass it in the constructor of the component
 # 4. use it on `ngOnInit` function of component
-
+```
 
 ###### Twitter-Bootstrap installation
 
