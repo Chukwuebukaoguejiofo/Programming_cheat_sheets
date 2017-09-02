@@ -1,5 +1,8 @@
 # Vim
 
+
+cheet sheets: https://vim.rtorr.com/
+
 ```bash
 $ vi foo.txt # edit a file
 
