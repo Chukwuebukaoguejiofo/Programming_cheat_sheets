@@ -69,7 +69,7 @@ web: node app.js
 
 
 #======= workflow
-
+ng build --prod
 git add .
 gcm 'First commit'
 git push heroku master
