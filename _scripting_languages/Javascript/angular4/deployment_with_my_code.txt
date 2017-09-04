@@ -3,29 +3,17 @@
 
 
 
-- how to create an app from an existing project?
-- have 2 remotes: one for heroku, another for your git repo
-    -> create repo in github!
-    -> Go to command line
-    -> heroku login
-    -> git remote add origin git@github.com:brianspinos777/xyz.git
-    -> git push -u origin master
-
-
-
 #========= Steps
 
 nvm use 8.0.0
 
 ng new blog # first create the app, then add express!
 cd blog
-
-
 ng build --prod
 
 # in .gitignore remove the '/dist', because we will need that folder
 
-npm install express # not dev!
+npm install --save express # not dev!
 
 
 touch app.js # fill it in!
@@ -53,18 +41,21 @@ app.listen(app.get('port'), function() {
 - package.json
 
 ``````````````
-"engines": {
-    "node": "8.0.0"
-},
-"main": "app.js",
 "scripts": {
     "start": "node app.js"
 },
+
+
+"engines": {
+    "node": "8.0.0"
+},
+"main": "app.js"
+
 ````````````
 
 
 
-heroku create spinos-delete-me
+heroku create spinos-angular4-test
 
 
 
@@ -80,10 +71,20 @@ web: node app.js
 #======= workflow
 
 git add .
-gcm 'fix 1'
+gcm 'First commit'
 git push heroku master
 heroku open
 heroku logs --tail
+
+
+
+
+
+
+
+
+
+
 
 #========= debug:
 
@@ -104,7 +105,27 @@ git remote # list remotes
 git remote remove origin
 
 
-#================== push existing app to heroku
+push existing app to heroku  # ???
 heroku git:remote -a my-app-name # my-app-name.herokuapp.com
 
+
+
+
+
+
+
+
+
+
+#================== add code to github:
+
+- have 2 remotes: one for heroku, another for your git repo
+    -> create repo in github!
+    -> Go to command line
+    -> heroku login
+    -> git remote add origin git@github.com:brianspinos777/angular4test.git
+    -> git push -u origin master
+
+
+- how to create an app from an existing project?
 
