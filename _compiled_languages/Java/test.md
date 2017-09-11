@@ -30,7 +30,7 @@ class Main{ // Because of name of file
     public abstract int funcAbs(String x);
   }
   
-  //--------------------------------------- Class
+  //--------------------------------------- Base class
   public static class Foo{
     String name;
     int age;
@@ -48,7 +48,7 @@ class Main{ // Because of name of file
     }
   }
   
-  //--------------------------------------- Class
+  //--------------------------------------- Derived class
   public static class FooBar extends Foo implements Bar{
     String name;
     int age;
