@@ -12,14 +12,21 @@ class Main{ // Because of name of file
   
   //--------------------------------------- Abstract class
   public abstract class Baz{
+  
+    public String xyz;
+    
+    // The 'constructor' is just to initialize fields
     public Baz(String x){
       System.out.println(x);
+      
+      this.xyz = x;
     }
     
     public void func1(String x){
       System.out.println(x);
     }
     
+    // You need to have at least one abstract method
     public abstract int funcAbs(String x);
   }
   
