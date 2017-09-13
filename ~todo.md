@@ -4,3 +4,4 @@
 - add a 'master file' so all repeated files contents get to that file, eventually delete other files
 - clean redis folder
 - organize javascript folder
+- add OSI model and TCP/IP
