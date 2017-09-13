@@ -2,8 +2,8 @@
 
 
 ```php
-//----------------------------------------------------- Abstract classes
 
+//----------------------------------------------------- Abstract classes
 abstract class Foobar {
   abstract function funcD($d);
   abstract function funcE($e);
@@ -11,8 +11,8 @@ abstract class Foobar {
     echo $f;
   }
 }
-//----------------------------------------------------- Interfaces
 
+//----------------------------------------------------- Interfaces
 interface IBaz { 
   public function funcX($x);
   public function funcY($y);
@@ -86,9 +86,7 @@ class Bar extends Foo implements IBaz{
   }
 }
 
-
 //-----------------------------------------------------
-
 function puts($val){
   echo "\n";
   echo $val;
@@ -96,7 +94,6 @@ function puts($val){
 }
 
 //-----------------------------------------------------
-
 $foo = new Foo("aaa_f", "bbb_f");
 puts($foo->fieldC);
 puts($foo->fieldC);
