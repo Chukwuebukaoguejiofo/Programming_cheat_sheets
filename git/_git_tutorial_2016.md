@@ -1,8 +1,10 @@
-# git tutorial:
+# GIT tutorial
 
-# https://www.atlassian.com/git/tutorials/
-#-----------------------------------------------------------------------------------
+https://www.atlassian.com/git/tutorials/
 
+
+
+```
 -> Working Directory
 
 -> INDEX (staging area)
@@ -10,21 +12,28 @@
 -> HEAD is a pointer to the branch, and the branch is a pointer to a commit (the last commit)
     - commits are like nodes in a tree (there is the root node and it branches out)
     - when you are in detached mode, HEAD is pointing directly to a commit.
-    
-#----------------------------------------------------------------------------------- git normal  work-flow:
+```
+
+
+###### git normal  work-flow:
+```
 # ...modify a file...
 
 $ git add <file> # add the file to the 'next proposed commit'
 $ git commit -m 'my changes' # do the actual commit
 $ git push # push your changes to the server
+```
 
-#----------------------------------------------------------------------------------- git add
+###### git add
+```
 # this command adds the file or folder changes to the 'next proposed commit' a.k.a. the 'staging area'
 $ git add <file> # adds the file to staging area
 $ git add <folder> # adds the folder to staging area
 $ git add . # add all files to staging area
+```
 
-#----------------------------------------------------------------------------------- git checkout
+###### git checkout
+```
 $ git checkout <some-existing-branch> 
 # go to that branch.
 
@@ -32,11 +41,15 @@ $ git checkout <some-existing-branch>
 $ git checkout -- <file> 
 # restores the file as it was in the last commit, and removes the file from the staging area
 # same as `$ git checkout HEAD -- <file>`
+```
 
-#----------------------------------------------------------------------------------- git commit
+###### git commit
+``` 
 $ git commit -m 'my message' # commit the stagging area
+```
 
-#----------------------------------------------------------------------------------- git reset
+###### git reset
+```
 
 $ git reset <file> 
 # unstages a file, so its not added to the next commit (but the working directory stays the same)
@@ -123,8 +136,10 @@ $ git reset --hard HEAD~2 # Dangerous!!!
 # Combined, these two commands let you return the working directory
 # to the exact state of a particular commit.
 # - NEW files are NOT affected by git reset --hard
+```
 
-#----------------------------------------------------------------------------------- saving changes
+###### saving changes
+```
 $ git add <file> # adds the file to staging area
 
 $ git add . # add all files to staging area
@@ -134,8 +149,10 @@ $ git commit -m 'my message' # commit the stagging area
 $ git commit -a   # save all changes in tracked files of the working directory
 
 $ git status # list which files are staged, unstaged, and untracked.
+```
 
-#----------------------------------------------------------------------------------- viewing old commits
+###### viewing old commits
+```
 $ git checkout master # a way to get back to the "current" state of the project.
 
 $ git checkout <commit> <file>
@@ -162,7 +179,10 @@ $ git checkout <commit>
 #   repository while viewing an old revision. The "current" state of your project remains
 #   untouched in the master branch
 
-#----------------------------------------------------------------------------------- undoing changes
+```
+
+###### undoing changes
+```
 
 $ git revert <commit>
 # Generate a new commit that undoes all of the changes introduced in <commit>,
@@ -182,17 +202,26 @@ $ git revert <commit>
 # project by removing all subsequent commits. In Git, this is
 # actually called a reset, not a revert.
 
-#----------------------------------------------------------------------------------- diff
+```
+
+###### diff
+```
 
 $ git diff # Shows what you changed, but haven't staged
 $ git diff --cached # Shows what has been staged, but not committed
 
-#----------------------------------------------------------------------------------- remove files
+```
+
+###### remove files
+```
 
 $ git remove <file>
 # also $ git rm <file> ???
 
-#----------------------------------------------------------------------------------- log
+```
+
+###### log
+```
 $ git log # Shows all of the previous commit messages in reverse order
 $ git log --pretty=oneline # Shows commits on one line
 $ git log --pretty=format:"%h : %an : %ar : %s"
@@ -208,7 +237,10 @@ $ git log --since="2014-04-12" # Show changes since this date
 $ git log --author="Brian Spinos" # Changes made by author
 $ git log --before="2014-04-13" # Changes made before this date
 
-#----------------------------------------------------------------------------------- cleaning
+```
+
+###### cleaning
+```
 
 $ git clean -n # Perform a "dry run" of git clean.
 # This will show you which files are going to be removed without actually doing it.
@@ -216,7 +248,10 @@ $ git clean -n # Perform a "dry run" of git clean.
 $ git clean -f # Remove UNTRACKED files from the current directory
 # CAREFUL, THIS IS NOT UNDOABLE!!!
 
-#----------------------------------------------------------------------------------- branching
+```
+
+###### branching
+```
 # new files are not affeted
 # stagging changes are not affected when you change the branch
 
@@ -224,7 +259,10 @@ $ git branch  # list all branches
 $ git checkout -b foo # create a new branch based on the current branch
 $ git merge foo  # merge the foo branch in to the current branch
 
-#----------------------------------------------------------------------------------- stashing
+```
+
+###### stashing
+```
 # gotcha:   - you only need to worry about new files (untracked files)
 #           - you need to add new files to the staging area, you dont need to commit them 
 #               - if you dont add the new files, GIT will not track them, and they will be lost
@@ -245,7 +283,10 @@ $ git stash pop  # it will pop the changes from the stash stack and apply it to 
 # show the list of stashes (the newest is on top?)
 $ git stash list 
 
-#----------------------------------------------------------------------------------- git rebase
+```
+
+###### git rebase
+```
 # before you start rebasing, make sure you committed your changes and that your stagging area is clean!
 
 $ git commit -m 'saving my work and cleaning the stagging area, before I rebase!'
@@ -282,12 +323,18 @@ $ git add <fixed-file>
 $ git rebase --continue
 # you could be doing this multiple times with the same conflict
 
-#----------------------------------------------------------------------------------- cherry-pick
+```
+
+###### cherry-pick
+```
 $ git cherry-pick <commit>
 # adds the changes introduces in the <commit> into a new commit! ???
 
 
-#----------------------------------------------------------------------------------- remotes
+```
+
+###### remotes
+```
 $ git remote # list of remotes
 $ git remote show origin # information about the remote: list of local and remote branches branches, fetch and push URLs...
 $ git remote show <your-remote>
@@ -295,7 +342,10 @@ $ git remote add origin2 https://github.com/brianspinos777/foo-bar.git  # origin
 $ git remote rm <remote-name> # removes the remote
 $ git push -u <remote-name> <branch-name> # push a branch to a remote and make git remember the upstream.
 
-#----------------------------------------------------------------------------------- remote branches
+```
+
+###### remote branches
+```
 # Creating remote branches
 
 $ git checkout -b shopping_cart
@@ -320,21 +370,31 @@ $ git branch -D shopping_cart # force delete branch
 $ git remote prune origin  # if you run `git remote show origin`, and there are `stale` branches (meaning that someone deleted that remote branch), run this command to clean these references
 
 
-#----------------------------------------------------------------------------------- tags
+```
+
+###### tags
+```
 # They are a reference to a specific commit
 $ git tag # list tags
 $ git checkout <tag-name> # check out code at this commit
 $ git tag -a <tag-name> -m "a message with the tag description" # create a new tag
 $ git push --tags  # push the tags also
 
-#----------------------------------------------------------------------------------- blame
+```
+
+###### git blame
+```
 # see who commited those changes to that file
 $ git blame index.html --date short # you can see for each line: the commit SHA, the Author, the Date, the Line number, and the content of that line.
 
-#----------------------------------------------------------------------------------- Aliases
+```
+
+###### Aliases
+```
 $ git config --global alias.mylog "log --pretty=format: '%h %s [%an]' --graph"
 $ git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 $ git config --global alias.st status
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
 $ git config --global alias.ci commit
+```
