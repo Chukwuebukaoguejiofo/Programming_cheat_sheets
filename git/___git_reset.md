@@ -1,4 +1,4 @@
-# GIT RESET
+# GIT Reset
 
 ```bash
 # git reset: moves the HEAD pointer
