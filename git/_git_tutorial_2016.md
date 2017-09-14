@@ -15,8 +15,8 @@ https://www.atlassian.com/git/tutorials/
 ```
 
 
-###### git normal  work-flow:
-```
+###### Work-flow
+```bash
 # ...modify a file...
 
 $ git add <file> # add the file to the 'next proposed commit'
@@ -25,7 +25,7 @@ $ git push # push your changes to the server
 ```
 
 ###### git add
-```
+```bash
 # this command adds the file or folder changes to the 'next proposed commit' a.k.a. the 'staging area'
 $ git add <file> # adds the file to staging area
 $ git add <folder> # adds the folder to staging area
@@ -33,7 +33,7 @@ $ git add . # add all files to staging area
 ```
 
 ###### git checkout
-```
+```bash
 $ git checkout <some-existing-branch> 
 # go to that branch.
 
@@ -44,12 +44,12 @@ $ git checkout -- <file>
 ```
 
 ###### git commit
-``` 
+```bash
 $ git commit -m 'my message' # commit the stagging area
 ```
 
 ###### git reset
-```
+```bash
 
 $ git reset <file> 
 # unstages a file, so its not added to the next commit (but the working directory stays the same)
@@ -139,7 +139,7 @@ $ git reset --hard HEAD~2 # Dangerous!!!
 ```
 
 ###### saving changes
-```
+```bash
 $ git add <file> # adds the file to staging area
 
 $ git add . # add all files to staging area
@@ -152,7 +152,7 @@ $ git status # list which files are staged, unstaged, and untracked.
 ```
 
 ###### viewing old commits
-```
+```bash
 $ git checkout master # a way to get back to the "current" state of the project.
 
 $ git checkout <commit> <file>
@@ -182,7 +182,7 @@ $ git checkout <commit>
 ```
 
 ###### undoing changes
-```
+```bash
 
 $ git revert <commit>
 # Generate a new commit that undoes all of the changes introduced in <commit>,
@@ -205,7 +205,7 @@ $ git revert <commit>
 ```
 
 ###### diff
-```
+```bash
 
 $ git diff # Shows what you changed, but haven't staged
 $ git diff --cached # Shows what has been staged, but not committed
@@ -213,15 +213,14 @@ $ git diff --cached # Shows what has been staged, but not committed
 ```
 
 ###### remove files
-```
-
+```bash
 $ git remove <file>
 # also $ git rm <file> ???
 
 ```
 
 ###### log
-```
+```bash
 $ git log # Shows all of the previous commit messages in reverse order
 $ git log --pretty=oneline # Shows commits on one line
 $ git log --pretty=format:"%h : %an : %ar : %s"
@@ -240,7 +239,7 @@ $ git log --before="2014-04-13" # Changes made before this date
 ```
 
 ###### cleaning
-```
+```bash
 
 $ git clean -n # Perform a "dry run" of git clean.
 # This will show you which files are going to be removed without actually doing it.
@@ -251,7 +250,7 @@ $ git clean -f # Remove UNTRACKED files from the current directory
 ```
 
 ###### branching
-```
+```bash
 # new files are not affeted
 # stagging changes are not affected when you change the branch
 
@@ -262,7 +261,7 @@ $ git merge foo  # merge the foo branch in to the current branch
 ```
 
 ###### stashing
-```
+```bash
 # gotcha:   - you only need to worry about new files (untracked files)
 #           - you need to add new files to the staging area, you dont need to commit them 
 #               - if you dont add the new files, GIT will not track them, and they will be lost
@@ -286,7 +285,7 @@ $ git stash list
 ```
 
 ###### git rebase
-```
+```bash
 # before you start rebasing, make sure you committed your changes and that your stagging area is clean!
 
 $ git commit -m 'saving my work and cleaning the stagging area, before I rebase!'
@@ -326,7 +325,7 @@ $ git rebase --continue
 ```
 
 ###### cherry-pick
-```
+```bash
 $ git cherry-pick <commit>
 # adds the changes introduces in the <commit> into a new commit! ???
 
@@ -334,7 +333,7 @@ $ git cherry-pick <commit>
 ```
 
 ###### remotes
-```
+```bash
 $ git remote # list of remotes
 $ git remote show origin # information about the remote: list of local and remote branches branches, fetch and push URLs...
 $ git remote show <your-remote>
@@ -345,7 +344,7 @@ $ git push -u <remote-name> <branch-name> # push a branch to a remote and make g
 ```
 
 ###### remote branches
-```
+```bash
 # Creating remote branches
 
 $ git checkout -b shopping_cart
@@ -373,7 +372,7 @@ $ git remote prune origin  # if you run `git remote show origin`, and there are 
 ```
 
 ###### tags
-```
+```bash
 # They are a reference to a specific commit
 $ git tag # list tags
 $ git checkout <tag-name> # check out code at this commit
@@ -383,14 +382,14 @@ $ git push --tags  # push the tags also
 ```
 
 ###### git blame
-```
+```bash
 # see who commited those changes to that file
 $ git blame index.html --date short # you can see for each line: the commit SHA, the Author, the Date, the Line number, and the content of that line.
 
 ```
 
 ###### Aliases
-```
+```bash
 $ git config --global alias.mylog "log --pretty=format: '%h %s [%an]' --graph"
 $ git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 $ git config --global alias.st status
