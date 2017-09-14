@@ -240,6 +240,7 @@ $ git log --since="2014-04-12" # Show changes since this date
 $ git log --author="Brian Spinos" # Changes made by author
 $ git log --before="2014-04-13" # Changes made before this date
 
+$ git log --oneline
 ```
 
 ###### Cleaning
