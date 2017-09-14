@@ -15,7 +15,7 @@ https://www.atlassian.com/git/tutorials/
 ```
 
 
-###### Work-flow
+###### Work flow
 ```bash
 # ...modify a file...
 
@@ -28,18 +28,18 @@ $ git push # push your changes to the server
 ```bash
 # this command adds the file or folder changes to the 'next proposed commit' a.k.a. the 'staging area'
 $ git add <file> # adds the file to staging area
-$ git add <folder> # adds the folder to staging area
+$ git add my_folder # adds the folder to staging area
 $ git add . # add all files to staging area
 ```
 
 ###### git checkout
 ```bash
-$ git checkout <some-existing-branch> 
-# go to that branch.
+$ git checkout an_existing_branch
+# Go to that branch.
 
 
-$ git checkout -- <file> 
-# restores the file as it was in the last commit, and removes the file from the staging area
+$ git checkout -- <file>
+# Restores the file as it was in the last commit, and removes the file from the staging area
 # same as `$ git checkout HEAD -- <file>`
 ```
 
@@ -138,7 +138,7 @@ $ git reset --hard HEAD~2 # Dangerous!!!
 # - NEW files are NOT affected by git reset --hard
 ```
 
-###### saving changes
+###### Saving changes
 ```bash
 $ git add <file> # adds the file to staging area
 
@@ -151,7 +151,7 @@ $ git commit -a   # save all changes in tracked files of the working directory
 $ git status # list which files are staged, unstaged, and untracked.
 ```
 
-###### viewing old commits
+###### Viewing old commits
 ```bash
 $ git checkout master # a way to get back to the "current" state of the project.
 
@@ -181,7 +181,7 @@ $ git checkout <commit>
 
 ```
 
-###### undoing changes
+###### Undoing changes
 ```bash
 
 $ git revert <commit>
@@ -204,7 +204,7 @@ $ git revert <commit>
 
 ```
 
-###### diff
+###### Diff
 ```bash
 
 $ git diff # Shows what you changed, but haven't staged
@@ -212,14 +212,14 @@ $ git diff --cached # Shows what has been staged, but not committed
 
 ```
 
-###### remove files
+###### Remove files
 ```bash
 $ git remove <file>
 # also $ git rm <file> ???
 
 ```
 
-###### log
+###### Log
 ```bash
 $ git log # Shows all of the previous commit messages in reverse order
 $ git log --pretty=oneline # Shows commits on one line
@@ -238,7 +238,7 @@ $ git log --before="2014-04-13" # Changes made before this date
 
 ```
 
-###### cleaning
+###### Cleaning
 ```bash
 
 $ git clean -n # Perform a "dry run" of git clean.
@@ -249,7 +249,7 @@ $ git clean -f # Remove UNTRACKED files from the current directory
 
 ```
 
-###### branching
+###### Branching
 ```bash
 # new files are not affeted
 # stagging changes are not affected when you change the branch
@@ -260,7 +260,7 @@ $ git merge foo  # merge the foo branch in to the current branch
 
 ```
 
-###### stashing
+###### Stashing
 ```bash
 # gotcha:   - you only need to worry about new files (untracked files)
 #           - you need to add new files to the staging area, you dont need to commit them 
@@ -332,7 +332,7 @@ $ git cherry-pick <commit>
 
 ```
 
-###### remotes
+###### Remotes
 ```bash
 $ git remote # list of remotes
 $ git remote show origin # information about the remote: list of local and remote branches branches, fetch and push URLs...
@@ -343,7 +343,7 @@ $ git push -u <remote-name> <branch-name> # push a branch to a remote and make g
 
 ```
 
-###### remote branches
+###### Remote branches
 ```bash
 # Creating remote branches
 
@@ -371,7 +371,7 @@ $ git remote prune origin  # if you run `git remote show origin`, and there are 
 
 ```
 
-###### tags
+###### Tags
 ```bash
 # They are a reference to a specific commit
 $ git tag # list tags
