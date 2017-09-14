@@ -1,15 +1,14 @@
 # Git tutorial
 
 
-# Git has the 3 trees:
-  1. "working directory", "your folder, and files on your computer", "files on your filesystem"
+###### Git has the 3 trees
+```
+1. "working directory", "your folder, and files on your computer", "files on your filesystem"
+2. "index" - "stagging area", "your next commit being worked on", "proposed next commit snapshot"
+3. "HEAD" - your lattest commit, "last commit snapshot, next parent", "HEAD points to a branch, that points to a commit ???"
+```
 
-  2. "index" - "stagging area", "your next commit being worked on", "proposed next commit snapshot"
-
-  3. "HEAD" - your lattest commit, "last commit snapshot, next parent", "HEAD points to a branch, that points to a commit ???"
-
-
-# Checkout command
+###### Checkout command
   - git checkout is an easy way to “load” any saved snapshots onto your development machine.
   - the `$ git checkout` command operates on: files, commits and branches
 
@@ -22,7 +21,7 @@
     # Nothing you do in here will be saved in your repository
 
 ```
-# Revert command
+###### Revert command
   - git revert is a “safe” way to undo changes
   - reverting is designed to safely undo a public commit,
 
@@ -92,9 +91,4 @@ $ git reset <commit>
   # Move the current branch tip backward to <commit>, reset the staging area to match, but leave the working directory alone
 ```
 
-# Log
-```bash
-git log --oneline
-```
-
-# what is git reflog ???
+###### what is git reflog ???
