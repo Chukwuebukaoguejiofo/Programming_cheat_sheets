@@ -71,7 +71,8 @@ $ git reset --soft HEAD~1
 # dont do this after you push
 # it will put files back to the stagging area  
 # the working directory stays intact!
-# the INDEX (staging area) will reflect what is in the working directory (as files that need to be committed)
+# the INDEX (staging area) will reflect what is in the working directory (as files that need 
+# to be committed)
 #
 # HEAD will have the version1 of a file,
 # INDEX (staging area) will have the version2 of a file,
@@ -93,7 +94,8 @@ $ git reset --hard HEAD  # Dangerous!!!
 # moves the HEAD and BRANCH pointer to the previous commit
 # same as `$ git reset --hard`
 # restores all files as they were in the last commit, and removes all the files from the staging area
-# this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD (GIT will not remove them automatically)
+# this command is usually followed by a `$ git clean -f` because GIT will only untrack files 
+# that are not in HEAD (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
 # Combined, these two commands let you return the working directory
@@ -107,7 +109,8 @@ $ git reset --hard HEAD  # Dangerous!!!
 
 $ git reset --hard HEAD~1  # Dangerous!!!
 # 1. dont do this after you push !!!
-# 2. moves the HEAD and BRANCH pointer to the previous commit, so if you have 5 commits, it will point to commit number 4
+# 2. moves the HEAD and BRANCH pointer to the previous commit, so if you have 5 commits, 
+#    it will point to commit number 4
 # 3. reverse of ( making changes followed by `git add` followed by `git commit` )
 # 4. undo LAST COMMIT AND ALL CHANGES,
 #     - if you really screwed and want to start again fresh
@@ -130,7 +133,8 @@ $ git reset --hard HEAD~1  # Dangerous!!!
 $ git reset --hard HEAD~2 # Dangerous!!!
 # (moves HEAD back twice, so if you have 5 commits, it will point to commit number 3)
 # undo last 2 commits # dont do this after you push
-# - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that are not in HEAD~2 (GIT will not remove them automatically)
+# - this command is usually followed by a `$ git clean -f` because GIT will only untrack files that 
+#   are not in HEAD~2 (GIT will not remove them automatically)
 # Remember that resetting only affects tracked files,
 # so a separate command is required for cleaning up untracked ones.
 # Combined, these two commands let you return the working directory
