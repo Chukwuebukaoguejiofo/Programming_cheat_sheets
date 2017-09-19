@@ -19,7 +19,7 @@ $ \d <table-name>
 ```
 
 
-```postgresql
+```sql
 DROP TABLE items;
 
 CREATE TABLE items(
