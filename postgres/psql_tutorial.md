@@ -26,7 +26,7 @@ DROP TABLE items;
 
 CREATE TABLE items(
     id SERIAL PRIMARY KEY,
-    text CHAR(255) NOT NULL,
+    text VARCHAR(255) NOT NULL,
     is_done boolean NOT NULL
 );
 
