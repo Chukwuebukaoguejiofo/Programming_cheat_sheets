@@ -1,5 +1,7 @@
 # Psql tutorial (postgres, postgresql)
 
+http://www.tutorialspoint.com/postgresql/
+
 
 ```bash
 $ rails db
