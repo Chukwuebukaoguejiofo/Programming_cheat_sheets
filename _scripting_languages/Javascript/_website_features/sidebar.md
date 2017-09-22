@@ -60,18 +60,18 @@
             }
 
             #sidebar-btn span{
-                height:1px;
-                background:#111;
-                margin-bottom:5px;
-                display:block;
+                height: 2px;
+                background: #555;
+                margin-bottom: 3px;
+                display: block;
             }
 
             #sidebar-btn span:nth-child(2){
-                width:75%;
+                /*width:75%;*/
             }
 
             #sidebar-btn span:nth-child(3){
-                width:50%;
+                /*width:50%;*/
             }
 
         </style>
