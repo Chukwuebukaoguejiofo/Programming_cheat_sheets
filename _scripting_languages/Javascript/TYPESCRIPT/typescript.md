@@ -23,6 +23,16 @@ let myVariableM:{x:number, y:number}  = {x:1, y:2}
 let myVariableN:any = 123
 let myVariableO:any = 'abc'
 
+//--------------------------------------------------------------------- Casting:
+let x = '123'
+let y = Number(x)
+alert(typeof y) // number
+
+
+let z = 123
+let w = String(z)
+alert(typeof w) // string
+
 //--------------------------------------------------------------------- Enum:
 enum Colors { 
     Red = 0,
