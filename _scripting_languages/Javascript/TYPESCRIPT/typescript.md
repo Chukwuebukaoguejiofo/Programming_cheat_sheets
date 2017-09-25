@@ -1,25 +1,36 @@
 # Typescript
 
-
 ```typescript
-// Typescript
 
 // Each line of instruction is called a statement. 
 // Semicolons are optional in TypeScript.
 
-var message:string = "Hello World"  // string type
-
 //--------------------------------------------------------------------- types:
-let x10:number = 123;
-let x20:string = "aaa";
-let x30:void = null;
-let x100:void = undefined;
-let x40:boolean = true;
-let x50:any = 123;
-let x60:null = null;
-let x70:undefined = undefined;
-let x80:Array<number> = [1,2,3]
-let x90:object  = {foo:1, bar:2}
+let message:string = "Hello World"  // string type
+let myVariableA:number = 123;
+let myVariableB:string = "aaa";
+let myVariableC:void = null;
+let myVariableD:void = undefined;
+let myVariableE:boolean = true;
+let myVariableF:any = 123;
+let myVariableG:null = null;
+let myVariableH:undefined = undefined;
+let myVariableI:number[] = [1,2,3]
+let myVariableJ:Array<number> = [1,2,3]
+let myVariableK:object  = {foo:1, bar:2}
+let myVariableL:Date  = new Date('10/12/2000')
+let myVariableM:{x:number, y:number}  = {x:1, y:2}
+let myVariableN:any = 123
+let myVariableO:any = 'abc'
+
+//--------------------------------------------------------------------- Enum:
+enum Colors { 
+    Red = 0,
+    Green = 1,
+    Blue = 2
+}
+
+let x = Colors.Red
 
 //--------------------------------------------------------------------- function return type
 class Greeting { 
@@ -70,7 +81,7 @@ console.log(x)
 console.log(y)
 
 //--------------------------------------------------------------------- tuples
-var mytuple = [10,"Hello"];
+var mytuple = [10, "Hello"];
 
 //--------------------------------------------------------------------- union
 let x1:number | string = "abc"
@@ -120,7 +131,7 @@ class AgriLoan implements ILoan {
    } 
 } 
 
-var obj = new AgriLoan(10,1) 
+var obj = new AgriLoan(10, 1) 
 console.log("Interest is : "+obj.interest+" Rebate is : "+obj.rebate )
 
 //--------------------------------------------------------------------- classes
@@ -232,7 +243,6 @@ var gen = bar();
 gen.next(); // {value: undefined, done: false}
 gen.next('Brian'); // Hello Brian  // {value: "DONE!", done: true}
 
-//---------------------------------------------------------------------
 //---------------------------------------------------------------------
 
 
