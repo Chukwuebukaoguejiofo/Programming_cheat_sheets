@@ -23,6 +23,14 @@ let myVariableM:{x:number, y:number}  = {x:1, y:2}
 let myVariableN:any = 123
 let myVariableO:any = 'abc'
 
+//--------------------------------------------------------------------- Constants:
+class Person { 
+    static readonly POPULATION = 7000000;
+}
+
+alert(Person.POPULATION) // 7000000
+alert(Person.POPULATION += 1) // ERROR
+
 //--------------------------------------------------------------------- Casting:
 let x = '123'
 let y = Number(x)
