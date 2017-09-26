@@ -36,6 +36,7 @@ src/app/guards
 ###### Generators
 
 ```bash
+# $ ng g c foo-bar-baz
 $ ng g c components/home
 $ ng g c components/groups
 $ ng g c components/users
