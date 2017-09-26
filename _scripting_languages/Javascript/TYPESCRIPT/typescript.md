@@ -119,6 +119,23 @@ let x1:number | string = "abc"
 let x2:number | string = 123
 
 //--------------------------------------------------------------------- interfaces
+interface IBar { 
+    name: string
+    myfn: (x: number, y: number) => number
+    readonly address:string
+}
+
+
+class Foo implements IBar { 
+    name: string = 'brian'
+    address: string = '123 foobar st'
+
+    myfn(x: number, y: number) : number{ 
+        return x + y
+    }
+}
+
+//---------------------------------------
 interface IPerson { 
    firstName:string, 
    lastName:string, 
