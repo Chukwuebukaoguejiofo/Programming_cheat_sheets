@@ -119,19 +119,23 @@ let x1:number | string = "abc"
 let x2:number | string = 123
 
 //--------------------------------------------------------------------- interfaces
-interface IBar { 
+interface ICitizen { 
     name: string
-    myfn: (x: number, y: number) => number
-    readonly address:string
+    readonly address: string
+    drive: (x: string, y: string) => string
+    vote(x: string): string
 }
 
-
-class Foo implements IBar { 
+class Person implements ICitizen { 
     name: string = 'brian'
     address: string = '123 foobar st'
 
-    myfn(x: number, y: number) : number{ 
+    drive(x: string, y: string) : string{ 
         return x + y
+    }
+
+    vote(x: string): string {
+        return 'abc'
     }
 }
 
