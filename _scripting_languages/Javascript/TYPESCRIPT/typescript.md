@@ -24,6 +24,19 @@ let myVariableN:any = 123
 let myVariableO:any = 'abc'
 
 //--------------------------------------------------------------------- Constants:
+class Foo {
+    readonly MY_CONSTANT:number = 123;
+
+    bar() {
+        console.log(this.MY_CONSTANT);
+    }
+}
+
+let f = new Foo()
+f.bar() // 123
+
+//-------
+
 class Person { 
     static readonly POPULATION = 7000000;
 }
