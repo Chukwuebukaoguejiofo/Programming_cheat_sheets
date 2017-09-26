@@ -21,6 +21,13 @@ $ mkdir \
 src/app/components \
 src/app/services \
 src/app/pages \
+src/app/constants \
+src/app/models \ # should it be just services???
+src/app/redux \
+src/app/routes \
+src/app/pipes \
+src/app/custom_validators \
+src/app/custom_directives \
 src/app/guards
 ```
 
