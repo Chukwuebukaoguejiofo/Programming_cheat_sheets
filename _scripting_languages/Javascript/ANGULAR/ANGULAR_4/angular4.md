@@ -9,6 +9,8 @@ https://jsonplaceholder.typicode.com/
 
 https://www.youtube.com/playlist?list=PL7hgvWUGJtUshDRlZR14Ycpj_wc-h4IX1
 
+https://jsonplaceholder.typicode.com/
+
 
 ```bash
 $ nvm use 8.0.0
