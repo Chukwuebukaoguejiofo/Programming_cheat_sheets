@@ -295,7 +295,28 @@ var gen = bar();
 gen.next(); // {value: undefined, done: false}
 gen.next('Brian'); // Hello Brian  // {value: "DONE!", done: true}
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------- Promises
+let promise = new Promise((resolve, reject) => {
+    let x = true 
 
+    setTimeout(() => { 
+        if (x) {
+            resolve('WORKED!')
+        } else { 
+            reject('ERROR')
+        }
+    }, 2000)
+})
+
+
+promise
+.then((data) => {
+    alert(data)
+})
+.catch((error) => {
+    alert(error)
+})
+
+//---------------------------------------------------------------------
 
 ```
