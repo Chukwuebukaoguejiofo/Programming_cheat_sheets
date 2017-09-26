@@ -2,8 +2,11 @@
 
 ###### Links
 https://github.com/angular/angular-cli
+
 https://www.typescriptlang.org/docs/handbook/basic-types.html
+
 https://jsonplaceholder.typicode.com/
+
 https://www.youtube.com/playlist?list=PL7hgvWUGJtUshDRlZR14Ycpj_wc-h4IX1
 
 
