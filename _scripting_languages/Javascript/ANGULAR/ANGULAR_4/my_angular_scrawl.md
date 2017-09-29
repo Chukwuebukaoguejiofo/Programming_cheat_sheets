@@ -204,6 +204,8 @@ this.http.post('/api/auth', JSON.stringify(credentials))
 $ npm i angular2-jwt
 import {JwtHelper} from 'angular2-jwt'
 
+$ npm install jsonwebtoken # for express
+
 
 - for role based views, you can check if the current user has that role
 ```
