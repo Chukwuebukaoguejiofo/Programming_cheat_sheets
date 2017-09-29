@@ -20,6 +20,8 @@ https://jsonplaceholder.typicode.com/
 ```html
 <a routerLink="/posts" routerLinkActive="my-active-css-class">Posts</a>
 
+<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+
 <a [routerLink]="['/posts', post.id]">Posts</a>
 
 <a [routerLink]="['/posts', post.id]"  [queryParams]="{page: 123}">Posts</a>
