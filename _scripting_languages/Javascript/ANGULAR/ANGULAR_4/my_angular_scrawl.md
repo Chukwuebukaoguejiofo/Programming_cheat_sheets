@@ -1,18 +1,20 @@
 # My Angular Scrawl
 
 
+
+###### Links
+
 ```
-simple angular implementation!
+#simple angular implementation!
 https://github.com/mgechev/light-angularjs
-```
-```
+
 github: seeschweiler/angular-redux
-```
 
-```
 https://jsonplaceholder.typicode.com/
-
 ```
+
+###### HTML
+
 
 ```html
 <a routerLink="/posts" routerLinkActive="my-active-css-class">Posts</a>
@@ -26,6 +28,98 @@ https://jsonplaceholder.typicode.com/
 ```
 - custom form validators
 ```
+
+
+```html
+<form #f="ngForm" (ngSubmit)="foo(f.value)">
+    <input type="text" name="email" ngModel>
+    <input type="password" name="password" ngModel>
+</form>
+```
+
+
+
+```html
+<input type="text" [(ngModel)]="myControllerVar">
+
+<input type="text" ngModel name="myControllerVar">
+
+<input type="text" ngModel name="firstName" #firstName="ngModel" >
+```
+
+
+
+```html
+<div ngModelGroup="contact" #contact="ngModelGroup">
+<div *ngIf="!contact.valid">...</div>
+    ...
+</div>
+
+
+ngModel creates a FormControl object under the hood!
+ngForm -> creates a FormGroup under the hood, and uses (ngSubmit)
+```
+
+```html
+<p>{{ foobar | json }}</p>
+```
+
+```html
+//ngValue if you need to use complex objects
+// but we will not use it in this situation
+<option *ngFor="let x os xs" [ngValue]="x.id">{{x.name}}</option>
+
+// so use this:
+<option *ngFor="let x os xs" [value]="x.id">{{x.name}}</option>
+```
+
+
+```html
+<p *ngIf="foo.bar | async as x">{{x}}</p>
+```
+
+
+
+```html
+<form [formGroup]="myForm">
+```
+
+
+
+```html
+{{ foo | mySummary:10 }}
+```
+
+```html
+<div *ngIf="username.pending">Loading...</div> // for async validator stuff
+```
+
+
+
+
+
+###### Bash
+
+```bash
+# custom angular directive
+
+$ ng g d foo-bar
+
+```
+
+
+
+```bash
+$ ng g p pipes/my-summary/my-summary 
+```
+
+```bash
+npm i stripe # payments
+```
+
+
+###### Typescript
+
 
 ```typescript
 this.activatedRoute.paramMap // ActivatedRoute
@@ -133,12 +227,7 @@ let myString:string = "aaa"
 myString.endsWith(" world")
 ```
 
-```html
-<form #f="ngForm" (ngSubmit)="foo(f.value)">
-    <input type="text" name="email" ngModel>
-    <input type="password" name="password" ngModel>
-</form>
-```
+
 
 ```typescript
 import {Http, RequestOptions, Headers } from '@angular/http'
@@ -151,13 +240,6 @@ let options = RequestOptions({headers: headers})
 this.http.get('/api/foo', options)
 ```
 
-```bash
-# custom angular directive
-
-$ ng g d foo-bar
-
-```
-
 
 
 
@@ -166,48 +248,8 @@ type Role = 'guest' | 'basic' | 'admin'  // union
 let role:Role = 'guest'
 ```
 
-```html
-<p *ngIf="foo.bar | async as x">{{x}}</p>
-```
-
-```bash
-npm i stripe # payments
-```
 
 
-```html
-<input type="text" [(ngModel)]="myControllerVar">
-
-<input type="text" ngModel name="myControllerVar">
-
-<input type="text" ngModel name="firstName" #firstName="ngModel" >
-```
-
-
-
-```html
-<div ngModelGroup="contact" #contact="ngModelGroup">
-<div *ngIf="!contact.valid">...</div>
-    ...
-</div>
-
-
-ngModel creates a FormControl object under the hood!
-ngForm -> creates a FormGroup under the hood, and uses (ngSubmit)
-```
-
-```html
-<p>{{ foobar | json }}</p>
-```
-
-```html
-//ngValue if you need to use complex objects
-// but we will not use it in this situation
-<option *ngFor="let x os xs" [ngValue]="x.id">{{x.name}}</option>
-
-// so use this:
-<option *ngFor="let x os xs" [value]="x.id">{{x.name}}</option>
-```
 
 ```
 sublime snippets:  tools > Developer > new snippet
@@ -222,9 +264,7 @@ to find the files:  sublime text > preferences > browse packages... > User
 
 ```
 
-```html
-<form [formGroup]="myForm">
-```
+
 
 ```typescript
 import { Component, Pipe, PipeTransform} from '@angular/core'
@@ -249,15 +289,7 @@ set name(n){
 ```
 
 
-```bash
-$ ng g p pipes/my-summary/my-summary 
-```
 
-
-
-```html
-{{ foo | mySummary:10 }}
-```
 
 
 ```typescript
@@ -269,6 +301,3 @@ if(!value)
 return value.substr(0, actalLimit) + '...'
 ```
 
-```html
-<div *ngIf="username.pending">Loading...</div> // for async validator stuff
-```
