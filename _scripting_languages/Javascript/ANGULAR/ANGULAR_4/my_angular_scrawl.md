@@ -14,6 +14,13 @@ https://github.com/seeschweiler/angular-redux
 https://jsonplaceholder.typicode.com/
 
 
+###### Notes
+
+- Github pages: good for front-end only apps, but you can still call your API, (so no server-side code on Github Pages)
+- Angular-cli uses Jasmine for testing // describe(...), it(...)
+
+
+
 ###### HTML
 
 
@@ -74,6 +81,15 @@ ngForm -> creates a FormGroup under the hood, and uses (ngSubmit)
 
 ```html
 <p *ngIf="foo.bar | async as x">{{x}}</p>
+
+
+<!-- users$ is an observable! -->
+{{ users$ | async as user }}
+
+<!--
+- Why/How does the `async` pipe prevent memory leaks?
+    - because we dont use `.subscribe()` ???
+-->
 ```
 
 ```html
@@ -103,6 +119,20 @@ $ ng g p pipes/my-summary/my-summary
 
 ```bash
 npm i stripe # payments
+```
+
+
+```bash
+$ ng lint # lints the syntax of your code
+$ ng lint --fix # it will fix easy syntax errors!
+```
+
+```bash
+# you can add an environment like 'test', or 'myOwnEnvironment' (just like: 'development', 'production') 
+```
+
+```bash
+$ npm install ng-bootstrap # for twitter-bootstrap's javascript code
 ```
 
 ###### Typescript
@@ -160,6 +190,15 @@ let obs = Observable.combineLatest([
     this.activatedRoute.queryParamMap
 ])
 
+//
+// `.switchMap` lets you switch to another observable (so you can daisy-chain)
+// ATTENTION: If you use .switchMap with the `async` pipe, you will create an infinite loop...
+//
+// `.map` modifies the content of the observable (so it does not return an observable?)
+//
+// this is how to return a null observer: `return Observable.of(null)`
+//
+//
 obs.switchMap((combined) => { // not .map, because it does not return what we need
     let paramMap = combined[0]
     let queryParamMap = combined[1]
@@ -272,4 +311,8 @@ if(!value)
     return null
 
 return value.substr(0, actalLimit) + '...'
+```
+
+```typescript
+@select(state => state.foo.bar) bar; // reach nested objects in the state
 ```
