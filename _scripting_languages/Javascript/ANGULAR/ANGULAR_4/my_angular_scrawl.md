@@ -24,6 +24,8 @@ http://lorempixel.com/400/200
 - When using `.subscribe()`, always use `.unsubscribe()`, to prevent memory leaks? 
 - On Heroku, make Heroku compile the `src` folder when deploying, so we dont need to save the `dist` folder on github
 - Where should we change routes? Not in the component?
+- difference between `pipe` and `directive`: 
+    - a pipe only manipulates data, a directive can manipulate the DOM (like adding an image, or making text bold)
 
 
 
@@ -170,7 +172,22 @@ Using your component:
 
 
 
+```html
+<div [ngClass]="{'foo-bar': baz, 'x-y-z': qux}"></div>
 
+<div [ngStyle]="{'backgroundColor': foo, 'color': bar}"></div>
+
+<div [class.active]="isActive">Hello</div>
+<div [attr.active]="isActive">Hello</div>
+<div [style.active]="isActive">Hello</div>
+```
+
+```html
+<!-- optional operator -->
+
+<!-- You dont need to use *ngIf just for waiting for a variable to be available -->
+<div>{{ foo.bar?.baz }}</div>
+```
 
 ###### Bash
 
