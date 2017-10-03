@@ -13,11 +13,17 @@ https://github.com/seeschweiler/angular-redux
 
 https://jsonplaceholder.typicode.com/
 
+http://lorempixel.com/400/200
+
 
 ###### Notes
 
 - Github pages: good for front-end only apps, but you can still call your API, (so no server-side code on Github Pages)
 - Angular-cli uses Jasmine for testing // describe(...), it(...)
+- `ngModel` comes from the `FormsModule`
+- When using `.subscribe()`, always use `.unsubscribe()`, to prevent memory leaks? 
+- On Heroku, make Heroku compile the `src` folder when deploying, so we dont need to save the `dist` folder on github
+- Where should we change routes? Not in the component?
 
 
 
@@ -41,9 +47,10 @@ https://jsonplaceholder.typicode.com/
 
 
 ```html
+<!-- a template form -->
 <form #f="ngForm" (ngSubmit)="foo(f.value)">
-    <input type="text" name="email" ngModel>
-    <input type="password" name="password" ngModel>
+    <input ngModel name="email" type="text">
+    <input ngModel name="password" type="password">
 </form>
 ```
 
@@ -103,6 +110,67 @@ ngForm -> creates a FormGroup under the hood, and uses (ngSubmit)
 ```html
 <div *ngIf="username.pending">Loading...</div> // for async validator stuff
 ```
+
+```html
+<!-- 
+ng-template 
+
+for *ngIf results:
+
+
+<div *ngIf="num > 0; then foo else bar"></div>
+<ng-template #foo>FOO</ng-template>
+<ng-template #bar>BAR</ng-template>
+
+-->
+```
+
+
+```html
+<!-- 
+ng-container 
+
+whatever is between these tags will appear in the DOM, 
+but the `ng-container` tags will never appear in the DOM, e.g.:
+
+<ng-container>
+    <p>Hello, this is some content</p>
+</ng-container>
+
+
+will display:
+
+<p>Hello, this is some content</p>
+
+-->
+```
+
+```html
+<!-- 
+ng-content 
+
+it is to be used inside you component's html nas a placeholder for 
+the content that will be between your component's HTML tags, 
+you can have multiple place holders, e.g.:
+
+Inside your component's html:
+
+<h1>This is the Foo component</h1>
+<ng-content select=".bar"></ng-content>
+<ng-content select=".baz"></ng-content>
+
+Using your component:
+<foo>
+    <ng-container class=".bar">Hello, this is some content</ng-container>
+    <ng-container class=".baz">More content here</ng-container>
+</foo>
+
+-->
+```
+
+
+
+
 
 ###### Bash
 
@@ -315,4 +383,14 @@ return value.substr(0, actalLimit) + '...'
 
 ```typescript
 @select(state => state.foo.bar) bar; // reach nested objects in the state
+```
+
+```typescript
+let myObj = {baz: 3}
+myObj.set({foo:1, bar:2})
+```
+
+```typescript
+(<string>foo).endsWith('a')
+(foo as string).endsWith('a')
 ```
