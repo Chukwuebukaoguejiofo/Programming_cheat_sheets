@@ -1,8 +1,8 @@
 # Closures are functions with data attached to them
 
-## Closures remember the variables on the parent scope, when they were called
+- Closures remember the variables on the parent scope, when they were called
 
-# first, this is a function that is called right away
+###### First, this is a function that is called right away
 ```js
 var name = (
 	function(){
@@ -12,7 +12,7 @@ var name = (
 
 ```
 
-# Now, Clojures!
+###### Now, Clojures!
 ```js
 // closures 
 // 1. use a variable
@@ -37,7 +37,7 @@ x();
 ```
 
 
-# example 2 (not using a function that triggers right away)
+###### example 2 (not using a function that triggers right away)
 ```js
 var foo = function(){ 
   var id = 0; 
@@ -55,7 +55,7 @@ bar(); //=> 4
 ```
 
 
-# example 3, with parameters
+###### example 3, with parameters
 ```js
 var foo = function(x){ 
   var id = x; 
