@@ -1,7 +1,8 @@
-// clojures  are for private variables!!!
+# Clojures  are for private variables!!!
 
 
-//------------------------------------ clojure returning a function
+###### clojure returning a function
+```javascript
 var user = (function(){
     var password = '123456'; // private variable!
     return function(){
@@ -9,8 +10,10 @@ var user = (function(){
     }
 })();
 user();
+```
 
-//------------------------------------ clojure returning an object
+###### clojure returning an object
+```javascript
 var user = (function () {
     // private fields and methods
     var password = "123456";
@@ -31,3 +34,4 @@ var user = (function () {
 user.publicfunction();
 user.name;
 // user.print_password();  // ERROR!
+```
