@@ -28,3 +28,57 @@ s = Subject.create(name: "math")
 u.subjects = [s]
 s.users
 ```
+
+
+# Models and Queries
+
+```ruby
+
+
+#=========
+
+
+class User < ApplicationRecord
+  # sql = "select * from cars where user_id = #{id}"
+  has_many :cars
+end
+
+class Car < ApplicationRecord
+  # sql = "select * from users where id = #{user_id}"
+  belongs_to :user
+end
+
+
+#=========
+
+
+class Physician < ApplicationRecord
+
+  # sql = "select * from appointments where physician_id = #{id}"
+  has_many :appointments
+  
+  # sql = "SELECT patients.* FROM patients 
+  #        INNER JOIN appointments ON patients.id = appointments.patient_id 
+  #        WHERE appointments.physician_id = #{id}"
+  has_many :patients, through: :appointments
+  
+end
+ 
+class Appointment < ApplicationRecord
+  # sql = "select * from physicians where id = #{physician_id}"
+  belongs_to :physician 
+
+  # sql = "select * from patients where id = #{patient_id}"
+  belongs_to :patient 
+end
+ 
+class Patient < ApplicationRecord
+  # sql = "select * from appointments where patient_id = #{id}"
+  has_many :appointments
+
+  # sql = "SELECT physicians.* FROM physicians 
+  #        INNER JOIN appointments ON physicians.id = appointments.physician_id 
+  #        WHERE appointments.patient_id = #{id}"
+  has_many :physicians, through: :appointments
+end
+```
