@@ -1,18 +1,15 @@
 # Erlang
 
 - tutorial: http://learnyousomeerlang.com/introduction#about-this-tutorial
+- online compiler: https://www.tutorialspoint.com/compile_erlang_online.php
 
+###### Compiling Erlang
 
-```erlang
-% helloworld.erl
-
-
-
-% compiling:
-% $ erlc foo.erl
+```bash
+$ erlc foo.erl
 ```
 
-###### basic program
+###### Basic program
 
 ```erlang
 -module(helloworld).
@@ -22,7 +19,7 @@ start() ->
     io:fwrite("Hello, world!~n"). % `~n` is a new line 
 ```
 
-###### variables
+###### Variables
 
 ```erlang
 -module(helloworld).
@@ -52,7 +49,7 @@ start() ->
 ```
 
 
-###### functions
+###### Functions
 
 ```erlang
 % moduleName:functionname(arguments).
