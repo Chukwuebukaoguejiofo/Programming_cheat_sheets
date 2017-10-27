@@ -1,23 +1,30 @@
 # Erlang
 
+- tutorial: http://learnyousomeerlang.com/introduction#about-this-tutorial
+
 
 ```erlang
 % helloworld.erl
 
-% http://learnyousomeerlang.com/introduction#about-this-tutorial
 
 
 % compiling:
 % $ erlc foo.erl
+```
 
-%------------------------------------------------------------ basic program
+###### basic program
+
+```erlang
 -module(helloworld).
 -export([start/0]).
 
 start() ->
     io:fwrite("Hello, world!~n"). % `~n` is a new line 
-    
-%------------------------------------------------------------ variables
+```
+
+###### variables
+
+```erlang
 -module(helloworld).
 -export([start/0]).
 
@@ -31,16 +38,23 @@ start() ->
     io:fwrite("MyFirstName: ~s~n", [?MyFirstName]), % use a comma
     io:fwrite("MyLastName: ~s~n", [?MyLastName]), % use a comma
     io:fwrite("MyAge: ~p~n", [?MyAge]). % use a dot        `~p`  is to print numbers also
+```
 
-%------------------------------------------------------------
+
+
+```erlang
 -module(helloworld).
 -export([start/0]).
 
 start() ->
     MyMessage = "hello",
     io:fwrite("~p~n", [MyMessage]).
+```
 
-%------------------------------------------------------------ functions
+
+###### functions
+
+```erlang
 % moduleName:functionname(arguments).
 % functionName(arguments).
 
@@ -57,6 +71,5 @@ sayNumber(Num) ->
 start() ->
     io:fwrite(sayHello("brian")),
     io:fwrite(sayNumber(123)).
-
-%------------------------------------------------------------
 ```
+
