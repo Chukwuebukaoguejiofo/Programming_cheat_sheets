@@ -67,6 +67,10 @@ rails g model ChatRoom title:string user:references
 rails g migration AddUserNameToUsers user_name:string:index
 
 rails g migration RemoveUserNameFromUsers user_name:string  # string, decimal, references, text
+
+rails g migration CreateJoinTableStudentTeacher Student Teacher # for habtm association
+
+rails g model students_teachers student:references teacher:references# in alphabetical order
 ```
 
 ###### Controllers
