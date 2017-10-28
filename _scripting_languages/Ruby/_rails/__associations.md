@@ -33,11 +33,6 @@ s.users
 # Models and Queries
 
 ```ruby
-
-
-#=========
-
-
 class User < ApplicationRecord
   # sql = "select * from cars where user_id = #{id}"
   has_many :cars
