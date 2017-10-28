@@ -33,6 +33,10 @@ s.users
 # Models and Queries
 
 ```ruby
+
+#========= Has many
+
+
 class User < ApplicationRecord
   # sql = "select * from cars where user_id = #{id}"
   has_many :cars
@@ -44,7 +48,7 @@ class Car < ApplicationRecord
 end
 
 
-#=========
+#========= Has many through
 
 
 class Physician < ApplicationRecord
