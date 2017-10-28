@@ -21,7 +21,7 @@ class Subject < ApplicationRecord
   has_many :users, through: :subject_user
 end
 
-u.create(name: "brian")
+User.create(name: "brian")
 u = User.first
 u.subjects
 s = Subject.create(name: "math")
