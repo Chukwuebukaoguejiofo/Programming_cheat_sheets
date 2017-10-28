@@ -42,7 +42,7 @@ class Example {
         
         string[] colors = { "red", "green", "orange", "black", "white", "yellow", "yellow", "yellow" }; 
         
-        var uniqueColors = colors.Select(q => q.ToUpper() ).Distinct().ToList();
+        var uniqueColors = colors.Select(q => q.ToUpper()).Distinct().ToList();
          
         foreach(var c in uniqueColors){ 
             Console.WriteLine("{0}", c);
