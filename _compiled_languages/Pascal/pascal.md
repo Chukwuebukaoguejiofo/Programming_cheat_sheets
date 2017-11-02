@@ -6,156 +6,186 @@
 
 
 ```pascal
+// filename: example.pas
+
+// one line comment
+
+(* one line comment *)
+
 {*
-    example.pas
-    Multiple line comment
-    
+    Multiple 
+    line 
+    comment
 *}
+
+
 program Brian; 
 
-(* =============================== Program global variables *)
+//=============================== Program global variables
 var a, b: integer;
 var c: integer;
 
 
-var
-age, weekdays : integer;
-taxrate, net_income: real;
-choice, isready: boolean;
-initials, grade: char;
-name, surname : string;
+var age, weekdays : integer;
+    tax_rate, net_income : real;
+    choice, is_ready : boolean;
+    initials, grade : char;
+    name, surname : string;
 
 
-const Foo = 123;
+////=============================== Constants
+const Foo = 'THIS_IS_FOO_CONSTANT';
 
-(* =============================== pointers *)
-var
-   number: integer;
-   iptr: ^integer;
-   y: ^word;
+//=============================== Pointers
+var number: integer;
+    number_p: ^integer;
+    number_p_address: ^word;
 
 
-(* =============================== records *)
-type
-Books = record
-   title: packed array [1..50] of char;
-   author: packed array [1..50] of char;
-   subject: packed array [1..100] of char;
-   book_id: longint;
+//=============================== Records
+type Book = record
+    book_id: longint;
+    title: packed array [1..50] of char;
+    author: packed array [1..50] of char;
+    subject: packed array [1..100] of char;
 end;
 
-var
-   Book1, Book2: Books; (* Declare Book1 and Book2 of type Books *)
-   
-   
-   
+var book1, book2: Book; (* Declare book1 and book2 of type Book *)
 
-type SUMMER = (April, May, June, July, September); (* enum *)
 
-(* =============================== A procedure example *)
-(* a procedure has no return *)
-procedure myFunction;
+//=============================== Enums
+type SUMMER = (April, May, June, July, September);
+
+
+//=============================== A procedure example
+// a procedure has no return *)
+procedure myProcedure;
 var x: integer;
 begin
-   (* local variables *)
-   x := 10;
-   writeln('function: x is ', x);
+    // local variables
+    x := 10;
+    writeln('myProcedure: x is ', x);
 end;
 
 
-
-
-
-
-(* =============================== function returning the max between two numbers *)
+//=============================== function returning the max between two numbers
 function max(num1, num2: integer): integer;
 
-var
-   (* local variable declaration *)
-   result: integer;
+// local variable declaration
+var result: integer;
 
 begin
-   if (num1 > num2) then
-      result := num1
+    if (num1 > num2) then
+        result := num1
    
-   else
-      result := num2;
-   max := result;
+    else
+        result := num2;
+    max := result;
 end;
 
 
 
 
-(* =============================== execution of a program *)
+//=============================== Execution of a program
 begin
-   (* actual initialization *)
-   a := 10;
-   b := 20;
-   c := a + b;
-   
-   writeln('value of a = ', a , ' b =  ',  b, ' and c = ', c, ' hello'); (* concatenation *)
-   writeln('Foo is ', Foo);
-   
-   writeln('max: ', max(20, 40));
-   
-   myFunction();
-   
-   
-   
-   
-   
-   (* ========== pointers START *)
-   number := 100;
-   writeln('Number is: ', number);
-   
-   iptr := @number;
-   writeln('iptr points to a value: ', iptr^);
-   
-   iptr^ := 200;
-   writeln('Number is: ', number);
-   writeln('iptr points to a value: ', iptr^);
-   
-   
-   
-   y := addr(iptr);
-   writeln('address of pointer: ', y^); 
-   
-   
-   (* ========== pointers END *)
-   
-   
-   writeln('-----------------------------------------');
-   
-   
-   
-   (* ========== RECORDS START *)
-   (* book 1 specification *)
-   Book1.title  := 'C Programming';
-   Book1.author := 'Nuha Ali '; 
-   Book1.subject := 'C Programming Tutorial';
-   Book1.book_id := 6495407;
+    // actual initialization
+    a := 10;
+    b := 20;
+    c := a + b;
 
-   (* book 2 specification *)
-   Book2.title := 'Telecom Billing';
-   Book2.author := 'Zara Ali';
-   Book2.subject := 'Telecom Billing Tutorial';
-   Book2.book_id := 6495700;
+
+    // Concatenation
+    writeln('Value of', ' a = ', a , ', b = ', b, ' and c = ', c);
+    writeln('Foo: ', Foo);
+   
+
+    writeln('max: ', max(20, 40));
+   
+
+    //========== Calling a procedure
+    myProcedure();
+   
+   
+    //========== Pointers START
+    number := 100;
+    writeln('Number is: ', number); // 100
+    
+    number_p := @number;
+    writeln('number_p points to a value: ', number_p^); // 100
+    
+    number_p^ := 200;
+    writeln('Number is: ', number); // 200
+    writeln('number_p points to a value: ', number_p^); // 200
+    
+    
+    number_p_address := addr(number_p);
+    writeln('Address of number_p: ', number_p_address^); // 49072 (a random address)
+   
+   
+    //========== Pointers END
+   
+   
+    writeln('-----------------------------------------');
+   
+
+    //========== RECORDS START
+
+    // book 1 specification
+    book1.title := 'Some Book A';
+    book1.author := 'Brian Smith'; 
+    book1.subject := 'This is a book about something A';
+    book1.book_id := 1000001;
+
+    // book 2 specification
+    book2.title := 'Some Book B';
+    book2.author := 'Erich Bell';
+    book2.subject := 'This is a book about something B';
+    book2.book_id := 1000002;
  
-   (* print Book1 info *)
-   writeln ('Book 1 title : ', Book1.title);
-   writeln('Book 1 author : ', Book1.author);
-   writeln( 'Book 1 subject : ', Book1.subject);
-   writeln( 'Book 1 book_id : ', Book1.book_id);
-   writeln; 
+    // Print book1 info
+    writeln('Book 1 book_id : ', book1.book_id);
+    writeln('Book 1 title : ', book1.title);
+    writeln('Book 1 author : ', book1.author);
+    writeln('Book 1 subject : ', book1.subject);
+    writeln; 
 
-   (* print Book2 info *)
-   writeln ('Book 2 title : ', Book2.title);
-   writeln('Book 2 author : ', Book2.author);
-   writeln( 'Book 2 subject : ', Book2.subject);
-   writeln( 'Book 2 book_id : ', Book2.book_id);
-   (* ========== RECORDS END *)
-   
-   
+    // Print book2 info
+    writeln('Book 2 book_id : ', book2.book_id);
+    writeln('Book 2 title : ', book2.title);
+    writeln('Book 2 author : ', book2.author);
+    writeln('Book 2 subject : ', book2.subject);
+    writeln; 
+
+    // ========== RECORDS END
+
    
 end.
+
+
+
+{* OUTPUT:
+
+Value of a = 10, b = 20 and c = 30
+Foo: THIS_IS_FOO_CONSTANT
+max: 40
+myProcedure: x is 10
+Number is: 100
+number_p points to a value: 100
+Number is: 200
+number_p points to a value: 200
+Address of number_p: 49072
+-----------------------------------------
+Book 1 book_id : 1000001
+Book 1 title : Some Book A
+Book 1 author : Brian Smith
+Book 1 subject : This is a book about something A
+
+Book 2 book_id : 1000002
+Book 2 title : Some Book B
+Book 2 author : Erich Bell
+Book 2 subject : This is a book about something B
+
+*}
+
+
 ```
