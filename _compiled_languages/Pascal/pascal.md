@@ -1,8 +1,8 @@
 # Pascal
 
-- online compiler: http://rextester.com/l/pascal_online_compiler
+- Online compiler: http://rextester.com/l/pascal_online_compiler
 
-- tutorial: https://www.tutorialspoint.com/pascal/index.htm
+- Tutorial: https://www.tutorialspoint.com/pascal/index.htm
 
 
 ```pascal
