@@ -6,7 +6,7 @@
 
 
 ```pascal
-// filename: example.pas
+// example.pas
 
 // one line comment
 
@@ -33,7 +33,7 @@ var age, weekdays : integer;
     name, surname : string;
 
 
-////=============================== Constants
+//=============================== Constants
 const Foo = 'THIS_IS_FOO_CONSTANT';
 
 //=============================== Pointers
@@ -68,7 +68,7 @@ begin
 end;
 
 
-//=============================== function returning the max between two numbers
+//=============================== A function returning the max between two numbers
 function max(num1, num2: integer): integer;
 
 // local variable declaration
@@ -82,8 +82,6 @@ begin
         result := num2;
     max := result;
 end;
-
-
 
 
 //=============================== Execution of a program
@@ -160,7 +158,6 @@ begin
 
    
 end.
-
 
 
 {* OUTPUT:
