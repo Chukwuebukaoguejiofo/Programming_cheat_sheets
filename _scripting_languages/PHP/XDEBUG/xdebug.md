@@ -9,6 +9,16 @@
 - http://xdebug.org/download.php (for windows)
 
 
+###### contents of php.ini
+
+```php
+<?php
+    // http://localhost/foo.php
+    phpinfo();
+?>
+```
+
+
 ```
 A website to help with the steps to setup xdebug:
 https://xdebug.org/wizard.php
