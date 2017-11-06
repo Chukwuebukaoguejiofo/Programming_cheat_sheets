@@ -9,7 +9,7 @@
 - http://xdebug.org/download.php (for windows)
 
 
-###### contents of php.ini
+###### Contents of php.ini
 
 ```php
 <?php
