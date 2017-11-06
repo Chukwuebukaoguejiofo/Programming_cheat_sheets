@@ -13,7 +13,7 @@
 
     class User{
         function init($x){
-            echo "<p>Hello $x</p>";
+            echo "<p>Hello B: $x</p>";
         }
     }
 
@@ -38,7 +38,7 @@
 
     class User{
         function init($x){
-            echo "<p>Hello $x</p>";
+            echo "<p>Hello E: $x</p>";
         }
     }
 
@@ -47,4 +47,13 @@
     // $u->init(0);
 
 ?>
+```
+
+
+###### Output
+
+```
+Hello B: 1
+
+Hello E: 2
 ```
