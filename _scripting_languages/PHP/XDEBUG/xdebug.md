@@ -24,6 +24,8 @@ php.ini in windows:  /c/php/php.ini
 $ brew install php56-xdebug # php version 5.6 ?
 $ php -v
 $ php --init
+
+# you need to restart apache (httpd)
 ```
 
 
@@ -35,4 +37,8 @@ $ php --init
 # Not sure about this
 # use it as a query string or cookie
 # XDEBUG_SESSION=PHPSTORM 
+
+# an alias to restart apache
+# you should restart apache (httpd) after making changes
+alias restart_apache="/c/Apache24/bin/httpd.exe -k restart"
 ```
