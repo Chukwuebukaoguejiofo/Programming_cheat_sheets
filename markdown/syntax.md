@@ -26,18 +26,23 @@ https://www.webpagefx.com/tools/emoji-cheat-sheet/
 
 
 
-# This is an <h1> tag
-## This is an <h2> tag
-###### This is an <h6> tag
+# This is an `<h1>` tag
+## This is an `<h2>` tag
+###### This is an `<h6>` tag
+
+
 
 *This text will be italic*
 _This will also be italic_
 
+
 **This text will be bold**
 __This will also be bold__
 
+
 _You **can** combine them_
 
+###### Lists
 
 * Item 1
 * Item 2
@@ -52,7 +57,7 @@ _You **can** combine them_
    1. Item 3b
 
 
-![GitHub Logo](/images/logo.png)
+![An Image from this repo](/images/logo.png)
 Format: ![Alt Text](url)
 
 
@@ -60,18 +65,18 @@ http://github.com - automatic!
 [GitHub](http://github.com)
 
 
-I think you should use an
-`<addr>` element here instead.
 
 
 
+###### Checklists
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] @mentions, #refs, [links](google.com), **formatting**, and <del>del tags</del> supported
 - [x] list syntax required (any unordered or ordered list supported)
 - [x] this is a complete item
 - [ ] this is an incomplete item
 
 
+###### Tables
 
 First Header | Second Header
 ------------ | -------------
@@ -81,16 +86,6 @@ Content in the first column | Content in the second column
 
 
 
-16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
-
-
-
-#1
-mojombo#1
-mojombo/github-flavored-markdown#1
-
 
 Any URL (like http://www.github.com/) will be automatically converted into a clickable link.
 
@@ -98,18 +93,18 @@ Any word wrapped with two tildes (like ~~this~~) will appear crossed out.
 
 
 
-Sometimes you want numbered lists:
+###### numbered lists:
 
 1. One
 2. Two
 3. Three
 
-Sometimes you want bullet points:
+###### bullet points:
 
 * Start a line with a star
 * Profit!
 
-Alternatively,
+###### dashes for lists
 
 - Dashes work just as well
 - And if you have sub points, put two spaces before the dash or star:
