@@ -1,5 +1,6 @@
 # Markdown syntax
 
+https://guides.github.com/features/mastering-markdown/
 
 **bold**
 
@@ -7,7 +8,7 @@
 
 Hello there `people`, how are you?
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of Angular](https://www.w3schools.com/angular/pic_angular.jpg)
 
 [link to Google!](http://google.com)
 
