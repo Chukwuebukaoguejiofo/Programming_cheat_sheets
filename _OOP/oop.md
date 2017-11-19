@@ -2,7 +2,7 @@
 
 
 ###### Encapsulation
-- Hide variables
+- Hide variables, use getters and setters
 - Hide unnecessary details in our classes and provide a clear and simple interface for working with them.
 
 ###### Inheritance
