@@ -2,7 +2,7 @@
 
 
 ###### Encapsulation
-- Hide variables, use getters and setters.
+- Hide variables, use getters and setters, for the purpose of protection.
 - Hide unnecessary details in our classes and provide a clear and simple interface for working with them.
 
 ###### Inheritance
@@ -10,7 +10,7 @@
 - Improves code readability and enable the reuse of functionality.
 
 ###### Abstraction
-- Hide implementation.
+- Hide implementation, for the purpose of simplification.
 - Deal with objects considering their important characteristics and ignore all other details.
 
 ###### Polymorphism
