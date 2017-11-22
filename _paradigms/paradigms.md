@@ -17,5 +17,5 @@ Examples: C
 ###### Functional
 ```
 Programs are treated as mathematical functions, with input and output
-Examples: Lisp, Haskell
+Examples: Lisp, Haskell, F#
 ```
