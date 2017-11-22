@@ -1,9 +1,10 @@
 # Paradigms
 
-* Many Languages offer many paradigms 
+* Many Languages supports more than one programming paradigm.
 
 ###### Object Oriented Programing
 ```
+Data and methods to manipulate the data are kept as one unit called an object.
 Uses Classes and objects to model real world objects
 Example: Java, Ruby, PHP, Python, C#, C++, Swift, Objective-c
 ```
