@@ -1,4 +1,4 @@
-# Psql tutorial (postgres, postgresql)
+# Postgres
 
 http://www.tutorialspoint.com/postgresql/
 
