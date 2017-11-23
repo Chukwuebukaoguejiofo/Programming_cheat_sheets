@@ -12,6 +12,8 @@ $ ALTER TABLE <table-name> DROP COLUMN <column_name>;
 # drop a table
 $ DROP TABLE <table-name>;
 
+# list databases
+$ \l
 
 # list, discribe tables
 $ \d
