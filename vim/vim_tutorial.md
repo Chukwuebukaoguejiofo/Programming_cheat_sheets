@@ -30,32 +30,32 @@ ESC :e /path/to/file # go to another file
 ###### Goto's
 
 ```bash
-  beginning of line: 0
-  beginning of line and append: I
-  end of line and append: A
-  beginning of file: gg
-  last line: G
-  beginning of word in a line: w
-  beginning of previous word: b
-  line 34:    34G
-  apend at end of file: GA
+  Beginning of line:            0
+  Beginning of line and append: I
+  End of line and append:       A
+  Beginning of file:            gg
+  Last line:                    G
+  Beginning of word in a line:  w
+  Beginning of previous word:   b
+  Line 34:                      34G
+  Append at end of file:        GA
 ```
 
 ###### Cursor
 
 ```bash
-  right:  l   3l
-  left:   h    4h
-  up:     k    10k
-  down:   j    23j
+  Right:  l   3l
+  Left:   h    4h
+  Up:     k    10k
+  Down:   j    23j
 ```
 
 ###### Edit
 ```bash
-  delete n character on left of cursor:  x   3x
-  delete whole line: dd
-  undo:     u   4u
-  redo: ctrl + r
+  Delete n character on left of cursor:  x   3x
+  Delete whole line: dd
+  Undo:     u   4u
+  Redo: ctrl + r
 ```
 
 ```bash
