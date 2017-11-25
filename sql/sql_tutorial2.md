@@ -1,27 +1,31 @@
-# SQL 2
+# SQL
 
 - INNER JOIN is the same as JOIN.
-- SQL injection? use sql parameters
-- be carefull not to return millions of records with your query... so use:
+- SQL injection? use SQL parameters
+- Be carefull not to return millions of records with your query... so use a limit:
+
 ```sql
 SELECT *
 FROM Persons
 LIMIT 5;
 ```
-- use semicolons at the end of sql commands
-- values are not case sensitive
-- you can use spaces with operators like
+
+- Use semicolons at the end of sql commands.
+- Values are not case sensitive.
+- You can use spaces with operators like:
+
 ```sql
 SELECT DISTINCT cIty FROM Customers WHERE city = 'Berlin';
 ```
-- numbers can have ''   or   ""  or nothing, but its better not to use quotes on numbers
+
+- Numbers can have '' or "" or nothing, but its better not to use quotes on numbers.
 ```sql
 SELECT DISTINCT cIty FROM Customers WHERE cityID = 1;
 SELECT DISTINCT cIty FROM Customers WHERE cityID = "1";
 SELECT DISTINCT cIty FROM Customers WHERE cityID = '1';
 ```
 
-## operators
+###### Operators
 ```
   =	Equal
   <>	Not equal. Note: In some versions of SQL this operator may be written as !=
@@ -68,16 +72,13 @@ WHERE Country='Germany'
 AND (City='Berlin' OR City='München');
 ```
 
-
 ```sql
 -- sorting
 SELECT * FROM Customers
 ORDER BY Country DESC;
 ```
 
-
-
-## Insert
+###### Insert
 
 ```sql
 -- other columns will receive `NULL` value
@@ -86,7 +87,7 @@ VALUES (value1,value2,value3,...);
 ```
 
 
-## Update
+###### Update
 
 ```sql
 UPDATE table_name
@@ -95,26 +96,20 @@ WHERE some_column=some_value;
 ```
 
 
-## DELETE
+###### Delete
 
 ```sql
 DELETE FROM Customers
 WHERE CustomerName='Alfreds Futterkiste' AND ContactName='Maria Anders';
 ```
 
-
-
-
-# TABLES
+###### Tables
 
 ```sql
 DROP TABLE Suppliers
 ```
 
-
-
-
-## WHERE x LIKE y
+###### WHERE x LIKE y
 
 ```sql
 -- the '%' is a wildcard
@@ -127,17 +122,14 @@ WHERE Country NOT LIKE '%land%';
 
 ```
 
-# WHERE x IN ('y', 'z')
+###### WHERE x IN ('y', 'z')
 
 ```sql
 SELECT * FROM Customers
 WHERE City IN ('Paris','London');
 ```
 
-
-
-
-## BETWEEN
+###### BETWEEN
 
 ```sql
 -- use numbers, text and dates
@@ -153,9 +145,7 @@ SELECT * FROM Orders
 WHERE OrderDate BETWEEN #07/04/1996# AND #07/09/1996#;
 ```
 
-
-
-## MIX of -> BETWEEN AND NOT x IN
+###### Mix of `BETWEEN`, `AND NOT`, `IN`
 
 ```sql
 SELECT * FROM Products
@@ -166,7 +156,7 @@ AND NOT CategoryID IN (1,2,3);
 
 
 
-# Alias
+###### Alias
 ```sql
 -- SQL aliases are used to temporarily rename a table or a column
 
