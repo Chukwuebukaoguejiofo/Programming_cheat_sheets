@@ -59,10 +59,10 @@ ESC :e /path/to/file # go to another file
 ```
 
 ```bash
-<ESC> :q	# Quit vim
-<ESC> :q!	# Quit without saving changes i.e. discard changes
-<ESC> :r # fileName	Read data from file called fileName
-<ESC> :wq	# Write and quit (save and exit)
-<ESC> :w # fileName	Write to file called fileName (save as)
+<ESC> :q  # Quit vim
+<ESC> :q! # Quit without saving changes i.e. discard changes
+<ESC> :r  # fileName	Read data from file called fileName
+<ESC> :wq # Write and quit (save and exit)
+<ESC> :w  # fileName	Write to file called fileName (save as)
 <ESC> :w! # fileName	Overwrite to file called fileName (save as forcefully)
 ```
