@@ -102,9 +102,9 @@ VALUES ("master room");
 
 -- ------------------------------------------------------ queries:
 
-select * from users where users.username = "brian";
-select email, password from users where users.username = "brian";
-select email, username from users where users.username <> "brian";  -- 'not equal' operator
+SELECT * FROM users WHERE users.username = "brian";
+SELECT email, password FROM users WHERE users.username = "brian";
+SELECT email, username FROM users WHERE users.username <> "brian";  -- 'not equal' operator
 SELECT * FROM users WHERE username LIKE '%br%';
 SELECT * FROM users WHERE id IN (1,3,6);
 SELECT * FROM users WHERE id BETWEEN 2 AND 10;
