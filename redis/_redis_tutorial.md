@@ -22,7 +22,6 @@ HSET myhash age "28"
 HMGET myhash age # "28"
 HMGET myhash name # "brian"
 
-
 # Lists
 LPUSH mylist foo
 LPUSH mylist bar
