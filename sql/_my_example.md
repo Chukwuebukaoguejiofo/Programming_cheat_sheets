@@ -62,7 +62,7 @@ create table rooms(
     house_id int(11) unsigned
 );
 
--- ------------------------------------------------------ USERS
+-- ------------------------------------------------------ Users
 -- other columns will receive `NULL` value
 INSERT INTO users (username, password, email)
 VALUES ("brian", "123456", "brian@hotmail.com");
@@ -76,7 +76,7 @@ VALUES ("rick", "123456", "rick@hotmail.com");
 INSERT INTO users (username, password, email)
 VALUES ("sandra", "123456", "sandy@hotmail.com");
 
--- ------------------------------------------------------ HOUSES
+-- ------------------------------------------------------ Houses
 INSERT INTO houses (name, color)
 VALUES ("beach house", "white");
 
@@ -89,7 +89,7 @@ VALUES ("farm house", "blue");
 INSERT INTO houses (name, color)
 VALUES ("old house", "brown");
 
--- ------------------------------------------------------ ROOMS
+-- ------------------------------------------------------ Rooms
 INSERT INTO rooms (name)
 VALUES ("living room");
 
@@ -100,7 +100,7 @@ INSERT INTO rooms (name)
 VALUES ("master room");
 
 
--- ------------------------------------------------------ queries:
+-- ------------------------------------------------------ Queries:
 
 SELECT * FROM users WHERE users.username = "brian";
 SELECT email, password FROM users WHERE users.username = "brian";
@@ -111,7 +111,7 @@ SELECT * FROM users WHERE id BETWEEN 2 AND 10;
 SELECT username, password AS auth FROM users WHERE users.password = 123456;  -- aliasing password column name to 'auth'
 SELECT DISTINCT email FROM users;  -- get unique emails
 
--- --------------------------- update
+-- --------------------------- Update
 UPDATE users SET username="brian spinos", password="123" WHERE id=1;
 
 
@@ -120,11 +120,11 @@ UPDATE houses SET user_id=1 WHERE id=2;
 UPDATE houses SET user_id=2 WHERE id=3;
 
 
--- --------------------------- delete
+-- --------------------------- Delete
 DELETE FROM users WHERE username='Alfreds Futterkiste' AND email='Maria Anders';
 
 
--- --------------------------- joins
+-- --------------------------- Joins
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
 FROM users INNER JOIN houses ON users.id=houses.user_id;  -- returns only matched rows
 
@@ -141,7 +141,7 @@ FROM users RIGHT JOIN houses ON users.id=houses.user_id;
 SELECT users.id, users.username, houses.name, houses.id, houses.user_id
 FROM users LEFT JOIN houses ON users.id=houses.user_id; 
 
--- --------------------------- the 'join table'
+-- --------------------------- The 'join table'
 
 -- this relationship could be a 'has many' or 'has and belongs to many'
 create table rooms_users(
@@ -161,7 +161,7 @@ VALUES (3, 2);
 
 
 
-select * from rooms where id IN (
+SELECT * FROM rooms WHERE id IN (
     select room_id from rooms_users where user_id=1  -- dont use semi-colon here, it will terminate the query...
 );
 
