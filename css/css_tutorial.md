@@ -1,6 +1,6 @@
 # CSS
 
-### links
+###### Links
 
 http://www.tizag.com/cssT/properties.php
 
@@ -8,23 +8,23 @@ http://www.tizag.com/cssT/reference.php
 
 
 
-## use this to make sure most CSS work
+###### Use this to make sure most CSS work
 ```html
 <!DOCTYPE html>
 ```
 
-## comments
+###### Comments
 ```css
 /*This is a comment*/
 ```
 
-## syntax
+###### Syntax
 ```
 "HTML tag" { "CSS Property" : "Value" ; }
 p {color: white; }
 ```
 
-## internal CSS
+###### Internal CSS
 ```html
 
 <html>
@@ -41,7 +41,7 @@ p {color: white; }
 
 ```
 
-## external CSS
+###### External CSS
 ```css
 /* test.css */
 
@@ -63,7 +63,7 @@ h3{ color: white; }
 	</body>
 </html>
 ```
-## inline CSS
+###### Inline CSS
 ```html
 
 
@@ -74,7 +74,7 @@ h3{ color: white; }
 ```
 
 
-##Class
+###### Class
 ```css
  p.first{ color: blue; }
  p.second{ color: red; }
@@ -82,14 +82,14 @@ h3{ color: white; }
 
 
 
-## background color
+###### Background color
 ```css
 h4 { background-color: white; }
 p  { background-color: #1078E1; }
 ```
 
 
-#background image
+###### Background image
 
 ```css
 
@@ -104,7 +104,7 @@ background-position: 0px 5px;
 background-attachment:fixed;
 */
 ```
-##font and text
+###### Font and text
 ```css
  h4 { color: red; }
 
@@ -135,7 +135,7 @@ background-attachment:fixed;
  p {text-indent:50px;}
 ```
 
-## padding
+###### Padding
 ```css
  p {padding: 15px; border: 1px solid black; }     /*  padding:25px 50px;  */
 
@@ -162,7 +162,7 @@ background-attachment:fixed;
     border: 1px solid red;
  }
 ```
-## margin
+###### Margin
 ```css
 p {margin: 5px; border: 1px solid black; }     /* margin:100px 50px; */
 h5{margin: 0px; border: 1px solid red;}
@@ -180,7 +180,7 @@ border: 1px solid black; }
 h5{margin: 0px 5px 10px 3px;
  border: 1px solid red;}
 ```
-## border
+###### Border
 ```css
 p.solid {border-style: solid; }
 p.double {border-style: double; }
@@ -212,7 +212,7 @@ h4 { border-top-style: double;
 border-top-color: purple;
 border-top-width: thick; }
 ```
-##list style
+###### List style
 ```css
 ol { list-style-type: upper-roman; }
 ol { list-style-type: none; }
@@ -224,7 +224,7 @@ ul { list-style-position: inside; }
 ol { list-style-position: outside; }
 ```
 
-## links
+###### Links
  ```css
 a:link { color: red; }
 a:visited { color: red; }
@@ -254,15 +254,15 @@ border: 2px solid black;
 
 }
 ```
-##cursor
+###### Cursor
 ```css
 p { cursor: wait }
 h4 { cursor: help }
 h5 { cursor: crosshair }
 ```
-## properties
+###### Properties
 
-## position
+###### Position
  ```css
 h3 {
 	 position: relative;
@@ -289,10 +289,10 @@ top:30px;
 right:5px;
 }
 ```
-##layers
+###### Layers
 
 
-##float
+###### Float
  ```css
 img.floatLeft {
     float: left;
@@ -313,13 +313,13 @@ img.floatRightClear {
 
 ```
 
-##ID
+###### Id
  ```css
 p#exampleID1 { background-color: white; }
 p#exampleID2 { text-transform: uppercase; }
 ```
 
-##visibility and display
+###### Visibility and display
 ```css
 h1.hidden {display:none;} /* hides and does not take up space */
 
@@ -329,13 +329,13 @@ li {display:inline;} /* makes elements go in the same line */
 
 p.hide {display:block;} /* makes elements take up all the line */
 ```
-## grouping
+###### Grouping
 ```css
  h1,h2,p { color:green; }
 ```
 
 
-## z-index
+###### z-index
 ```css
 img
 {
@@ -346,7 +346,7 @@ z-index:-1;   /* the smallest number goes behind, the largest number goes infron
 }
 ```
 
-## when you click a form
+###### When you click a form
 ```css
 input:focus
 {
@@ -354,7 +354,7 @@ background-color:yellow;
 }
 ```
 
-##overflow
+###### Overflow
 ```css
 div.scroll
 {
@@ -366,7 +366,7 @@ overflow:scroll;    /* scroll, hidden */
 
 ```
 
-##opacity
+###### Opacity
 ```css
 img
 {
@@ -380,7 +380,7 @@ filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 ```
 
-## descendent
+###### Descendent
 ```css
 
 
@@ -391,7 +391,7 @@ ul em {
 
 ```
 
-## attribute selector
+###### Attribute selector
 
 ```html
 
@@ -417,7 +417,7 @@ color:blue;
 </html>
 ```
 
-## attribute selector 2
+###### Attribute selector 2
 ```css
 /* select elements by their attribute */
 
@@ -433,7 +433,7 @@ color:blue;
 [lang|=en] { color:blue; }  /* a word that contains "en" inside it */
 ```
 
-## CSS Image Sprites
+###### CSS Image Sprites
 
 
 
@@ -468,10 +468,7 @@ background:url(img_navsprites.gif) -91px 0;
 ```
 
 
-## EXTRAS
-
-
-
+###### Extras
 ```css
 
 @media screen
