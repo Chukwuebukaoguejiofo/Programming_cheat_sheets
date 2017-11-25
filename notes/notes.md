@@ -1,6 +1,6 @@
 # Notes
 
-###### securing an API
+###### Securing an API
 - the app generates a random hash
 - use HTTP headers to send that hash to the server
 - use SSL !
