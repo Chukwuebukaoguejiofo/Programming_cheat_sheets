@@ -1,4 +1,4 @@
-# SQL TUTORIAL
+# SQL Tutorial
 
 ###### SQL comments
 
@@ -6,23 +6,20 @@
 -- this is a comment
 ```
 
-##JOIN TABLES
+###### Join tables
 
-### explanation:
+###### Explanation:
 
-- You can create a table using __ANY__ column of __ANY__ table in the DATABASE
-
+- You can create a table using __ANY__ column of __ANY__ table in the __DATABASE__
 - But, you need a column in common, so SQL can match that and return results
-
 - They are virtual tables, they are created on the fly...
 
 
-
-## INNER JOIN (JOIN)
+###### INNER JOIN (JOIN)
 - INNER JOIN is the same as JOIN.
 - Returns __ALL__ rows (with selected columns)
 
-- when there is at least one match in __BOTH__ tables
+- When there is at least one match in __BOTH__ tables
 
 ```
 -  -
@@ -35,10 +32,9 @@
 -  -
 ```
 
-## LEFT JOIN
-- Return __ALL__ rows (with selected columns) from the left table,
-
-- and the __MATCHED__ rows from the right table
+###### LEFT JOIN
+- Returns __ALL__ rows (with selected columns) from the left table,
+- And the __MATCHED__ rows from the right table
 
 ```
 -  -
@@ -51,10 +47,9 @@
 -
 ```
 
-## RIGHT JOIN
-- Return __ALL__ rows (with selected columns) from the right table,
-
-- and the __MATCHED__ rows from the left table
+###### RIGHT JOIN
+- Returns __ALL__ rows (with selected columns) from the right table,
+- And the __MATCHED__ rows from the left table
 
 ```
 -  -
@@ -67,10 +62,9 @@
    -
 ```
 
-## FULL JOIN
-- Return __ALL__ rows (with selected columns)
-
-- when there is a match in __ONE__ of the tables
+###### FULL JOIN
+- Returns __ALL__ rows (with selected columns)
+- When there is a match in __ONE__ of the tables
 
 ```
 -  -
@@ -84,12 +78,12 @@
 -  -
 ```
 
-## which table is the LEFT or RIGHT table?
+###### which table is the LEFT or RIGHT table?
 to know wich is the left and right table, use the `JOIN` keyword as a reference,
 
-- what is in its right, is __ALWAYS__ the __RIGHT__ table !!!
+- What is in its right, is __ALWAYS__ the __RIGHT__ table !!!
 
-- what is in the left, is __ALWAYS__ the __LEFT__ table !!!
+- What is in the left, is __ALWAYS__ the __LEFT__ table !!!
 
 ```sql
   -- EXAMPLE:
@@ -102,7 +96,7 @@ to know wich is the left and right table, use the `JOIN` keyword as a reference,
   ... FROM table1 FULL JOIN table2 ON ...
 ```
 
-## examples `SELECT`:
+###### examples `SELECT`:
 
 ```sql
 SELECT users.id, users.email FROM users;
@@ -146,7 +140,7 @@ SELECT patients.first_name, patients.id FROM patients;
 -- (17 rows)
 ```
 
-##INNER JOIN EXAMPLE:
+###### INNER JOIN EXAMPLE:
 ```sql
 SELECT users.id, patients.id, patients.first_name, users.username FROM users INNER JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
@@ -163,7 +157,7 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users INN
 -- (9 rows)
 ```
 
-##RIGHT JOIN EXAMPLE:
+###### RIGHT JOIN EXAMPLE:
 ```sql
 SELECT users.id, patients.id, patients.first_name, users.username FROM users RIGHT JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
@@ -188,7 +182,7 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users RIG
 -- (17 rows)
 ```
 
-##LEFT JOIN EXAMPLE:
+###### LEFT JOIN EXAMPLE:
 ```sql
 SELECT users.id, patients.id, patients.first_name, users.username FROM users LEFT JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
@@ -206,7 +200,7 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users LEF
 -- (10 rows)
 ```
 
-##FULL JOIN EXAMPLE:
+###### FULL JOIN EXAMPLE:
 ```sql
 SELECT users.id, patients.id, patients.first_name, users.username FROM users FULL JOIN patients ON patients.id=users.id;
 --  id | id |   first_name    |       username
@@ -235,7 +229,7 @@ SELECT users.id, patients.id, patients.first_name, users.username FROM users FUL
 
 
 
-## other stuff:
+###### other stuff:
 ```sql
 SELECT id, email, username FROM users WHERE id=14 LIMIT 1;
 ```
