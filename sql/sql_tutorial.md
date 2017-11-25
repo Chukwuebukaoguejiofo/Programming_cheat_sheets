@@ -18,7 +18,6 @@
 ###### INNER JOIN (JOIN)
 - INNER JOIN is the same as JOIN.
 - Returns __ALL__ rows (with selected columns)
-
 - When there is at least one match in __BOTH__ tables
 
 ```
@@ -82,7 +81,6 @@
 to know wich is the left and right table, use the `JOIN` keyword as a reference,
 
 - What is in its right, is __ALWAYS__ the __RIGHT__ table !!!
-
 - What is in the left, is __ALWAYS__ the __LEFT__ table !!!
 
 ```sql
