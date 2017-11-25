@@ -27,4 +27,5 @@ for media access control and one for logical link control.
 `The physical layer (layer 1)` - Media, Signal and Binary Transmission. Examples include hubs, repeaters, and Ethernet cables. 
 Data is transmitted by an electric voltage, radio frequencies, infrared or ordinary light.
 
-> Having trouble remembering the layer order? Just keep the phrase "All People Seem To Need Data Processing" in mind.
+> Having trouble remembering the layer order? Just keep the phrase:
+> "All People Seem To Need Data Processing" in mind.
