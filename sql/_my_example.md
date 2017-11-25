@@ -63,7 +63,7 @@ create table rooms(
 );
 
 -- ------------------------------------------------------ Users
--- other columns will receive `NULL` value
+-- Other columns will receive `NULL` value
 INSERT INTO users (username, password, email)
 VALUES ("brian", "123456", "brian@hotmail.com");
 
