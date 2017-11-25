@@ -1,6 +1,6 @@
 # SQL TUTORIAL
 
-#sql comments
+###### SQL comments
 
 ```sql
 -- this is a comment
