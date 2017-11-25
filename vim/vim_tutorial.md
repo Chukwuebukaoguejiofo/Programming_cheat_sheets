@@ -1,7 +1,6 @@
 # Vim
 
-
-cheet sheets: https://vim.rtorr.com/
+Cheet sheets: https://vim.rtorr.com/
 
 ```bash
 $ vi foo.txt # edit a file
@@ -28,7 +27,7 @@ ESC :e /path/to/file # go to another file
 
 ```
 
-# goto's
+###### Goto's
 
 ```bash
   beginning of line: 0
@@ -42,7 +41,7 @@ ESC :e /path/to/file # go to another file
   apend at end of file: GA
 ```
 
-# cursor
+###### Cursor
 
 ```bash
   right:  l   3l
@@ -51,7 +50,7 @@ ESC :e /path/to/file # go to another file
   down:   j    23j
 ```
 
-# edit
+###### Edit
 ```bash
   delete n character on left of cursor:  x   3x
   delete whole line: dd
