@@ -1,8 +1,9 @@
 # OSI Model
 
 ###### The Seven Layers of the OSI Model
-The bottom three layers of the OSI Model are referred to as the Media Layers, while the top four layers are the Host layers. 
-The layers are numbered from 1 through 7 beginning at the bottom. The layers are:
+
+> The bottom three layers of the OSI Model are referred to as the Media Layers, while the top four layers are the Host layers. 
+> The layers are numbered from 1 through 7 beginning at the bottom. The layers are:
 
 `Application layer (layer 7)` - Network Process to Application. This end-user layer packages the data received from the 
 Presentation Layer in the format needed by the application or end-user process that receives it. Examples include browsers, 
