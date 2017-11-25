@@ -2,7 +2,7 @@
 
 # http://www.newthinktank.com/2016/06/shell-scripting-tutorial/
 
-# commentss
+# comments
 
 echo "hello world"  # print to the screen
 
@@ -28,44 +28,44 @@ many lines
 END
 
 
-#---------------- functions
+#---------------- Functions
 # A function that receives 2 values and prints a sum
 getSum(){
     # Attributes are retrieved by referring to $1, $2, etc.
- 	local num3=$1
- 	local num4=$2
- 		
- 	# Sum values
- 	local sum=$((num3+num4))
- 		
- 	# Pass values back with echo
- 	echo $sum
+    local num3=$1
+    local num4=$2
+        
+    # Sum values
+    local sum=$((num3+num4))
+        
+    # Pass values back with echo
+    echo $sum
 }
- 	
+    
  num1=5
  num2=6
- 	
+    
  # You pass atributes by separating them with a space
  # Surround function call with $() to get the return value
  sum=$(getSum num1 num2)
  echo "The sum is $sum"
  
- #----------------------- if statement
+ #----------------------- If statement
  
 # You place your condition with in []
 # Include a space after [ and before ]
 # Integer Comparisons: eq, ne, le, lt, ge, gt
 if [ $age -ge 16 ]; then
-  	echo "You can drive"
-  	
+    echo "You can drive"
+    
 # Check another condition
 elif [ $age -eq 15 ]; then
     echo "You can drive next year"
-  		
+        
 # Executed by default
 else
     echo "You can't drive"
- 	  
+      
 # Closes the if statement
 fi
- 	
+    
