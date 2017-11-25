@@ -1,5 +1,7 @@
 # OSI Model
 
+https://www.lifewire.com/open-systems-interconnection-model-816290
+
 ###### The Seven Layers of the OSI Model
 
 > The bottom three layers of the OSI Model are referred to as the Media Layers, while the top four layers are the Host layers. 
