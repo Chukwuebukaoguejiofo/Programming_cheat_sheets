@@ -1,4 +1,4 @@
-### REDIS
+# Redis
 
 ```bash
 # start server:
