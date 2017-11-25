@@ -1,12 +1,12 @@
 # Notes
 
------------------------------------------------------ securing an API
+###### securing an API
     - the app generates a random hash
     - use HTTP headers to send that hash to the server
     - use SSL !
 
 
------------------------------------------------------ omniauth
+###### Omniauth
     - idea: have a link in your app so users can sign in through twitter!
     - use omniauth Module and provide it with your twitter_key and twitter_secret
     - omniauth uses /auth/twitter endpoint
@@ -19,7 +19,7 @@
     - use twitter
 
 
------------------------------------------------------ Sessions
+###### Sessions
 
 creates a files in a temp directory in the server
     data will be available
@@ -28,7 +28,3 @@ creates a files in a temp directory in the server
         PHPSESSID=abdfe9abe7dfabe7d82babdfea8ebae8df28edab822
 
 
-
------------------------------------------------------
------------------------------------------------------
------------------------------------------------------
