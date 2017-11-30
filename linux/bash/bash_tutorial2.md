@@ -1,7 +1,7 @@
-### bash tutorial:
+# Bash tutorial
 
 
-## variables
+###### Variables
 ```bash
 foo="brian"
 echo $foo
@@ -13,7 +13,7 @@ Foo
 FOO
 ```
 
-# functions
+###### Functions
 ```bash
 # evaluate code:
 $(ls)  # $(some_command)
@@ -37,23 +37,24 @@ call_me(){
   call_me brian spinos
 ```
 
-# More functions
+###### More functions
 
 ```bash
-# source <file>
-source path/to/file # evaluates the file
+# $ source <file>
+source path/to/file # executes the file
 
-# export <variable>
+# $ export <variable>
+# The export command marks an environment variable 
+# to be exported with any newly forked child processes
+# If you close the terminal, it will NOT persist.
 foo=hello
-export foo #  the export command marks an environment variable to be exported with any newly forked child processes
+export foo 
 
 export -p #list env variables
 
 ```
 
-
-
-# loop
+###### Loops
 ```bash
 # multiple lines
 for foo in $(ls)
@@ -65,12 +66,12 @@ for x in 1 2 3 4 5; do echo $x; done
 
 ```
 
-# interpolation
+###### Interpolation
 ```bash
 echo "hello ${USER}"
 ```
 
-# if statement
+###### If statements
 ```bash
 
 if [ "foo" = "bar" ]
@@ -82,7 +83,7 @@ fi
 ```
 
 
-# arrays ???
+###### Arrays
 ```bash
   # INDEX ARE ZERO BASE
   # http://www.thegeekstuff.com/2010/06/bash-array-tutorial/
@@ -116,7 +117,7 @@ fi
 
 
 
-# heredoc
+###### Heredoc
 ```bash
 cat <<foobar
 
@@ -134,7 +135,7 @@ foobar
 
 ```
 
-# inject code result in file:
+###### Inject code result in file
 ```bash
 
 cat > file123.txt <<EOF
@@ -142,7 +143,7 @@ $(echo brian)
 EOF
 ```
 
-# Stuff to cover:
+###### Stuff to cover
 
 ```bash
 export foo
@@ -152,19 +153,7 @@ reserved words
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Custom commands with options
+###### Custom commands with options
 ```bash
 my_command(){
   for ((i=1;i<=$#;i++));
@@ -190,6 +179,5 @@ done;
 }
 
 my_command --name "sandra"
-
 
 ```
