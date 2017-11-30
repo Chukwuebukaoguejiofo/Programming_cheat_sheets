@@ -1,12 +1,13 @@
-### grep is for searching strings in file lines
+# grep 
 
-### usage:
+> grep is for searching strings in file lines
+
+###### usage:
 ```bash
 $ grep -i <what-so-search> <files>
 ```
 
-
-### brian.txt
+###### brian.txt
 ```
 1. well, hello there
 2. my name is brian
@@ -17,12 +18,12 @@ $ grep -i <what-so-search> <files>
 7. baz, hello
 ```
 
-### example
+###### Example
 ```bash
 $ grep -i hello brian.txt # -i is for insensitive
 ```
 
-### OUTPUT:
+###### Output:
 ```
 1. well, hello there
 4. hello Hello HeLLo
