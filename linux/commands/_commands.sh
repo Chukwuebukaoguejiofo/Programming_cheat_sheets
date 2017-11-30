@@ -7,6 +7,9 @@ file --mime foo.txt
 # see file size
 du -h foo.txt 
 
+# see folder size
+du -sh foo/
+
 # see free space
 df -h  
 
