@@ -17,6 +17,19 @@ chmod +x my_script.sh
 ./my_script.sh
 ```
 
+
+###### Quick commands
+```bash
+echo $# # Get the number of arguments passed to the script
+!! # Run previous command
+
+
+; # means run the first command and then the next.
+&& # means run the first command and, if it succeeds with a 0 return code, run the next.
+|| # means run the first command and, if it fails with a non-zero return code, run the next.
+
+```
+
 ###### Variables
 ```bash
 foo="brian"
