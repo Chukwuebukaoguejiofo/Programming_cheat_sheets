@@ -1,5 +1,7 @@
 # Bash tutorial
 
+http://wiki.bash-hackers.org/syntax/arrays
+
 ###### Make a file executable
 ```bash
 # To make this file executable, in the terminal do:
