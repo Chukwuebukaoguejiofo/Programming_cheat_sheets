@@ -23,5 +23,4 @@ $ scp -r root@111.222.333.444:/home/rails/rails_project /Users/brianspinos777/De
 # sync the server files with what is in your current computer.
 $ rsync -r . root@111.222.333.444:/var/foo 
 
-# creates a symlink (pointer to a file/folder) so you can treat the symlink just as the normal file/folder
-$ ln -s foo foo_pointer 
+
