@@ -1,5 +1,13 @@
 # Bash tutorial
 
+###### Make a file executable
+```bash
+# To make this file executable, in the terminal do:
+chmod +x my_script.sh
+
+# Executing the script:
+./my_script.sh
+```
 
 ###### Variables
 ```bash
