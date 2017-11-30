@@ -124,6 +124,14 @@ fi
 ```
 
 
+###### Dictionaries
+```bash
+declare -A arr # associative array
+arr[name]="brian"
+arr[address]="123 foobar"
+echo "${arr[name]}" # brian
+echo "${arr[address]}" # 123 foobar
+```
 
 ###### Heredoc
 ```bash
