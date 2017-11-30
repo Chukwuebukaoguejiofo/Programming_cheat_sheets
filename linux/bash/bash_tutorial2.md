@@ -2,6 +2,12 @@
 
 http://wiki.bash-hackers.org/syntax/arrays
 
+###### Script example
+```bash
+#!/bin/bash
+echo "Hello World!"
+```
+
 ###### Make a file executable
 ```bash
 # To make this file executable, in the terminal do:
