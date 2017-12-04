@@ -1,6 +1,6 @@
-### curl is linux's web browser!
+# curl is linux's web browser!
 
-### example:
+###### Example:
 ```bash
 $ curl google.com
 # <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
