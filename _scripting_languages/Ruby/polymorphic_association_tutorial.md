@@ -32,19 +32,24 @@ $ rake db:migrate
 
 ```ruby
 class Picture < ActiveRecord::Base
-  belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true 
+  # @picture.imageable (could be a User, Employee or Product)
 end
 
+#
+# All models bellow have many pictures.
+#
+
 class User < ActiveRecord::Base
-  has_many :pictures, as: :imageable
+  has_many :pictures, as: :imageable # (User is 'imageable')
 end
 
 class Employee < ActiveRecord::Base
-  has_many :pictures, as: :imageable
+  has_many :pictures, as: :imageable # (Employee is 'imageable')
 end
 
 class Product < ActiveRecord::Base
-  has_many :pictures, as: :imageable
+  has_many :pictures, as: :imageable # (Product is 'imageable')
 end
 ```
 
@@ -53,7 +58,8 @@ end
 @user.pictures
 @employee.pictures
 @product.pictures
-@picture.imageable
+
+@picture.imageable # (could be a User, Employee or Product)
 ```
 
 
