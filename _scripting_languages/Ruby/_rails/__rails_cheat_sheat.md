@@ -21,6 +21,7 @@ Decorators are classes that wrap an activeRecord instance, and provide more meth
 ###### Concers
 ```
 Concerns are classes that wrap sharable code between controllers, or between models
+So, if you have duplicated code between controllers, or between models, use concerns.
 ```
 
 ###### cookies & sessions
