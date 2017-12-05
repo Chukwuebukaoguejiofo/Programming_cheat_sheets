@@ -36,7 +36,7 @@ http{
 
 ###### Rails configuration for nginx:
 
-```
+```nginx
 # my_app/config/nginx.conf (so you can symlink that)
 
 upstream unicorn{
