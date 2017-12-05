@@ -7,3 +7,4 @@
 - add OSI model and TCP/IP
 - clean postgres folder
 - create a database folder
+- ...
