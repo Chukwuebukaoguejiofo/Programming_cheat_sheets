@@ -16,6 +16,7 @@ $ rails s -b XXX.XXX.XX.XX -p 3000
 ###### Decorators
 ```
 Decorators are classes that wrap an activeRecord instance, and provide more methods to be used in the view
+So, dont polute your models with methods that are only used in the view, instead, use decorators.
 ```
 
 ###### Concers
