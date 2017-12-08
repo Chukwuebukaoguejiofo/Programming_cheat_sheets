@@ -28,8 +28,8 @@ public class Main{
   	//
 
   	static interface Student { // The class needs to be 'static' so it can be used in the 'main' function
-    	public void study();
-    	public void goToClass();
+        public void study();
+    	  public void goToClass();
   	}
 
   	//
