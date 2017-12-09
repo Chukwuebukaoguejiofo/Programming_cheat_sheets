@@ -4,76 +4,76 @@
 
 ```java
 public class Main{
-  
-  	//
-  	// Abstract class
-  	//
+    
+    //
+    // Abstract class
+    //
 
-  	static abstract class Inteligence { // The class needs to be 'static' so it can be used in the 'main' function
-  		private String name;
+    static abstract class Inteligence { // The class needs to be 'static' so it can be used in the 'main' function
+        private String name;
 
-  		public Inteligence(String name){
-  			this.name = name;
-  		}
+        public Inteligence(String name){
+            this.name = name;
+        }
 
-  		public void foobar(){
-  			System.out.println("foobar called!");
-  		}
+        public void foobar(){
+            System.out.println("foobar called!");
+        }
 
-  		public abstract void bar(); // abstract methods cannot have a body
-  	}
+        public abstract void bar(); // abstract methods cannot have a body
+    }
 
-  	//
-  	// Interface
-  	//
+    //
+    // Interface
+    //
 
-  	static interface Student { // The class needs to be 'static' so it can be used in the 'main' function
-          public void study();
-    	  public void goToClass();
-  	}
+    static interface Student { // The class needs to be 'static' so it can be used in the 'main' function
+        public void study();
+        public void goToClass();
+    }
 
-  	//
-  	// Class
-  	//
-  	
-  	static class Person extends Inteligence implements Student{ // The class needs to be 'static' so it can be used in the 'main' function
-  		private String name;
+    //
+    // Class
+    //
+    
+    static class Person extends Inteligence implements Student{ // The class needs to be 'static' so it can be used in the 'main' function
+        private String name;
 
-  		public Person(String name){
-  			super(name); // we need to instantiate the parent class too ???
-  			this.name = name;
-  		}
+        public Person(String name){
+            super(name); // we need to instantiate the parent class too ???
+            this.name = name;
+        }
 
-  		public void phone(){
-  			System.out.println("phone called!");
-  		}
+        public void phone(){
+            System.out.println("phone called!");
+        }
 
-  		//
-  		// using the interface 'Student' functions
-  		//
+        //
+        // using the interface 'Student' functions
+        //
 
-  		public void study(){
-  			System.out.println("study called!");
-  		}
+        public void study(){
+            System.out.println("study called!");
+        }
 
-  		public void goToClass(){
-  			System.out.println("goToClass called!");
-  		}
+        public void goToClass(){
+            System.out.println("goToClass called!");
+        }
 
-  		//
-  		// using abstract methods from Inteligence class
-  		//
+        //
+        // using abstract methods from Inteligence class
+        //
 
-  		public void bar(){
-  			System.out.println("bar called!");
-  		}
-  	}
+        public void bar(){
+            System.out.println("bar called!");
+        }
+    }
   
 
     public static void main(String[] args){
-    	Person brian = new Person("Spinos");
+        Person brian = new Person("Spinos");
 
-    	// Inteligence inteligence = new Inteligence("Spinos"); // Inteligence is abstract; cannot be instantiated
+        // Inteligence inteligence = new Inteligence("Spinos"); // Inteligence is abstract; cannot be instantiated
 
 
         System.out.println(brian.name); // Spinos
