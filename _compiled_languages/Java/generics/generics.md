@@ -3,7 +3,7 @@
 ```java
 public class Main {
  
-    public static void main(String a[]){
+    public static void main(String[] args){
          
         // Create Foo object with String as type parameter
         Foo<String> foo_str = new Foo<String>("Hello");
