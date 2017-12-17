@@ -41,6 +41,13 @@ public class Main{
         for(TrafficLight light : TrafficLight.values()){
             System.out.printf("%s: %d %s\n", light, light.getSeconds(), light.getLetter());
         }
+        
+        
+        System.out.println("================");
+        
+        System.out.println(TrafficLight.RED);
+        System.out.println(TrafficLight.RED.getSeconds());
+        System.out.println(TrafficLight.RED.getLetter());
     }
 }
 
@@ -52,6 +59,10 @@ Output:
 RED: 30 A
 AMBER: 10 B
 GREEN: 30 C
+================
+RED
+30
+A
 
 */
 ```
