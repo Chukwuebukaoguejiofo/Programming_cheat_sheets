@@ -68,6 +68,4 @@ main = do
     print2(result4) -- "ABC"
     
     
-    
-    
-    ```
+```
