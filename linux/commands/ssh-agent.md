@@ -2,7 +2,7 @@
 
 
 ###### ssh-agent
-In Unix, `ssh-agent` is a background program that handles passwords for SSH private keys. 
+In Unix, `ssh-agent` is a background program that handles passwords for `ssh` private keys. 
 
 ###### ssh-add
 The `ssh-add` command prompts the user for a private key password and adds it to the list maintained by ssh-agent.
