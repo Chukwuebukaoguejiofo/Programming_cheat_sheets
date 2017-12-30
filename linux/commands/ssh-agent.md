@@ -15,7 +15,7 @@ The public part of the key loaded into the agent must be put on the target syste
 ###### Usage
 
 ```bash
-eval `ssh-agent` # init the agent
+$ eval `ssh-agent` # init the agent
 
 # Now enter the command:  ssh-add
 # and enter your private key password.
