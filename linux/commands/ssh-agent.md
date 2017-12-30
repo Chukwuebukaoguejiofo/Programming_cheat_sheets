@@ -5,11 +5,11 @@
 In Unix, `ssh-agent` is a background program that handles passwords for SSH private keys. 
 
 ###### ssh-add
-The ssh-add command prompts the user for a private key password and adds it to the list maintained by ssh-agent.
+The `ssh-add` command prompts the user for a private key password and adds it to the list maintained by ssh-agent.
 
-Once you add a password to ssh-agent, you will not be prompted for it when using SSH or scp to connect to hosts with your public key.
+Once you add a password to `ssh-agent`, you will not be prompted for it when using `ssh` or scp to connect to hosts with your public key.
 
-The public part of the key loaded into the agent must be put on the target system in ~/.ssh/authorized_keys
+The public part of the key loaded into the agent must be put on the target system in `~/.ssh/authorized_keys`.
 
 
 ###### Usage
