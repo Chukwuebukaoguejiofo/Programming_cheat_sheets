@@ -3,6 +3,7 @@
 ```bash
 $ crontab -l # See active cron jobs
 $ crontab -e # Edit crontab file
+$ crontab -r # remove all the contents of our crontab
 ```
 
 ###### Structure
