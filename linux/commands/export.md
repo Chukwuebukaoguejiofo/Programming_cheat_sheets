@@ -1,6 +1,8 @@
 # export
 
-setting environment variables
+Setting environment variables
+
+If you just set it in the terminal, it will be lost when you close the terminal.
 
 
 ```bash
