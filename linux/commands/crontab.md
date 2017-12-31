@@ -28,6 +28,10 @@ $ crontab -e # Edit crontab file
 5 * * * * ~/script.sh
 
 
+# Everyday hour at --:05, --:13, --:19
+5,13,19 * * * * ~/script.sh
+
+
 # Everyday minute
 * * * * * ~/script.sh
 
