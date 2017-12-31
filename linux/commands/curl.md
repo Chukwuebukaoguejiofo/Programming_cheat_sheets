@@ -25,3 +25,27 @@ $ curl google.com -I
 # X-Frame-Options: SAMEORIGIN
 
 ```
+
+
+###### curl options
+
+https://www.youtube.com/watch?v=WxUVU0b95Oc
+
+```bash
+$ curl http://localhost:5000 # GET request
+
+
+-i # headders and response
+
+-I headders without response
+
+-d "name=brian&age=29"  # POST request with data
+
+-X PUT -d "name=brian&age=29"  # PUT request with data
+
+-X DELETE  # DELETE request
+
+-u user:password
+
+-o foo.jpeg # download to this file
+```
