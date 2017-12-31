@@ -1,4 +1,6 @@
-# curl is linux's web browser!
+# curl
+
+curl is linux's web browser!
 
 ###### Example:
 ```bash
