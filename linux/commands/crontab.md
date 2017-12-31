@@ -1,5 +1,8 @@
 # crontab
 
+https://crontab.guru/
+https://www.youtube.com/watch?v=QZJ1drMQz1A&feature=youtu.be
+
 ```bash
 $ crontab -l # See active cron jobs
 $ crontab -e # Edit crontab file
