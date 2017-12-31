@@ -1,4 +1,4 @@
-# Cron jobs
+# crontab
 
 ```bash
 $ crontab -l # See active cron jobs
@@ -10,11 +10,11 @@ $ crontab -e # Edit crontab file
 ```
 * * * * *  command-to-execute
 │ │ │ │ │
-│ │ │ │ └─── day of week (0 - 6) (0 is Sunday, 7 is Sunday)
-│ │ │ └──────── month (1 - 12)
-│ │ └───────────── day of month (1 - 31)
-│ └────────────────── hour (0 - 23)
-└─────────────────────── min (0 - 59)
+│ │ │ │ └─── day of week (0 - 6) (0 is Sunday, 7 is Sunday in some systems)
+│ │ │ └───── month (1 - 12)
+│ │ └─────── day of month (1 - 31)
+│ └───────── hour (0 - 23)
+└─────────── min (0 - 59)
 ```
 
 ###### Examples
