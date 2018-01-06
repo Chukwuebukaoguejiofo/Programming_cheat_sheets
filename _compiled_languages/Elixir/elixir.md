@@ -213,6 +213,104 @@ my_lambda.({"one"})
 my_lambda.({"one", "two"})
 my_lambda.(:error)
 
+#=========================================
+
+
+# variables are imutable
+
+foo = 123
+
+_foo = 456.45 # float
+
+is_integer(foo)
+is_float(foo)
+is_atom(foo)
+is_tuple(foo)
+String.length("Brian")
+
+x = true and true # and, or
+y = not true
+
+
+
+if foo do # if, unless
+  # stuff
+else
+  # stuff
+end  
+
+# condition (produce output on the first match only):
+age = 18
+
+cond do
+  age >= 14 -> IO.puts "Can wait"
+  age >= 16 -> IO.puts "Can drive"
+  age >= 18 -> IO.puts "Can vote" # <==
+  true -> IO.puts "default option!"
+end
+
+
+# case
+user = "Rick"
+case user do
+  "Brian" -> IO.puts "This is Brian"
+  "Erich" -> IO.puts "This is Erich"
+  "Rick" -> IO.puts "This is Rick"
+  _ -> IO.puts "Default"
+end
+
+
+
+# ternary
+n = 12
+result = if n > 10, do: "10+", else: "10-"
+
+
+# tuple
+result2 = {123, 45.67, :foobar}
+result3 = Tuple.append(result2, 78)
+
+
+# list
+result4 = [1,2,3]
+
+Enum.each [4,5,6], fn(item) ->
+  IO.puts item
+end
+
+
+# maps
+result5 = %{"foo" => "bar", "foo2" => "bar2"}
+result6 = %{foo: "bar", foo2: "bar2"}
+IO.puts result5["foo"]
+IO.puts result6[:foo]
+IO.puts result6.foo
+
+
+# lambda
+add = &(&1 + &2)
+IO.puts add.(1,2)
+
+
+
+defmodule ABC do
+  def func2(x \\ 1, y \\ 1) do 
+    x + y
+  end
+end
   
+IO.puts ABC.func2 10 # 11
+
+
+
+# nil
+
+
+
+# list comprehension
+result7 = for n <- [1,2,3], do: n * 2
+IO.puts result7
+
+
 
 ```
