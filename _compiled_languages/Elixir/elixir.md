@@ -122,4 +122,95 @@ end
 MyModuleB.foo("Brian") # Brian!!!
 
 
+#===============================================
+
+defmodule Brian do
+  
+  # public function
+  def foo(a, b) do
+    r = a + b
+    bar(r)
+  end
+  
+  # private function
+  defp bar(msg) do
+    IO.puts "private msg: #{msg}"
+  end
+  
+  # recursion
+  def rec([head | tail]) do
+    IO.puts head * 10
+    rec(tail)
+  end
+  
+  def rec([]) do
+    IO.puts "DONE!"
+  end
+  
+
+  #
+  # functions for piping
+  #
+
+  def bazA(x) do
+    x <> "A"
+  end
+  
+  def bazB(x) do
+    x <> "B"
+  end
+  
+  def bazC(x) do
+    x <> "C"
+  end
+end
+
+Brian.foo(5, 5) 
+
+
+# Piping
+"Elixir rocks" |> String.upcase() |> String.split()
+
+# Piping
+IO.puts "BRIAN: " 
+|> Brian.bazA() 
+|> Brian.bazB()
+|> Brian.bazC() # BRIAN: ABC
+
+
+# Recursion
+Brian.rec([1,2,3,4,5,6])
+
+
+# Pattern matching
+[name, age] = ["Brian", 29]
+IO.puts name
+IO.puts age
+
+
+# Case statement
+case {1, 2, 3} do
+  {4, 5, 6} ->
+    "This clause won't match"
+  {1, x, 3} ->
+    "This clause will match and bind x to 2 in this clause"
+  _ ->
+    "This clause would match any value"
+end
+
+
+
+# lambda with pattern matching
+my_lambda = fn
+  {x} -> IO.puts "1 arg: #{x}"
+  {x, y}  -> IO.puts "2 arg: #{x}, #{y}"
+  :error -> IO.puts "ERROR"
+end
+   
+my_lambda.({"one"})
+my_lambda.({"one", "two"})
+my_lambda.(:error)
+
+  
+
 ```
