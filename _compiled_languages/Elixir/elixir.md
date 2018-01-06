@@ -100,4 +100,26 @@ end
 
 
 AnotherModule.test_user()
+
+
+
+
+#=============================== `use` keyword
+defmodule MyModuleA do  
+  defmacro __using__(_) do
+    quote do
+      def foo(s) do
+        IO.puts(s <> "!!!")
+      end
+    end
+  end
+end  
+
+defmodule MyModuleB do  
+  use MyModuleA
+end
+
+MyModuleB.foo("Brian") # Brian!!!
+
+
 ```
