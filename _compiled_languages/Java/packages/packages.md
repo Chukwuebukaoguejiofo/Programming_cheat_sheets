@@ -8,6 +8,7 @@
 /**
  * Import classes from the `./foo` folder,
  * that use `package foo;`
+ * here, we could have used `import foo.Bar;`
  */
 import foo.*;
 
