@@ -4,6 +4,12 @@ http://tryelixir.online/
 
 
 ```elixir
+
+# Keyword list
+[{:a, 1}, {:b, 2}] === [a: 1, b: 2] # true
+
+
+
 IO.puts "Hello world"
 
 IO.puts("Hello"); IO.puts("World!")
