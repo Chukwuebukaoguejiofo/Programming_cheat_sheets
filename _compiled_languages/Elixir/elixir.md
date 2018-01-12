@@ -1,7 +1,8 @@
 # Elixir
 
-http://tryelixir.online/ # Dont use it
-http://elixirplayground.com/
+- http://tryelixir.online/ # Dont use it
+
+- http://elixirplayground.com/
 
 
 ```elixir
