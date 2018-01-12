@@ -1,6 +1,6 @@
 # Elixir
 
-- http://tryelixir.online/ # Dont use it
+- http://tryelixir.online/ (Don't use this one)
 
 - http://elixirplayground.com/
 
