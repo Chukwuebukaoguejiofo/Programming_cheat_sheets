@@ -15,3 +15,30 @@
 
 ###### Polymorphism
 - Work in the same manner with different objects, which define a specific implementation of some abstract behavior.
+
+
+# OOP  relationships 
+
+
+###### Inheritance
+Inheritance is “IS-A” type of relationship. 
+Example: Dog inherits from Animal.
+
+
+###### Association
+Association is a “has-a” type relationship.
+Example: doctor and a patient, they can exist independently.
+
+
+###### Aggregation
+Composition is a loose "part-of" relationship.
+One objects is the parent, and the other the child
+If the parent object is destroyed, the child objects would NOT cease to exist
+Example: relationship between library and book,
+books will remain so even when the library is no more
+
+
+###### Composition
+Composition is a strict "part-of" relationship.
+Example: “an engine is part of a car”, “a heart is part of a body”.
+If the parent object is destroyed, the child objects would be destroyed also.
