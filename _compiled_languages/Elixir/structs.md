@@ -14,7 +14,7 @@ defmodule User do
   end
   
   def changeName(user, name) do
-    user = struct(user, name: name)
+    struct(user, name: name)
   end
 end
 
