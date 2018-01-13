@@ -8,7 +8,6 @@
  */
 class Main{  
   
-  
   // Create thread by `Runnable` interface
   public static class MyThread implements Runnable{  
     @Override
