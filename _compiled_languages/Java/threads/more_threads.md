@@ -1,26 +1,25 @@
 # More threads
 
 ```java
-
 /**
  * Main
  */
 public class Main {
 
-   public static void main(String args[]) {
-       
-      System.out.println("Creating, Starting, Running, Working, Exiting");
-      
-      
-      Foo R1 = new Foo( "T1");
-      R1.start();
-      
-      Foo R2 = new Foo( "T2");
-      R2.start();
-      
-      Foo R3 = new Foo( "T3");
-      R3.start();
-   }   
+    public static void main(String args[]) {
+
+        System.out.println("Creating, Starting, Running, Working, Exiting");
+
+
+        Foo R1 = new Foo("T1");
+        R1.start();
+
+        Foo R2 = new Foo("T2");
+        R2.start();
+
+        Foo R3 = new Foo("T3");
+        R3.start();
+    }
 }
 
 
@@ -28,41 +27,39 @@ public class Main {
  * Foo
  */
 class Foo implements Runnable {
-    
-   private Thread t;
-   private String threadName;
-   
-   Foo( String name) {
-      threadName = name;
-      System.out.println("===============================================================[C] " +  threadName );
-   }
-   
-   public void run() {
-      System.out.println("======================================[R] " +  threadName );
-      try {
-         for(int i = 0; i < 5; i++) {
-            System.out.println("====================[W] " + threadName + ": task #" + i);
-            // Let the thread sleep for a while.
-            
-          
-            Thread.sleep(10);
-         }
-      }catch (InterruptedException e) {
-         System.out.println(">.......>>>>>>>>>>[I] T " +  threadName + " interrupted.");
-      }
-      System.out.println("========[E] T " +  threadName + " exiting.");
-   }
-   
-   public void start () {
-      System.out.println("================================================[S] " +  threadName );
-      if (t == null) {
-         t = new Thread (this, threadName);
-         t.start ();
-      }
-   }
+
+    private Thread t;
+    private String threadName;
+
+    Foo(String name) {
+        threadName = name;
+        System.out.println("===============================================================[C] " + threadName);
+    }
+
+    public void run() {
+        System.out.println("======================================[R] " + threadName);
+        try {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("====================[W] " + threadName + ": task #" + i);
+                // Let the thread sleep for a while.
+
+
+                Thread.sleep(10);
+            }
+        } catch (InterruptedException e) {
+            System.out.println(">.......>>>>>>>>>>[I] T " + threadName + " interrupted.");
+        }
+        System.out.println("========[E] T " + threadName + " exiting.");
+    }
+
+    public void start() {
+        System.out.println("================================================[S] " + threadName);
+        if (t == null) {
+            t = new Thread(this, threadName);
+            t.start();
+        }
+    }
 }
-
-
 ```
 
 ###### Output
