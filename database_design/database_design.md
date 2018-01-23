@@ -4,10 +4,9 @@
 
 ```
 1NF:
-
-Each column should have one value.
-Remove duplicate data.
-Break data at granular level.
+Each row should have a primary key
+Each column should have one value, not multiple values.
+Each column should be of one type.
 ```
 
 ```
