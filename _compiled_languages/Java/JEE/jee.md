@@ -19,10 +19,10 @@ import javax.servlet.*; // Servlet
 import javax.batch.*; // Batch
 import javax.validation.*; // Validation
 import javax.security.*; // Security
-import javax.mail.*; // JMA
+import javax.mail.*; // JMA - Java Mail API
 import javax.json.*; // JSONP - json processing
 import javax.json.*; // JSONB - json binding
-import javax.ejb.*; // EJB
+import javax.ejb.*; // EJB - Enterprise Java Bean
 import javax.el.*; // EL - expression language
 ```
 
