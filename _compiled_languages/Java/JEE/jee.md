@@ -42,6 +42,6 @@ Jetty
 ###### Application servers
 ```
 Tomcat
-JBoss 
-Glassfish // WildFly ?
+JBoss (WildFly)
+Glassfish
 ```
