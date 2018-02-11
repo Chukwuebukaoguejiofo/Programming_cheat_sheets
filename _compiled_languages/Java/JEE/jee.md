@@ -6,7 +6,7 @@
 
 Documentation: https://javaee.github.io/javaee-spec/javadocs/
 
-```
+```java
 import javax.persistence.*; // JPA
 import javax.sql.*; import java.sql.*; // JDBC
 import javax.jms.*; // JMS
