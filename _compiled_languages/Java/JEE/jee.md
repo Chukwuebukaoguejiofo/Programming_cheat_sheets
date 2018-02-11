@@ -14,7 +14,7 @@ JNDI ==>  import javax.naming.*;
 JAX-RS ==>  import javax.ws.rs.*;
 JAX-WS ==>  import javax.websocket.*;
 JSF ==>  import javax.faces.*;
-JSP ==>  import javax.foo.*;   // ?????
+JSP ==>  import javax.servlet.jsp.*;
 Servlet ==>  import javax.servlet.*;
 Batch ==>  import javax.batch.*;
 Validation ==>  import javax.validation.*;
