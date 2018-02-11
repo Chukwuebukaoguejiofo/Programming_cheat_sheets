@@ -263,7 +263,7 @@ export const foo = function add(a, b){
 
 
 
-/---------------------------------------------------------------------- Generators (Part I)
+//--------------------------------------------------------------------- Generators (Part I)
 
 function* myGenerator() {
     
