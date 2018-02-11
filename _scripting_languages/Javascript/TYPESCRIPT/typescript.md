@@ -260,7 +260,49 @@ export const foo = function add(a, b){
   return a + b;
 }
 
-//--------------------------------------------------------------------- Generators
+
+
+
+/---------------------------------------------------------------------- Generators (Part I)
+
+function* myGenerator() {
+    
+    /**
+     * The first call of .next() executes from the start of the body
+     * of the function, until right before the first yield statement
+     */
+    console.log("You called .next() for the first time!");
+    console.log("...Still no yield statements...");
+  
+    var x = yield;
+    console.log("x: ", x);
+  
+    var y = yield;
+    console.log("y: ", y);
+  
+    var z = yield;
+    console.log("z: ", z);
+}
+
+var g = myGenerator();
+
+
+g.next(); // Start execution of the body of the function
+g.next('This is x'); //=> { value: undefined, done: false }
+g.next('This is y'); //=> { value: undefined, done: false }
+g.next('This is z'); //=> { value: undefined, done: true }
+
+/* Output:
+
+You called .next() for the first time!
+...Still no yield statements...
+x:  This is x
+y:  This is y
+z:  This is z
+
+*/
+
+//--------------------------------------------------------------------- Generators (Part II)
 
 function* foo(){
     yield "One"
@@ -279,7 +321,7 @@ console.log(fooGenerator.next()) // {value: "Four", done: true}
 console.log(fooGenerator.next()) // {value: "undefined", done: true}
 
 
-//-------
+//--------------------------------------------------------------------- Generators (Part III)
 
 function* bar(){
     let name = yield
