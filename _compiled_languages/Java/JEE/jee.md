@@ -29,6 +29,7 @@ import javax.crypto.*; // JCA - Java Cryptography Architecture
 // JTA
 // JAXB JAXP
 // https://javaee.github.io/tutorial/overview008.html
+// https://stackoverflow.com/questions/37082364/a-summary-of-all-java-ee-specifications
 ```
 
 
