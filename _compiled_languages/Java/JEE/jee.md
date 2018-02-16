@@ -26,6 +26,8 @@ import javax.ejb.*; // EJB - Enterprise Java Bean
 import javax.el.*; // EL - expression language
 import javax.crypto.*; // JCA - Java Cryptography Architecture 
 // JSTL - JSTL (JSP Standard Tag Library)
+// JTA
+// JAXB JAXP
 ```
 
 
