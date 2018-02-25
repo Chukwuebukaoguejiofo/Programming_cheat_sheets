@@ -2,12 +2,14 @@
 
 https://en.m.wikipedia.org/wiki/GRASP_(object-oriented_design)
 
-- controller
-- creator
+###### Patterns
+
+- controller (from mvc pattern)
+- creator (factory pattern)
 - indirection (have an object in the middle)
-- information expert
+- information expert (put methods in the best possible class)
 - high cohesion (obj is highly focused)
-- low coupling
+- low coupling (dont depend on other objects)
 - polymorphism
 - protected variations
-- pure fabrication
+- pure fabrication (if there is no class to add a behavior, create a wrapper class for it)
