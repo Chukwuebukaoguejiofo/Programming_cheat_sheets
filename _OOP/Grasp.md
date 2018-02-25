@@ -6,7 +6,7 @@ https://en.m.wikipedia.org/wiki/GRASP_(object-oriented_design)
 - creator
 - indirection
 - information expert
-- high cohesion
+- high cohesion (obj is highly focused)
 - low coupling
 - polymorphism
 - protected variations
