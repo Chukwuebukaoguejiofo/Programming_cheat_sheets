@@ -11,6 +11,10 @@
 require_once './helpers/Test.php'; 
 use app\helpers\Test;
 
+
+$test = new Test();
+$test->foo();
+
 //...
 
 ```
