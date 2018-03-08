@@ -4,7 +4,7 @@
 - and `use` the fully qualified namespace of the classes you brought in!
 
 ```php
-<?php
+<?php namespace app\user;
 
 //...
 
