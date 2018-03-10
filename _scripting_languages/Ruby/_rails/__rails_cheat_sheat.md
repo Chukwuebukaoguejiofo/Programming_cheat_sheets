@@ -73,6 +73,19 @@ rails g migration RemoveUserNameFromUsers user_name:string  # string, decimal, r
 rails g migration CreateJoinTableStudentTeacher Student Teacher # for habtm association
 
 rails g model students_teachers student:references teacher:references# in alphabetical order
+
+# attribute types:
+# primary_key
+# decimal
+# float
+# boolean
+# references
+# binary
+# text
+# date
+# time
+# datetime
+# integer
 ```
 
 ###### Controllers
