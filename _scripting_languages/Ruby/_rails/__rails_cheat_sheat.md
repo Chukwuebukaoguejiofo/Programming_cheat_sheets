@@ -57,6 +57,7 @@ rails s -e production
 # Concatenate and minify assets and add them in the `public` folder
 rake assets:precompile
 
+# rails db:migrate:status # shows what migrations have run, or are pending
 ```
 
 ###### Generators
