@@ -15,11 +15,15 @@ $ rails s -b XXX.XXX.XX.XX -p 3000
 ###### Saving associations
 ```ruby
 # http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html
+# https://apidock.com/rails/ActionView/Helpers/FormHelper/fields_for
+
 
 # class User
 accepts_nested_attributes_for :avatar
 
 #...
+
+# f.fields_for :avatar # in the view
 ```
 
 ###### Decorators
