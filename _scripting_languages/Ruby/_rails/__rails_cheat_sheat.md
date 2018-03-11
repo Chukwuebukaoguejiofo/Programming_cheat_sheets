@@ -12,6 +12,15 @@ rails new myApp -d mysql
 $ rails s -b XXX.XXX.XX.XX -p 3000 
 ```
 
+###### Saving associations
+```ruby
+# http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html
+
+# class User
+accepts_nested_attributes_for :avatar
+
+#...
+```
 
 ###### Decorators
 ```
