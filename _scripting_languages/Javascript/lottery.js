@@ -1,4 +1,4 @@
-# Play the lotery!
+# Play the lottery!
 
 
 ```javascript
