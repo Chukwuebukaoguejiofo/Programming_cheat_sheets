@@ -120,4 +120,21 @@ function multiCalc(){
 multiCalc();
 
 
+
+/*
+OUTPUT EXAMPLE:
+
+{ minDist: 239,
+  minPath: [ 5, 1, 6, 0, 9, 8, 4, 3, 7, 2 ],
+  minHistoryDist: [ 393, 322, 308, 298, 277, 263, 259, 239 ],
+  iterationNumForMin: 383,
+  maxDist: 698,
+  maxPath: [ 5, 3, 9, 6, 8, 7, 4, 1, 0, 2 ],
+  maxHistoryDist: [ 393, 453, 510, 537, 554, 580, 588, 635, 698 ],
+  iterationNumForMax: 51 }
+
+
+*/
+
+
 ```
