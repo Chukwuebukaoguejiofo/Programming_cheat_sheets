@@ -5,6 +5,8 @@
 ```java
 @Component
 
+@ComponentScan
+
 @Controller
 
 @Autowired
