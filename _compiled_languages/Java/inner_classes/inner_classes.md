@@ -16,9 +16,9 @@ class Main {
         Main m = new Main();
       
         // m.new Inner()
-        Main.Inner f = m.new Inner();
+        Main.Inner i = m.new Inner();
     
-        f.print(); // "Inner here!"
+        i.print(); // "Inner here!"
     }
 }
 ```
