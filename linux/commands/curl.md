@@ -2,6 +2,31 @@
 
 curl is linux's web browser!
 
+
+###### Curl REST API user for SpringBoot:
+
+```bash
+-i # headders and response
+-I headders without response
+
+
+# index
+$ curl http://localhost:8182/api/users/index -i 
+
+# show
+$ curl http://localhost:8182/api/users/17 -i 
+
+# create 
+$ curl http://localhost:8182/api/users/ -i -X POST -H "Content-Type: application/json" -d '{"name": "Erich", "salary": 200000, "team_name": "Foobar"}'
+
+# update 
+$ curl http://localhost:8182/api/users/17 -i -X PATCH -H "Content-Type: application/json" -d '{"id": 17, "name": "Erich 2"}'
+
+# destroy 
+$ curl http://localhost:8182/api/users/17 -i -X DELETE -H "Content-Type: application/json" -d '{"id": 17}'
+```
+
+
 ###### Example:
 ```bash
 $ curl google.com
