@@ -7,7 +7,7 @@ curl is linux's web browser!
 
 ```bash
 -i # headders and response
--I headders without response
+-I # headders without response
 
 
 # index
