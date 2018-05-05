@@ -2,6 +2,15 @@
 
 curl is linux's web browser!
 
+###### usage
+```bash
+curl -d '{"foo": "bar"}' -H "content-type: application/json" http://localhost:8080
+
+```
+
+
+
+
 
 ###### Curl REST API user for SpringBoot:
 
