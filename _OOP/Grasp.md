@@ -1,5 +1,6 @@
 # GRASP
 
+###### Very good resource
 https://en.m.wikipedia.org/wiki/GRASP_(object-oriented_design)
 
 ###### Patterns
