@@ -1,6 +1,8 @@
 
 ###### Download jenkins, macOs on the left side of the website:
-`jenkins.io/download`
+```
+https://jenkins.io/download/
+```
 
 
 ###### Install it
