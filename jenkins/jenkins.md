@@ -32,6 +32,13 @@ $ subl /Users/Shared/Jenkins/Home/hudson.model.UpdateCenter.xml
 admin admin
 ```
 
+
+###### Shutdown?
+```
+http://localhost:8080/exit
+# confirm POST request
+```
+
 ```bash
 # to find jenkins process
 $ ps -e | grep jenkins 
