@@ -22,13 +22,16 @@ $ sudo cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword
 $ subl /Users/Shared/Jenkins/Home/hudson.model.UpdateCenter.xml 
 ```
 
-######go to http://localhost:8080/restart
+###### Go to http://localhost:8080/restart
 
-# $ ps -e | grep jenkins # to find jenkins process
-
-- click "Install suggested plugins"
+###### click "Install suggested plugins"
 
 ###### Fill form to create user/password
 ```
 admin admin
+```
+
+```bash
+# to find jenkins process
+$ ps -e | grep jenkins 
 ```
