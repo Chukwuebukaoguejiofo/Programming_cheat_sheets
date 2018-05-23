@@ -42,6 +42,9 @@ admin admin
 ```
 http://localhost:8080/exit
 # confirm POST request
+
+# This works!
+$ sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 ```
 
 ```bash
