@@ -11,6 +11,11 @@ https://jenkins.io/download/
 
 ###### Go to http://localhost:8080/
 
+###### Start jenkins server from the command-line
+```bash
+$ java -jar /Applications/Jenkins/jenkins.war --httpPort=8080
+```
+
 
 ###### Copy path to password from the jenkins app: (example)
 ```bash
