@@ -14,6 +14,20 @@ var app = express();
 //   next();
 // });
 
+
+/**
+ *  Allows third party clients to connect to the socket server (detailed verison!)
+ */
+// app.use(function(request, response, next) {
+//   response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   response.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
+//   response.setHeader('Access-Control-Allow-Credentials', true);
+//   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// });
+
+
+
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 server.listen(3000);
