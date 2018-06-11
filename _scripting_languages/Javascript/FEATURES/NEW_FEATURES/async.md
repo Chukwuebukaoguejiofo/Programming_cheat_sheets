@@ -24,3 +24,6 @@ async function f() {
 
 f().then(alert); // 1
 ```
+
+
+- `await` works only inside async functions
