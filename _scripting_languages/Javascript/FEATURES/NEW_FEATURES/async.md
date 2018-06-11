@@ -35,9 +35,14 @@ async function f() {
   let promise = new Promise((resolve, reject) => {
     setTimeout(() => resolve("done!"), 1000)
   });
-
-  let result = await promise; // wait till the promise resolves (*)
-
+  
+  // wait till the promise resolves (*)
+  // So any code after this line will need to wait,
+  // even `console.log('hello');` will need to wait
+  let result = await promise; 
+  
+  console.log('hello');
+  
   alert(result); // "done!"
 }
 
