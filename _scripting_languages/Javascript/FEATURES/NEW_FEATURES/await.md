@@ -12,7 +12,7 @@ function getUsers() {
 
 async function displayUsers() {
   var users = await getUsers();
-  console.log(users);
+  console.log(users); // this line only executes after 2 seconds
 }
 
 // Displays users after 2 seconds
