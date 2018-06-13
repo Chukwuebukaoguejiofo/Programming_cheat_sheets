@@ -1,7 +1,7 @@
 # Git notes
 
 
-```
+```bash
 git config --global color.ui true
 git config --global user.name "brian spinos"
 git config --global user.email "brian@example.com"
@@ -12,7 +12,7 @@ git config user.email # see email
 
 ```
 
-```
+```bash
 #
 # Create new repo
 #
@@ -24,7 +24,7 @@ git push -u origin master
 
 ```
 
-```
+```bash
 #
 # push to existing repo
 #
@@ -33,27 +33,27 @@ git remote add origin https://github.com/Brian/my-project.git
 git push -u origin master
 ```
 
-```
+```bash
 git remote -v # list remotes
 ```
 
-```
+```bash
 # 3 trees
 WORKING_DIRECTORY,  HEAD, INDEX
 ```
 
-```
+```bash
 # make changes to file
 git add .
 git commit -m 'changes'
 
 ```
 
-```
+```bash
 git diff --staged # display changes that were added, compared to HEAD
 ```
 
-```
+```bash
 # unstage a file, reverse of git add
 # does NOT blow away changes
 $ git reset HEAD foo.html
@@ -62,39 +62,39 @@ $ git reset HEAD foo.html
 git checkout -- foo.html
 ```
 
-```
+```bash
 # add changes to TRACKED files, then commit
 # does NOT add new (untracked) files
 git commit -a -m "some changes" 
 ```
 
-```
+```bash
 # undo a commit
 # reverse of git commit
 # so it brings back files to the staging area!
 git reset --soft HEAD^
 ```
 
-```
+```bash
 git commit --amend -m 'extra changes'
 ```
 
-```
+```bash
 # undo commit and all changes
 git reset --hard HEAD^
 ```
 
-```
+```bash
 git remote add <name> <address>
 git remote rm <name>
 git push -u <name> <address> # push commits
 ```
 
-```
+```bash
 git clone <address> <custom-folder-name>
 ```
 
-```
+```bash
 # create branch
 git branch foo
 
@@ -106,7 +106,7 @@ git checkout foo
 
 ```
 
-```
+```bash
 # fast-forward merge:
 
 # - master branch has NO commits
@@ -117,7 +117,7 @@ git merge foo
 git branch -d foo
 ```
 
-```
+```bash
 # recursive merge
 
 # git reates a merge commit with no files
@@ -131,7 +131,7 @@ git branch -d foo
 ```
 
 
-```
+```bash
 # when git push does not work:
 
 git pull
@@ -139,7 +139,7 @@ git push
 
 ```
 
-```
+```bash
 # What git pull does:
 
 git fetch # updates branch 'origin/master'
@@ -157,7 +157,7 @@ git push
 
 ```
 
-```
+```bash
 # remote branches
 
 git checkout -b foo
@@ -181,13 +181,13 @@ git branch -d foo
 
 ```
 
-```
+```bash
 git remote show origin # 
 
 ```
 
 
-```
+```bash
 # git tags
 
 $ git tag # list tags
@@ -200,7 +200,7 @@ $ git push --tags  # push tags
 
 ```
 
-```
+```bash
 # rebase (puts my changes on top)
 
 
@@ -221,7 +221,7 @@ git rebase --abort
 
 ```
 
-```
+```bash
 # rebase on local branches
 
 git checkout other-branch
@@ -235,7 +235,7 @@ git merge other-branch # will result in a fast-forward merge
 ```
 
 
-```
+```bash
 git log --pretty=oneline
 git log --pretty=format:"%h %ad- %s [%an]"
 git log --oneline -p # for patch changes
@@ -248,11 +248,11 @@ git log --since=1.month.ago --until=2.weeks.ago
 git log --since=2000-01-01 --until=2012-12-21
 ```
 
-```
+```bash
 git blame index.html --date short
 ```
 
-```
+```bash
 git rm foo.html # remove file 
 # git commit -m 'removed file'
 
