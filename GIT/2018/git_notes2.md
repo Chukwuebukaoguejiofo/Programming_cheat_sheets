@@ -30,14 +30,15 @@ git stash show stash@{123} --patch # shows file changes within the stash
 git stash apply stash@{123}
 git stash drop stash@{123}
 
-
-#-----
+```
+```bash
 
 # same as: git stash apply; git stash drop;
 git stash pop
 
 
-#-----
+```
+```bash
 
 # there could be conflicts
 
@@ -50,7 +51,8 @@ git stash apply
 
 
 
-#-----
+```
+```bash
 
 # create branch from stash
 # checks out the branch, and
@@ -58,7 +60,8 @@ git stash apply
 git stash branch new-branch stash@{0}
 
 
-#------
+```
+```bash
 
 git stash clear # delete all stashes
 ```
