@@ -1,4 +1,6 @@
 
+###### stash
+
 ```bash
 # if you are in the middle of work,
 # and you need to work on something else
@@ -66,3 +68,17 @@ git stash branch new-branch stash@{0}
 git stash clear # delete all stashes
 ```
 
+
+###### Reflog
+
+```bash
+
+# limbo commits! in case we did a git reset --hard HEAD
+
+git reflog
+# or: git log --walk-reflogs
+
+
+
+git reset --hard 1e62 # from the reflog
+```
