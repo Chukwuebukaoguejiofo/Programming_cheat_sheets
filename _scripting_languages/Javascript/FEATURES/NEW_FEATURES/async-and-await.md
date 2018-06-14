@@ -2,7 +2,7 @@
 
 ```javascript
 async function f() {
-  return 1;
+  return 1; // will be wrapped in a promise!
 }
 ```
 
