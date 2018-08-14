@@ -152,12 +152,12 @@ $ mvn package
 ###### Dependencies section
 
 scope:
-    - test,
-    - provided,
-    - runtime(not needed for compilation, but for my code to run),
-    - compile(is the default)
-    - system(very brittle, dont use, use my local jar???)
-    - import
+- test
+- provided
+- runtime(not needed for compilation, but for my code to run)
+- compile(is the default)
+- system(very brittle, dont use, use my local jar???)
+- import
 
 
 
