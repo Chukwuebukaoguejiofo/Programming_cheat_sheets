@@ -1,5 +1,10 @@
 # OSI Model
 
+###### What is it? 
+```
+It is a standard for network comunication
+```
+
 https://www.lifewire.com/open-systems-interconnection-model-816290
 
 http://searchnetworking.techtarget.com/definition/OSI
