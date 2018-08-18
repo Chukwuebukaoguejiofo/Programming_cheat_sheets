@@ -10,7 +10,7 @@ http://searchnetworking.techtarget.com/definition/OSI
 
 - OSI is rarely actually implemented, as few network products or standard tools keep all related functions together in well-defined layers as related to the model.
 
-- The TCP/IP protocols, which define the Internet, do not map cleanly to the OSI model.
+- The TCP/IP protocols, which define the Internet, do not map cleanly to the OSI model. see this link: https://www.thegeekstuff.com/2011/11/tcp-ip-fundamentals/
 
 ###### The Seven Layers of the OSI Model
 
