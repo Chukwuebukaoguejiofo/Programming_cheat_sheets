@@ -19,10 +19,6 @@ instance Worker Person where
     sleep (Person name age) = "sleeping..." 
    
 
-
-
-
-
 main = do
   let brian = Person {name="brian", age=29}
   print $ show brian
