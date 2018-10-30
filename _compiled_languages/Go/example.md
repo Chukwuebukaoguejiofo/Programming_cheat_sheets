@@ -1,3 +1,5 @@
+# Go
+
 - Since there is no inheritance in Go, composition is your only choice. The Cat struct has a field called Basics which is of type Animal. The Dog struct is using an un-named struct (embedding) for the Animal type. It’s up to you to decide which is better for you and I will show you both implementations.
 
 
