@@ -38,8 +38,10 @@ class Person : public Human {
   public:
     string address;
     int ssn;
+    Person * friendd;
     Person(string name, int age, string address, int ssn);
     string getAddress();
+    void addFriend(Person * f);
   private:
   protected:
 };
@@ -53,6 +55,10 @@ Person::Person(string name, int age, string address, int ssn) : Human(name, age)
 
 string Person::getAddress(){
   return "Person address: " + this->address + "!";
+}
+
+void Person::addFriend(Person * f){
+  this->friendd = f;
 }
 
 //
@@ -78,6 +84,11 @@ int main() {
   cout << "erich (Person): " << erich->eat("pizza") << endl;
   cout << "erich (Person): " << erich->getAddress() << endl;
 
+  // adding relationships
+  Person * rick = new Person("richard", 60, "456 foobar st", 987654321);
+  erich->addFriend(rick);
+  cout << "friend: " << erich->friendd->name << endl;
+
   // return 0; // optional ?
 }
 
@@ -93,6 +104,7 @@ Person name: erich
 Person age: 28
 erich (Person): Human eating pizza!
 erich (Person): Person address: 123 foobar st!
+friend: richard
 */
 
 ```
