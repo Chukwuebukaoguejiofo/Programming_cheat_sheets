@@ -16,7 +16,6 @@ public class Main{
       b.goToClassInterf();
       b.barAbst();
       b.fooAbst();
-      
   }
 }
 
