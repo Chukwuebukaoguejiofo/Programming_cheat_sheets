@@ -1,89 +1,78 @@
 # Interfaces and Abstract classes
 
-
-
 ```java
+// Interfaces and Abstract classes
+
 public class Main{
-    
-    //
-    // Abstract class
-    //
+  public static void main(String[] args){
+      Person b = new Person("Brian");
+      
+      // Inteligence is abstract, cannot be instantiated
+      // Inteligence inteligence = new Inteligence("Brian");
 
-    static abstract class Inteligence { // The class needs to be 'static' so it can be used in the 'main' function
-        private String name;
-
-        public Inteligence(String name){
-            this.name = name;
-        }
-
-        public void foobar(){
-            System.out.println("foobar called!");
-        }
-
-        public abstract void bar(); // abstract methods cannot have a body
-    }
-
-    //
-    // Interface
-    //
-
-    static interface Student { // The class needs to be 'static' so it can be used in the 'main' function
-        public void study();
-        public void goToClass();
-    }
-
-    //
-    // Class
-    //
-    
-    static class Person extends Inteligence implements Student{ // The class needs to be 'static' so it can be used in the 'main' function
-        private String name;
-
-        public Person(String name){
-            super(name); // we need to instantiate the parent class too ???
-            this.name = name;
-        }
-
-        public void phone(){
-            System.out.println("phone called!");
-        }
-
-        //
-        // using the interface 'Student' functions
-        //
-
-        public void study(){
-            System.out.println("study called!");
-        }
-
-        public void goToClass(){
-            System.out.println("goToClass called!");
-        }
-
-        //
-        // using abstract methods from Inteligence class
-        //
-
-        public void bar(){
-            System.out.println("bar called!");
-        }
-    }
-  
-
-    public static void main(String[] args){
-        Person brian = new Person("Spinos");
-
-        // Inteligence inteligence = new Inteligence("Spinos"); // Inteligence is abstract; cannot be instantiated
-
-
-        System.out.println(brian.name); // Spinos
-
-        brian.study();
-        brian.goToClass();
-        brian.bar();
-        brian.foobar();
-        brian.phone();
-    }
+      b.getName(); // Brian
+      b.myNormalMethod();
+      b.studyInterf();
+      b.goToClassInterf();
+      b.barAbst();
+      b.fooAbst();
+      
+  }
 }
 
+// Interface
+interface Student {
+    public void studyInterf();
+    public void goToClassInterf();
+}
+
+// Abstract class
+abstract class Inteligence {
+  private String name;
+
+  public Inteligence(String name){
+    this.name = name;
+  }
+
+  public void getName(){
+    System.out.println(this.name);
+  }
+
+  public void fooAbst(){
+    System.out.println("foo - method implemented in abstract class");
+  }
+  
+  // abstract methods cannot have a body
+  public abstract void barAbst();
+}
+
+// Class
+class Person extends Inteligence implements Student {
+  // private String name;
+
+  public Person(String name){
+    // we need to instantiate the parent class too ???
+    super(name);
+
+    // this.name = name;
+  }
+
+  public void myNormalMethod(){
+    System.out.println("myNormalMethod called!");
+  }
+
+  public void studyInterf(){
+    System.out.println("studyInterf called!");
+  }
+
+  public void goToClassInterf(){
+    System.out.println("goToClassInterf called!");
+  }
+
+  public void barAbst(){
+    System.out.println("barAbst - method implemented in concrete class");
+  }
+
+  // fooAbst already defined in abstract class
+}
 ```
