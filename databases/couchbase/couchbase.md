@@ -1,6 +1,6 @@
 # CouchBase
 
-```n1ql
+```sql
 /* buckets: users, houses, cars, ... */
 
 SELECT * FROM users
