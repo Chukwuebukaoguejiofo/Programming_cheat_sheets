@@ -1,5 +1,7 @@
 # CouchBase
 
+- https://query-tutorial.couchbase.com/tutorial/#1
+
 ```sql
 /* buckets: users, houses, cars, ... */
 
