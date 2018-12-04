@@ -1,4 +1,4 @@
-# Database sesign
+# Database design
 
 ###### Normalization
 
