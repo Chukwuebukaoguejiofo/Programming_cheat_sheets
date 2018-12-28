@@ -1,5 +1,7 @@
 # OSI Model
 
+![](https://techdifferences.com/wp-content/uploads/2016/03/Untitled-1.jpg)
+
 ###### What is it? 
 ```
 It is a standard for network comunication
