@@ -1,6 +1,6 @@
 # Webworker
 
-```
+```bash
 $ node server.js
 
 # Go to http://localhost:12345/
