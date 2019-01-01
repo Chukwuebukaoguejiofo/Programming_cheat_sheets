@@ -1,5 +1,10 @@
 # Webworker
 
+```
+$ node server.js
+
+# Go to http://localhost:12345/
+```
 
 
 ###### client.html
