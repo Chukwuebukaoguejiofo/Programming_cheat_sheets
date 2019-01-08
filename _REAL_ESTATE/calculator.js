@@ -6,6 +6,7 @@
  * NOI
  * LTV
  * GROSS/NET
+ * TAX on income
  */
 calculate = (options) => {
 
