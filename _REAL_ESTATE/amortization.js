@@ -1,5 +1,6 @@
 /**
  * Amortization function
+ * https://codepen.io/joeymack47/pen/fHwvd?editors=1111
  */
 const amort = (balance, interestRate, terms) => {
     interestRate = interestRate / 100; // in decimal
