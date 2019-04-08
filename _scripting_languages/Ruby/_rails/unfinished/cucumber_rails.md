@@ -189,3 +189,24 @@ bundle exec cucumber -s
 
 ```
 
+###### Grid example
+```gherkin
+Feature: Signing in
+  In order to use the app
+  As a user
+  I want to sign in
+
+  Scenario: create user
+    Given I am on the home page
+    When I fill in "#user-name" with <user>
+    And I fill in "#password" with <password>
+    And I press "#submit"
+    Then I should see "User was successfully signed in"
+    
+    Examples:
+        | user    | password  |
+        | "brian" | "pass123" |
+        | "erich" | "pass456" |
+   
+```
+
