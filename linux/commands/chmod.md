@@ -17,4 +17,6 @@ $ chmod 300 brian.txt # gives the user write, execute permission on the file
 $ chmod 200 brian.txt # gives the user write permission on the file
 $ chmod 100 brian.txt # gives the user execute permission on the file
 $ chmod 000 brian.txt # gives the user NO permission on the file
+
+$ chmod -R 744 fileOrFolder # recursive
 ```
