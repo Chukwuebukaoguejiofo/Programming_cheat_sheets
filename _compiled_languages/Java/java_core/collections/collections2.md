@@ -123,3 +123,67 @@ class Main {
   }
 }
 ```
+
+###### Output
+
+```
+
+============== List
+
+
+======= ArrayList
+foo
+bar
+null
+
+
+======= LinkedList
+foo
+bar
+null
+
+
+============== Queue
+
+
+======= PriorityQueue
+bar
+foo
+
+
+======= LinkedList*
+
+
+======= ArrayDeque
+foo
+bar
+
+
+============== Set
+
+
+======= HashSet
+null
+bar
+foo
+
+
+======= TreeSet
+null
+bar
+foo
+
+
+============== Map
+
+
+======= HashMap
+null = null
+erich = spinos
+brian = spinos
+
+
+======= TreeMap
+brian : spinos
+erich : spinos
+```
