@@ -59,3 +59,14 @@ class Main {
   }
 }
 ```
+
+
+###### Output
+```
+anonymous classes!
+FooI.bar overwriten
+BarA.bar overwriten
+inside baz
+BazC.baz - new method!
+BazC.bar overwriten
+```
