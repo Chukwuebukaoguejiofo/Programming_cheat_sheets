@@ -6,6 +6,9 @@ https://www.baeldung.com/groovy-spock
 
 // DOCS: http://spockframework.org/spock/docs/1.1/all_in_one.html
 //       http://spockframework.org/spock/docs/1.3/all_in_one.html
+
+// cheatsheet
+https://objectpartners.com/2014/04/08/spock-mock-cheatsheet/
 ```
 
 
