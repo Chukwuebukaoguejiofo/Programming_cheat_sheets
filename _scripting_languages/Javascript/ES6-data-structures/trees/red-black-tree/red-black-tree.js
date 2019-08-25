@@ -1,422 +1,15 @@
-// // ES6 red-black tree
-
-// class Node {
-//     constructor(){
-//         this.RED = 0;
-//         this.BLACK = 1;
-//         this.key = -1;
-//         this.color = this.BLACK;
-//         this.left = null;
-//         this.right = null;
-//         this.parent = null;
-//     }
-// }
-
-
-// class RedBlackTree {
-//     constructor(){
-//         this.RED = 0;
-//         this.BLACK = 1;
-//         this.nil = RedBlackTree.getEmptyNode()
-//         this.root = this.nil;
-
-//     }
-
-//     static getEmptyNode(){
-//         let emptyNode = new Node();
-//         let node = new Node();
-
-//         node.left = emptyNode;
-//         node.right = emptyNode;
-//         node.parent = emptyNode;
-//         node.isNil = true;
-
-//         return node;
-//     }
-
-//     static createNewNode(key){
-//         let node = new Node();
-//         node.key = key;
-//         node.left = this.nil
-//         node.right = this.nil
-//         node.parent = this.nil
-//         return node;
-//     }
-
-//     printTree(node) {
-//         console.log("printTree - node: " + node)
-//         if (node == this.nil) {
-//             return;
-//         }
-//         this.printTree(node.left);
-//         console.log(((node.color==this.RED)?"Color: Red ":"Color: Black ")+"Key: "+node.key+" Parent: "+node.parent.key+"\n");
-//         this.printTree(node.right);
-//     }
-
-//     findNode(findNode, node) {
-//         if (this.root == this.nil) {
-//             return null;
-//         }
-
-//         if (findNode.key < node.key) {
-//             if (node.left != this.nil) {
-//                 return findNode(findNode, node.left);
-//             }
-//         } else if (findNode.key > node.key) {
-//             if (node.right != this.nil) {
-//                 return findNode(findNode, node.right);
-//             }
-//         } else if (findNode.key == node.key) {
-//             return node;
-//         }
-//         return null;
-//     }
-
-//     insert(node) {
-//       console.log("NODE: " + node.key);
-//         let temp = this.root;
-//         if (this.root == this.nil) {
-//             this.root = node;
-//             node.color = this.BLACK;
-//             node.parent = this.nil;
-//         } else {
-//             node.color = this.RED;
-//             while (true) {
-//                 if (node.key < temp.key) {
-//                     if (temp.left == this.nil) {
-//                         temp.left = node;
-//                         node.parent = temp;
-//                         break;
-//                     } else {
-//                         temp = temp.left;
-//                     }
-//                 } else if (node.key >= temp.key) {
-//                     if (temp.right == this.nil) {
-//                         temp.right = node;
-//                         node.parent = temp;
-//                         break;
-//                     } else {
-//                         temp = temp.right;
-//                     }
-//                 }
-//             }
-//             this.fixTree(node);
-//         }
-//     }
-
-//     //Takes as argument the newly inserted node
-//     fixTree(node) {
-//         while (node.parent.color == this.RED) {
-//             uncle = this.nil;
-//             if (node.parent == node.parent.parent.left) {
-//                 uncle = node.parent.parent.right;
-
-//                 if (uncle != this.nil && uncle.color == this.RED) {
-//                     node.parent.color = this.BLACK;
-//                     uncle.color = this.BLACK;
-//                     node.parent.parent.color = this.RED;
-//                     node = node.parent.parent;
-//                     continue;
-//                 }
-//                 if (node == node.parent.right) {
-//                     //Double rotation needed
-//                     node = node.parent;
-//                     this.rotateLeft(node);
-//                 }
-//                 node.parent.color = this.BLACK;
-//                 node.parent.parent.color = this.RED;
-//                 //if the "else if" code hasn't executed, this
-//                 //is a case where we only need a single rotation
-//                 this.rotateRight(node.parent.parent);
-//             } else {
-//                 uncle = node.parent.parent.left;
-//                  if (uncle != this.nil && uncle.color == this.RED) {
-//                     node.parent.color = this.BLACK;
-//                     uncle.color = this.BLACK;
-//                     node.parent.parent.color = this.RED;
-//                     node = node.parent.parent;
-//                     continue;
-//                 }
-//                 if (node == node.parent.left) {
-//                     //Double rotation needed
-//                     node = node.parent;
-//                     this.rotateRight(node);
-//                 }
-//                 node.parent.color = this.BLACK;
-//                 node.parent.parent.color = this.RED;
-//                 //if the "else if" code hasn't executed, this
-//                 //is a case where we only need a single rotation
-//                 this.rotateLeft(node.parent.parent);
-//             }
-//         }
-//         this.root.color = this.BLACK;
-//     }
-
-//     rotateLeft(node) {
-//         if (node.parent != this.nil) {
-//             if (node == node.parent.left) {
-//                 node.parent.left = node.right;
-//             } else {
-//                 node.parent.right = node.right;
-//             }
-//             node.right.parent = node.parent;
-//             node.parent = node.right;
-//             if (node.right.left != this.nil) {
-//                 node.right.left.parent = node;
-//             }
-//             node.right = node.right.left;
-//             node.parent.left = node;
-//         } else {//Need to rotate this.root
-//             right = this.root.right;
-//             this.root.right = right.left;
-//             right.left.parent = this.root;
-//             this.root.parent = right;
-//             right.left = this.root;
-//             right.parent = this.nil;
-//             this.root = right;
-//         }
-//     }
-
-//     rotateRight(node) {
-//         if (node.parent != this.nil) {
-//             if (node == node.parent.left) {
-//                 node.parent.left = node.left;
-//             } else {
-//                 node.parent.right = node.left;
-//             }
-
-//             node.left.parent = node.parent;
-//             node.parent = node.left;
-//             if (node.left.right != this.nil) {
-//                 node.left.right.parent = node;
-//             }
-//             node.left = node.left.right;
-//             node.parent.right = node;
-//         } else {//Need to rotate this.root
-//             left = this.root.left;
-//             this.root.left = this.root.left.right;
-//             left.right.parent = this.root;
-//             this.root.parent = left;
-//             left.right = this.root;
-//             left.parent = this.nil;
-//             this.root = left;
-//         }
-//     }
-
-//     //Deletes whole tree
-//     deleteTree(){
-//         this.root = nil;
-//     }
-
-//     //This operation doesn't care about the new Node's connections
-//     //with previous node's left and right. The caller has to take care
-//     //of that.
-//     transplant(target, with2){
-//           if(target.parent == nil){
-//               this.root = with2;
-//           }else if(target == target.parent.left){
-//               target.parent.left = with2;
-//           }else
-//               target.parent.right = with2;
-//           with2.parent = target.parent;
-//     }
-
-//     delete(z){
-//         if((z = findNode(z, this.root))==null)return false;
-//         x;
-//         y = z; // temporary reference y
-//         y_original_color = y.color;
-
-//         if(z.left == nil){
-//             x = z.right;
-//             transplant(z, z.right);
-//         }else if(z.right == nil){
-//             x = z.left;
-//             transplant(z, z.left);
-//         }else{
-//             y = treeMinimum(z.right);
-//             y_original_color = y.color;
-//             x = y.right;
-//             if(y.parent == z)
-//                 x.parent = y;
-//             else{
-//                 transplant(y, y.right);
-//                 y.right = z.right;
-//                 y.right.parent = y;
-//             }
-//             transplant(z, y);
-//             y.left = z.left;
-//             y.left.parent = y;
-//             y.color = z.color;
-//         }
-//         if(y_original_color==this.BLACK)
-//             deleteFixup(x);
-//         return true;
-//     }
-
-//     deleteFixup(x){
-//         while(x!=this.root && x.color == this.BLACK){
-//             if(x == x.parent.left){
-//                 w = x.parent.right;
-//                 if(w.color == this.RED){
-//                     w.color = this.BLACK;
-//                     x.parent.color = this.RED;
-//                     rotateLeft(x.parent);
-//                     w = x.parent.right;
-//                 }
-//                 if(w.left.color == this.BLACK && w.right.color == this.BLACK){
-//                     w.color = this.RED;
-//                     x = x.parent;
-//                     continue;
-//                 }
-//                 else if(w.right.color == this.BLACK){
-//                     w.left.color = this.BLACK;
-//                     w.color = this.RED;
-//                     rotateRight(w);
-//                     w = x.parent.right;
-//                 }
-//                 if(w.right.color == this.RED){
-//                     w.color = x.parent.color;
-//                     x.parent.color = this.BLACK;
-//                     w.right.color = this.BLACK;
-//                     rotateLeft(x.parent);
-//                     x = this.root;
-//                 }
-//             }else{
-//                 w = x.parent.left;
-//                 if(w.color == this.RED){
-//                     w.color = this.BLACK;
-//                     x.parent.color = this.RED;
-//                     rotateRight(x.parent);
-//                     w = x.parent.left;
-//                 }
-//                 if(w.right.color == this.BLACK && w.left.color == this.BLACK){
-//                     w.color = this.RED;
-//                     x = x.parent;
-//                     continue;
-//                 }
-//                 else if(w.left.color == this.BLACK){
-//                     w.right.color = this.BLACK;
-//                     w.color = this.RED;
-//                     rotateLeft(w);
-//                     w = x.parent.left;
-//                 }
-//                 if(w.left.color == this.RED){
-//                     w.color = x.parent.color;
-//                     x.parent.color = this.BLACK;
-//                     w.left.color = this.BLACK;
-//                     rotateRight(x.parent);
-//                     x = this.root;
-//                 }
-//             }
-//         }
-//         x.color = this.BLACK;
-//     }
-
-//     treeMinimum(subTreeRoot){
-//         while(subTreeRoot.left!=nil){
-//             subTreeRoot = subTreeRoot.left;
-//         }
-//         return subTreeRoot;
-//     }
-
-//     // consoleUI() {
-//     //     scan = new Scanner(System.in);
-//     //     while (true) {
-//     //         System.out.println("\n"
-//     //                 + "1.- Add items\n"
-//     //                 + "2.- Delete items\n"
-//     //                 + "3.- Check items\n"
-//     //                 + "4.- Print tree\n"
-//     //                 + "5.- Delete tree\n");
-//     //         int choice = scan.nextInt();
-
-//     //         int item;
-//     //         node;
-//     //         switch (choice) {
-//     //             case 1: // add
-//     //                 item = scan.nextInt();
-//     //                 while (item != -999) {
-//     //                     node = new Node(item);
-//     //                     insert(node);
-//     //                     item = scan.nextInt();
-//     //                 }
-//     //                 printTree(this.root);
-//     //                 break;
-//     //             case 2: // delete
-//     //                 item = scan.nextInt();
-//     //                 while (item != -999) {
-//     //                     node = new Node(item);
-//     //                     System.out.print("\nDeleting item " + item);
-//     //                     if (delete(node)) {
-//     //                         System.out.print(": deleted!");
-//     //                     } else {
-//     //                         System.out.print(": does not exist!");
-//     //                     }
-//     //                     item = scan.nextInt();
-//     //                 }
-//     //                 System.out.println();
-//     //                 printTree(this.root);
-//     //                 break;
-//     //             case 3: // check
-//     //                 item = scan.nextInt();
-//     //                 while (item != -999) {
-//     //                     node = new Node(item);
-//     //                     System.out.println((findNode(node, this.root) != null) ? "found" : "not found");
-//     //                     item = scan.nextInt();
-//     //                 }
-//     //                 break;
-//     //             case 4:// print tree
-//     //                 printTree(this.root);
-//     //                 break;
-//     //             case 5: // delete tree
-//     //                 deleteTree();
-//     //                 System.out.println("Tree deleted!");
-//     //                 break;
-//     //         }
-//     //     }
-//     // }
-
-
-
-// }
-
-
-// rbt = new RedBlackTree();
-
-
-// rbt.insert(RedBlackTree.createNewNode(1));
-// rbt.insert(RedBlackTree.createNewNode(2));
-// // rbt.insertNodeWithKey(1);
-
-
-// rbt.printTree(rbt.root);
-
-
-
-
-
-
-//
-//
-// =================================================
-//
-
-
-
-//
-// TODO:
-//
-/*
-- create a CLI for user input
-- make sure `nil` is FINAL
-
-*/
-
+// ES6 red-black tree
 
 // reference:
 // http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html?m=1
 
+
+/**
+ * TODO:
+ * - check if tests are correct
+ * - create a CLI for user input
+ * - make sure `nil` is FINAL
+*/
 class Node {
     constructor(){
         this.key = null;
@@ -427,7 +20,6 @@ class Node {
     }
 
     toString(){
-        // Node { key: -1, color: 1, parent: null, left: null, right: null }
         return `Node { key: ${this.key}, color: ${this.getColor()}, parent: ${this.hasParent()}, left: ${this.hasLeft()}, right: ${this.hasRight()} }`;
     }
 
@@ -547,7 +139,9 @@ class RBT {
         this.printTree(node.right);
     }
 
-    //Takes as argument the newly inserted node
+    /**
+     * Takes as argument the newly inserted node
+     */
     fixTree(node) {
         while (node.parent.color == this.RED) {
             let uncle = this.nil;
@@ -681,9 +275,11 @@ class RBT {
     // Deletion code
     //
 
-    //This operation doesn't care about the new Node's connections
-    //with previous node's left and right. The caller has to take care
-    //of that.
+    /**
+     * This operation doesn't care about the new Node's connections
+     * with previous node's left and right. The caller has to take care
+     * of that.
+     */
     transplant(target, with2){
           if(target.parent == this.nil){
               this.root = with2;
@@ -790,7 +386,10 @@ class RBT {
 }
 
 
-// TEST
+/**
+ * Test helper
+ */
+
 
 assertTrue = (a, b, msg) => {
     let result = a == b;
@@ -803,12 +402,13 @@ assertTrue = (a, b, msg) => {
     }
 }
 
-//
-// TEST
-//
+
+/**
+ * Tests
+ */
+
 
 let rbt = new RBT();
-
 
 
 assertTrue(
