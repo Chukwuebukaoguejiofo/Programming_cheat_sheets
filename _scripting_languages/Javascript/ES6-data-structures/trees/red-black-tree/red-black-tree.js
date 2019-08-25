@@ -326,7 +326,7 @@ class RBT {
     deleteFixup(x){
         while(x!=this.root && x.color == this.BLACK){
             if(x == x.parent.left){
-                w = x.parent.right;
+                let w = x.parent.right;
                 if(w.color == this.RED){
                     w.color = this.BLACK;
                     x.parent.color = this.RED;
@@ -352,7 +352,7 @@ class RBT {
                     x = this.root;
                 }
             }else{
-                w = x.parent.left;
+                let w = x.parent.left;
                 if(w.color == this.RED){
                     w.color = this.BLACK;
                     x.parent.color = this.RED;
@@ -411,68 +411,42 @@ assertTrue = (a, b, msg) => {
 let rbt = new RBT();
 
 
-assertTrue(
-    rbt.root.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "root should start as sentinel"
-)
+assertTrue(`
+${rbt.root.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+`, "Empty tree")
 
 rbt.insert(1)
 
 
-assertTrue(
-    rbt.root.toString(),
-    "Node { key: 1, color: BLACK, parent: -1, left: -1, right: -1 }",
-    "root key should be 1"
-)
-
-// TODO: sentinel parent needs to point to root as child
-assertTrue(
-    rbt.root.parent.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "parent should be sentinel"
-)
-
-assertTrue(
-    rbt.root.left.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "left should be sentinel"
-)
-
-assertTrue(
-    rbt.root.right.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "right should be sentinel"
-)
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: 1, color: BLACK, parent: -1, left: -1, right: -1 }
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+`, "Inserting 1")
 
 
 rbt.insert(2)
 
 // TODO: sentinel parent needs to point to root as child
-assertTrue(
-    rbt.root.parent.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "parent should be sentinel"
-)
-
-assertTrue(
-    rbt.root.toString(),
-    "Node { key: 1, color: BLACK, parent: -1, left: -1, right: 2 }",
-    "----> test #1"
-)
-
-
-assertTrue(
-    rbt.root.left.toString(),
-    "Node { key: -1, color: BLACK, parent: false, left: false, right: false }",
-    "----> test #2"
-)
-
-assertTrue(
-    rbt.root.right.toString(),
-    "Node { key: 2, color: RED, parent: 1, left: -1, right: -1 }",
-    "----> test #3"
-)
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: 1, color: BLACK, parent: -1, left: -1, right: 2 }
+Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: 2, color: RED, parent: 1, left: -1, right: -1 }
+`, "Inserting 2")
 
 
 rbt.insert(3)
@@ -480,30 +454,17 @@ rbt.insert(3)
 // TODO: sentinel parent needs to point to root as child
 
 // ISSUE: parent has another parent ???
-assertTrue(
-    rbt.root.parent.toString(),
-    "Node { key: -1, color: BLACK, parent: 1, left: false, right: false }",
-    "parent should be sentinel--"
-)
-
-assertTrue(
-    rbt.root.toString(),
-    "Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }",
-    "----> test #4"
-)
-
-
-assertTrue(
-    rbt.root.left.toString(),
-    "Node { key: 1, color: RED, parent: 2, left: -1, right: -1 }",
-    "----> test #5"
-)
-
-assertTrue(
-    rbt.root.right.toString(),
-    "Node { key: 3, color: RED, parent: 2, left: -1, right: -1 }",
-    "----> test #6"
-)
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }
+Node { key: 1, color: RED, parent: 2, left: -1, right: -1 }
+Node { key: 3, color: RED, parent: 2, left: -1, right: -1 }
+`, "Inserting 3")
 
 
 
@@ -512,53 +473,24 @@ assertTrue(
 rbt.insert(4)
 
 // TODO: sentinel parent needs to point to root as child
-
 // ISSUE: parent has another parent ??? [CIRCULAR]
-assertTrue(
-    rbt.root.parent.toString(),
-    "Node { key: -1, color: BLACK, parent: 1, left: false, right: false }",
-    "parent should be sentinel--"
-)
-
-assertTrue(
-    rbt.root.toString(),
-    "Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }",
-    "----> test #7"
-)
-
-
-assertTrue(
-    rbt.root.left.toString(),
-    "Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }",
-    "right node should 2..."
-)
-
-assertTrue(
-    rbt.root.right.toString(),
-    "Node { key: 3, color: BLACK, parent: 2, left: -1, right: 4 }",
-    "----> test #8"
-)
-
-
-assertTrue(
-    rbt.root.right.right.toString(),
-    "Node { key: 4, color: RED, parent: 3, left: -1, right: -1 }",
-    "----> test #9"
-)
-
-assertTrue(
-    rbt.root.right.right.right.toString(),
-    "Node { key: -1, color: BLACK, parent: 1, left: false, right: false }",
-    "----> test #10"
-)
-
-assertTrue(
-    rbt.root.right.right.left.toString(),
-    "Node { key: -1, color: BLACK, parent: 1, left: false, right: false }",
-    "----> test #11"
-)
-
-
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+${rbt.root.right.right.toString()}
+${rbt.root.right.right.right.toString()}
+${rbt.root.right.right.left.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }
+Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 3, color: BLACK, parent: 2, left: -1, right: 4 }
+Node { key: 4, color: RED, parent: 3, left: -1, right: -1 }
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+`, "Inserting 4")
 
 
 const doSuffleArray = (count) => {
@@ -580,7 +512,9 @@ const doSuffleArray = (count) => {
 };
 
 
-
+//
+// Add shuffled inputs
+//
 
 shuffledArray = doSuffleArray(20);
 console.log("\n\nINPUTS:");
@@ -621,4 +555,6 @@ rbt.printTree(rbt.root)
 
 rbt.deleteTree();
 rbt.printTree(rbt.root)
+
+
 
