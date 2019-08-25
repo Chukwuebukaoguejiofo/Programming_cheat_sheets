@@ -677,6 +677,115 @@ class RBT {
         return subTreeRoot;
     }
 
+    //
+    // Deletion code
+    //
+
+    //This operation doesn't care about the new Node's connections
+    //with previous node's left and right. The caller has to take care
+    //of that.
+    transplant(target, with2){
+          if(target.parent == this.nil){
+              this.root = with2;
+          }else if(target == target.parent.left){
+              target.parent.left = with2;
+          }else
+              target.parent.right = with2;
+          with2.parent = target.parent;
+    }
+
+    delete(z){
+        if((z = this.findNode(z, this.root))==null)return false;
+        let x;
+        let y = z; // temporary reference y
+        let y_original_color = y.color;
+
+        if(z.left == this.nil){
+            x = z.right;
+            this.transplant(z, z.right);
+        }else if(z.right == this.nil){
+            x = z.left;
+            this.transplant(z, z.left);
+        }else{
+            y = this.treeMinimum(z.right);
+            y_original_color = y.color;
+            x = y.right;
+            if(y.parent == z)
+                x.parent = y;
+            else{
+                this.transplant(y, y.right);
+                y.right = z.right;
+                y.right.parent = y;
+            }
+            this.transplant(z, y);
+            y.left = z.left;
+            y.left.parent = y;
+            y.color = z.color;
+        }
+        if(y_original_color==this.BLACK)
+            this.deleteFixup(x);
+        return true;
+    }
+
+    deleteFixup(x){
+        while(x!=this.root && x.color == this.BLACK){
+            if(x == x.parent.left){
+                w = x.parent.right;
+                if(w.color == this.RED){
+                    w.color = this.BLACK;
+                    x.parent.color = this.RED;
+                    this.rotateLeft(x.parent);
+                    w = x.parent.right;
+                }
+                if(w.left.color == this.BLACK && w.right.color == this.BLACK){
+                    w.color = this.RED;
+                    x = x.parent;
+                    continue;
+                }
+                else if(w.right.color == this.BLACK){
+                    w.left.color = this.BLACK;
+                    w.color = this.RED;
+                    this.rotateRight(w);
+                    w = x.parent.right;
+                }
+                if(w.right.color == this.RED){
+                    w.color = x.parent.color;
+                    x.parent.color = this.BLACK;
+                    w.right.color = this.BLACK;
+                    this.rotateLeft(x.parent);
+                    x = this.root;
+                }
+            }else{
+                w = x.parent.left;
+                if(w.color == this.RED){
+                    w.color = this.BLACK;
+                    x.parent.color = this.RED;
+                    this.rotateRight(x.parent);
+                    w = x.parent.left;
+                }
+                if(w.right.color == this.BLACK && w.left.color == this.BLACK){
+                    w.color = this.RED;
+                    x = x.parent;
+                    continue;
+                }
+                else if(w.left.color == this.BLACK){
+                    w.right.color = this.BLACK;
+                    w.color = this.RED;
+                    this.rotateLeft(w);
+                    w = x.parent.left;
+                }
+                if(w.left.color == this.RED){
+                    w.color = x.parent.color;
+                    x.parent.color = this.BLACK;
+                    w.left.color = this.BLACK;
+                    this.rotateRight(x.parent);
+                    x = this.root;
+                }
+            }
+        }
+        x.color = this.BLACK;
+    }
+
 
 }
 
@@ -899,10 +1008,17 @@ console.log("\n\ntreeMinimumNode: " + treeMinimumNode.toString());
 
 
 //
+// Delete node
+//
+
+console.log("Delete node 15:");
+wasDeleted = rbt.delete(rbt.createNewNode(15))
+rbt.printTree(rbt.root)
+
+//
 // delete tree
 //
 
 rbt.deleteTree();
 rbt.printTree(rbt.root)
-
 
