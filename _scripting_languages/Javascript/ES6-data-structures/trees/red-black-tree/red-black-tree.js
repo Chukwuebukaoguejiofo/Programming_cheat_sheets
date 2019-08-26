@@ -6,7 +6,7 @@
 
 /**
  * TODO:
- * - check if tests are correct
+ * - check if tests are correct --> https://www.youtube.com/watch?v=PhY56LpCtP4
  * - create a CLI for user input
  * - make sure `nil` is FINAL
 */
