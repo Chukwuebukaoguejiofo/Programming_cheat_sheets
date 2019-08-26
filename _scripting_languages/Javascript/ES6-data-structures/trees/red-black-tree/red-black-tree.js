@@ -144,19 +144,19 @@ class RBT {
      * Takes as argument the newly inserted node
      */
     fixTree(node) {
-        while (node.parent.color == this.RED) {
+        while (node.parent.color == this.RED) {           // while parent is RED
             let uncle = this.nil;
-            if (node.parent == node.parent.parent.left) {
+            if (node.parent == node.parent.parent.left) { // parent is left child
                 uncle = node.parent.parent.right;
 
-                if (uncle != this.nil && uncle.color == this.RED) {
+                if (uncle != this.nil && uncle.color == this.RED) { // uncle is red
                     node.parent.color = this.BLACK;
                     uncle.color = this.BLACK;
                     node.parent.parent.color = this.RED;
                     node = node.parent.parent;
                     continue;
                 }
-                if (node == node.parent.right) {
+                if (node == node.parent.right) {              // node is right child
                     //Double rotation needed
                     node = node.parent;
                     this.rotateLeft(node);
@@ -166,16 +166,16 @@ class RBT {
                 //if the "else if" code hasn't executed, this
                 //is a case where we only need a single rotation
                 this.rotateRight(node.parent.parent);
-            } else {
+            } else {                                     // parent is right child
                 uncle = node.parent.parent.left;
-                 if (uncle != this.nil && uncle.color == this.RED) {
+                 if (uncle != this.nil && uncle.color == this.RED) { // uncle is red
                     node.parent.color = this.BLACK;
                     uncle.color = this.BLACK;
                     node.parent.parent.color = this.RED;
                     node = node.parent.parent;
                     continue;
                 }
-                if (node == node.parent.left) {
+                if (node == node.parent.left) {               // node is left child
                     //Double rotation needed
                     node = node.parent;
                     this.rotateRight(node);
@@ -431,7 +431,7 @@ Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 Node { key: 1, color: BLACK, parent: -1, left: -1, right: -1 }
 Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 Node { key: -1, color: BLACK, parent: false, left: false, right: false }
-`, "Inserting 1")
+`, "Inserting 1 (No RED nodes)")
 
 
 rbt.insert(2)
@@ -447,7 +447,7 @@ Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 Node { key: 1, color: BLACK, parent: -1, left: -1, right: 2 }
 Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 Node { key: 2, color: RED, parent: 1, left: -1, right: -1 }
-`, "Inserting 2")
+`, "Inserting 2 (only 2 is RED)")
 
 
 rbt.insert(3)
@@ -465,7 +465,7 @@ Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
 Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }
 Node { key: 1, color: RED, parent: 2, left: -1, right: -1 }
 Node { key: 3, color: RED, parent: 2, left: -1, right: -1 }
-`, "Inserting 3")
+`, "Inserting 3 (only 1 and 3 are RED)")
 
 
 
@@ -491,7 +491,50 @@ Node { key: 3, color: BLACK, parent: 2, left: -1, right: 4 }
 Node { key: 4, color: RED, parent: 3, left: -1, right: -1 }
 Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
 Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
-`, "Inserting 4")
+`, "Inserting 4 (only 4 is red)")
+
+
+rbt.insert(5)
+
+// TODO: sentinel parent needs to point to root as child
+// ISSUE: parent has another parent ??? [CIRCULAR]
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+${rbt.root.right.left.toString()}
+${rbt.root.right.right.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: 2, color: BLACK, parent: -1, left: 1, right: 4 }
+Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 4, color: BLACK, parent: 2, left: 3, right: 5 }
+Node { key: 3, color: RED, parent: 4, left: -1, right: -1 }
+Node { key: 5, color: RED, parent: 4, left: -1, right: -1 }
+`, "Inserting 5 (only 3 and 5 are RED)")
+
+rbt.insert(6)
+
+// TODO: sentinel parent needs to point to root as child
+// ISSUE: parent has another parent ??? [CIRCULAR]
+assertTrue(`
+${rbt.root.parent.toString()}
+${rbt.root.toString()}
+${rbt.root.left.toString()}
+${rbt.root.right.toString()}
+${rbt.root.right.left.toString()}
+${rbt.root.right.right.toString()}
+${rbt.root.right.right.right.toString()}
+`, `
+Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: 2, color: BLACK, parent: -1, left: 1, right: 4 }
+Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 4, color: RED, parent: 2, left: 3, right: 5 }
+Node { key: 3, color: BLACK, parent: 4, left: -1, right: -1 }
+Node { key: 5, color: BLACK, parent: 4, left: -1, right: 6 }
+Node { key: 6, color: RED, parent: 5, left: -1, right: -1 }
+`, "Inserting 6 (only 4 and 6 are RED)")
 
 
 const doSuffleArray = (count) => {
@@ -556,6 +599,5 @@ rbt.printTree(rbt.root)
 
 rbt.deleteTree();
 rbt.printTree(rbt.root)
-
 
 
