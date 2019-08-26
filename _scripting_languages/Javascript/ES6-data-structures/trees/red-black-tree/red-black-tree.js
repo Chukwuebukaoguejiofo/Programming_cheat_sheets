@@ -7,6 +7,7 @@
 /**
  * TODO:
  * - check if tests are correct --> https://www.youtube.com/watch?v=PhY56LpCtP4
+ * - do a console.log for the different cases: case #1, case #2, ...
  * - create a CLI for user input
  * - make sure `nil` is FINAL
 */
