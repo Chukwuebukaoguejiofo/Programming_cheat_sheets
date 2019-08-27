@@ -1,3 +1,8 @@
+// https://raw.githubusercontent.com/brianspinos777/Programming_cheat_sheets/master/_scripting_languages/Javascript/ES6-data-structures/trees/red-black-tree/red-black-tree.js
+
+
+
+
 // ES6 red-black tree
 
 // reference:
@@ -421,6 +426,12 @@ Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 rbt.insert(1)
 
 
+/*
+        B1
+       /  \            
+*/
+
+
 assertTrue(`
 ${rbt.root.parent.toString()}
 ${rbt.root.toString()}
@@ -435,6 +446,15 @@ Node { key: -1, color: BLACK, parent: false, left: false, right: false }
 
 
 rbt.insert(2)
+
+
+/*
+        B1
+       /  \ 
+          R2
+         /  \ 
+           
+*/
 
 // TODO: sentinel parent needs to point to root as child
 assertTrue(`
@@ -451,6 +471,14 @@ Node { key: 2, color: RED, parent: 1, left: -1, right: -1 }
 
 
 rbt.insert(3)
+
+/*
+        B2
+     /      \ 
+    R1      R3
+  /   \   /    \ 
+             
+*/
 
 // TODO: sentinel parent needs to point to root as child
 
@@ -472,6 +500,15 @@ Node { key: 3, color: RED, parent: 2, left: -1, right: -1 }
 
 
 rbt.insert(4)
+
+/*
+        B2
+     /      \ 
+    B1      B3
+  /   \   /    \ 
+               R4
+              /  \
+*/
 
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
@@ -496,6 +533,18 @@ Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
 
 rbt.insert(5)
 
+/*
+
+        B2
+     /      \ 
+    B1      B4
+  /   \   /    \ 
+         R3    R5
+        /  \  /  \
+             
+
+*/
+
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
 assertTrue(`
@@ -515,6 +564,19 @@ Node { key: 5, color: RED, parent: 4, left: -1, right: -1 }
 `, "Inserting 5 (only 3 and 5 are RED)")
 
 rbt.insert(6)
+
+/*
+
+        B2
+     /      \ 
+    B1      R4
+  /   \   /    \ 
+         B3    B5
+        /  \  /  \
+                 R6
+                /  \ 
+
+*/
 
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
@@ -599,5 +661,4 @@ rbt.printTree(rbt.root)
 
 rbt.deleteTree();
 rbt.printTree(rbt.root)
-
 
