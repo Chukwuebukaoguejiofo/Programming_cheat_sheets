@@ -1,3 +1,5 @@
+// see github
+
 // https://raw.githubusercontent.com/brianspinos777/Programming_cheat_sheets/master/_scripting_languages/Javascript/ES6-data-structures/trees/red-black-tree/red-black-tree.js
 
 
@@ -38,10 +40,10 @@ class Node {
             if(this.parent.key){
               return this.parent.key
             }
-            return true;
+            return '*NO_KEY*';
         }
 
-        return false;
+        return null;
     }
 
     hasLeft(){
@@ -49,10 +51,10 @@ class Node {
             if(this.left.key){
               return this.left.key
             }
-            return true;
+            return '*NO_KEY*';
         }
 
-        return false;
+        return null;
     }
 
     hasRight(){
@@ -60,10 +62,10 @@ class Node {
             if(this.right.key){
               return this.right.key
             }
-            return true;
+            return '*NO_KEY*';
         }
 
-        return false;
+        return null;
     }
 }
 
@@ -416,20 +418,19 @@ assertTrue = (a, b, msg) => {
 
 let rbt = new RBT();
 
-
 assertTrue(`
 ${rbt.root.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
 `, "Empty tree")
 
 rbt.insert(1)
 
 
-/*
-        B1
-       /  \            
-*/
+/**
+ *    B1
+ *   /  \
+ */
 
 
 assertTrue(`
@@ -438,23 +439,23 @@ ${rbt.root.toString()}
 ${rbt.root.left.toString()}
 ${rbt.root.right.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
 Node { key: 1, color: BLACK, parent: -1, left: -1, right: -1 }
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
 `, "Inserting 1 (No RED nodes)")
 
 
 rbt.insert(2)
 
 
-/*
-        B1
-       /  \ 
-          R2
-         /  \ 
-           
-*/
+/**
+ *    B1
+ *   /  \
+ *      R2
+ *     /  \
+ */
+
 
 // TODO: sentinel parent needs to point to root as child
 assertTrue(`
@@ -463,22 +464,24 @@ ${rbt.root.toString()}
 ${rbt.root.left.toString()}
 ${rbt.root.right.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
 Node { key: 1, color: BLACK, parent: -1, left: -1, right: 2 }
-Node { key: -1, color: BLACK, parent: false, left: false, right: false }
+Node { key: -1, color: BLACK, parent: null, left: null, right: null }
 Node { key: 2, color: RED, parent: 1, left: -1, right: -1 }
 `, "Inserting 2 (only 2 is RED)")
 
 
 rbt.insert(3)
 
-/*
-        B2
-     /      \ 
-    R1      R3
-  /   \   /    \ 
-             
-*/
+
+/**
+ *         B2
+ *      /      \
+ *     R1      R3
+ *   /   \   /    \
+ *
+ */
+
 
 // TODO: sentinel parent needs to point to root as child
 
@@ -489,26 +492,25 @@ ${rbt.root.toString()}
 ${rbt.root.left.toString()}
 ${rbt.root.right.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
 Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }
 Node { key: 1, color: RED, parent: 2, left: -1, right: -1 }
 Node { key: 3, color: RED, parent: 2, left: -1, right: -1 }
 `, "Inserting 3 (only 1 and 3 are RED)")
 
 
-
-
-
 rbt.insert(4)
 
-/*
-        B2
-     /      \ 
-    B1      B3
-  /   \   /    \ 
-               R4
-              /  \
-*/
+
+/**
+ *        B2
+ *     /      \
+ *    B1      B3
+ *  /   \   /    \
+ *               R4
+ *              /  \
+ */
+
 
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
@@ -521,29 +523,28 @@ ${rbt.root.right.right.toString()}
 ${rbt.root.right.right.right.toString()}
 ${rbt.root.right.right.left.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
 Node { key: 2, color: BLACK, parent: -1, left: 1, right: 3 }
 Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
 Node { key: 3, color: BLACK, parent: 2, left: -1, right: 4 }
 Node { key: 4, color: RED, parent: 3, left: -1, right: -1 }
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
 `, "Inserting 4 (only 4 is red)")
 
 
 rbt.insert(5)
 
-/*
 
-        B2
-     /      \ 
-    B1      B4
-  /   \   /    \ 
-         R3    R5
-        /  \  /  \
-             
+/**
+ *        B2
+ *     /      \
+ *    B1      B4
+ *  /   \   /    \
+ *         R3    R5
+ *        /  \  /  \
+ */
 
-*/
 
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
@@ -555,7 +556,7 @@ ${rbt.root.right.toString()}
 ${rbt.root.right.left.toString()}
 ${rbt.root.right.right.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
 Node { key: 2, color: BLACK, parent: -1, left: 1, right: 4 }
 Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
 Node { key: 4, color: BLACK, parent: 2, left: 3, right: 5 }
@@ -563,20 +564,21 @@ Node { key: 3, color: RED, parent: 4, left: -1, right: -1 }
 Node { key: 5, color: RED, parent: 4, left: -1, right: -1 }
 `, "Inserting 5 (only 3 and 5 are RED)")
 
+
 rbt.insert(6)
 
-/*
 
-        B2
-     /      \ 
-    B1      R4
-  /   \   /    \ 
-         B3    B5
-        /  \  /  \
-                 R6
-                /  \ 
+/**
+ *        B2
+ *     /      \
+ *    B1      R4
+ *  /   \   /    \
+ *         B3    B5
+ *        /  \  /  \
+ *                 R6
+ *                /  \
+ */
 
-*/
 
 // TODO: sentinel parent needs to point to root as child
 // ISSUE: parent has another parent ??? [CIRCULAR]
@@ -589,7 +591,7 @@ ${rbt.root.right.left.toString()}
 ${rbt.root.right.right.toString()}
 ${rbt.root.right.right.right.toString()}
 `, `
-Node { key: -1, color: BLACK, parent: 1, left: false, right: false }
+Node { key: -1, color: BLACK, parent: 1, left: null, right: null }
 Node { key: 2, color: BLACK, parent: -1, left: 1, right: 4 }
 Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
 Node { key: 4, color: RED, parent: 2, left: 3, right: 5 }
@@ -622,14 +624,13 @@ const doSuffleArray = (count) => {
 // Add shuffled inputs
 //
 
+
 shuffledArray = doSuffleArray(20);
 console.log("\n\nINPUTS:");
 console.log(shuffledArray);
 console.log("\n\n");
 shuffledArray.forEach(n => rbt.insert(n));
 rbt.printTree(rbt.root)
-
-
 
 
 //
@@ -643,6 +644,7 @@ console.log("\n\nfoundNode: " + foundNode.toString());
 // treeMinimum
 //
 
+
 treeMinimumNode = rbt.treeMinimum(rbt.root.right.right)
 console.log("\n\ntreeMinimumNode: " + treeMinimumNode.toString());
 
@@ -651,14 +653,94 @@ console.log("\n\ntreeMinimumNode: " + treeMinimumNode.toString());
 // Delete node
 //
 
+
 console.log("Delete node 15:");
 wasDeleted = rbt.delete(rbt.createNewNode(15))
 rbt.printTree(rbt.root)
+
 
 //
 // delete tree
 //
 
+
 rbt.deleteTree();
 rbt.printTree(rbt.root)
 
+
+/* OUTPUT:
+
+
+TEST[PASSED]:Empty tree
+TEST[PASSED]:Inserting 1 (No RED nodes)
+TEST[PASSED]:Inserting 2 (only 2 is RED)
+TEST[PASSED]:Inserting 3 (only 1 and 3 are RED)
+TEST[PASSED]:Inserting 4 (only 4 is red)
+TEST[PASSED]:Inserting 5 (only 3 and 5 are RED)
+TEST[PASSED]:Inserting 6 (only 4 and 6 are RED)
+
+
+INPUTS:
+[ 16, 13, 15, 22, 28, 20, 14, 18, 10, 23, 25, 24, 26, 12, 17, 27, 11, 21, 19, 29 ]
+
+
+
+Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 2, color: BLACK, parent: 4, left: 1, right: 3 }
+Node { key: 3, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 4, color: RED, parent: 15, left: 2, right: 6 }
+Node { key: 5, color: BLACK, parent: 6, left: -1, right: -1 }
+Node { key: 6, color: BLACK, parent: 4, left: 5, right: 13 }
+Node { key: 10, color: RED, parent: 11, left: -1, right: -1 }
+Node { key: 11, color: BLACK, parent: 13, left: 10, right: 12 }
+Node { key: 12, color: RED, parent: 11, left: -1, right: -1 }
+Node { key: 13, color: RED, parent: 6, left: 11, right: 14 }
+Node { key: 14, color: BLACK, parent: 13, left: -1, right: -1 }
+Node { key: 15, color: BLACK, parent: -1, left: 4, right: 22 }
+Node { key: 16, color: BLACK, parent: 18, left: -1, right: 17 }
+Node { key: 17, color: RED, parent: 16, left: -1, right: -1 }
+Node { key: 18, color: BLACK, parent: 22, left: 16, right: 20 }
+Node { key: 19, color: RED, parent: 20, left: -1, right: -1 }
+Node { key: 20, color: BLACK, parent: 18, left: 19, right: 21 }
+Node { key: 21, color: RED, parent: 20, left: -1, right: -1 }
+Node { key: 22, color: RED, parent: 15, left: 18, right: 25 }
+Node { key: 23, color: BLACK, parent: 25, left: -1, right: 24 }
+Node { key: 24, color: RED, parent: 23, left: -1, right: -1 }
+Node { key: 25, color: BLACK, parent: 22, left: 23, right: 27 }
+Node { key: 26, color: BLACK, parent: 27, left: -1, right: -1 }
+Node { key: 27, color: RED, parent: 25, left: 26, right: 28 }
+Node { key: 28, color: BLACK, parent: 27, left: -1, right: 29 }
+Node { key: 29, color: RED, parent: 28, left: -1, right: -1 }
+
+
+foundNode: Node { key: 4, color: RED, parent: 15, left: 2, right: 6 }
+
+
+treeMinimumNode: Node { key: 23, color: BLACK, parent: 25, left: -1, right: 24 }
+Delete node 15:
+Node { key: 1, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 2, color: BLACK, parent: 4, left: 1, right: 3 }
+Node { key: 3, color: BLACK, parent: 2, left: -1, right: -1 }
+Node { key: 4, color: RED, parent: 16, left: 2, right: 6 }
+Node { key: 5, color: BLACK, parent: 6, left: -1, right: -1 }
+Node { key: 6, color: BLACK, parent: 4, left: 5, right: 13 }
+Node { key: 10, color: RED, parent: 11, left: -1, right: -1 }
+Node { key: 11, color: BLACK, parent: 13, left: 10, right: 12 }
+Node { key: 12, color: RED, parent: 11, left: -1, right: -1 }
+Node { key: 13, color: RED, parent: 6, left: 11, right: 14 }
+Node { key: 14, color: BLACK, parent: 13, left: -1, right: -1 }
+Node { key: 16, color: BLACK, parent: -1, left: 4, right: 22 }
+Node { key: 17, color: BLACK, parent: 18, left: -1, right: -1 }
+Node { key: 18, color: BLACK, parent: 22, left: 17, right: 20 }
+Node { key: 19, color: RED, parent: 20, left: -1, right: -1 }
+Node { key: 20, color: BLACK, parent: 18, left: 19, right: 21 }
+Node { key: 21, color: RED, parent: 20, left: -1, right: -1 }
+Node { key: 22, color: RED, parent: 16, left: 18, right: 25 }
+Node { key: 23, color: BLACK, parent: 25, left: -1, right: 24 }
+Node { key: 24, color: RED, parent: 23, left: -1, right: -1 }
+Node { key: 25, color: BLACK, parent: 22, left: 23, right: 27 }
+Node { key: 26, color: BLACK, parent: 27, left: -1, right: -1 }
+Node { key: 27, color: RED, parent: 25, left: 26, right: 28 }
+Node { key: 28, color: BLACK, parent: 27, left: -1, right: 29 }
+Node { key: 29, color: RED, parent: 28, left: -1, right: -1 }
+*/
