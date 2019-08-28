@@ -1,11 +1,5 @@
-// see github
-
-// https://raw.githubusercontent.com/brianspinos777/Programming_cheat_sheets/master/_scripting_languages/Javascript/ES6-data-structures/trees/red-black-tree/red-black-tree.js
-
-
-
-
 // ES6 red-black tree
+
 
 // reference:
 // http://www.codebytes.in/2014/10/red-black-tree-java-implementation.html?m=1
