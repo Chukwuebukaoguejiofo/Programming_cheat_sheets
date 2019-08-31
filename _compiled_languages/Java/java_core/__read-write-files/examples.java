@@ -1,15 +1,29 @@
 //=========================================== Classes
 File
-FileWriter
 
 other:
-FileWriter, FileReader,
+InputStream, OutputStream // Interfaces ???
 FileInputStream, FileOutputStream,
-BufferedReader, BufferedWriter,
-Files, Scanner,
-DataInputStream, DataOutputStream,
+FileWriter, FileReader, // wrapper for FileInputStream, FileOutputStream,
+
 BuffereInputStream, BufferedOutputStream,
+BufferedReader, BufferedWriter, // wrapper for BuffereInputStream, BufferedOutputStream, ???
+
+Files, Scanner,
+
 RandomAccessFile
+
+
+InputStreamReader
+InputStreamWriter // ??? need to check
+
+ByteArrayInputStream, ByteArrayOutputStream
+DataInputStream, DataOutputStream,
+
+
+System.in
+System.out
+System.err
 
 //=========================================== Gotchas
 
@@ -27,6 +41,8 @@ RandomAccessFile
 // https://www.w3schools.com/java/java_files.asp
 
 // https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-io
+
+// https://www.tutorialspoint.com/java/java_files_io.htm
 
 //===========================================
 // File class
@@ -78,13 +94,19 @@ public class GetFileInfo {
 
 
 
-//=========================================== FileWriter
+//=========================================== FileReader/FileWriter
+
+// IO for for 16-bit unicode
+// uses FileInputStream/FileOutputStream internally
+
+// FileReader reads two bytes at a time
+// FileWriter writes two bytes at a time.
+
+//========= copy string to file
 
 import java.io.FileWriter;   // Import the FileWriter class
 import java.io.IOException;  // Import the IOException class to handle errors
 
-public class WriteToFile {
-  public static void main(String[] args) {
     try {
       FileWriter myWriter = new FileWriter("filename.txt");
       myWriter.write("Files in Java might be tricky, but it is fun enough!");
@@ -94,9 +116,42 @@ public class WriteToFile {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
-  }
-}
 
+
+
+//========= copy file content to another file
+
+ FileReader in = null;
+        FileWriter out = null;
+
+        try {
+            in = new FileReader("input.txt");
+            out = new FileWriter("output.txt");
+
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
 
 
@@ -124,14 +179,49 @@ public class ReadFile {
     }
   }
 }
-//=========================================== FileInputStream
+//=========================================== FileInputStream/FileOutputStream
 
-new FileInputStream(path);
-new FileInputStream(new File(path)); // need to verify
+// new FileInputStream(String);
+// new FileInputStream(File);
+
+import java.io.*;
+
+     FileInputStream in = null;
+        FileOutputStream out = null;
+
+        try {
+            in = new FileInputStream("input.txt");
+            out = new FileOutputStream("output.txt");
+
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
 
-//===========================================
+//=========================================== DataInputStream/DataOutputStream
 
+// used to read and write primitives: (int, short, long, byte, char, boolean, double, float)
 
 //=========================================== BufferedInputStream
 
@@ -175,8 +265,18 @@ public class Main {
    }
 }
 
-//===========================================
-//===========================================
+//=========================================== ByteArrayInputStream
+
+// https://www.tutorialspoint.com/java/java_bytearrayinputstream.htm
+
+// allows a buffer in the memory to be used as an InputStream.
+// The input source is a byte array.
+
+ByteArrayInputStream(byte [] a)
+ByteArrayInputStream(byte [] a, int firstByteToBeRead, int len)
+
+
+
 //=========================================== Apache Commons IO
 
 // does not keep all the file in memory
@@ -191,4 +291,3 @@ try {
 }
 
 //===========================================
-
