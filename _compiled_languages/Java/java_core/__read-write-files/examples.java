@@ -225,6 +225,11 @@ import java.io.*;
 
 //=========================================== BufferedInputStream
 
+
+//
+// Has an internal Buffer, that reads large amounts of bytes from the source file.
+//
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
