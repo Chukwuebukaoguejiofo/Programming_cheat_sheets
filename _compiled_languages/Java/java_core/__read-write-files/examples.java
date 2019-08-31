@@ -230,6 +230,13 @@ import java.io.*;
 // Has an internal Buffer, that reads large amounts of bytes from the source file.
 //
 
+// default buffer size is 8k
+// set it to multiples of 4k (1024 * 4 == 4096)
+// 64k, 512K, 2M, ...
+// example: 64k -> 1024 * 4 * 16
+// example: 1024 * 4 * N
+
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
