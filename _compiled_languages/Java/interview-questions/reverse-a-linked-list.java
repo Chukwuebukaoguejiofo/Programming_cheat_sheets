@@ -39,6 +39,8 @@ class Main {
   
   /**
    * reversing a linked list.
+   * This works with 0 to N nodes!
+   
    * basically, you need 3 pointers, the middle pointer
    * points to the current node, and you need to make 
    * the middle node point to the previous node.
