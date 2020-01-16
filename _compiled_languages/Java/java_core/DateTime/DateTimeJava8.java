@@ -3,6 +3,11 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
+
+/**
+ * String format reference:
+ * https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+ */
 class Main {
   public static void main(String[] args) {
 
