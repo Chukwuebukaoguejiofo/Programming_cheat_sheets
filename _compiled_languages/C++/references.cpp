@@ -15,12 +15,13 @@ void Person::setLastName(string lastName){
 }
 
 int main() {
-  int i = 17;
+  int i = 10;
   int& r = i;
-  cout << "result: " << i << endl;
+  i = 20;
+  cout << "number: " << i << endl; // 20
 
   Person brian("Spinos");
   Person& brianRef = brian;
   brian.setLastName("Smith");
-  cout << "Person last name: " << brianRef.lastName << endl;
+  cout << "Person last name: " << brianRef.lastName << endl; // Smith
 }
