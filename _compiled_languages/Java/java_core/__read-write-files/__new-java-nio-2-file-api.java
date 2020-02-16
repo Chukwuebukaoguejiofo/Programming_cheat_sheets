@@ -31,3 +31,17 @@ try {
 // Files.copy(file1, file2, StandardCopyOption.REPLACE_EXISTING);
 // Files.move(file1, file2);
 // Files.move(file1, file2, StandardCopyOption.REPLACE_EXISTING);
+
+
+//
+// Streams
+//
+
+String fileName = "foo.txt";
+
+//read file into stream, try-with-resources
+try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+    stream.forEach(System.out::println);
+} catch (IOException e) {
+    e.printStackTrace();
+}
