@@ -1,5 +1,3 @@
-package com.brian.tree.avl;
-
 import java.util.Queue;
 import java.util.Stack;
 import java.util.LinkedList;
@@ -141,10 +139,7 @@ class Tree{
      */
     public Node find(Node currentNode, int key){
         if (currentNode == null) return null; // not found
-        if (key == currentNode.key){
-            System.out.println("here");
-            return currentNode; // base case
-        }
+        if (key == currentNode.key) return currentNode; // base case
 
         if (key > currentNode.key)
             return find(currentNode.right, key);
