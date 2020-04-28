@@ -1,3 +1,5 @@
+package com.brian.tree.avl;
+
 import java.util.Queue;
 import java.util.Stack;
 import java.util.LinkedList;
@@ -134,16 +136,20 @@ class Tree{
         return null; // none found
     }
 
+    /**
+     * TODO: Need to check this one!
+     */
     public Node find(Node currentNode, int key){
         if (currentNode == null) return null; // not found
-        if (key == currentNode.key) return currentNode; // base case
+        if (key == currentNode.key){
+            System.out.println("here");
+            return currentNode; // base case
+        }
 
         if (key > currentNode.key)
-            find(currentNode.right, key);
+            return find(currentNode.right, key);
         else
-            find(currentNode.left, key);
-
-        return null; // not found
+            return find(currentNode.left, key);
     }
 
     public void delete(int key){
@@ -170,6 +176,12 @@ public class AvlTreeExample {
         t.insert(4);
 
         t.inOrder(t.root);
+
+        System.out.println("found: " + t.find(t.root, 5));
+        System.out.println("found: " + t.find(5));
+
+        System.out.println("found: " + t.find(t.root, 50));
+        System.out.println("found: " + t.find(50));
     }
 }
 
