@@ -151,8 +151,40 @@ class Tree{
         //...
     }
 
-    public void delete(Node currentNode, int key){
-        //...
+    public Node delete(Node currentNode, int key){
+        if (root == null) return null;
+
+        else if(key < currentNode.key) currentNode.left = delete(currentNode.left, key);
+        else if(key > currentNode.key) currentNode.right = delete(currentNode.right, key);
+        else{
+            if (currentNode.left == null && currentNode.right == null){
+                // case 1: no children
+                currentNode = null;
+            }
+            else if (currentNode.left == null){
+                // case 2: one child
+                currentNode = currentNode.right;
+
+            }
+            else if (currentNode.right == null){
+                // case 2: one child
+                currentNode = currentNode.left;
+            }
+            else{
+                // case 3: 2 children
+                Node temp = findMin(currentNode.right);
+                currentNode.key = temp.key;
+                currentNode.right = delete(currentNode.right, key);
+            }
+        }
+        return currentNode;
+    }
+
+    private Node findMin(Node currentNode) {
+        while(currentNode.left != null){
+            currentNode = currentNode.right;
+        }
+        return currentNode;
     }
 }
 
@@ -177,11 +209,18 @@ public class AvlTreeExample {
 
         System.out.println("found: " + t.find(t.root, 50));
         System.out.println("found: " + t.find(50));
+
+        System.out.println("========== Deletion");
+        t.root = t.delete(t.root, 1);
+        t.root = t.delete(t.root, 2);
+        t.root = t.delete(t.root, 3);
+        t.root = t.delete(t.root, 4);
+
+        t.inOrder(t.root);
     }
 }
 
 /*
-
 ========== OUTPUT:
 k:1
 k:2
@@ -193,5 +232,15 @@ k:7
 k:8
 k:9
 k:10
-
+found: k:5
+found: k:5
+found: null
+found: null
+========== Deletion
+k:5
+k:6
+k:7
+k:8
+k:9
+k:10
 */
