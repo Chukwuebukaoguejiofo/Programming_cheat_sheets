@@ -8,6 +8,26 @@
 */
 
 
+
+/*
+
+========== RBT insertion (what about triangle case?):
+
+If Uncle is Black: 
+    - Means that the tree is too heavy on the Parent's side,
+      so a rotation towards the Uncle is necessary.
+      1. Rotate Grandparent towards the Uncle
+      2. Recolor original Parent and Grandparent
+
+If Uncle is Red:
+    - Means that the tree is heavy on the Parent's side, BUT 
+      not enough to need a rotation, so
+      1. Recolor original Parent, Grandparent and Uncle
+      2. Mark current node to Grandparent and check for violations
+
+*/
+
+
 /*
  RBT
 
