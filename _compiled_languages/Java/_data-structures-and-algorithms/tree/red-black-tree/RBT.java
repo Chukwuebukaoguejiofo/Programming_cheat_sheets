@@ -11,7 +11,10 @@
 
 /*
 
-========== RBT insertion (what about triangle case?):
+========== RBT insertion:
+
+What about triangle case? (Left Child or Right Child, or Right Child of Left Child)
+    - Rotate the Parent, then proceed to the following cases
 
 If Uncle is Black: 
     - Means that the tree is too heavy on the Parent's side,
