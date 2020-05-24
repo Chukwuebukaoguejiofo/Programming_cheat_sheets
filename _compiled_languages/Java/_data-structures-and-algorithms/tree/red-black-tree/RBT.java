@@ -16,14 +16,14 @@
 What about triangle case? (Left Child or Right Child, or Right Child of Left Child)
     - Rotate the Parent, then proceed to the following cases
 
-If Uncle is Black: 
+If Uncle is Black:
     - Means that the tree is too heavy on the Parent's side,
       so a rotation towards the Uncle is necessary.
       1. Rotate Grandparent towards the Uncle
       2. Recolor original Parent and Grandparent
 
 If Uncle is Red:
-    - Means that the tree is heavy on the Parent's side, BUT 
+    - Means that the tree is heavy on the Parent's side, BUT
       not enough to need a rotation, so
       1. Recolor original Parent, Grandparent and Uncle
       2. Mark current node to Grandparent and check for violations
@@ -463,7 +463,7 @@ class RBT{
 
         if(root == nodeToDelete) root = null;
     }
- 
+
     private void handleDoubleBlack(Node doubleBlack) {
         Node s = getSibling(doubleBlack);
         if(s.color == Color.RED){
@@ -492,7 +492,7 @@ class RBT{
             }
         }
     }
- 
+
     private void case4(Node doubleBlack) {
         Node s = getSibling(doubleBlack);
         if (isLeftChild(doubleBlack)){
@@ -508,7 +508,7 @@ class RBT{
         }
         if (doubleBlack.parent == root) root = s;
     }
- 
+
     private void case3(Node doubleBlack) {
         Node s = getSibling(doubleBlack);
         if (isLeftChild(doubleBlack)){
@@ -523,12 +523,12 @@ class RBT{
             case4(doubleBlack);
         }
     }
- 
+
     private void case2(Node doubleBlack) {
         getSibling(doubleBlack).color = Color.RED;
         doubleBlack.parent.color = Color.BLACK;
     }
- 
+
     private void case1(Node doubleBlack) {
         Node s = getSibling(doubleBlack);
         if (isLeftChild(doubleBlack)){
@@ -543,7 +543,7 @@ class RBT{
         if (doubleBlack.parent == root) root = s;
         handleDoubleBlack(doubleBlack);
     }
- 
+
     public Node getSibling(Node n){
         return n.parent.left == n ? n.parent.right : n.parent.left;
     }
@@ -553,221 +553,238 @@ class RBT{
 }
 
 class Main {
-    public static void main(String[] args) {
-        RBT t = new RBT();
+    public static void testEqual(Object o1, Object o2, String msg)  throws Exception {
+        if (!o1.equals(o2)){
+            throw new Exception("ERROR: " + msg);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        RBT t;
+        String res, treeState;
+
 
         //
         //================================================================== TESTING 1,2,3,4,5,6 case:
         //
 
-//        String res, treeState;
-//
-//        //============== insert 1
-//        t.insert(1);
-//        res = String.format("%s", t.root);
-//        treeState = "Node{key=1, color=BLACK, parent=-1, left=-1, right=-1}";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 2
-//        t.insert(2);
-//        res = String.format("%s\n%s\n", t.root, t.root.right);
-//        treeState =
-//                "Node{key=1, color=BLACK, parent=-1, left=-1, right=2}\n" +
-//                        "Node{key=2, color=RED, parent=1, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 3
-//        t.insert(3);
-//        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
-//        treeState =
-//                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
-//                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 4
-//        t.insert(4);
-//        res = String.format("%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.right);
-//        treeState =
-//                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
-//                        "Node{key=3, color=BLACK, parent=2, left=-1, right=4}\n" +
-//                        "Node{key=4, color=RED, parent=3, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 5
-//        t.insert(5);
-//        res = String.format("%s\n%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.left, t.root.right.right);
-//        treeState =
-//                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=4}\n" +
-//                        "Node{key=4, color=BLACK, parent=2, left=3, right=5}\n" +
-//                        "Node{key=3, color=RED, parent=4, left=-1, right=-1}\n" +
-//                        "Node{key=5, color=RED, parent=4, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 6
-//        t.insert(6);
-//        res = String.format("%s\n%s\n%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.left, t.root.right.right, t.root.right.right.right);
-//        treeState =
-//                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=4}\n" +
-//                        "Node{key=4, color=RED, parent=2, left=3, right=5}\n" +
-//                        "Node{key=3, color=BLACK, parent=4, left=-1, right=-1}\n" +
-//                        "Node{key=5, color=BLACK, parent=4, left=-1, right=6}\n" +
-//                        "Node{key=6, color=RED, parent=5, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //System.out.println(res);
-//
-//
-//
-//        // adding extra random items:
-//        Integer[] intArray = { 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
-//        List<Integer> intList = Arrays.asList(intArray);
-//        Collections.shuffle(intList);
-//        intList.forEach(t::insert);
-//
-//        t.inOrder(t.root);
+        res = "";
+        treeState = "";
+        t = new RBT();
+
+        //============== insert 1
+        t.insert(1);
+        res = String.format("%s", t.root);
+        treeState = "Node{key=1, color=BLACK, parent=-1, left=-1, right=-1}";
+        testEqual(res, treeState, "FAIL");
 
 
+        //============== insert 2
+        t.insert(2);
+        res = String.format("%s\n%s\n", t.root, t.root.right);
+        treeState =
+                "Node{key=1, color=BLACK, parent=-1, left=-1, right=2}\n" +
+                        "Node{key=2, color=RED, parent=1, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 3
+        t.insert(3);
+        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
+        treeState =
+                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
+                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 4
+        t.insert(4);
+        res = String.format("%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.right);
+        treeState =
+                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
+                        "Node{key=3, color=BLACK, parent=2, left=-1, right=4}\n" +
+                        "Node{key=4, color=RED, parent=3, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 5
+        t.insert(5);
+        res = String.format("%s\n%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.left, t.root.right.right);
+        treeState =
+                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=4}\n" +
+                        "Node{key=4, color=BLACK, parent=2, left=3, right=5}\n" +
+                        "Node{key=3, color=RED, parent=4, left=-1, right=-1}\n" +
+                        "Node{key=5, color=RED, parent=4, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 6
+        t.insert(6);
+        res = String.format("%s\n%s\n%s\n%s\n%s\n%s\n", t.root.left, t.root, t.root.right, t.root.right.left, t.root.right.right, t.root.right.right.right);
+        treeState =
+                "Node{key=1, color=BLACK, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=4}\n" +
+                        "Node{key=4, color=RED, parent=2, left=3, right=5}\n" +
+                        "Node{key=3, color=BLACK, parent=4, left=-1, right=-1}\n" +
+                        "Node{key=5, color=BLACK, parent=4, left=-1, right=6}\n" +
+                        "Node{key=6, color=RED, parent=5, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+
+
+
+
+        // adding extra random items:
+        Integer[] intArray = { 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+        List<Integer> intList = Arrays.asList(intArray);
+        Collections.shuffle(intList);
+        intList.forEach(t::insert);
+
+        //t.inOrder(t.root);
+
+        //
         //================================================================== TESTING RL case:
         //
 
-//        String res, treeState;
-//
-//        //============== insert 10
-//        t.insert(10);
-//        res = String.format("%s", t.root);
-//        treeState = "Node{key=10, color=BLACK, parent=-1, left=-1, right=-1}";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 20
-//        t.insert(20);
-//        res = String.format("%s\n%s\n", t.root, t.root.right);
-//        treeState =
-//                "Node{key=10, color=BLACK, parent=-1, left=-1, right=20}\n" +
-//                        "Node{key=20, color=RED, parent=10, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 15
-//        t.insert(15);
-//        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
-//        treeState =
-//                "Node{key=10, color=RED, parent=15, left=-1, right=-1}\n" +
-//                        "Node{key=15, color=BLACK, parent=-1, left=10, right=20}\n" +
-//                        "Node{key=20, color=BLACK, parent=15, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//        System.out.println(res);
+        //String res, treeState;
+        res = "";
+        treeState = "";
+        t = new RBT();
+
+        //============== insert 10
+        t.insert(10);
+        res = String.format("%s", t.root);
+        treeState = "Node{key=10, color=BLACK, parent=-1, left=-1, right=-1}";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 20
+        t.insert(20);
+        res = String.format("%s\n%s\n", t.root, t.root.right);
+        treeState =
+                "Node{key=10, color=BLACK, parent=-1, left=-1, right=20}\n" +
+                        "Node{key=20, color=RED, parent=10, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 15
+        t.insert(15);
+        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
+        treeState =
+                "Node{key=10, color=RED, parent=15, left=-1, right=-1}\n" +
+                        "Node{key=15, color=BLACK, parent=-1, left=10, right=20}\n" +
+                        "Node{key=20, color=BLACK, parent=15, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
 
         //
         //================================================================== TESTING LR case:
         //
 
-//        String res, treeState;
-//
-//        //============== insert 20
-//        t.insert(20);
-//        res = String.format("%s", t.root);
-//        treeState = "Node{key=20, color=BLACK, parent=-1, left=-1, right=-1}";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 10
-//        t.insert(10);
-//        res = String.format("%s\n%s\n", t.root.left, t.root);
-//        treeState =
-//                "Node{key=10, color=RED, parent=20, left=-1, right=-1}\n" +
-//                        "Node{key=20, color=BLACK, parent=-1, left=10, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 5
-//        t.insert(5);
-//        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
-//        treeState =
-//                "Node{key=5, color=RED, parent=10, left=-1, right=-1}\n" +
-//                        "Node{key=10, color=BLACK, parent=-1, left=5, right=20}\n" +
-//                        "Node{key=20, color=RED, parent=10, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//        //System.out.println(res);
+        res = "";
+        treeState = "";
+        t = new RBT();
+
+        //============== insert 20
+        t.insert(20);
+        res = String.format("%s", t.root);
+        treeState = "Node{key=20, color=BLACK, parent=-1, left=-1, right=-1}";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 10
+        t.insert(10);
+        res = String.format("%s\n%s\n", t.root.left, t.root);
+        treeState =
+                "Node{key=10, color=RED, parent=20, left=-1, right=-1}\n" +
+                        "Node{key=20, color=BLACK, parent=-1, left=10, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 5
+        t.insert(5);
+        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
+        treeState =
+                "Node{key=5, color=RED, parent=10, left=-1, right=-1}\n" +
+                        "Node{key=10, color=BLACK, parent=-1, left=5, right=20}\n" +
+                        "Node{key=20, color=RED, parent=10, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
 
 
         //
         //================================================================== TESTING RR case:
         //
 
-//        String res, treeState;
-//
-//        //============== insert 1
-//        t.insert(1);
-//        res = String.format("%s", t.root);
-//        treeState = "Node{key=1, color=BLACK, parent=-1, left=-1, right=-1}";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 2
-//        t.insert(2);
-//        res = String.format("%s\n%s\n", t.root, t.root.right);
-//        treeState =
-//                "Node{key=1, color=BLACK, parent=-1, left=-1, right=2}\n" +
-//                        "Node{key=2, color=RED, parent=1, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 3
-//        t.insert(3);
-//        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
-//        treeState =
-//                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
-//                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
+        res = "";
+        treeState = "";
+        t = new RBT();
+
+        //============== insert 1
+        t.insert(1);
+        res = String.format("%s", t.root);
+        treeState = "Node{key=1, color=BLACK, parent=-1, left=-1, right=-1}";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 2
+        t.insert(2);
+        res = String.format("%s\n%s\n", t.root, t.root.right);
+        treeState =
+                "Node{key=1, color=BLACK, parent=-1, left=-1, right=2}\n" +
+                        "Node{key=2, color=RED, parent=1, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 3
+        t.insert(3);
+        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
+        treeState =
+                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
+                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
 
         //
         //================================================================== TESTING LL case:
         //
 
-//        String res, treeState;
-//
-//        //============== insert 3
-//        t.insert(3);
-//        res = String.format("%s", t.root);
-//        treeState = "Node{key=3, color=BLACK, parent=-1, left=-1, right=-1}";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 2
-//        t.insert(2);
-//        res = String.format("%s\n%s\n", t.root.left, t.root);
-//        treeState =
-//                "Node{key=2, color=RED, parent=3, left=-1, right=-1}\n" +
-//                        "Node{key=3, color=BLACK, parent=-1, left=2, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
-//
-//        //============== insert 1
-//        t.insert(1);
-//        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
-//        treeState =
-//                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
-//                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
-//                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
-//        System.out.println("PASS? " + res.equals(treeState) );
-//
+        res = "";
+        treeState = "";
+        t = new RBT();
+
+        //============== insert 3
+        t.insert(3);
+        res = String.format("%s", t.root);
+        treeState = "Node{key=3, color=BLACK, parent=-1, left=-1, right=-1}";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 2
+        t.insert(2);
+        res = String.format("%s\n%s\n", t.root.left, t.root);
+        treeState =
+                "Node{key=2, color=RED, parent=3, left=-1, right=-1}\n" +
+                        "Node{key=3, color=BLACK, parent=-1, left=2, right=-1}\n";
+        testEqual(res, treeState, "...");
+
+
+        //============== insert 1
+        t.insert(1);
+        res = String.format("%s\n%s\n%s\n", t.root.left, t.root, t.root.right);
+        treeState =
+                "Node{key=1, color=RED, parent=2, left=-1, right=-1}\n" +
+                        "Node{key=2, color=BLACK, parent=-1, left=1, right=3}\n" +
+                        "Node{key=3, color=RED, parent=2, left=-1, right=-1}\n";
+        testEqual(res, treeState, "...");
+
 
         //
-        //==================================================================
+        //================================================================== Deletion
         //
 
         for (int i=1; i<10; i++){
@@ -785,30 +802,6 @@ class Main {
         //
     }
 }
-
-/* OUTPUT:  (incorrect, needs to be updated...)
-
-                   3B
-              /         \
-           1B             6B
-         /    \         /     \
-               2R      4B        8B
-              /  \    / \      /   \
-                        5R    7R     9R
-                        / \  / \    / \
-
-
-Node{key=1, color=BLACK, parent=3, left=-1, right=2}
-Node{key=2, color=RED, parent=1, left=-1, right=-1}
-Node{key=3, color=BLACK, parent=-1, left=1, right=6}
-Node{key=4, color=BLACK, parent=6, left=-1, right=5}
-Node{key=5, color=RED, parent=4, left=-1, right=-1}
-Node{key=6, color=BLACK, parent=3, left=4, right=8}
-Node{key=7, color=RED, parent=8, left=-1, right=-1}
-Node{key=8, color=BLACK, parent=6, left=7, right=9}
-Node{key=9, color=RED, parent=8, left=-1, right=-1}
-
-*/
 
 /* OUTPUT:
 
@@ -859,5 +852,31 @@ Node{key=9, color=RED, parent=8, left=-1, right=-1}
 ================= Delete 8
 Node{key=9, color=BLACK, parent=-1, left=-1, right=-1}
 ================= Delete 9
+
+*/
+
+
+
+/* OUTPUT:  (incorrect, needs to be updated...)
+
+                   3B
+              /         \
+           1B             6B
+         /    \         /     \
+               2R      4B        8B
+              /  \    / \      /   \
+                        5R    7R     9R
+                        / \  / \    / \
+
+
+Node{key=1, color=BLACK, parent=3, left=-1, right=2}
+Node{key=2, color=RED, parent=1, left=-1, right=-1}
+Node{key=3, color=BLACK, parent=-1, left=1, right=6}
+Node{key=4, color=BLACK, parent=6, left=-1, right=5}
+Node{key=5, color=RED, parent=4, left=-1, right=-1}
+Node{key=6, color=BLACK, parent=3, left=4, right=8}
+Node{key=7, color=RED, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=6, left=7, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
 
 */
