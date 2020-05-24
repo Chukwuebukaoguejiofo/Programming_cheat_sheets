@@ -302,15 +302,257 @@ class RBT{
         return b;
     }
 
+    /**
+     * if we pass a tree with root == null, we need to handle that
+     */
     void inOrder(Node c){
-        if (c == nullNode) return; // no left  // c == null WILL NOT WORK, we are checking for nullNode right? :)
+        if (c == nullNode || c == null) return; // no left  // c == null WILL NOT WORK, we are checking for nullNode right? :)
         inOrder(c.left);
         System.out.println(c);
         inOrder(c.right);
     }
+
+    public Node find(int key){
+        if (root == null) return null; // not found
+
+        Node currentNode = root;
+
+        while(currentNode != null){
+            if (key == currentNode.key)
+                return currentNode;
+            else if (key > currentNode.key)
+                currentNode = currentNode.right;
+            else
+                currentNode = currentNode.left;
+        }
+        return null; // none found
+    }
+
+    public void delete(int k){
+        Node nodeToDelete = find(k);
+
+        if (nodeToDelete.left == nullNode){
+            if (nodeToDelete.right == nullNode){
+                // no left child, no right
+                handleZeroChildren(nodeToDelete);
+            }else{
+                // no left child, has right
+                handleOneChild(nodeToDelete);
+            }
+        }else{
+            if (nodeToDelete.right == nullNode){
+                // has left child, no right
+                handleOneChild(nodeToDelete);
+            }else{
+                // has left child, has right
+                handleWithTwoChildren(nodeToDelete);
+            }
+        }
+    }
+
+    /**
+     * Directly delete Node instance, without a search
+     * reason: if we set some other parent node to the same value
+     * (in case of deletion) the normal find(int k) method will find the parent, not the leaft node
+     */
+    public void delete(Node nodeToDelete){
+        if (nodeToDelete.left == nullNode){
+            if (nodeToDelete.right == nullNode){
+                // no left child, no right
+                handleZeroChildren(nodeToDelete);
+            }else{
+                // no left child, has right
+                handleOneChild(nodeToDelete);
+            }
+        }else{
+            if (nodeToDelete.right == nullNode){
+                // has left child, no right
+                handleOneChild(nodeToDelete);
+            }else{
+                // has left child, has right
+                handleWithTwoChildren(nodeToDelete);
+            }
+        }
+    }
+
+    private void handleWithTwoChildren(Node nodeToDelete) {
+        Node successor = getMin(nodeToDelete.right);
+        nodeToDelete.key = successor.key;
+
+        /**
+         * TODO: create a delete method on a Node, not an int,
+         * so it does not need to search for it
+         */
+        delete(successor);
+    }
+
+    public Node getMin(Node n){
+        Node c = n;
+        while(c.left != nullNode){
+            c=c.left;
+        }
+        return c;
+    }
+
+    /**
+     * TODO: organize LL RR LR RL
+     */
+    private void handleOneChild(Node nodeToDelete) {
+        if(nodeToDelete.left != nullNode){
+            // has left
+            if (nodeToDelete == root){
+                nodeToDelete.left.color = Color.BLACK;
+                nodeToDelete.left.parent = nullNode;
+            }
+            else if(isLeftChild(nodeToDelete)){ // LL
+                nodeToDelete.parent.left = nodeToDelete.left;
+                nodeToDelete.left.color = Color.BLACK;
+                nodeToDelete.left.parent = nodeToDelete.parent;
+            }else{ // RL
+                nodeToDelete.parent.right = nodeToDelete.left;
+                nodeToDelete.left.color = Color.BLACK;
+                nodeToDelete.left.parent = nodeToDelete.parent;
+            }
+            if(root == nodeToDelete) root = nodeToDelete.left;
+        }else{
+            // has right
+            if (nodeToDelete == root){
+                nodeToDelete.right.color = Color.BLACK;
+                nodeToDelete.right.parent = nullNode;
+            }
+            else if(isLeftChild(nodeToDelete)){ // LR
+                nodeToDelete.parent.left = nodeToDelete.right;
+                nodeToDelete.right.color = Color.BLACK;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+            }else{ // RR
+                nodeToDelete.parent.right = nodeToDelete.right;
+                nodeToDelete.right.color = Color.BLACK;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+            }
+            if(root == nodeToDelete) root = nodeToDelete.right;
+        }
+    }
+
+    /**
+     * Don't forget to set the parent
+     */
+    private void handleZeroChildren(Node nodeToDelete) {
+        if (nodeToDelete == root){
+            root = null;
+            return;
+        }
+        if(nodeToDelete.color == Color.RED){
+            if(isLeftChild(nodeToDelete)){
+                nodeToDelete.parent.left = nodeToDelete.right;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+            }else{
+                nodeToDelete.parent.right = nodeToDelete.right;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+            }
+        }else{
+            if(isLeftChild(nodeToDelete)){
+                nodeToDelete.parent.left = nodeToDelete.right;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+                handleDoubleBlack(nodeToDelete.parent.left);
+            }else{
+                nodeToDelete.parent.right = nodeToDelete.right;
+                nodeToDelete.right.parent = nodeToDelete.parent;
+                handleDoubleBlack(nodeToDelete.parent.right);
+            }
+        }
+
+        if(root == nodeToDelete) root = null;
+    }
+ 
+    private void handleDoubleBlack(Node doubleBlack) {
+        Node s = getSibling(doubleBlack);
+        if(s.color == Color.RED){
+            case1(doubleBlack);
+        }else{
+            if(isLeftChild(doubleBlack)){
+                if (s.right.color == Color.RED){
+                    case4(doubleBlack);
+                }else{
+                    if (s.left.color == Color.RED){
+                        case3(doubleBlack);
+                    }else{
+                        case2(doubleBlack);
+                    }
+                }
+            }else{
+                if (s.left.color == Color.RED){
+                    case4(doubleBlack);
+                }else{
+                    if (s.right.color == Color.RED){
+                        case3(doubleBlack);
+                    }else{
+                        case2(doubleBlack);
+                    }
+                }
+            }
+        }
+    }
+ 
+    private void case4(Node doubleBlack) {
+        Node s = getSibling(doubleBlack);
+        if (isLeftChild(doubleBlack)){
+            s.color = doubleBlack.parent.color;
+            doubleBlack.parent.color = Color.BLACK;
+            s.right.color = Color.BLACK;
+            leftRotate(doubleBlack.parent);
+        }else{
+            s.color = doubleBlack.parent.color;
+            doubleBlack.parent.color = Color.BLACK;
+            s.left.color = Color.BLACK;
+            rightRotate(doubleBlack.parent);
+        }
+        if (doubleBlack.parent == root) root = s;
+    }
+ 
+    private void case3(Node doubleBlack) {
+        Node s = getSibling(doubleBlack);
+        if (isLeftChild(doubleBlack)){
+            s.color = Color.RED;
+            s.left.color = Color.BLACK;
+            rightRotate(s);
+            case4(doubleBlack);
+        }else{
+            s.color = Color.RED;
+            s.right.color = Color.BLACK;
+            leftRotate(s);
+            case4(doubleBlack);
+        }
+    }
+ 
+    private void case2(Node doubleBlack) {
+        getSibling(doubleBlack).color = Color.RED;
+        doubleBlack.parent.color = Color.BLACK;
+    }
+ 
+    private void case1(Node doubleBlack) {
+        Node s = getSibling(doubleBlack);
+        if (isLeftChild(doubleBlack)){
+            s.color = Color.BLACK;
+            doubleBlack.parent.color = Color.RED;
+            leftRotate(doubleBlack.parent);
+        }else{
+            s.color = Color.BLACK;
+            doubleBlack.parent.color = Color.RED;
+            rightRotate(doubleBlack.parent);
+        }
+        if (doubleBlack.parent == root) root = s;
+        handleDoubleBlack(doubleBlack);
+    }
+ 
+    public Node getSibling(Node n){
+        return n.parent.left == n ? n.parent.right : n.parent.left;
+    }
+    public boolean isLeftChild(Node n){
+        return n.parent.left == n;
+    }
 }
 
-class Main3 {
+class Main {
     public static void main(String[] args) {
         RBT t = new RBT();
 
@@ -528,6 +770,19 @@ class Main3 {
         //==================================================================
         //
 
+        for (int i=1; i<10; i++){
+            t.insert(i);
+        }
+
+        for (int i=1; i<10; i++){
+            System.out.println("================= Delete " + i);
+            t.delete(i);
+            t.inOrder(t.root);
+        }
+
+        //
+        //==================================================================
+        //
     }
 }
 
@@ -552,5 +807,57 @@ Node{key=6, color=BLACK, parent=3, left=4, right=8}
 Node{key=7, color=RED, parent=8, left=-1, right=-1}
 Node{key=8, color=BLACK, parent=6, left=7, right=9}
 Node{key=9, color=RED, parent=8, left=-1, right=-1}
+
+*/
+
+/* OUTPUT:
+
+================= Delete 1
+Node{key=2, color=BLACK, parent=4, left=-1, right=3}
+Node{key=3, color=RED, parent=2, left=-1, right=-1}
+Node{key=4, color=BLACK, parent=-1, left=2, right=6}
+Node{key=5, color=BLACK, parent=6, left=-1, right=-1}
+Node{key=6, color=RED, parent=4, left=5, right=8}
+Node{key=7, color=RED, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=6, left=7, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
+================= Delete 2
+Node{key=3, color=BLACK, parent=4, left=-1, right=-1}
+Node{key=4, color=BLACK, parent=-1, left=3, right=6}
+Node{key=5, color=BLACK, parent=6, left=-1, right=-1}
+Node{key=6, color=RED, parent=4, left=5, right=8}
+Node{key=7, color=RED, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=6, left=7, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
+================= Delete 3
+INFO_002
+Node{key=4, color=BLACK, parent=6, left=-1, right=5}
+Node{key=5, color=RED, parent=4, left=-1, right=-1}
+Node{key=6, color=BLACK, parent=-1, left=4, right=8}
+Node{key=7, color=RED, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=6, left=7, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
+================= Delete 4
+Node{key=5, color=BLACK, parent=6, left=-1, right=-1}
+Node{key=6, color=BLACK, parent=-1, left=5, right=8}
+Node{key=7, color=RED, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=6, left=7, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
+================= Delete 5
+INFO_002
+Node{key=6, color=BLACK, parent=8, left=-1, right=7}
+Node{key=7, color=RED, parent=6, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=-1, left=6, right=9}
+Node{key=9, color=BLACK, parent=8, left=-1, right=-1}
+================= Delete 6
+Node{key=7, color=BLACK, parent=8, left=-1, right=-1}
+Node{key=8, color=BLACK, parent=-1, left=7, right=9}
+Node{key=9, color=BLACK, parent=8, left=-1, right=-1}
+================= Delete 7
+Node{key=8, color=BLACK, parent=-1, left=-1, right=9}
+Node{key=9, color=RED, parent=8, left=-1, right=-1}
+================= Delete 8
+Node{key=9, color=BLACK, parent=-1, left=-1, right=-1}
+================= Delete 9
 
 */
