@@ -47,3 +47,10 @@ class Main {
     System.out.println("dateStr4: " + dateStr4); // 20150125
   }
 }
+
+
+/* GET CURRENT DATE TIME ??
+  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+  LocalDateTime now = LocalDateTime.now();
+  dtf.format(now); // 2017/11/06 12:11:58
+*/
