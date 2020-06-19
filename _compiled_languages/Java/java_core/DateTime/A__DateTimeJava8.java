@@ -54,3 +54,23 @@ class Main {
   LocalDateTime now = LocalDateTime.now();
   dtf.format(now); // 2017/11/06 12:11:58
 */
+
+
+/*. get start of day, previous day, end of day
+
+DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HH:mm:ss");
+    Instant instant = Instant.now();
+    ZoneId zoneId = ZoneId.of("GMT");
+    ZonedDateTime zdt = ZonedDateTime.ofInstant(instant, zoneId);
+    ZonedDateTime start = zdt.toLocalDate().atStartOfDay( zoneId ).minusDays(1);
+    ZonedDateTime end = start.plusDays(1).minusSeconds(1);
+
+    
+     // If current day is 2020-06-19
+     // 20200618T00:00:00
+     // 20200618T23:59:59
+    String startTS = sdf.format(start);
+    String endTS = sdf.format(end);
+
+
+*/
