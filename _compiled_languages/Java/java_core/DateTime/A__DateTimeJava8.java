@@ -59,7 +59,7 @@ class Main {
 /*. get start of day, previous day, end of day
 
 DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HH:mm:ss");
-    Instant instant = Instant.now();
+    Instant instant = Instant.now(); // seems it is already GMT ???
     ZoneId zoneId = ZoneId.of("GMT");
     ZonedDateTime zdt = ZonedDateTime.ofInstant(instant, zoneId);
     ZonedDateTime start = zdt.toLocalDate().atStartOfDay( zoneId ).minusDays(1);
