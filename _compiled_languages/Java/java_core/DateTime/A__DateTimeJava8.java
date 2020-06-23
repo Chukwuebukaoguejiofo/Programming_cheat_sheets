@@ -80,11 +80,10 @@ DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HH:mm:ss");
     LocalDate ldt = LocalDate.now(ZoneId.of("GMT"));
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
-    /**
-     * If current day is 2020-06-19 (before 5pm)
-     * 20200618000000
-     * 20200618235959
-     */
+    
+    // If current day is 2020-06-19 (before 5pm)
+    // 20200618000000
+    // 20200618235959
     String startTS = dtf.format(ldt.atStartOfDay().minusDays(1));
     String endTS = dtf.format(ldt.atStartOfDay().minusSeconds(1));
 
