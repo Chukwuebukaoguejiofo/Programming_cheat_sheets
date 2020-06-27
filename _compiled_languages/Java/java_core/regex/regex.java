@@ -36,3 +36,6 @@ class Main {
     Foo.bar("(.*)ooba(.*)", "foobar");
   }
 }
+
+
+// data.matches("\\d{10}")
