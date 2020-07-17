@@ -66,7 +66,7 @@ class MainThread {
 
   private void joinAThread() {
     String ms3 =
-            Constants.LINE + "Main thread stops, 'C' thread behaves like main thread, then when 'C' thread is done, main thread resumes.";
+            Constants.LINE + "[Joining thread 'C'] Main thread stops, 'C' thread behaves like main thread, then when 'C' thread is done, main thread resumes.";
     System.out.println(ms3);
 
     int threadIndex = 2; // Thread 'C'
@@ -167,42 +167,42 @@ M    A    B    C    D    E    F
 |
 =================================== [Main thread] Starting other threads (**ALL** threads run together, including the main thread)
                |
-     |
-                              |
-                         |
-                    |
           |
-                              |
-                         |
-                              |
-                              |
-          |
-                         |
-                              |
                     |
      |
                          |
+                              |
+     |
+     |
+     |
+     |
+                    |
+          |
                          |
-          |
-     |
+                              |
                     |
           |
-     |
+                         |
+                              |
                     |
           |
-     |
+                         |
+                              |
                     |
+          |
+                         |
+                              |
 |
                |
 |
                |
-               |
-|
 |
                |
 |
                |
-=================================== Main thread stops, 'C' thread behaves like main thread, then when 'C' thread is done, main thread resumes.
+|
+               |
+=================================== [Joining thread 'C'] Main thread stops, 'C' thread behaves like main thread, then when 'C' thread is done, main thread resumes.
                |
                |
                |
