@@ -36,6 +36,11 @@ class Node {
 class Graph {
     private Map<Node, List<Node>> map = new HashMap<>();
 
+    // If you want to add but not connect
+    public void addNode(String a) {
+        map.putIfAbsent(new Node(a), new ArrayList<>());
+    }
+
     public void connect(String a, String b) {
         map.putIfAbsent(new Node(a), new ArrayList<>()); // in case it is empty
         List<Node> list = map.get(new Node(a));
@@ -51,7 +56,9 @@ class Graph {
     }
 
     boolean isConnected(String a, String b) {
-        return map.get(new Node(a)).contains(new Node(b));
+        List<Node> list = map.get(new Node(a));
+        if (list==null) return false;
+        return list.contains(new Node(b));
     }
 
     void BFS(String a) {
@@ -63,7 +70,7 @@ class Graph {
             Node currentNode = queue.poll();
             visitedNodeSet.add(currentNode);
             System.out.println("visited: " + currentNode);
-            for (Node nn : map.get(currentNode)) { // <================= BRIAN PAY ATTENTION
+            for (Node nn : map.get(currentNode)) { // <================= PAY ATTENTION
                 if (!visitedNodeSet.contains(nn)) {
                     queue.offer(nn);
                 }
@@ -96,23 +103,39 @@ class Graph {
 
 public class Foo {
     public static void main(String[] args) {
-        Graph g = new Graph();
-        g.connect("a", "a1");
-        g.connect("a", "a2");
-        g.connect("a", "a3");
+        Graph graph = new Graph();
 
-        g.connect("a", "b");
-        g.connect("b", "c");
-        g.connect("c", "d");
+        graph.connect("A", "A1");
+        graph.connect("A", "A2");
+        graph.connect("A", "A3");
+        graph.connect("A", "A4");
+        graph.connect("A", "A5");
 
-        System.out.println(g.isConnected("a", "b")); // true
-        System.out.println(g.isConnected("a", "c")); // false
+        graph.connect("A", "B");
+        graph.connect("B", "C");
+        graph.connect("C", "D");
+        graph.connect("D", "E");
+        graph.connect("E", "F");
+        graph.connect("F", "G");
+        graph.connect("G", "H");
+        graph.connect("H", "I");
+        graph.connect("I", "J");
 
-        g.DFS("a");
-        // visitedNodeSet: [Node{data='a'}, Node{data='b'}, Node{data='c'}, Node{data='d'}, Node{data='a3'}, Node{data='a2'}, Node{data='a1'}]
+        graph.addNode("Z-NO_CONNECTIONS"); // node with no connections
 
-
-        g.BFS("a");
-        // visitedNodeSet: [Node{data='a'}, Node{data='a1'}, Node{data='a2'}, Node{data='a3'}, Node{data='b'}, Node{data='c'}, Node{data='d'}]
+        //=======================================================================
+        System.out.println("res: " + graph.isConnected("A", "B")); // true
+        System.out.println("res: " + graph.isConnected("A", "C")); // false (Not directly connected)
+        System.out.println("res: " + graph.isConnected("A", "NON-EXISTENT")); // false
+        System.out.println("res: " + graph.isConnected("NON-EXISTENT-1", "NON-EXISTENT-2")); // false
+        System.out.println("res: " + graph.isConnected("Z-NO_CONNECTIONS", "NON-EXISTENT")); // false
+        System.out.println("res: " + graph.isConnected("Z-NO_CONNECTIONS", "A")); // false
+        //=======================================================================
+        graph.DFS("A");
+        // visitedNodeSet: [Node{data='A'}, Node{data='B'}, Node{data='C'}, Node{data='D'}, Node{data='E'}, Node{data='F'}, Node{data='G'}, Node{data='H'}, Node{data='I'}, Node{data='J'}, Node{data='A5'}, Node{data='A4'}, Node{data='A3'}, Node{data='A2'}, Node{data='A1'}]
+        //=======================================================================
+        graph.BFS("A");
+        // visitedNodeSet: [Node{data='A'}, Node{data='A1'}, Node{data='A2'}, Node{data='A3'}, Node{data='A4'}, Node{data='A5'}, Node{data='B'}, Node{data='C'}, Node{data='D'}, Node{data='E'}, Node{data='F'}, Node{data='G'}, Node{data='H'}, Node{data='I'}, Node{data='J'}]
+        //=======================================================================
     }
 }
