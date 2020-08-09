@@ -46,5 +46,6 @@ public class Foo {
         trie.hasWord("a"); // true
         trie.hasWord("ab"); // true
         trie.hasWord("abc"); // true
+        trie.hasWord("abcd"); // false
     }
 }
