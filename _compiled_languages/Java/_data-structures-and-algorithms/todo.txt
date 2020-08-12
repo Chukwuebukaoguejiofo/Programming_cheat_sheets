@@ -1,1 +1,3 @@
 - disjoint sets
+- hash
+- linked list
