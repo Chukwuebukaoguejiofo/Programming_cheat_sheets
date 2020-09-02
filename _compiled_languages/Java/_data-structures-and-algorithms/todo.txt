@@ -1,2 +1,1 @@
 - hash
-- linked list
