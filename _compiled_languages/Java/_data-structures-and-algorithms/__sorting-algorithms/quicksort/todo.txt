@@ -3,5 +3,3 @@ Insertion Sort.
 Selection Sort.
 Merge Sort.
 Heapsort.
-Quicksort.
-Sorting in Java.
