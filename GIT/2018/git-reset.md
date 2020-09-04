@@ -6,6 +6,14 @@ https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
 $ git remote show origin # list github/bitbucket link
 
 
+#
+# Deleting branches
+#
+
+$ git push origin --delete my-branch # delete remote branch
+$ git branch -D my-branch # delete local branch
+
+
 # Git has 3 trees:
     - working directory (new files)
     - staging index     (files added, to be committed)
