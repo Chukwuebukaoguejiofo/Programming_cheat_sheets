@@ -1,17 +1,18 @@
-Git reset
+# Git reset
 
 https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
 
+```bash
 $ git remote show origin # list github/bitbucket link
 
 
-Git has 3 trees:
+# Git has 3 trees:
     - working directory (new files)
     - staging index     (files added, to be committed)
     - commit history    (committed files, in a git commit)
 
 
-IntelliJ merge conflict 3 panels: 
+# IntelliJ merge conflict 3 panels: 
     - from left to right:  my-changes / proposed-changes / their-changes
     - after changes do:
         - git add, git commit 
@@ -50,4 +51,5 @@ The Staging Index is left untouched.
 --hard
 - removes all 3???
 
+```
 
