@@ -1,4 +1,5 @@
-Insertion Sort.
-Selection Sort.
-Merge Sort.
-Heapsort.
+Insertion Sort
+Selection Sort
+Merge Sort
+Heapsort
+Shell sort
