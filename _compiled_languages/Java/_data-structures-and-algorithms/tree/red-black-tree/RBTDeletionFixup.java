@@ -3,7 +3,7 @@
  * ATTENTION: this class is not tested yet...
  *
  */
-class RBTDeletion {
+class RBTDeletionFixup {
     private static Node nullNode = new Node(-1, Color.BLACK);
 
     public static void deleteSuccessorNode(Node node) {
@@ -41,7 +41,7 @@ class RBTDeletion {
         }
     }
 
-    // TODO: ficure out which direction the child will be...
+    // TODO: figure out which direction the child will be...
     public static void fixOneRedCase(Node node) {
         if (isLeftChild(node)){
             node.parent.left = node.left;
