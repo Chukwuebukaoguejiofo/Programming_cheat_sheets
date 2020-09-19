@@ -57,7 +57,7 @@ class DisjointSets {
     public int find(int i) { // recursive
         if (arr[i] < 0) return i;
 
-//        // path compression (we are already doing it in 'union' method)
+//        // path compression (we are already doing it in 'union' method) // TODO: check if we really are...
 //        int root = find(arr[i]);
 //        arr[i] = root;
 //        return root;
