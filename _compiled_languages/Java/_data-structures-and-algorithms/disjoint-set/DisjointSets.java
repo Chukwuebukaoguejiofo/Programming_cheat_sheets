@@ -31,7 +31,7 @@ class DisjointSets {
                     arr[b] += arr[a];
                     arr[a] = b;
                 }else{
-                    // same rank
+                    // a has higher rank (smallest negative), OR both have same rank
                     arr[a] += arr[b];
                     arr[b] = a;
                 }
