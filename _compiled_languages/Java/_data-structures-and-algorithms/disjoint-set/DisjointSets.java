@@ -23,7 +23,7 @@ class DisjointSets {
      * the smaller negative number
      */
     public void union(int a, int b) {
-        if (arr[b] < 0){
+        if (arr[b] < 0){ // check if b is negative or not
             if (arr[a] < 0){
                 // both are negative (means both are roots)
                 if (arr[b] < arr[a]){
