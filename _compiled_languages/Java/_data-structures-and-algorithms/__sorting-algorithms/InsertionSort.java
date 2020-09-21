@@ -1,4 +1,5 @@
 // TODO: review this code
+package com.example;
 
 import java.util.Arrays;
 

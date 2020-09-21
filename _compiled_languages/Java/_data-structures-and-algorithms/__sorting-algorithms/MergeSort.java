@@ -1,5 +1,6 @@
-import java.util.Arrays;
+package com.example;
 
+import java.util.Arrays;
 
 class MergeSort {
     public static int[] sort(int[] arr) {

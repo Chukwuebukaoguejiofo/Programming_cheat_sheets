@@ -1,3 +1,2 @@
-Merge Sort
 Heapsort
 Shell sort
