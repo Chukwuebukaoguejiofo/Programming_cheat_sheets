@@ -1,4 +1,3 @@
-Selection Sort
 Merge Sort
 Heapsort
 Shell sort
