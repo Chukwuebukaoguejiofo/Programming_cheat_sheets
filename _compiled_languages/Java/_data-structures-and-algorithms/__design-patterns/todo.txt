@@ -23,7 +23,8 @@ Ensure a class only has one instance, and provide a global point of access to it
 
 7. Flyweight
 Use sharing to support large numbers of fine-grained objects efficiently. A flyweight is a shared object that can be
-used in multiple contexts simultaneously. The flyweight acts as an independent object in each context; it’s indistinguishable from an instance of the object that’s not shared.
+used in multiple contexts simultaneously. The flyweight acts as an independent object in each context; it’s
+indistinguishable from an instance of the object that’s not shared.
 
 8. Adapter
 Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t
