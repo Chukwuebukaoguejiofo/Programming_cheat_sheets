@@ -21,7 +21,7 @@ class QuickSort{
 
     public int partition(int left, int right){
         if(left == right) return left;
-        int pivot = array[right];
+        int pivot = array[right]; // we could select a random index, but we need to move it to the far right (or far left?)
         int i = left;
         int j = right -1;
 
