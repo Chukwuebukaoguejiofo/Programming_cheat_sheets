@@ -7,36 +7,33 @@ class QuickSort {
         sort(array, 0, array.length - 1);
     }
 
-    public static void sort(int[] array, int start, int end) {
+    // recursive
+    private static void sort(int[] array, int start, int end) {
         if (start >= end) return;
         int sortedPosition = partition(array, start, end);
         sort(array, start, sortedPosition - 1);
         sort(array, sortedPosition + 1, end);
     }
 
-    public static int partition(int[] array, int left, int right) {
-        if (left == right) return left;
+    private static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        int i = low;
 
-        /**
-         * we could select a random index,
-         * but we need to move it to the far right (or far left?)
-         */
-        int pivot = array[right];
-        int i = left;
-        int j = right - 1;
-
-        while (i <= j) {
-            while (array[i] < pivot) i++;
-            while (i <= j && array[j] > pivot) j--;
-
-            if (i <= j) {
+        // j will scan from left to right, looking for smaller then pivot elements
+        // and swapping with i
+        for (int j = low; j < high; j++) {
+            // If current element is smaller than the pivot
+            if (array[j] < pivot) {
                 swap(array, i, j);
-                i++;
-                j--;
+                i++; // move i into position, for future swaps!
             }
         }
 
-        swap(array, i, right);
+        // swap arr[i] and arr[high] (or pivot)
+        // because the element after i if the first of the second partition (elements higher than pivot)
+        swap(array, i, high);
+
+        // because i is now in the first element of the second partition (elements greater than the pivot)
         return i;
     }
 
@@ -52,9 +49,7 @@ public class QuickSortExample {
         int[] array = new int[]{
                 5, 6, 4, 7, 3, 8, 2, 9, 1, 0
         };
-
         QuickSort.sort(array);
-
         System.out.println(Arrays.toString(array));
         //=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
