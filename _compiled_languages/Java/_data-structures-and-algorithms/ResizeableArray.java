@@ -96,3 +96,11 @@ public class ResizeableArrayExample {
     }
   }
 }
+
+/* OUTPUT
+
+resizeArray...
+resizeArray...
+GET-7: 7070
+arr: Array{size=20, arr=[0, 10, 20, 30, 40, 50, 60, 7070, 80, 90, 100, 110, null, null, null, null, null, null, null, null], lastIndex=12}
+*/
