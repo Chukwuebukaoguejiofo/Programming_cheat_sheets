@@ -1,0 +1,3 @@
+Kruskal - minimum spanning tree (uses disjoint-set)
+Dijkstra - distance from all nodes to 1 node
+Floyd-warshall
