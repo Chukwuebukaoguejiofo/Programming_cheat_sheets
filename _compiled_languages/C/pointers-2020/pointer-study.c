@@ -150,12 +150,12 @@ int main(){
   printNode(n1);
 
   Node * n2 = createNode();
-  n1->isWord = 2222;
+  n2->isWord = 2222;
   printf("n2:\n");
   printNode(n2);
 
   Node * n3 = createNode();
-  n1->isWord = 3333;
+  n3->isWord = 3333;
   printf("n3:\n");
   printNode(n3);
 
@@ -174,72 +174,66 @@ int main(){
   printf("currentNode (pointing to n3):\n");
   printNode(currentNode);
 
-
-
-
-
-
-
   return 0;
 }
 
 /* OUTPUT
 
 ORIGINAL STRUCT:
-Node@0x7ffee237e918{isWord=1111, array=[. . . . . . . . . . 0x7f8434c01710 . . . . . . . . . 0x7f8434c01720 . . . . 0x7f8434c01730 ]}
+Node@0x7ffeeed8e918{isWord=1111, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
 
 func1(Node node) called...
-Node@0x7ffee237e7a0{isWord=1010, array=[...]}  <------ DIFF ADDRESS !!!
+Node@0x7ffeeed8e7a0{isWord=1010, array=[...]}  <------ DIFF ADDRESS !!!
 
 ORIGINAL STRUCT (changed by func1? NO):
-Node@0x7ffee237e918{isWord=1111, array=[. . . . . . . . . . 0x7f8434c01710 . . . . . . . . . 0x7f8434c01720 . . . . 0x7f8434c01730 ]}
+Node@0x7ffeeed8e918{isWord=1111, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
 
 func2(Node * node) called...
-Node@0x7ffee237e918{isWord=2020, array=[...]}
+Node@0x7ffeeed8e918{isWord=2020, array=[...]}
 
 ORIGINAL STRUCT (changed by func2? YES):
-Node@0x7ffee237e918{isWord=2020, array=[. . . . . . . . . . 0x7f8434c01710 . . . . . . . . . 0x7f8434c01720 . . . . 0x7f8434c01730 ]}
+Node@0x7ffeeed8e918{isWord=2020, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
 
 func3(Node ** node) called...
-Node@0x7ffee237e918{isWord=3030, array=[...]}
+Node@0x7ffeeed8e918{isWord=3030, array=[...]}
 
 ORIGINAL STRUCT (changed by func3? YES):
-Node@0x7ffee237e918{isWord=3030, array=[. . . . . . . . . . 0x7f8434c01710 . . . . . . . . . 0x7f8434c01720 . . . . 0x7f8434c01730 ]}
+Node@0x7ffeeed8e918{isWord=3030, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
 
 =======================
 
 original:
-Node@0x7f8434c01740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 copy (BUT SAME ADDRESS, so same struct):
-Node@0x7f8434c01740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 changing copy (CHANGES BOTH original and copy)...
 
 original again:
-Node@0x7f8434c01740{isWord=0, array=[. . . . . . . . . . 0x7f8434c01750 . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . 0x7f86c6401750 . . . . . . . . . . . . . . . ]}
 
 copy again:
-Node@0x7f8434c01740{isWord=0, array=[. . . . . . . . . . 0x7f8434c01750 . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . 0x7f86c6401750 . . . . . . . . . . . . . . . ]}
 
 =======================
 
 n1:
-Node@0x7f8434c01760{isWord=1111, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401760{isWord=1111, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 n2:
-Node@0x7f8434c01770{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401770{isWord=2222, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 n3:
-Node@0x7f8434c01780{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401780{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 currentNode (pointing to n1):
-Node@0x7f8434c01760{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401760{isWord=1111, array=[. 0x8ae . 0xd05 . . . . . . . . . . . . . . . . . . . . . . ]}
 
 currentNode (pointing to n2):
-Node@0x7f8434c01770{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401770{isWord=2222, array=[. 0xd05 . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 currentNode (pointing to n3):
-Node@0x7f8434c01780{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7f86c6401780{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 */
