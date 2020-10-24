@@ -6,7 +6,8 @@
 #include<stdlib.h>
 #include<string.h>
 
-int ALPHABET_COUNT = 26;
+// int ALPHABET_COUNT = 26;
+#define ALPHABET_COUNT 26
 
 //
 // Structs
@@ -14,7 +15,7 @@ int ALPHABET_COUNT = 26;
 
 typedef struct Node {
   int isWord;
-  struct Node * array[26]; // DONT use double pointer, we loose the size
+  struct Node * array[ALPHABET_COUNT]; // DONT use double pointer, we loose the size
 } Node;
 
 Node * createNode(){
@@ -23,6 +24,7 @@ Node * createNode(){
   for(int i=0;i<ALPHABET_COUNT;i++){
     node->array[i] = NULL;
   }
+
   return node;
 }
 
@@ -146,21 +148,26 @@ int main(){
   printf("=======================\n\n");
   Node * n1 = createNode();
   n1->isWord = 1111;
+  n1->array[10] = createNode();
   printf("n1:\n");
   printNode(n1);
 
   Node * n2 = createNode();
   n2->isWord = 2222;
+  n2->array[20] = createNode();
   printf("n2:\n");
   printNode(n2);
 
   Node * n3 = createNode();
   n3->isWord = 3333;
+  n3->array[25] = createNode();
   printf("n3:\n");
   printNode(n3);
 
-
-  Node * currentNode;
+  // We need to allocate memory for it, so we dont get error: "Bus error: 10"
+  // which seems to mean that we dont have enough memory in the variable to hold
+  // what is being assigned to it...
+  Node * currentNode = NULL;
 
   currentNode = n1;
   printf("currentNode (pointing to n1):\n");
@@ -174,66 +181,86 @@ int main(){
   printf("currentNode (pointing to n3):\n");
   printNode(currentNode);
 
+
+
+  printf("n1:\n");
+  printNode(n1);
+
+  printf("n2:\n");
+  printNode(n2);
+
+  printf("n3:\n");
+  printNode(n3);
+
   return 0;
 }
 
 /* OUTPUT
 
 ORIGINAL STRUCT:
-Node@0x7ffeeed8e918{isWord=1111, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
+Node@0x7ffee670f918{isWord=1111, array=[. . . . . . . . . . 0x7fc376401710 . . . . . . . . . 0x7fc376401720 . . . . 0x7fc376401730 ]}
 
 func1(Node node) called...
-Node@0x7ffeeed8e7a0{isWord=1010, array=[...]}  <------ DIFF ADDRESS !!!
+Node@0x7ffee670f790{isWord=1010, array=[...]}  <------ DIFF ADDRESS !!!
 
 ORIGINAL STRUCT (changed by func1? NO):
-Node@0x7ffeeed8e918{isWord=1111, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
+Node@0x7ffee670f918{isWord=1111, array=[. . . . . . . . . . 0x7fc376401710 . . . . . . . . . 0x7fc376401720 . . . . 0x7fc376401730 ]}
 
 func2(Node * node) called...
-Node@0x7ffeeed8e918{isWord=2020, array=[...]}
+Node@0x7ffee670f918{isWord=2020, array=[...]}
 
 ORIGINAL STRUCT (changed by func2? YES):
-Node@0x7ffeeed8e918{isWord=2020, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
+Node@0x7ffee670f918{isWord=2020, array=[. . . . . . . . . . 0x7fc376401710 . . . . . . . . . 0x7fc376401720 . . . . 0x7fc376401730 ]}
 
 func3(Node ** node) called...
-Node@0x7ffeeed8e918{isWord=3030, array=[...]}
+Node@0x7ffee670f918{isWord=3030, array=[...]}
 
 ORIGINAL STRUCT (changed by func3? YES):
-Node@0x7ffeeed8e918{isWord=3030, array=[. . . . . . . . . . 0x7f86c6401710 . . . . . . . . . 0x7f86c6401720 . . . . 0x7f86c6401730 ]}
+Node@0x7ffee670f918{isWord=3030, array=[. . . . . . . . . . 0x7fc376401710 . . . . . . . . . 0x7fc376401720 . . . . 0x7fc376401730 ]}
 
 =======================
 
 original:
-Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500000{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 copy (BUT SAME ADDRESS, so same struct):
-Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500000{isWord=0, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
 
 changing copy (CHANGES BOTH original and copy)...
 
 original again:
-Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . 0x7f86c6401750 . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500000{isWord=0, array=[. . . . . . . . . . 0x7fc376500010 . . . . . . . . . . . . . . . ]}
 
 copy again:
-Node@0x7f86c6401740{isWord=0, array=[. . . . . . . . . . 0x7f86c6401750 . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500000{isWord=0, array=[. . . . . . . . . . 0x7fc376500010 . . . . . . . . . . . . . . . ]}
 
 =======================
 
 n1:
-Node@0x7f86c6401760{isWord=1111, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500020{isWord=1111, array=[. . . . . . . . . . 0x7fc376500030 . . . . . . . . . . . . . . . ]}
 
 n2:
-Node@0x7f86c6401770{isWord=2222, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500040{isWord=2222, array=[. . . . . . . . . . . . . . . . . . . . 0x7fc376500050 . . . . . ]}
 
 n3:
-Node@0x7f86c6401780{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500060{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . 0x7fc376500070 ]}
 
 currentNode (pointing to n1):
-Node@0x7f86c6401760{isWord=1111, array=[. 0x8ae . 0xd05 . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500020{isWord=1111, array=[. . . 0x8ae . . . 0xd05 . . . . . . . . . . . . . . . . . . ]}
 
 currentNode (pointing to n2):
-Node@0x7f86c6401770{isWord=2222, array=[. 0xd05 . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500040{isWord=2222, array=[. . . 0xd05 . . . . . . . . . . . . . . . . . . . . . . ]}
 
 currentNode (pointing to n3):
-Node@0x7f86c6401780{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . . ]}
+Node@0x7fc376500060{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . 0x7fc376500070 ]}
+
+n1:
+Node@0x7fc376500020{isWord=1111, array=[. . . 0x8ae . . . 0xd05 . . . . . . . . . . . . . . . . . . ]}
+
+n2:
+Node@0x7fc376500040{isWord=2222, array=[. . . 0xd05 . . . . . . . . . . . . . . . . . . . . . . ]}
+
+n3:
+Node@0x7fc376500060{isWord=3333, array=[. . . . . . . . . . . . . . . . . . . . . . . . . 0x7fc376500070 ]}
 
 */
