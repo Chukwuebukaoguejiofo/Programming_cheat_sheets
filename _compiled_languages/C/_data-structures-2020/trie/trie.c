@@ -1,4 +1,4 @@
-// $ gcc my-last-trie.c -o my-last-trie; ./my-last-trie
+// $ gcc trie.c -o trie; ./trie
 
 #import<stdio.h>
 #import<stdlib.h>
@@ -68,7 +68,7 @@ void addWord(Trie * trie, char * word){
   Node * currentNode = trie->root;
 
   for (int i=0;i<strlen(word);i++) {
-    //printNode(currentNode);
+    // printNode(currentNode);
     int idx = word[i] - 'a';
     if (currentNode->letters[idx] == NULL) {
       currentNode->letters[idx] = createNode();
@@ -101,6 +101,7 @@ int hasWord(Trie * trie, char * word){
 
 int main(){
   Trie * trie = createTrie();
+  //printNode(trie->root);
 
   addWord(trie, "brian");
   addWord(trie, "ana");
