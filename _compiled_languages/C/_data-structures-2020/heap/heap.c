@@ -45,7 +45,7 @@ void bubbleUp(Heap * heap){
   int idx = heap->size; // last index
 
   while(idx > 0){
-    if (hasP(idx) && getPV(heap, idx) > heap->array[idx]) {
+    if (hasP(idx) == TRUE && getPV(heap, idx) > heap->array[idx]) {
       swap(heap, getPI(idx), idx);
       idx = getPI(idx);
     }else{
@@ -57,10 +57,10 @@ void bubbleUp(Heap * heap){
 void bubbleDown(Heap * heap){
   int idx = 0; // first index
 
-  while(hasL(heap, idx)){
+  while(hasL(heap, idx) == TRUE){
     // get child idx that has min value:
     int sci = getLI(idx);
-    if (hasR(heap, idx) && getRV(heap, idx) < getLV(heap, idx)) {
+    if (hasR(heap, idx) == TRUE && getRV(heap, idx) < getLV(heap, idx)) {
       sci = getRI(idx);
     }
 
