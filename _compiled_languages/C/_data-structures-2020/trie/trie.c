@@ -2,8 +2,9 @@
 
 #import<stdio.h>
 #import<stdlib.h>
+#import<string.h>
 
-#define ALPHABE_COUNT 26
+#define ALPHABET_COUNT 26
 #define TRUE 1
 #define FALSE 0
 
@@ -13,7 +14,7 @@
 
 typedef struct Node {
   int isWord;
-  struct Node * letters[ALPHABE_COUNT];
+  struct Node * letters[ALPHABET_COUNT];
 } Node;
 
 typedef struct Trie {
@@ -36,8 +37,8 @@ void printAnswer(int isWord, char * word){
 
 Node * createNode(){
   Node * node = (Node *)malloc(sizeof(Node));
-  node->isWord = 0;
-  for (int i=0;i<ALPHABE_COUNT;i++) {
+  node->isWord = FALSE;
+  for (int i=0;i<ALPHABET_COUNT;i++) {
     node->letters[i] = NULL;
   }
 
@@ -50,10 +51,24 @@ Trie * createTrie(){
   return trie;
 }
 
+void printNode(Node * node){
+  printf("Node@%p{isWord=%d, array=[", node, node->isWord);
+
+  for(int i=0;i<ALPHABET_COUNT;i++){
+    if (node->letters[i] == NULL) {
+      printf(". ");
+    }else{
+      printf("%p ", node->letters[i]);
+    }
+  }
+  printf("]}\n\n");
+}
+
 void addWord(Trie * trie, char * word){
   Node * currentNode = trie->root;
 
-  for (int i=0;i<ALPHABE_COUNT;i++) {
+  for (int i=0;i<strlen(word);i++) {
+    //printNode(currentNode);
     int idx = word[i] - 'a';
     if (currentNode->letters[idx] == NULL) {
       currentNode->letters[idx] = createNode();
@@ -66,7 +81,8 @@ void addWord(Trie * trie, char * word){
 
 int hasWord(Trie * trie, char * word){
   Node * currentNode = trie->root;
-  for (int i=0;i<ALPHABE_COUNT;i++) {
+  for (int i=0;i<strlen(word);i++) {
+    //printNode(currentNode);
     int idx = word[i] - 'a';
     if (currentNode->letters[idx] == NULL) {
       printAnswer(currentNode->isWord, word);
