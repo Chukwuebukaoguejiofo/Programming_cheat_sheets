@@ -1,4 +1,3 @@
-- quick-sort
-- heap-sort
 - insertion-sort
 - selection-sort
+- heap-sort
