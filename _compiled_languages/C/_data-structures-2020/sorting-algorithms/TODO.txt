@@ -1,0 +1,6 @@
+- quick-sort
+- bubble-sort
+- heap-sort
+- merge-sort
+- insertion-sort
+- selection-sort
