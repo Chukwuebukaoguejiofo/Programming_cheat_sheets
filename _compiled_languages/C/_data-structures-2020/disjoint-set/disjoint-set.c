@@ -1,7 +1,3 @@
-//
-// NOT UPLOADED TO GITHUB YET...
-//
-
 /**
  * DisjointSet
  */
