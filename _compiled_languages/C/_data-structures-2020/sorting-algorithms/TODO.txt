@@ -1,3 +1,2 @@
 - insertion-sort
-- selection-sort
 - heap-sort
