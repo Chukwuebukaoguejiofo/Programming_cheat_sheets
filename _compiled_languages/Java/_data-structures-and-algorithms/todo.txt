@@ -1,1 +1,2 @@
-- sorting
+- fix disjoint-set
+- fix heap-sort
