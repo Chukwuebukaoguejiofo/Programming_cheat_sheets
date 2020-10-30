@@ -4,4 +4,3 @@ graph
 tree
 disjoint-set
 hash
-heap
