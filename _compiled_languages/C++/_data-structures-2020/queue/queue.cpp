@@ -107,7 +107,6 @@ Node * Queue::remove(void){
   if (this->head == NULL) { // 0 nodes
     cout<< "\nNothing to remove" << endl;
     cout << endl;
-    this->size--;
     return NULL;
   }
 
