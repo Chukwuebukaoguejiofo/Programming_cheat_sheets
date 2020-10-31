@@ -1,7 +1,6 @@
 - sorting-algorithms
 - recursion
 - graph
-- disjoint-set
 
 - use nullptr instead of NULL ?
 
