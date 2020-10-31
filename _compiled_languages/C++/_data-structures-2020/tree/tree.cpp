@@ -78,6 +78,8 @@ public:
   Tree(void);
   ~Tree(void);
   void add(int key);
+  void addIteratively( Node * node);
+  Node * addRecursively(Node * root, Node * node);
   void inOrder(void);
   void inOrder(Node * node);
   Node * getRoot(void);
@@ -93,12 +95,18 @@ Tree::~Tree(void){
 
 void Tree::add(int key){
   Node * node = new Node(key);
+  // addIteratively(node);
+  root = addRecursively(root, node);
+}
 
+void Tree::addIteratively(Node * node){
+  // cout << "Tree::addIteratively called..." << endl;
   if (root == NULL) {
     root = node;
     return;
   }
 
+  int key = node->getKey();
   Node * curr = root;
   Node * parent = NULL;
 
@@ -130,6 +138,30 @@ void Tree::inOrder(void){
 }
 
 Node * Tree::getRoot(void){
+  return root;
+}
+
+Node * Tree::addRecursively(Node * root, Node * node){
+  // cout << "Tree::addRecursively called..." << endl;
+
+  if (root == NULL) {
+    // This happens only once, when root is null
+    return node;
+  }
+
+  if (node->getKey() > root->getKey()) {
+    root->setRight(
+      addRecursively(root->getRight(), node)
+    );
+  }else{
+    root->setLeft(
+      addRecursively(root->getLeft(), node)
+    );
+  }
+
+  // Return root, because that is what we are returning
+  // to the initial caller:
+  // root = addRecursively(root, node);
   return root;
 }
 
