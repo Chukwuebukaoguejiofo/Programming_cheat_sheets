@@ -4,3 +4,6 @@ graph
 tree
 disjoint-set
 hash
+
+
+- use nullptr instead of NULL ?
