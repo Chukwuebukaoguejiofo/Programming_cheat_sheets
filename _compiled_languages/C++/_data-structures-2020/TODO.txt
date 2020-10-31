@@ -5,3 +5,9 @@
 - disjoint-set
 
 - use nullptr instead of NULL ?
+
+- update data
+- delete data
+- resize
+- traverse
+- search
