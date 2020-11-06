@@ -1,6 +1,5 @@
 - sorting-algorithms
 - recursion
-- graph
 
 - use nullptr instead of NULL ?
 
