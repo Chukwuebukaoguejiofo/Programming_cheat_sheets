@@ -1,98 +1,103 @@
-// TODO: needs verification - I did not reference any existing implementation
-
+package com.example;
 
 import java.util.Arrays;
 
-/**
- * Path compression
- * Union by rank
- */
-class DisjointSets {
-    int[] arr;
+class DisjointSet {
+    private int[] array;
 
-    public DisjointSets(int size){
-        arr = new int[size];
-        for (int i=0;i<size;i++){
-            arr[i] = -1;
+    public DisjointSet(int size){
+        this.array = new int[size];
+        Arrays.fill(array, -1);
+    }
+
+    /**
+     * Using union by rank
+     */
+    public void union(int i1, int i2){
+        int r1 = find(i1);
+        int r2 = find(i2);
+
+        if (r1 < r2){
+            array[r1] += array[r2]; // Get total rank
+            array[r2] = r1; // r2 becomes child of r1
+        }
+        else if(r2 < r1){
+            array[r2] += array[r1];
+            array[r1] = r2;
+        }else{
+            array[r1] += array[r2];
+            array[r2] = r1;
         }
     }
 
     /**
-     * Union by rank
-     * using negative numbers
-     * the smaller negative number
+     * Using path compression
      */
-    public void union(int a, int b) {
-        if (arr[b] < 0){ // check if b is negative or not
-            if (arr[a] < 0){
-                // both are negative (means both are roots)
-                if (arr[b] < arr[a]){
-                    // b has higher rank (smallest negative)
-                    arr[b] += arr[a];
-                    arr[a] = b;
-                }else{
-                    // a has higher rank (smallest negative), OR both have same rank
-                    arr[a] += arr[b];
-                    arr[b] = a;
-                }
-            }else{
-                // b is negative (root), a is positive
-                int rootOfA = find(a);
-                union(rootOfA, b); // recurse with both as roots
-            }
-        }else{
-            if (arr[a] < 0){
-                // b is positive, a is negative (root)
-                int rootOfB = find(b);
-                union(a, rootOfB); // recurse with both as roots
-            }else{
-                // both are positive
-                int rootOfA = find(a);
-                int rootOfB = find(b);
-                union(rootOfA, rootOfB); // recurse with both as roots
-            }
+    public int find(int i){
+        int root;
+        int currentIdx = i;
+        int currentParent;
+        while(array[currentIdx] >= 0){
+            currentIdx = array[currentIdx];
         }
+        root = currentIdx;
+        currentIdx = i;
+
+        while(array[currentIdx] >= 0){
+            currentParent = array[currentIdx];
+            array[currentIdx] = root;
+            currentIdx = currentParent;
+        }
+
+        return root;
     }
 
-    public int find(int i) { // recursive
-        if (arr[i] < 0) return i;
+    public void makeSet(int i){
+        // TODO: Needs child array
+    }
 
-//        // path compression (we are already doing it in 'union' method) // TODO: check if we really are...
-//        int root = find(arr[i]);
-//        arr[i] = root;
-//        return root;
+//    public void print(){
+//        System.out.println(array.toString() + Arrays.toString(array));
+//
+//    }
 
-        return find(arr[i]);
+
+    @Override
+    public String toString() {
+        return "DisjointSet{" +
+                "array=" + Arrays.toString(array) +
+                '}';
     }
 }
 
-public class DisjointSetsExample {
-    public static void main(String[] args) {
-        DisjointSets ds = new DisjointSets(10);
-
-        // 0,1,2,3,4
-        ds.union(0,1);
+public class DisjointSetExample {
+    public static void main(String[] args){
+        DisjointSet ds = new DisjointSet(10);
         ds.union(1,2);
         ds.union(2,3);
         ds.union(3,4);
+        ds.union(4,5);
 
-        // 5,6,7,8,9
-        ds.union(5,6);
         ds.union(6,7);
         ds.union(7,8);
         ds.union(8,9);
 
-        System.out.println("0: " + ds.find(0)); // 0
-        System.out.println("1: " + ds.find(1)); // 0
-        System.out.println("2: " + ds.find(2)); // 0
-        System.out.println("3: " + ds.find(3)); // 0
-        System.out.println("4: " + ds.find(4)); // 0
-        System.out.println("5: " + ds.find(5)); // 5
-        System.out.println("6: " + ds.find(6)); // 5
-        System.out.println("7: " + ds.find(7)); // 5
-        System.out.println("8: " + ds.find(8)); // 5
-        System.out.println("9: " + ds.find(9)); // 5
+        System.out.println("ds.find(5) = " + ds.find(5)); // 1
+        System.out.println("ds.find(3) = " + ds.find(3)); // 1
 
-        System.out.println(Arrays.toString(ds.arr)); // [-5, 0, 0, 0, 0, -5, 5, 5, 5, 5]
+        System.out.println("ds.find(5) = " + ds.find(5)); // 1
+        System.out.println("ds.find(9) = " + ds.find(9)); // 6
+
+        System.out.println(ds.toString());
     }
 }
+
+/* OUTPUT
+
+ds.find(5) = 1
+ds.find(3) = 1
+ds.find(5) = 1
+ds.find(9) = 6
+DisjointSet{array=[-1, -5, 1, 1, 1, 1, -4, 6, 6, 6]}
+
+*/
