@@ -1,6 +1,4 @@
-- sorting-algorithms
 - recursion
-
 - use nullptr instead of NULL ?
 
 - update data
