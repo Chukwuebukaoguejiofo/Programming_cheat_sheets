@@ -1,1 +1,2 @@
 - fix heap-sort
+- update heap (parent of 0 is 0 ?)
