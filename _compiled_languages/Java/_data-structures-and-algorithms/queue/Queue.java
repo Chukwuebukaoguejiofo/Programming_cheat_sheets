@@ -1,53 +1,119 @@
-class Node{
-    int data;
-    Node next;
-    Node(int data){
-        this.data = data;
+package com.example;
+
+class Node {
+    private int key;
+    private Node next;
+
+    public Node(int key) {
+        this.key = key;
+        next = null;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 }
 
-class Queue{
-    Node head, tail;
+class Queue {
+    private Node head;
+    private Node tail;
 
-    boolean isEmpty(){
+    public Queue() {
+    }
+
+    public void enqueue(int key) {
+        Node node = new Node(key);
+        if (head == null) {
+            head = node;
+            tail = node;
+            return;
+        }
+
+        tail.setNext(node);
+        tail = node;
+    }
+
+    public Node dequeue() throws Exception {
+        if (head == null) {
+            throw new Exception("INFO::1001 Queue is empty");
+        }
+
+        Node node = head;
+        head = node.getNext();
+
+        if (head == null) {
+            tail = null;
+        }
+        return node;
+    }
+
+    public boolean isEmpty() {
         return head == null;
     }
 
-    int peek(){
-        return head.data; // exception?
+    public int peek() throws Exception {
+        if (head == null) {
+            throw new Exception("INFO::1002 Queue is empty");
+        }
+
+        return head.getKey();
     }
-    void add(int data){
-        Node node = new Node(data);
-        if (tail != null){ tail.next = node; }
-        tail = node;
-        if (head == null){ head = node; }
+
+    public void print() {
+        Node currNode = head;
+
+        while (currNode != null) {
+            System.out.print(currNode.getKey() + " -> ");
+            currNode = currNode.getNext();
+        }
+        System.out.println("");
     }
-    int remove(){
-        int data = head.data;
-        head = head.next;
-        if (head == null){ tail = null; }
-        return data;
-    }
+
 }
 
-public class Main{
+public class QueueExample {
     public static void main(String[] args) {
-        Queue q = new Queue();
+        Queue queue = new Queue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.print();
 
-        q.add(3);
-        q.add(7);
-        q.add(4);
+        try {
+            queue.dequeue();
+            queue.print();
 
-        System.out.println("next: " + q.remove());
-        System.out.println("next: " + q.remove());
-        System.out.println("next: " + q.remove());
+            queue.dequeue();
+            queue.print();
+
+            queue.dequeue();
+            queue.print();
+
+            // queue.dequeue(); //  Queue is empty
+            System.out.println("queue.isEmpty() = " + queue.isEmpty());
+            // System.out.println(queue.peek()); //  Queue is empty
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 }
 
-/*
-OUTPUT:
+/* OUTPUT
 
-next: 3
-next: 7
-next: 4
+1 -> 2 -> 3 -> 
+2 -> 3 -> 
+3 -> 
+
  */
