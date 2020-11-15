@@ -14,6 +14,7 @@ enum Color {RED, BLACK}
  * - RBNode and NilNode should implement Node
  * - Remember mirror cases
  * - Check for black height (validation)
+ * - add deletion code
  */
 class InsertionFixer {
     public static void fix(RBTree t, Node node) {
