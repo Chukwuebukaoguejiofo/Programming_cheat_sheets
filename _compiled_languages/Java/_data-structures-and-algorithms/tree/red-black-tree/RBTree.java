@@ -12,9 +12,9 @@ enum Color {RED, BLACK}
 /**
  * TODO:
  * - RBNode and NilNode should implement Node
- * - Remember mirror cases
- * - Check for black height (validation)
+ * - Check for mirror cases
  * - add deletion code
+ * - for verification: https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
  */
 class InsertionFixer {
     public static void fix(RBTree t, Node node) {
@@ -500,6 +500,43 @@ class RBTree {
         }
         System.out.println("");
     }
+
+    public boolean isValid() {
+        try {
+            validateBlackRoot();
+            noDoubleRed();
+            int res = validateBlackHeight(root);
+            System.out.println("INFO::1008 - RBTree is valid (black height is: " + res + ")");
+            return true;
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    private int validateBlackHeight(Node n) throws RuntimeException {
+        if (n.isNil()) return 1;
+        int validateBlackHeight_L = validateBlackHeight(n.getLeft());
+        int validateBlackHeight_R = validateBlackHeight(n.getRight());
+        if (validateBlackHeight_L == validateBlackHeight_R) {
+            if (n.getColor() == BLACK) {
+                return validateBlackHeight_L + 1;
+            } else {
+                return validateBlackHeight_L;
+            }
+        } else {
+            throw new RuntimeException("ERROR::1002 - Black height property is violated");
+        }
+    }
+
+    private void validateBlackRoot() throws RuntimeException {
+        if (root.getColor() != BLACK)
+            throw new RuntimeException("ERROR::1003 - Root is NOT BLACK");
+    }
+
+    private void noDoubleRed() throws RuntimeException {
+        // TODO: add code
+    }
 }
 
 public class RBTreeExample {
@@ -519,6 +556,12 @@ public class RBTreeExample {
             rbTree.insert(10);
             rbTree.insert(11);
             rbTree.insert(12);
+
+            //rbTree.find(4).setColor(RED); // ERROR::1003 - Root is NOT BLACK
+            //rbTree.find(8).setColor(RED); // ERROR::1002 - Black height property is violated
+            System.out.println("rbTree.isValid() = " + rbTree.isValid());
+
+
             System.out.println("rbTree.getRoot() = " + rbTree.getRoot());
             System.out.println("rbTree.find(5) = " + rbTree.find(5));
             System.out.println("rbTree.find(100) = " + rbTree.find(100));
@@ -633,6 +676,8 @@ INFO::1002 - Got case #4
 INFO::1005 - Recoloring node: 8 from original color: RED
 INFO::1005 - Recoloring node: 6 from original color: BLACK
 INFO::1003 - LeftRotate node: 6
+INFO::1008 - RBTree is valid (black height is: 4)
+rbTree.isValid() = true
 rbTree.getRoot() = Node{key=4, left=2, right=8, color=BLACK, parent=NULL}
 rbTree.find(5) = Node{key=5, left=nil, right=nil, color=BLACK, parent=6}
 rbTree.find(100) = null
