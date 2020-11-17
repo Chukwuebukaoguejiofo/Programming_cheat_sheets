@@ -12,45 +12,41 @@ enum Color {RED, BLACK}
 /**
  * <code>
  * TODO:
- * - DELETING ROOT: I AM NOT TAKING CARE OF THAT CASE
- *
- *
- *
- * - debug deletion code
- * -     BUG: when node does not have a parent and we call 'isLeftChild(t, n)' we get NPE
- * - noDoubleRed() add code
+ * - extract the common code to yet another util (like isRed, leftRotate,...)
+ * - on deletion:
+ *     - check the case when node is root
+ *     - BUG: when node does not have a parent and we call 'isLeftChild(t, n)' we get NPE
  * - check if red/red violation before checking case
  * - add logs to deletion -- with detail
- * - check if root is set correctly in deletion - maybe it is because rotation takes care of that
  * - add testing
  *
  * - RBNode and NilNode should implement Node
  * - Check for mirror cases
- * - add deletion code
- * - for validation, check that there is no red/red in the whole tree
  * - for verification: https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+ *     - unfortunately the website above uses predecessor in deletion,
+ *       so the tree might not look the same as this one
  */
 
 class InsertionFixer {
-    public static void fix(RBTree t, Node node) {
+    public static void fix(RedBlackTree t, Node node) {
         System.out.println("INFO::1007 - Starting fix for node: " + node);
         getCaseAndFix(t, node);
     }
 
     // TODO: check if red/red violation before checking case
-    public static void getCaseAndFix(RBTree t, Node node) { // recursive
+    public static void getCaseAndFix(RedBlackTree t, Node node) { // recursive
         int c = getCase(t, node);
         if (c == -1) return; // base case
         System.out.println("INFO::1002 - Got case #" + c);
 
         if (c == 1) {
-            fixCase1(t, node); // red root (FINAL case)
+            fixCase1(t, node); // Red root (FINAL case)
         } else if (c == 2) {
-            fixCase2(t, node); // red uncle
+            fixCase2(t, node); // Red uncle (NOT final case)
             Node g = getGrandParent(t, node);
             getCaseAndFix(t, g); // recurse on G
         } else if (c == 3) {
-            fixCase3(t, node); // black uncle - triangle
+            fixCase3(t, node); // black uncle - triangle (NOT final case)
             // getCaseAndFix(t,node); -- will be used in the method above
         } else if (c == 4) {
             fixCase4(t, node);  // black uncle - line (FINAL case)
@@ -61,7 +57,7 @@ class InsertionFixer {
      * Root is RED
      * Solution: color it BLACK
      */
-    public static void fixCase1(RBTree t, Node node) {
+    public static void fixCase1(RedBlackTree t, Node node) {
         node.setColor(BLACK);
     }
 
@@ -69,7 +65,7 @@ class InsertionFixer {
      * Uncle is RED
      * Solution: recolor P,U,G
      */
-    public static void fixCase2(RBTree t, Node node) {
+    public static void fixCase2(RedBlackTree t, Node node) {
         // TODO: check if we have P,U,G
         recolor(t, getParent(t, node));
         recolor(t, getUncle(t, node));
@@ -79,7 +75,7 @@ class InsertionFixer {
     /**
      * Uncle is BLACK (triangle)
      */
-    public static void fixCase3(RBTree t, Node node) {
+    public static void fixCase3(RedBlackTree t, Node node) {
         Node p = getParent(t, node);
         if (isLeftChild(t, node)) {
             rightRotate(t, p);
@@ -92,7 +88,7 @@ class InsertionFixer {
     /**
      * Uncle is BLACK (line)
      */
-    public static void fixCase4(RBTree t, Node node) {
+    public static void fixCase4(RedBlackTree t, Node node) {
         Node p = getParent(t, node);
         Node g = getGrandParent(t, node);
         recolor(t, p);
@@ -106,7 +102,7 @@ class InsertionFixer {
 
     // Helper methods
 
-    public static void leftRotate(RBTree t, Node a) {
+    public static void leftRotate(RedBlackTree t, Node a) {
         System.out.println("INFO::1003 - LeftRotate node: " + a.getKey());
         Node p = a.getParent();
         Node b = a.getRight();
@@ -131,7 +127,7 @@ class InsertionFixer {
         b.setParent(p);
     }
 
-    public static void rightRotate(RBTree t, Node a) {
+    public static void rightRotate(RedBlackTree t, Node a) {
         System.out.println("INFO::1004 - RightRotate node: " + a.getKey());
         Node p = a.getParent();
         Node b = a.getLeft();
@@ -156,19 +152,19 @@ class InsertionFixer {
         b.setParent(p);
     }
 
-    public static boolean isRoot(RBTree t, Node node) {
+    public static boolean isRoot(RedBlackTree t, Node node) {
         return t.getRoot().equals(node);
     }
 
-    public static boolean isRed(RBTree t, Node node) {
+    public static boolean isRed(RedBlackTree t, Node node) {
         return node.getColor().equals(RED);
     }
 
-    public static boolean isBlack(RBTree t, Node node) {
+    public static boolean isBlack(RedBlackTree t, Node node) {
         return node.getColor().equals(BLACK);
     }
 
-    private static boolean hasGrandParent(RBTree t, Node node) {
+    private static boolean hasGrandParent(RedBlackTree t, Node node) {
         if (hasParent(t, node)) {
             Node p = getParent(t, node);
             return hasParent(t, p);
@@ -176,21 +172,20 @@ class InsertionFixer {
         return false;
     }
 
-    private static Node getGrandParent(RBTree t, Node node) {
+    private static Node getGrandParent(RedBlackTree t, Node node) {
         Node p = getParent(t, node);
         return getParent(t, p);
     }
 
-    public static boolean hasParent(RBTree t, Node node) {
+    public static boolean hasParent(RedBlackTree t, Node node) {
         return node.getParent() != null;
     }
 
-    public static Node getParent(RBTree t, Node node) {
+    public static Node getParent(RedBlackTree t, Node node) {
         return node.getParent();
     }
 
-
-    public static boolean hasUncle(RBTree t, Node node) {
+    public static boolean hasUncle(RedBlackTree t, Node node) {
         if (!hasGrandParent(t, node)) return false;
         Node p = getParent(t, node);
         Node g = getParent(t, p);
@@ -198,7 +193,7 @@ class InsertionFixer {
         return false;
     }
 
-    public static Node getUncle(RBTree t, Node node) {
+    public static Node getUncle(RedBlackTree t, Node node) {
         //if (!hasUncle(t,node)) return null;
         Node p = getParent(t, node);
         Node g = getParent(t, p);
@@ -210,7 +205,7 @@ class InsertionFixer {
         }
     }
 
-    public static void recolor(RBTree t, Node node) {
+    public static void recolor(RedBlackTree t, Node node) {
         System.out.println("INFO::1005 - Recoloring node: " + node.getKey() + " from original color: " + node.getColor());
         if (node.getColor() == RED) {
             node.setColor(BLACK);
@@ -219,17 +214,17 @@ class InsertionFixer {
         }
     }
 
-    public static boolean isLeftChild(RBTree t, Node node) {
+    public static boolean isLeftChild(RedBlackTree t, Node node) {
         return node.getParent().getLeft() == node;
     }
 
     // TODO: maybe remove this method and use !isLeftChild()
-    public static boolean isRightChild(RBTree t, Node node) {
+    public static boolean isRightChild(RedBlackTree t, Node node) {
         return node.getParent().getRight() == node;
     }
 
     // has black uncle
-    private static boolean isLineCase(RBTree t, Node node) {
+    private static boolean isLineCase(RedBlackTree t, Node node) {
         Node u = getUncle(t, node);
         if (isLeftChild(t, node)) {
             return isRightChild(t, u);
@@ -239,7 +234,7 @@ class InsertionFixer {
     }
 
     // has black uncle
-    private static boolean isTriangleCase(RBTree t, Node node) {
+    private static boolean isTriangleCase(RedBlackTree t, Node node) {
         Node u = getUncle(t, node);
         if (isLeftChild(t, node)) {
             return isLeftChild(t, u);
@@ -248,7 +243,7 @@ class InsertionFixer {
         }
     }
 
-    public static int getCase(RBTree t, Node node) {
+    public static int getCase(RedBlackTree t, Node node) {
         if (isRoot(t, node) && isRed(t, node)) {
             return 1;
         } else if (hasUncle(t, node)) {
@@ -256,7 +251,6 @@ class InsertionFixer {
                 return 2;
             } else {
                 // Black uncle assumed
-
                 Node u = getUncle(t, node);
                 if (isRed(t, u)) throw new RuntimeException("ERROR::1001 - Uncle should NOT be red here");
 
@@ -280,11 +274,11 @@ class InsertionFixer {
  *     - node has 1 nil child
  *     - node has 0 nil children
  * The issue arises when both nodes are black (the node to be deleted and the node that will replace it)
- * because that alters the 'black height' property, in that case, we do the RBTree fixup for deletion
+ * because that alters the 'black height' property, in that case, we do the RedBlackTree fixup for deletion
  *
  *
  *
- * RBTree deletion cases:
+ * RedBlackTree deletion cases:
  *
  * If node has 2 nil children:
  *     - replace node with node.right (nil) --> if node WAS B: FIXUP(x) // x is node.right
@@ -300,31 +294,31 @@ class InsertionFixer {
  *             --> if successor WAS B and x is RED, color x black // x is successor.right
  */
 class DeletionUtil {
-    public static void delete(RBTree t, Node node) {
+    public static void delete(RedBlackTree t, Node node) {
         System.out.println("INFO::1009 - Deleting node: " + node);
         int c = getCase(t, node);
 
-        if (c == 1){
+        if (c == 1) {
             fixCase1(t, node);
-        }else if(c == 2){
+        } else if (c == 2) {
             fixCase2(t, node);
-        }else if(c == 3){
+        } else if (c == 3) {
             fixCase3(t, node);
         }
     }
 
     // Check how many nil children node has:
-    public static int getCase(RBTree t, Node node){
-        if (node.getLeft().isNil()){
-            if(node.getRight().isNil()){
+    public static int getCase(RedBlackTree t, Node node) {
+        if (node.getLeft().isNil()) {
+            if (node.getRight().isNil()) {
                 return 1; // node has 2 nil children
-            }else{
+            } else {
                 return 2; // node has 1 nil child (left)
             }
-        }else{
-            if(node.getRight().isNil()){
+        } else {
+            if (node.getRight().isNil()) {
                 return 2; // node has 1 nil child (right)
-            }else{
+            } else {
                 return 3; // node has 0 nil children
             }
         }
@@ -332,31 +326,31 @@ class DeletionUtil {
 
     // If node has 2 nil children:
     //     - replace node with node.right (nil) --> if node WAS B: FIXUP(x) // x is node.right
-    public static void fixCase1(RBTree t, Node node){
-        if (t.getRoot().equals(node)){
+    public static void fixCase1(RedBlackTree t, Node node) {
+        if (t.getRoot().equals(node)) {
             t.setRoot(null);
             return; // tree should be totally empty
         }
         Node p = node.getParent();
         Node x = node.getRight();
-        Color color = node.getColor();
+        Color nodeColor = node.getColor();
 
 
-        if(isLeftChild(t, node)){
+        if (isLeftChild(t, node)) {
             p.setLeft(x);
-        }else{
+        } else {
             p.setRight(x);
         }
         x.setParent(p);
 
-        if (color == BLACK){ // nil is already black, so no need to check its color
-            DeletionFixer.fix(t, x);  // TODO: NOT SURE IF IT IS FINAL CASE
+        if (nodeColor == BLACK) { // nil is already black, so no need to check its color
+            DeletionFixer.fix(t, x);
         }
     }
 
     // If node has 1 nil child:
     //     - replace node with non-nil child --> if node WAS B: FIXUP(x) // x is the non-nil child
-    public static void fixCase2(RBTree t, Node node) {
+    public static void fixCase2(RedBlackTree t, Node node) {
         Node p = node.getParent();
         Color nodeColor = node.getColor();
         Node x;
@@ -367,7 +361,7 @@ class DeletionUtil {
             x = node.getLeft();
         }
 
-        if (t.getRoot().equals(node)){
+        if (t.getRoot().equals(node)) {
             t.setRoot(x);
             x.setParent(p); // null parent
             x.setColor(BLACK);
@@ -382,10 +376,12 @@ class DeletionUtil {
         x.setParent(p);
 
         if (nodeColor == BLACK && x.getColor() == BLACK) {
-            DeletionFixer.fix(t, x); // TODO:  NOT SURE IF IT IS FINAL CASE
+            DeletionFixer.fix(t, x);
         } else if (nodeColor == BLACK && x.getColor() == RED) {
             x.setColor(BLACK);
         }
+        // There will be no red/red case here (that would be a violation)
+        // in red/black case: no need to change anything at this point
     }
 
     /**
@@ -396,41 +392,38 @@ class DeletionUtil {
      *     - proceed to delete successor:
      *         - if successor has 2 nil children: replace it with successor.right  --> if successor WAS B: FIXUP(x) // x is successor.right
      *         - if successor has 1 nil child: replace successor with non-nil child
-     *             --> if successor WAS B and x was B: FIXUP(x) // x is the non-nil child
-     *             --> if successor WAS B and x is RED, color x black // x is successor.right
+     *             --> if successor WAS B AND x was B: FIXUP(x) // x is the non-nil child
+     *             --> if successor WAS B AND x is RED, color x black // x is successor.right
      */
-    public static void fixCase3(RBTree t, Node node){ // TODO: see if we need these variables
-        //Node p = node.getParent();
-        //Color color = node.getColor();
+    public static void fixCase3(RedBlackTree t, Node node) { // TODO: see if we need these variables
         Node successor = getSuccessor(t, node);
-        //Node x;
 
-        // swap values from successor and node
+        // copy payload from successor to node
         int key = successor.getKey();
         node.setKey(key);
 
         int c = getCase(t, successor);
 
-        if (c == 1){
+        if (c == 1) {
             fixCase1(t, successor);
-        }else if(c == 2){
+        } else if (c == 2) {
             fixCase2(t, successor);
         }
-        // will not have case3 (0 nil children)
+        // Will not have case3 (0 nil children)
     }
 
     //
     // Helpers
     //
 
-    private static boolean isLeftChild(RBTree t, Node node) {
+    private static boolean isLeftChild(RedBlackTree t, Node node) {
         return node.getParent().getLeft() == node;
     }
 
-    private static Node getSuccessor(RBTree t, Node node){
+    private static Node getSuccessor(RedBlackTree t, Node node) {
         Node currNode = node.getRight();
 
-        while(!currNode.getLeft().isNil()){
+        while (!currNode.getLeft().isNil()) {
             currNode = currNode.getLeft();
         }
 
@@ -461,98 +454,101 @@ class DeletionUtil {
  *     - PB SB OR
  */
 class DeletionFixer {
-    public static void fix(RBTree t, Node node) {
+    public static void fix(RedBlackTree t, Node node) {
         System.out.println("INFO::1009 - Starting fix for node: " + node);
         getCaseAndFix(t, node);
     }
 
-    public static void getCaseAndFix(RBTree t, Node node){
+    public static void getCaseAndFix(RedBlackTree t, Node node) {
         int c = getCase(t, node);
 
-        if (c == 0){
+        if (c == 0) {
             fixCase0(t, node);
-        }
-        else if (c == 1){
+        } else if (c == 1) {
             fixCase1(t, node);
-        }
-        else if (c == 21){
+        } else if (c == 21) {
             fixCase21(t, node);
-        }
-        else if (c == 22){
+        } else if (c == 22) {
             fixCase22(t, node);
-        }
-        else if (c == 3){
+        } else if (c == 3) {
             fixCase3(t, node);
-        }
-        else if (c == 41){
+        } else if (c == 41) {
             fixCase41(t, node);
-        }
-        else if (c == 42){
+        } else if (c == 42) {
             fixCase42(t, node);
         }
     }
 
-    public static int getCase(RBTree t, Node node){
-        if (t.getRoot().equals(node)){
-            //root
-            return 0; // ??? if root is red, color black ???
+    public static int getCase(RedBlackTree t, Node node) {
+
+        // If root is red, color black ??? is this that case ???
+        // TODO: need to check this
+        if (node.equals(t.getRoot())) { // Root
+            System.out.println("INFO::5000 - found RBT deletion fixup case 0");
+            return 0;
         }
 
-        if (isLeftChild(t, node)){
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             Node leftNephew = s.getLeft();
             Node rightNephew = s.getRight();
 
-            if(node.getColor() == RED){
+            if (node.getColor() == RED) {
+                System.out.println("INFO::6000 - found RBT deletion fixup case 0");
                 return 0;
-            }
-            else if (s.getColor() == RED){
+            } else if (s.getColor() == RED) {
+                System.out.println("INFO::5001 - found RBT deletion fixup case 1");
                 return 1;
-            }
-            else if(s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == BLACK){
-                if (p.getColor() == RED){
+            } else if (s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == BLACK) {
+                if (p.getColor() == RED) {
+                    System.out.println("INFO::5021 - found RBT deletion fixup case 21");
                     return 21;
-                }else{
+                } else {
+                    System.out.println("INFO::5022 - found RBT deletion fixup case 22");
                     return 22;
                 }
-            }
-            else if(s.getColor() == BLACK && leftNephew.getColor() == RED && rightNephew.getColor() == BLACK){
+            } else if (s.getColor() == BLACK && leftNephew.getColor() == RED && rightNephew.getColor() == BLACK) { // correct
+                System.out.println("INFO::5003 - found RBT deletion fixup case 3");
                 return 3;
-            }
-            else if(s.getColor() == BLACK && rightNephew.getColor() == RED){
-                if (p.getColor() == RED){
+            } else if (s.getColor() == BLACK && rightNephew.getColor() == RED) {
+                if (p.getColor() == RED) {
+                    System.out.println("INFO::5041 - found RBT deletion fixup case 41");
                     return 41;
-                }else{
+                } else {
+                    System.out.println("INFO::5042 - found RBT deletion fixup case 42");
                     return 42;
                 }
             }
-        }else{
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             Node leftNephew = s.getLeft();
             Node rightNephew = s.getRight();
 
-            if(node.getColor() == RED){
+            if (node.getColor() == RED) {
+                System.out.println("INFO::5000 - found RBT deletion fixup case 0");
                 return 0;
-            }
-            else if (s.getColor() == RED){
+            } else if (s.getColor() == RED) {
+                System.out.println("INFO::5001 - found RBT deletion fixup case 1");
                 return 1;
-            }
-            else if(s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == BLACK){
-                if (p.getColor() == RED){
+            } else if (s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == BLACK) {
+                if (p.getColor() == RED) {
+                    System.out.println("INFO::5021 - found RBT deletion fixup case 21");
                     return 21;
-                }else{
+                } else {
+                    System.out.println("INFO::5022 - found RBT deletion fixup case 22");
                     return 22;
                 }
-            }
-            else if(s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == RED){
+            } else if (s.getColor() == BLACK && leftNephew.getColor() == BLACK && rightNephew.getColor() == RED) { // correct
+                System.out.println("INFO::5003 - found RBT deletion fixup case 3");
                 return 3;
-            }
-            else if(s.getColor() == BLACK && leftNephew.getColor() == RED){
-                if (p.getColor() == RED){
+            } else if (s.getColor() == BLACK && leftNephew.getColor() == RED) {
+                if (p.getColor() == RED) {
+                    System.out.println("INFO::5041 - found RBT deletion fixup case 41");
                     return 41;
-                }else{
+                } else {
+                    System.out.println("INFO::5042 - found RBT deletion fixup case 42");
                     return 42;
                 }
             }
@@ -561,67 +557,72 @@ class DeletionFixer {
         throw new RuntimeException("ERROR::1009 - INVALID CASE");
     }
 
-    private static void fixCase0(RBTree t, Node node){
+    private static void fixCase0(RedBlackTree t, Node node) {
         node.setColor(BLACK);
     }
-    private static void fixCase1(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase1(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             swapColor(t, p, s);
             leftRotate(t, p);
-            getCaseAndFix(t, node); // TODO: not sure if we need to check something before
-        }else{
+            getCaseAndFix(t, node); // That is it!
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             swapColor(t, p, s);
             rightRotate(t, p);
-            getCaseAndFix(t, node); // TODO: not sure if we need to check something before
+            getCaseAndFix(t, node); // That is it!
         }
     }
-    private static void fixCase21(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase21(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
-            swapColor(t, p, s); // TODO: not sure if I continue...
-        }else{
+            swapColor(t, p, s); // DONE!!!
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
-            swapColor(t, p, s); // TODO: not sure if I continue...
+            swapColor(t, p, s); // DONE!!!
         }
     }
-    private static void fixCase22(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase22(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             s.setColor(RED);
-            getCaseAndFix(t, p); // TODO: not sure if we need to check something before
-        }else{
+            getCaseAndFix(t, p); // That is it!
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             s.setColor(RED);
-            getCaseAndFix(t, p); // TODO: not sure if we need to check something before
+            getCaseAndFix(t, p); // That is it!
         }
     }
-    private static void fixCase3(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase3(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             Node innerNephew = s.getLeft();
             swapColor(t, innerNephew, s);
             rightRotate(t, s);
-            getCaseAndFix(t, innerNephew); // TODO: not sure if we need to check something before
-        }else{
+            getCaseAndFix(t, innerNephew); // That is it!
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             Node innerNephew = s.getRight();
             swapColor(t, innerNephew, s);
             leftRotate(t, s);
-            getCaseAndFix(t, innerNephew); // TODO: not sure if we need to check something before
+            getCaseAndFix(t, innerNephew); // That is it!
         }
     }
-    private static void fixCase41(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase41(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             Node outerNephew = s.getRight();
@@ -629,7 +630,7 @@ class DeletionFixer {
             outerNephew.setColor(BLACK);
             leftRotate(t, p);
             // DONE
-        }else{
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             Node outerNephew = s.getLeft();
@@ -639,15 +640,16 @@ class DeletionFixer {
             // DONE
         }
     }
-    private static void fixCase42(RBTree t, Node node){
-        if (isLeftChild(t,node)){
+
+    private static void fixCase42(RedBlackTree t, Node node) {
+        if (isLeftChild(t, node)) {
             Node p = node.getParent();
             Node s = p.getRight();
             Node outerNephew = s.getRight();
             outerNephew.setColor(BLACK);
             leftRotate(t, p);
             // DONE
-        }else{
+        } else {
             Node p = node.getParent();
             Node s = p.getLeft();
             Node outerNephew = s.getLeft();
@@ -662,17 +664,17 @@ class DeletionFixer {
     // Helpers
     //
 
-    public static boolean isLeftChild(RBTree t, Node node) {
+    public static boolean isLeftChild(RedBlackTree t, Node node) {
         return node.getParent().getLeft() == node;
     }
 
-    public static void swapColor(RBTree t, Node n1, Node n2) {
+    public static void swapColor(RedBlackTree t, Node n1, Node n2) {
         Color temp = n1.getColor();
         n1.setColor(n2.getColor());
         n2.setColor(temp);
     }
 
-    public static void leftRotate(RBTree t, Node a) {
+    public static void leftRotate(RedBlackTree t, Node a) {
         System.out.println("INFO::1013 - LeftRotate node: " + a.getKey());
         Node p = a.getParent();
         Node b = a.getRight();
@@ -697,7 +699,7 @@ class DeletionFixer {
         b.setParent(p);
     }
 
-    public static void rightRotate(RBTree t, Node a) {
+    public static void rightRotate(RedBlackTree t, Node a) {
         System.out.println("INFO::1014 - RightRotate node: " + a.getKey());
         Node p = a.getParent();
         Node b = a.getLeft();
@@ -812,10 +814,10 @@ class Node {
     }
 }
 
-class RBTree {
+class RedBlackTree {
     private Node root;
 
-    public RBTree() {
+    public RedBlackTree() {
     }
 
     public Node getRoot() {
@@ -889,7 +891,7 @@ class RBTree {
         Node currNode = root;
 
         while (!currNode.isNil()) {
-            if (currNode.getKey() == key){
+            if (currNode.getKey() == key) {
                 System.out.println("INFO::3001 - FOUND: " + currNode);
                 return currNode;
             }
@@ -962,7 +964,7 @@ class RBTree {
             validateBlackRoot();
             noDoubleRed(root);
             int res = validateBlackHeight(root); // DOES NOT HANDLE root == null case
-            System.out.println("INFO::1008 - RBTree is valid (black height is: " + res + ")");
+            System.out.println("INFO::1008 - RedBlackTree is valid (black height is: " + res + ")");
             return true;
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
@@ -992,9 +994,9 @@ class RBTree {
 
     // TODO: need to test this code
     private void noDoubleRed(Node node) throws RuntimeException {
-        if(node.isNil()) return;
+        if (node.isNil()) return;
 
-        if (node.getColor() == RED && (node.getLeft().getColor() == RED || node.getRight().getColor() == RED)){
+        if (node.getColor() == RED && (node.getLeft().getColor() == RED || node.getRight().getColor() == RED)) {
             throw new RuntimeException("ERROR::4000 - noDoubleRed violation, node: " + node);
         }
 
@@ -1003,9 +1005,9 @@ class RBTree {
     }
 }
 
-public class RBTreeExample {
+public class RedBlackTreeExample {
     public static void main(String[] args) {
-        RBTree rbTree = new RBTree();
+        RedBlackTree rbTree = new RedBlackTree();
 
         try {
             rbTree.insert(1);
@@ -1059,3 +1061,238 @@ public class RBTreeExample {
         }
     }
 }
+
+/* OUTPUT
+
+INFO::1001 - Inserting node: 1
+INFO::1006 - CreateNode node: Node{key=1, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=1, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1002 - Got case #1
+INFO::1001 - Inserting node: 2
+INFO::1006 - CreateNode node: Node{key=2, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=2, left=nil, right=nil, color=RED, parent=1}
+rbTree.getRoot() = Node{key=1, left=nil, right=2, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 2)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 3
+INFO::1006 - CreateNode node: Node{key=3, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=3, left=nil, right=nil, color=RED, parent=2}
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 2 from original color: RED
+INFO::1005 - Recoloring node: 1 from original color: BLACK
+INFO::1003 - LeftRotate node: 1
+rbTree.getRoot() = Node{key=2, left=1, right=3, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 2)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 4
+INFO::1006 - CreateNode node: Node{key=4, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=4, left=nil, right=nil, color=RED, parent=3}
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 3 from original color: RED
+INFO::1005 - Recoloring node: 1 from original color: RED
+INFO::1005 - Recoloring node: 2 from original color: BLACK
+INFO::1002 - Got case #1
+rbTree.getRoot() = Node{key=2, left=1, right=3, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 5
+INFO::1006 - CreateNode node: Node{key=5, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=5, left=nil, right=nil, color=RED, parent=4}
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 4 from original color: RED
+INFO::1005 - Recoloring node: 3 from original color: BLACK
+INFO::1003 - LeftRotate node: 3
+rbTree.getRoot() = Node{key=2, left=1, right=4, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 6
+INFO::1006 - CreateNode node: Node{key=6, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=6, left=nil, right=nil, color=RED, parent=5}
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 5 from original color: RED
+INFO::1005 - Recoloring node: 3 from original color: RED
+INFO::1005 - Recoloring node: 4 from original color: BLACK
+rbTree.getRoot() = Node{key=2, left=1, right=4, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 7
+INFO::1006 - CreateNode node: Node{key=7, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=7, left=nil, right=nil, color=RED, parent=6}
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 6 from original color: RED
+INFO::1005 - Recoloring node: 5 from original color: BLACK
+INFO::1003 - LeftRotate node: 5
+rbTree.getRoot() = Node{key=2, left=1, right=4, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 8
+INFO::1006 - CreateNode node: Node{key=8, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=8, left=nil, right=nil, color=RED, parent=7}
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 7 from original color: RED
+INFO::1005 - Recoloring node: 5 from original color: RED
+INFO::1005 - Recoloring node: 6 from original color: BLACK
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 4 from original color: RED
+INFO::1005 - Recoloring node: 2 from original color: BLACK
+INFO::1003 - LeftRotate node: 2
+rbTree.getRoot() = Node{key=4, left=2, right=6, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 9
+INFO::1006 - CreateNode node: Node{key=9, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=9, left=nil, right=nil, color=RED, parent=8}
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 8 from original color: RED
+INFO::1005 - Recoloring node: 7 from original color: BLACK
+INFO::1003 - LeftRotate node: 7
+rbTree.getRoot() = Node{key=4, left=2, right=6, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 10
+INFO::1006 - CreateNode node: Node{key=10, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=10, left=nil, right=nil, color=RED, parent=9}
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 9 from original color: RED
+INFO::1005 - Recoloring node: 7 from original color: RED
+INFO::1005 - Recoloring node: 8 from original color: BLACK
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 6 from original color: RED
+INFO::1005 - Recoloring node: 2 from original color: RED
+INFO::1005 - Recoloring node: 4 from original color: BLACK
+INFO::1002 - Got case #1
+rbTree.getRoot() = Node{key=4, left=2, right=6, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 11
+INFO::1006 - CreateNode node: Node{key=11, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=11, left=nil, right=nil, color=RED, parent=10}
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 10 from original color: RED
+INFO::1005 - Recoloring node: 9 from original color: BLACK
+INFO::1003 - LeftRotate node: 9
+rbTree.getRoot() = Node{key=4, left=2, right=6, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::1001 - Inserting node: 12
+INFO::1006 - CreateNode node: Node{key=12, left=nil, right=nil, color=RED, parent=NULL}
+INFO::1007 - Starting fix for node: Node{key=12, left=nil, right=nil, color=RED, parent=11}
+INFO::1002 - Got case #2
+INFO::1005 - Recoloring node: 11 from original color: RED
+INFO::1005 - Recoloring node: 9 from original color: RED
+INFO::1005 - Recoloring node: 10 from original color: BLACK
+INFO::1002 - Got case #4
+INFO::1005 - Recoloring node: 8 from original color: RED
+INFO::1005 - Recoloring node: 6 from original color: BLACK
+INFO::1003 - LeftRotate node: 6
+rbTree.getRoot() = Node{key=4, left=2, right=8, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::2000 - deleting: 1
+INFO::3000 - finding: 1
+INFO::3001 - FOUND: Node{key=1, left=nil, right=nil, color=BLACK, parent=2}
+INFO::1009 - Deleting node: Node{key=1, left=nil, right=nil, color=BLACK, parent=2}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=2}
+INFO::5022 - found RBT deletion fixup case 22
+INFO::5042 - found RBT deletion fixup case 42
+INFO::1013 - LeftRotate node: 4
+rbTree.getRoot() = Node{key=8, left=4, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::2000 - deleting: 2
+INFO::3000 - finding: 2
+INFO::3001 - FOUND: Node{key=2, left=nil, right=3, color=BLACK, parent=4}
+INFO::1009 - Deleting node: Node{key=2, left=nil, right=3, color=BLACK, parent=4}
+rbTree.getRoot() = Node{key=8, left=4, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::2000 - deleting: 3
+INFO::3000 - finding: 3
+INFO::3001 - FOUND: Node{key=3, left=nil, right=nil, color=BLACK, parent=4}
+INFO::1009 - Deleting node: Node{key=3, left=nil, right=nil, color=BLACK, parent=4}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=4}
+INFO::5001 - found RBT deletion fixup case 1
+INFO::1013 - LeftRotate node: 4
+INFO::5021 - found RBT deletion fixup case 21
+rbTree.getRoot() = Node{key=8, left=6, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::2000 - deleting: 4
+INFO::3000 - finding: 4
+INFO::3001 - FOUND: Node{key=4, left=nil, right=5, color=BLACK, parent=6}
+INFO::1009 - Deleting node: Node{key=4, left=nil, right=5, color=BLACK, parent=6}
+rbTree.getRoot() = Node{key=8, left=6, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 4)
+rbTree.isValid() = true
+INFO::2000 - deleting: 5
+INFO::3000 - finding: 5
+INFO::3001 - FOUND: Node{key=5, left=nil, right=nil, color=BLACK, parent=6}
+INFO::1009 - Deleting node: Node{key=5, left=nil, right=nil, color=BLACK, parent=6}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=6}
+INFO::5022 - found RBT deletion fixup case 22
+INFO::5022 - found RBT deletion fixup case 22
+INFO::5000 - found RBT deletion fixup case 0
+rbTree.getRoot() = Node{key=8, left=6, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::2000 - deleting: 6
+INFO::3000 - finding: 6
+INFO::3001 - FOUND: Node{key=6, left=nil, right=7, color=BLACK, parent=8}
+INFO::1009 - Deleting node: Node{key=6, left=nil, right=7, color=BLACK, parent=8}
+rbTree.getRoot() = Node{key=8, left=7, right=10, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::2000 - deleting: 7
+INFO::3000 - finding: 7
+INFO::3001 - FOUND: Node{key=7, left=nil, right=nil, color=BLACK, parent=8}
+INFO::1009 - Deleting node: Node{key=7, left=nil, right=nil, color=BLACK, parent=8}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=8}
+INFO::5001 - found RBT deletion fixup case 1
+INFO::1013 - LeftRotate node: 8
+INFO::5021 - found RBT deletion fixup case 21
+rbTree.getRoot() = Node{key=10, left=8, right=11, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::2000 - deleting: 8
+INFO::3000 - finding: 8
+INFO::3001 - FOUND: Node{key=8, left=nil, right=9, color=BLACK, parent=10}
+INFO::1009 - Deleting node: Node{key=8, left=nil, right=9, color=BLACK, parent=10}
+rbTree.getRoot() = Node{key=10, left=9, right=11, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::2000 - deleting: 9
+INFO::3000 - finding: 9
+INFO::3001 - FOUND: Node{key=9, left=nil, right=nil, color=BLACK, parent=10}
+INFO::1009 - Deleting node: Node{key=9, left=nil, right=nil, color=BLACK, parent=10}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=10}
+INFO::5042 - found RBT deletion fixup case 42
+INFO::1013 - LeftRotate node: 10
+rbTree.getRoot() = Node{key=11, left=10, right=12, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 3)
+rbTree.isValid() = true
+INFO::2000 - deleting: 10
+INFO::3000 - finding: 10
+INFO::3001 - FOUND: Node{key=10, left=nil, right=nil, color=BLACK, parent=11}
+INFO::1009 - Deleting node: Node{key=10, left=nil, right=nil, color=BLACK, parent=11}
+INFO::1009 - Starting fix for node: Node{color=BLACK, parent=11}
+INFO::5022 - found RBT deletion fixup case 22
+INFO::5000 - found RBT deletion fixup case 0
+rbTree.getRoot() = Node{key=11, left=nil, right=12, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 2)
+rbTree.isValid() = true
+INFO::2000 - deleting: 11
+INFO::3000 - finding: 11
+INFO::3001 - FOUND: Node{key=11, left=nil, right=12, color=BLACK, parent=NULL}
+INFO::1009 - Deleting node: Node{key=11, left=nil, right=12, color=BLACK, parent=NULL}
+rbTree.getRoot() = Node{key=12, left=nil, right=nil, color=BLACK, parent=NULL}
+INFO::1008 - RedBlackTree is valid (black height is: 2)
+rbTree.isValid() = true
+INFO::2000 - deleting: 12
+INFO::3000 - finding: 12
+INFO::3001 - FOUND: Node{key=12, left=nil, right=nil, color=BLACK, parent=NULL}
+INFO::1009 - Deleting node: Node{key=12, left=nil, right=nil, color=BLACK, parent=NULL}
+rbTree.getRoot() = null
+rbTree.isValid() = true
+END
+
+*/
