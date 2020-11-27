@@ -6,3 +6,5 @@ Johnson - shortest path between all nodes
 
 
 Adjacency list: use Map<Integer, List<Node>>
+
+Adjacency matrix
