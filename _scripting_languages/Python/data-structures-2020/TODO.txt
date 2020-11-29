@@ -1,0 +1,12 @@
+heap
+hash
+graph
+disjoint-set
+
+sorting:
+quicksort
+mergesort
+selection sort
+insertion sort
+heap sort
+bubble sort
