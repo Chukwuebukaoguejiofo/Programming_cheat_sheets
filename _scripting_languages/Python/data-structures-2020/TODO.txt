@@ -8,4 +8,3 @@ mergesort
 selection sort
 insertion sort
 heap sort
-bubble sort
