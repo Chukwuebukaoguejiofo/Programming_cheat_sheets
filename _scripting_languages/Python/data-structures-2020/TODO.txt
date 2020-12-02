@@ -1,5 +1,4 @@
 graph
-disjoint-set
 
 sorting:
 quicksort
