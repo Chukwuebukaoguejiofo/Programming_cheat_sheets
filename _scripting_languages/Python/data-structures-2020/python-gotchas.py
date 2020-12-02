@@ -1,5 +1,7 @@
 import array
 
+# https://www.programiz.com/python-programming/array
+
 arr = array.array('i', [0] * 5)
 arr[1] = 11
 arr[2] = 22
