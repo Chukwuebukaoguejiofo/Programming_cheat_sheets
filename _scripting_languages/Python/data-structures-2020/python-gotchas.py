@@ -5,6 +5,7 @@ arr[1] = 11
 arr[2] = 22
 arr[3] = 33
 arr += array.array('i', [0] * 5)
+# arr.extend([0]*5)
 arr[9] = 999
 print(arr)
 
