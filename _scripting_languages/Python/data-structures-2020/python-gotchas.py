@@ -28,6 +28,14 @@ array('i', [0, 11, 22, 33, 0, 0, 0, 0, 0, 999])
 
 
 
+print("person details {}, {}".format(name, age))
+
+
+if __name__ == "__main__":
+    print("this file is being run from commandline")
+
+
+
 
 #-------------- python 3
 
