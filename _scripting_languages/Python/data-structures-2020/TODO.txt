@@ -1,8 +1,6 @@
 graph
 
 sorting:
-quicksort
-mergesort
 selection sort
 insertion sort
 heap sort
