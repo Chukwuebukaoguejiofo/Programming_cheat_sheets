@@ -1,6 +1,5 @@
 graph
 
 sorting:
-selection sort
 insertion sort
 heap sort
