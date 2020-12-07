@@ -75,3 +75,4 @@ if __name__ == "__main__":
     heapSort = HeapSort(arr)
     heapSort.sort()
     print(arr)
+    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
