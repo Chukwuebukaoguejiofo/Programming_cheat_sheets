@@ -3,3 +3,4 @@
 - heap: add isEmpty() method, to be by client when peek and pop
     Else: new Exception()
 - hashmap: minor fixes
+- linkedlist - head, tail
