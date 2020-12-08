@@ -4,3 +4,5 @@
     Else: new Exception()
 - hashmap: minor fixes
 - linkedlist - head, tail
+- use OOP
+- add size() method
