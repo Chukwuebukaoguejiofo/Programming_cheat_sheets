@@ -1,6 +1,3 @@
-- update heap (parent of 0 is 0 ?)
-- heap: add isEmpty() method, to be by client when peek and pop
-    Else: new Exception()
 - hashmap: minor fixes
 - linkedlist - head, tail
 - use OOP
