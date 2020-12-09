@@ -12,12 +12,12 @@ class HeapSort {
     public void sort() {
         if (array.length < 2) return;
 
-        // create heap
+        // Create heap
         for (int i = 0; i < array.length; i++) {
             bubbleUp(i);
         }
 
-        // swap highest values to end or array
+        // Swap highest values to end or array
         for (int i = 0; i < array.length; i++) {
             int currLastIndex = array.length - 1 - i;
             swap(0, currLastIndex);
@@ -32,7 +32,7 @@ class HeapSort {
     private int PI(int i){ return (i-1)/2;}
     private int LI(int i){ return 2 * i + 1;}
     private int RI(int i){ return 2 * i + 2;}
-    private boolean hasP(int i){ return PI(i) >= 0;}
+    private boolean hasP(int i){ return i > 0;}
     private boolean hasL(int i, int size){ return LI(i) < size;}
     private boolean hasR(int i, int size){ return RI(i) < size;}
     private int PV(int i){ return array[PI(i)]; }
