@@ -1,3 +1,2 @@
 Shell sort
 
-Heap: boolean hasP(int i){ return i > 0; } // hack!
