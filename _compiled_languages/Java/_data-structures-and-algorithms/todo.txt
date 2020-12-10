@@ -2,3 +2,4 @@
 - linkedlist - head, tail
 - use OOP
 - add size() method
+- graph: add visited array
