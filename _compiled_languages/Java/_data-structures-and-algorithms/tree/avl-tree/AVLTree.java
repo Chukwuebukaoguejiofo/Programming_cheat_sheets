@@ -1,124 +1,194 @@
-class Node { 
-    int key, height; 
-    Node left, right; 
-  
-    Node(int d) { 
-        key = d; 
-        height = 0;
-    } 
+package com.example;
 
-    @Override
-    public String toString(){
-      return "k:"+key;
+class Node {
+    private int key;
+    private int height;
+    private Node left;
+    private Node right;
+
+    Node(int key) {
+        this.key = key;
+        height = 1;
     }
-} 
-  
-class AVLTree { 
-    Node root; 
-  
-    int getHeight(Node n) { 
-        if (n == null) return 0; 
-        return n.height;
-    } 
 
-    void setHeight(Node n){
-      n.height = max(getHeight(n.left), getHeight(n.right)) + 1; 
+    public int getKey() {
+        return key;
     }
-  
-    int max(int a, int b) { 
-        return (a > b) ? a : b; 
-    } 
 
-    int getBalance(Node n) { 
-        if (n == null) return 0; 
-        return getHeight(n.left) - getHeight(n.right); 
-    } 
-  
-    Node rightRotate(Node a) {
-        Node b = a.left; 
-        Node c = b.right; 
-        b.right = a; 
-        a.left = c; 
-  
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
+}
+
+class AVLTree {
+    private Node root;
+
+    private int getHeight(Node n) {
+        if (n == null) return 0;
+        return n.getHeight();
+    }
+
+    private void setHeight(Node node) {
+        node.setHeight(Math.max(getHeight(node.getLeft()), getHeight(node.getRight())) + 1);
+    }
+
+    private int getBalance(Node n) {
+        if (n == null) return 0;
+        return getHeight(n.getRight()) - getHeight(n.getLeft());
+    }
+
+    private Node rightRotate(Node a) {
+        Node b = a.getLeft();
+        Node c = b.getRight();
+        b.setRight(a);
+        a.setLeft(c);
+
         setHeight(a);
         setHeight(b);
-  
-        return b; 
-    } 
-  
-    Node leftRotate(Node a) {
-        Node b = a.right; 
-        Node c = b.left; 
-        b.left = a; 
-        a.right = c; 
-  
+
+        return b;
+    }
+
+    private Node leftRotate(Node a) {
+        Node b = a.getRight();
+        Node c = b.getLeft();
+        b.setLeft(a);
+        a.setRight(c);
+
         setHeight(a);
         setHeight(b);
-  
-        return b; 
-    } 
-  
-    Node insert(Node node, int key) { 
-        if (node == null) return (new Node(key)); 
-  
-        if (key < node.key) 
-            node.left = insert(node.left, key); 
-        else if (key > node.key) 
-            node.right = insert(node.right, key); 
+
+        return b;
+    }
+
+    public void insert(int key) {
+        root = insert(root, key);
+    }
+
+    private Node insert(Node node, int key) {
+        if (node == null) return (new Node(key));
+
+        if (key < node.getKey())
+            node.setLeft(insert(node.getLeft(), key));
+        else if (key > node.getKey())
+            node.setRight(insert(node.getRight(), key));
         else
             return node; // no dups
-  
-      return insertFixUp(node, key);
-    } 
 
-    Node insertFixUp(Node node, int key){
-      setHeight(node);
-      int balance = getBalance(node); 
-      
-      // LL Case 
-      if (balance > 1 && key < node.left.key)
-          return rightRotate(node); 
-
-      // RR Case 
-      if (balance < -1 && key > node.right.key) 
-          return leftRotate(node); 
-
-      // LR Case 
-      if (balance > 1 && key > node.left.key) { 
-          node.left = leftRotate(node.left); 
-          return rightRotate(node); 
-      } 
-
-      // RL Case 
-      if (balance < -1 && key < node.right.key) { 
-          node.right = rightRotate(node.right); 
-          return leftRotate(node); 
-      } 
-
-      return node; 
+        return insertFixUp(node, key);
     }
-  
-    void inOrder(Node n){
-      if(n == null) return;
-      inOrder(n.left);
-      System.out.println(n);  
-      inOrder(n.right); 
+
+    private Node insertFixUp(Node node, int key) {
+        setHeight(node);
+        int balance = getBalance(node);
+
+        if (balance < -1 && key < node.getLeft().getKey()) {
+            return rightRotate(node); // LL
+        } else if (balance > 1 && key > node.getRight().getKey()) {
+            return leftRotate(node); // RR
+        } else if (balance < -1 && key > node.getLeft().getKey()) {
+            node.setLeft(leftRotate(node.getLeft()));
+            return rightRotate(node); // LR
+        } else if (balance > 1 && key < node.getRight().getKey()) {
+            node.setRight(rightRotate(node.getRight()));
+            return leftRotate(node); // RL
+        }
+
+        return node;
     }
-} 
+
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(Node node) {
+        if (node == null) return;
+        inOrder(node.getLeft());
+        System.out.println(node.getKey());
+        inOrder(node.getRight());
+    }
+
+    public void print() {
+        printRecursive(root, "", true);
+    }
+
+    private void printRecursive(Node node, String indent, boolean isLeft) {
+        if (node == null) return;
+        System.out.print(indent);
+        if (isLeft) {
+            System.out.print("|---");
+            indent += "    ";
+        } else {
+            System.out.print("|---");
+            indent += "|   ";
+        }
+
+        String heightLabel = " (H" + node.getHeight() + ")";
+        System.out.println(node.getKey() + heightLabel);
+
+        printRecursive(node.getRight(), indent, false);
+        printRecursive(node.getLeft(), indent, true);
+    }
+}
 
 class Main {
-  public static void main(String[] args) {
-    AVLTree tree = new AVLTree();
-    tree.root = tree.insert(tree.root, 7); 
-    tree.root = tree.insert(tree.root, 3); 
-    tree.root = tree.insert(tree.root, 5); 
-    tree.root = tree.insert(tree.root, 9); 
-    tree.root = tree.insert(tree.root, 2); 
-    tree.root = tree.insert(tree.root, 6); 
-    tree.root = tree.insert(tree.root, 1); 
-    tree.root = tree.insert(tree.root, 4); 
-    tree.root = tree.insert(tree.root, 8); 
+    public static void main(String[] args) {
+        AVLTree tree = new AVLTree();
 
-    tree.inOrder(tree.root); 
-  }
+        for (int i = 0; i < 10; i++) {
+            tree.insert(i);
+        }
+
+        tree.print();
+        tree.inOrder();
+    }
 }
+
+/* OUTPUT
+
+|---3 (H4)
+    |---7 (H3)
+    |   |---8 (H2)
+    |   |   |---9 (H1)
+    |   |---5 (H2)
+    |       |---6 (H1)
+    |       |---4 (H1)
+    |---1 (H2)
+        |---2 (H1)
+        |---0 (H1)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+*/
