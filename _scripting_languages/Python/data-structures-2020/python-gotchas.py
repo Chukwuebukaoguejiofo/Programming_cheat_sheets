@@ -23,7 +23,8 @@ array('i', [0, 11, 22, 33, 0, 0, 0, 0, 0, 999])
 [1, 2, 3, 0, 0, 555]
 '''
 
-
+x = set()
+y = deque()
 
 
 print("person details {}, {}".format(name, age))
