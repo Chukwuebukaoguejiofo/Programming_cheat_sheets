@@ -1,3 +1,6 @@
+// NASM tutorial (poor)
+https://cs.lmu.edu/~ray/notes/nasmtutorial/
+
 
 // Registers, from lower to higher bit order (1 to 64)
 ................................................................ rax - 64 bit
