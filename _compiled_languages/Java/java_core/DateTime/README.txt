@@ -1,1 +1,1 @@
-- use: MyDateTimeUtil & A__DateTimeJava8.java
+- use: MyDateTimeUtil.java & A__DateTimeJava8.java
