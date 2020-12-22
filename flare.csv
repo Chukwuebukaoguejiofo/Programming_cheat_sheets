@@ -1,0 +1,10 @@
+id,value
+foo,
+foo.bar,
+foo.bar.baz,123
+foo,
+foo.bar2,
+foo.bar2.baz,123
+foo,
+foo.bar3,
+foo.bar3.baz,123
