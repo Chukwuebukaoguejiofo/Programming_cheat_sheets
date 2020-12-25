@@ -6,3 +6,5 @@
 - resize
 - traverse
 - search
+
+C++ classes fields default to private
