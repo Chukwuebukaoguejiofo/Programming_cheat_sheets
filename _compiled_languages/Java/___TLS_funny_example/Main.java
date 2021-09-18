@@ -1,3 +1,10 @@
+/**
+ * TODO: 
+ *     - give better names to variables, maybe: clientPublicKey, ServerPrivateKey, sharedKey
+ *     - write comments about the algorithm used
+ */
+
+
 class Client {
     double publickKey = 2;
     double privateKey = 3;
