@@ -82,18 +82,19 @@ useImperativeHandle(ref, fn, [deps])
 // 3. inner ref
 // 4. hook uses param ref
 // 5. fnRet obj
-const FancyInput = (props, ref) => {
-	let innerRef = useRef()
+let FancyInput = (props, ref) => {
+  const innerRef = useRef()
 
-	useImperativeHandle(ref, () => ({
-		focus: innerRef.current.focus()
-	}))
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      innerRef.current.focus()
+    }
+  }))
 
-	return(
-		<input ref={innerRef} />
-	)
+  return <input ref={innerRef} ... />
 }
-export default React.forwardRef(FancyInput)
+
+FancyInput = React.forwardRef(FancyInput)
 
 
 
