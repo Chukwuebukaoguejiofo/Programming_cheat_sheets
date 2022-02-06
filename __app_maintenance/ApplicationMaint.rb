@@ -45,214 +45,210 @@ end
 #======================================================= Model
 
 class App
-	attr_accessor(
-	  :name,
-	  :currentCommand, 
-		:currentCommandOutput,
-		:currentStatus,
-		:isComplate,
-		:shouldStop,
-		:errors,
-		:prevStepSuccedded
-	)
+  attr_accessor(
+    :name,
+    :currentCommand, 
+    :currentCommandOutput,
+    :currentStatus,
+    :isComplate,
+    :shouldStop,
+    :errors,
+    :prevStepSuccedded
+  )
 end
-
-
 
 #=======================================================
 
 class ApplicationMaint
 
-	def initialize(appsToRun, action, threadCount, logsFolder, appsFolder)
-		@appsToRun = appsToRun
-		@action = action
-		@threadCount = threadCount
-		@logsFolder = logsFolder
-		@appsFolder = appsFolder
-		@threadPool = ThreadPool.new(threadCount)
-	end
+  def initialize(appsToRun, action, threadCount, logsFolder, appsFolder)
+    @appsToRun = appsToRun
+    @action = action
+    @threadCount = threadCount
+    @logsFolder = logsFolder
+    @appsFolder = appsFolder
+    @threadPool = ThreadPool.new(threadCount)
+  end
 
-	def start
-		# if the program ends, finish up the batch of the pool size!
-		at_exit { @threadPool.shutdown }  
+  def start
+    # if the program ends, finish up the batch of the pool size!
+    at_exit { @threadPool.shutdown }  
 
-		# SCHEDULE JOBS
-		@appsToRun.split(",").each do |appName| 
-			app = App.new()
-			app.name = appName
-			@threadPool.schedule(app, 123) { runApp(app) }
-		end
-	end
+    # SCHEDULE JOBS
+    @appsToRun.split(",").each do |appName| 
+      app = App.new()
+      app.name = appName
+      @threadPool.schedule(app, 123) { runApp(app) }
+    end
+  end
 
-	def runApp(app)
-		if folderExists(app)
-			case @action
-			when 'ACTION_001'
-			   	action1(app)
-			when 'ACTION_002'
-			   	action1(app)
-			when 'ACTION_003'
-			   	action1(app)
-			when 'ACTION_004'
-			   	action1(app)
-			when 'ACTION_005'
-			   	action1(app)
-			else
-			  	puts 'ACTION FAIL'
-			end
-		else
-			folderDoesNotExist(app)
-		end
-	end
+  def runApp(app)
+    if folderExists(app)
+      case @action
+      when 'ACTION_001'
+        action1(app)
+      when 'ACTION_002'
+        action1(app)
+      when 'ACTION_003'
+        action1(app)
+      when 'ACTION_004'
+        action1(app)
+      when 'ACTION_005'
+        action1(app)
+      else
+        puts 'ACTION FAIL'
+      end
+    else
+      folderDoesNotExist(app)
+    end
+  end
 
-	def folderExists(app)
-		return true
-	end
+  def folderExists(app)
+    return true
+  end
 
-	def folderDoesNotExist(app)
-	end
+  def folderDoesNotExist(app)
+  end
 
-	# action1
-	# action2
-	# action3
-	def action1(app)
-		puts app
-		gitPullOriginMaster(app)
-		gitPushProductionMaster(app)
-	end
+  # action1
+  # action2
+  # action3
+  def action1(app)
+    puts app
+    gitPullOriginMaster(app)
+    gitPushProductionMaster(app)
+  end
 
-	def gitPullOriginMaster(app)
-		commandString = 'pwd'  # `cd #{@appsFolder} && git pull origin master`
-		ts = Time.now.strftime("%H:%M:%S %4N")
-		
-		# Run command
-		commandResult = `#{commandString}`
+  def gitPullOriginMaster(app)
+    commandString = 'pwd'  # `cd #{@appsFolder} && git pull origin master`
+    ts = Time.now.strftime("%H:%M:%S %4N")
+        # Run command
+    commandResult = `#{commandString}`
 
-		# initial log for command	
-		logForApp(app, "============================= command: #{commandString}")
-		logForApp(app, "--> timestamp:")
-		logForApp(app, "#{ts}")
-		logForApp(app, "--> output:")
-		logForApp(app, "#{commandResult}")
+    # initial log for command 
+    logForApp(app, "============================= command: #{commandString}")
+    logForApp(app, "--> timestamp:")
+    logForApp(app, "#{ts}")
+    logForApp(app, "--> output:")
+    logForApp(app, "#{commandResult}")
 
-		# HANDLE COMMAND RESULT
-		case commandResult
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
-		when /abc/
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
+    # HANDLE COMMAND RESULT
+    case commandResult
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
+    when /abc/
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
 
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
-		else
-		  	puts 'AAAA8888 FAIL'
-		end
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
+    else
+      puts 'AAAA8888 FAIL'
+    end
 
-		# final log for command
-		# logForApp(app, "gitPullOriginMaster::done")	
-	end
+    # final log for command
+    # logForApp(app, "gitPullOriginMaster::done") 
+  end
 
-	def gitPushProductionMaster(app)
-		commandString = 'ls -la' # `cd #{@appFolder} && git pull origin master`
-		ts = Time.now.strftime("%H:%M:%S %4N")
-		
-		# Run command
-		commandResult = `#{commandString}`
+  def gitPushProductionMaster(app)
+    commandString = 'ls -la' # `cd #{@appFolder} && git pull origin master`
+    ts = Time.now.strftime("%H:%M:%S %4N")
+        # Run command
+    commandResult = `#{commandString}`
 
-		# initial log for command	
-		logForApp(app, "============================= command: #{commandString}")
-		logForApp(app, "--> timestamp:")
-		logForApp(app, "#{ts}")
-		logForApp(app, "--> output:")
-		logForApp(app, "#{commandResult}")
+    # initial log for command 
+    logForApp(app, "============================= command: #{commandString}")
+    logForApp(app, "--> timestamp:")
+    logForApp(app, "#{ts}")
+    logForApp(app, "--> output:")
+    logForApp(app, "#{commandResult}")
 
-		# HANDLE COMMAND RESULT
-		case commandResult
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
+    # HANDLE COMMAND RESULT
+    case commandResult
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
 
-		when /total 112/
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
+    when /total 112/
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
 
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
-		when 'Already up-to-date'
-			# update model
-			app.currentCommand = 'abc'
-			app.currentCommandOutput = 'abc'
-			app.currentStatus = 'cmd done'
-			app.isComplate = false
-			app.shouldStop = false
-			app.errors = [1,2,3]
-			app.prevStepSuccedded = true
-		else
-		  puts 'AAAA8888 FAIL'
-			# update model
-		end
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
+    when 'Already up-to-date'
+      # update model
+      app.currentCommand = 'abc'
+      app.currentCommandOutput = 'abc'
+      app.currentStatus = 'cmd done'
+      app.isComplate = false
+      app.shouldStop = false
+      app.errors = [1,2,3]
+      app.prevStepSuccedded = true
+    else
+      puts 'AAAA8888 FAIL'
+      # update model
+    end
 
-		# final log for command
-		# logForApp(app, "gitPullOriginMaster::done")	
-	end
+    # final log for command
+    # logForApp(app, "gitPullOriginMaster::done") 
+  end
 
 
-	def logForApp(app, msg)
-		app_date = '2022_02_05' # app.date
-		app_name = app.name
-		appLogFile = "#{app_date}_#{app_name}.txt"
+  def logForApp(app, msg)
+    app_date = '2022_02_05' # app.date
+    app_name = app.name
+    appLogFile = "#{app_date}_#{app_name}.txt"
 
-		`cd #{@logsFolder} && echo "#{msg}" >> #{appLogFile}`
-	end
+    `cd #{@logsFolder} && echo "#{msg}" >> #{appLogFile}`
+  end
 end
 
 
@@ -265,16 +261,14 @@ appsFolder = "../apps"
 
 # select apps to run, select ACTION, click submit
 service = ApplicationMaint.new(
-	appsToRun, 
-	action, 
-	threadCount,
-	logsFolder,
-	appsFolder
+  appsToRun, 
+  action, 
+  threadCount,
+  logsFolder,
+  appsFolder
 )
 
 service.start
-
-
 
 
 #======================================================= Notes
@@ -291,20 +285,16 @@ service.start
 
 
 # let logForApp = (app, logTitle, message) => {
-# 	log_line = "==========="
-# 	ts = 'Time.now.strftime("%H:%M:%S %4N")'
-# 	logFolder = "/log"
-# 	appLogFile = `#{app.date}_#{app.name}.txt`
-# 	exec(`cd #{logFolder} && echo "#{log_line} #{logTitle} #{ts} - #{message}" >> #{appLogFile}`)
+#   log_line = "==========="
+#   ts = 'Time.now.strftime("%H:%M:%S %4N")'
+#   logFolder = "/log"
+#   appLogFile = `#{app.date}_#{app.name}.txt`
+#   exec(`cd #{logFolder} && echo "#{log_line} #{logTitle} #{ts} - #{message}" >> #{appLogFile}`)
 # }
-
-
 
 # deleteLogs() # single and all
 # writeAppLogFile(app)
 # updateAppModel(app)
-
-
 
 # 3. select action to run for each app:
 #    - pull, push, end_to_log
@@ -313,4 +303,3 @@ service.start
 
 
 # SCHEDULE_APP_RUN -> select_ACTION -> RUN_ACTION -> RUN_COMMAND_LIST
-
