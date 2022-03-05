@@ -5,7 +5,7 @@ https://reactjs.org/docs/hooks-reference.html
 
 
 
-
+side effects - changes something outside of the scope of the function
 
  lazy loading - run code when required
 
