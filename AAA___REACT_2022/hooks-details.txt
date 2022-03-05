@@ -114,7 +114,8 @@ useReducer also lets you optimize performance for components that trigger deep u
 because you can pass dispatch down instead of callbacks.
 
 
-React guarantees that dispatch function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the useEffect or useCallback dependency list.
+React guarantees that dispatch function identity is stable and won’t change on re-renders. 
+This is why it’s safe to omit from the useEffect or useCallback dependency list.
 
 
 
