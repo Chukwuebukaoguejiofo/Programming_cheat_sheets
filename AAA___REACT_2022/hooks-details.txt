@@ -31,7 +31,7 @@ setState(prevState => {
   return {...prevState, ...updatedValues};
 });
 
-
+// Lazy loading, only on initial render
 const [state, setState] = useState(() => {
   const initialState = someExpensiveComputation(props);
   return initialState;
