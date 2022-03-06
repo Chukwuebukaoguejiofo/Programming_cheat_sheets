@@ -16,6 +16,8 @@ side effects - changes something outside of the scope of the function
 
 ----------------------------------------------------------------------------- useState
 
+--> so func components can have STATE !!!
+
 const [state, setState] = useState({name: "brian"});
 
 setState(newState); -- enqueues a re-render of the component.
@@ -40,6 +42,8 @@ const [state, setState] = useState(() => {
 
 
 ----------------------------------------------------------------------------- useEffect
+
+--> so func components can have LIFECYLE !!!
 
 
 useEffect(fn, [dependencies])
