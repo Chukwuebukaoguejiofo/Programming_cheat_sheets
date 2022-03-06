@@ -4,6 +4,7 @@ HOOKS
 https://reactjs.org/docs/hooks-reference.html
 
 
+HOC - a function that takes a component and return an enhanced component
 
 side effects - changes something outside of the scope of the function
 
