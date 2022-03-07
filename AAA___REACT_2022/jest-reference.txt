@@ -56,6 +56,10 @@ expect(shoppingList).toContain('milk');
 
  jest.fn(x => 42 + x);
 
+// same
+jest.fn(() => 'something')
+jest.fn().mockImplementation(() => 'something')
+
 
 // The mock function is called twice
 expect(mockCallback.mock.calls.length).toBe(2);
