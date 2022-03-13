@@ -184,3 +184,23 @@ expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
 
 // All calls and the name of the mock is written as a snapshot
 expect(mockFunc).toMatchSnapshot();
+
+
+========================= Spies ???
+
+// const spy = jest.spyOn(Foo, "meth").mockImplementation(() => 1)
+//  jest.restoreAllMocks(); // cleanup
+// spy.mockRestore();
+// https://jestjs.io/docs/jest-object#jestspyonobject-methodname
+
+//  jest.spyOn(global, "fetch").mockImplementation(() =>
+//     Promise.resolve({
+//       json: () => Promise.resolve(fakeUser)
+//     })
+//   );
+
+
+
+
+
+
