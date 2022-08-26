@@ -21,3 +21,11 @@
 - If the server does not sanitize the user input, the SQL typed by the hacker will run.
 
 - Solution: Sanitize user input, escape SQL
+
+
+# Denial-of-Service Attack
+
+- Here, attackers target systems, servers, or networks and flood them with traffic to exhaust their resources and bandwidth. 
+-It is also known as a DDoS (Distributed Denial-of-Service) attack when attackers use multiple compromised systems to launch this attack. 
+
+-Makes incoming requests becomes overwhelming for the servers, resulting in the website it hosts either shut down or slow down
